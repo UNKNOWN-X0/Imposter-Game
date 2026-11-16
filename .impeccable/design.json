@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T14:45:40+00:00",
+  "title": "Design System: ImposterGame",
+  "extensions": {
+    "colorMeta": {
+      "midnight-accent": {
+        "role": "primary",
+        "displayName": "Amber Accent (dark)",
+        "canonical": "#f5bc42"
+      },
+      "light-accent": {
+        "role": "primary",
+        "displayName": "Amber Accent (light)",
+        "canonical": "#f4a806"
+      },
+      "light-accent-text": {
+        "role": "primary",
+        "displayName": "Accent Text",
+        "canonical": "#906404"
+      },
+      "midnight-crew": {
+        "role": "secondary",
+        "displayName": "Crew Green (dark)",
+        "canonical": "#4bdd80"
+      },
+      "light-crew": {
+        "role": "secondary",
+        "displayName": "Crew Green (light)",
+        "canonical": "#147b47"
+      },
+      "light-imposter": {
+        "role": "secondary",
+        "displayName": "Imposter Red",
+        "canonical": "#c11f40"
+      },
+      "midnight-bg": {
+        "role": "neutral",
+        "displayName": "Night Ground",
+        "canonical": "#120f17"
+      },
+      "midnight-surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#201c28"
+      },
+      "light-bg": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#f8f7fa"
+      },
+      "light-surface": {
+        "role": "neutral",
+        "displayName": "White Surface",
+        "canonical": "#ffffff"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The hero word on a card and the end-of-game screen."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Screen titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "The question or prompt a screen asks."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text, rules, explanations."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Room-code chip, eyebrows, small action chips."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-dark",
+        "value": "0 10px 30px rgb(0 0 0 / 0.45)",
+        "purpose": "Floating panels and menus in dark mode."
+      },
+      {
+        "name": "shadow-light",
+        "value": "0 10px 30px rgb(0 0 0 / 0.1)",
+        "purpose": "Floating panels and menus in light mode."
+      },
+      {
+        "name": "shadow-card-dark",
+        "value": "0 18px 45px rgb(0 0 0 / 0.35)",
+        "purpose": "The hold card and hero card in dark mode."
+      },
+      {
+        "name": "shadow-card-light",
+        "value": "0 16px 40px rgb(0 0 0 / 0.1)",
+        "purpose": "The hold card and hero card in light mode."
+      },
+      {
+        "name": "shadow-thumb",
+        "value": "0 2px 10px rgb(0 0 0 / 0.25)",
+        "purpose": "Segmented-control thumbs."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-settle",
+        "value": "cubic-bezier(0.2, 1.1, 0.35, 1)",
+        "purpose": "A word or hero settling in, 0.25s to 0.7s."
+      },
+      {
+        "name": "ease-confetti",
+        "value": "cubic-bezier(0.25, 0.6, 0.4, 1)",
+        "purpose": "Confetti fall at the end of a game, 1.5s."
+      },
+      {
+        "name": "press",
+        "value": "transform 0.08s ease",
+        "purpose": "A button scaling to 0.975 while pressed."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "700px"
+      },
+      {
+        "name": "short-landscape",
+        "value": "max-height 520px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action a screen asks for.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Deal the cards</button>",
+      "css": ".ds-btn { min-height: 52px; padding: 0 20px; border-radius: 999px; border: 1px solid transparent; font-weight: 700; font-size: 17px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: transform 0.08s ease, filter 0.15s ease; } .ds-btn:active { transform: scale(0.975); } .ds-btn:focus-visible { outline: 2px solid #f5bc42; outline-offset: 2px; } .ds-btn-primary { background: #f5bc42; color: #10121a; } .ds-btn-primary:hover { filter: brightness(1.05); }"
+    },
+    {
+      "name": "Default Button",
+      "kind": "button",
+      "refersTo": "button-default",
+      "description": "Secondary actions on the raised surface.",
+      "html": "<button class=\"ds-btn ds-btn-default\">Back to lobby</button>",
+      "css": ".ds-btn { min-height: 52px; padding: 0 20px; border-radius: 999px; border: 1px solid transparent; font-weight: 700; font-size: 17px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; } .ds-btn-default { background: #2a2534; color: #f2f1f4; } .ds-btn-default:hover { filter: brightness(1.1); } .ds-btn:focus-visible { outline: 2px solid #f5bc42; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Quiet actions with only a hairline.",
+      "html": "<button class=\"ds-btn ds-btn-ghost\">Not now</button>",
+      "css": ".ds-btn { min-height: 52px; padding: 0 20px; border-radius: 999px; font-weight: 700; font-size: 17px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; } .ds-btn-ghost { background: transparent; border: 1px solid #464054; color: #bab6c3; } .ds-btn-ghost:hover { color: #f2f1f4; } .ds-btn:focus-visible { outline: 2px solid #f5bc42; outline-offset: 2px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The container every screen is stacked from.",
+      "html": "<div class=\"ds-card\"><strong>Round 2</strong><p>Give one word that fits the secret word.</p></div>",
+      "css": ".ds-card { background: #201c28; border: 1px solid #464054; border-radius: 18px; padding: 18px; color: #f2f1f4; font-size: 17px; line-height: 1.5; } .ds-card strong { font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }"
+    },
+    {
+      "name": "Room-code chip",
+      "kind": "chip",
+      "refersTo": "card",
+      "description": "Answers \"what was the room again?\" across a table.",
+      "html": "<span class=\"ds-roomcode\"><span class=\"ds-roomcode-word\">K7Q2</span><span class=\"ds-roomcode-action\">Copy</span></span>",
+      "css": ".ds-roomcode { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 6px 6px 6px 14px; border-radius: 999px; background: #201c28; border: 1px solid #464054; color: #f2f1f4; font-weight: 800; font-size: 15px; letter-spacing: 0.22em; font-variant-numeric: tabular-nums; } .ds-roomcode-action { font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; color: #9b96a7; background: #2a2534; border-radius: 999px; padding: 4px 10px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Phone at the Table",
+    "overview": "ImposterGame is a dark-by-default card table on a phone: soft deep surfaces, one warm accent that only ever means \"act now\", two team colours that mean crew and imposter and nothing else, and everything a thumb needs at least 52px tall. Five colour families each exist in a light and a dark mode, declared on two dials so nothing below the tokens knows which is on. Captured as the incumbent baseline before the planned UX/UI overhaul.",
+    "keyCharacteristics": [
+      "Two dials, data-mode and data-theme; every theme declares the same tokens in both modes, contrast-checked by a test.",
+      "One accent for actions, plus crew green and imposter red reserved for sides.",
+      "Pill buttons at 52px, cards at 18px radius with a hairline border, a 999px room-code chip with tracked tabular numerals.",
+      "A system sans stack with Thai faces listed first; weight does the hierarchy.",
+      "One 24px icon set, 1.8 stroke, round caps, currentColor, each icon with a single motion behind anim."
+    ],
+    "rules": [
+      {
+        "name": "The Two Dials Rule",
+        "body": "Mode and theme are set once on the root; a rule below the tokens never asks which is on.",
+        "section": "colors"
+      },
+      {
+        "name": "The Accent Is An Action Rule",
+        "body": "--accent fills only things you tap; --accent-text is its readable twin for words. Crew and imposter colours mean sides, never emphasis.",
+        "section": "colors"
+      },
+      {
+        "name": "The Every Theme Declares Everything Rule",
+        "body": "A new theme declares every token in both modes; theme.test.js fails on a missing token, a contrast failure, or a chip unlike its theme.",
+        "section": "colors"
+      },
+      {
+        "name": "The Weight Does The Work Rule",
+        "body": "800 names, 700 acts, 400 reads; size changes little between roles on a phone.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mode Owns The Shadow Rule",
+        "body": "Washes, hairlines, shadows, and glow are declared per mode and shared by every theme.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do declare every token for both modes when adding a theme, and run src/ui/theme/theme.test.js.",
+      "Do use --accent-text, never --accent, for words and hairlines on a plain surface.",
+      "Do keep every tap target at 52px and the column at 560px (680px wide).",
+      "Do give a new icon one motion that is what that object does, off by default."
+    ],
+    "donts": [
+      "Don't use crew green or imposter red for emphasis; they mean sides.",
+      "Don't let a rule below tokens.css test for the mode or the theme.",
+      "Don't add a square corner, a second type family, or motion that carries meaning.",
+      "Don't treat this file as the target for the overhaul: it is the baseline the overhaul replaces through Impeccable's new-work flow against PRODUCT.md."
+    ]
+  }
+}
