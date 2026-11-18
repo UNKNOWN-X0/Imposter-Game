@@ -48,7 +48,7 @@ In this order, for the parts a change touches:
 1. **Fast:** `npm test` (rules, server end to end, packs, strings, icons, stylesheet, fingerprint; about ten seconds). Registered in the workspace `scripts/test-all.sh`.
 2. **Floors:** `npm run coverage` fails under the per-module floors in `src/testing/coverage.floors.json`; `-- --bless` raises them after new tests, never lowers them.
 3. **Everything:** `npm run verify` adds the build and both browser sweeps. The sweeps need Playwright, which the game does not: the workspace already has it, so `ln -s ../../../BrowserTests/node_modules/playwright node_modules/playwright` once (node_modules is ignored) and `verify` runs complete instead of "skipped out loud". CI installs its own.
-4. **Workspace:** `scripts/verify.sh Games/ImposterGame` from the Developer root: the suite, scaffold drift, graph freshness, and the smoke test through the Vite dev server. For an interface change, `npm run probe -- http://127.0.0.1:5174/` in `BrowserTests` with the dev server running (`npm run dev`), and look at the screenshots.
+4. **Workspace:** `scripts/verify.sh Games/Imposter-Game` from the Developer root: the suite, scaffold drift, graph freshness, and the smoke test through the Vite dev server. For an interface change, `npm run probe -- http://127.0.0.1:5174/` in `BrowserTests` with the dev server running (`npm run dev`), and look at the screenshots.
 5. **Graph:** `scripts/refresh-graph.sh --changed` after code changes.
 6. **Playtest** (`PLAYTEST.md`) before a release that changes the lobby, the round flow, or room play.
 

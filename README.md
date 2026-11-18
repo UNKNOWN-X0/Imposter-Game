@@ -1,7 +1,7 @@
 # ImposterGame
 
-[![Checks](https://github.com/UNKNOWN-X0/ImposterGame/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/UNKNOWN-X0/ImposterGame/actions/workflows/ci.yml)
-[![Version](https://img.shields.io/github/package-json/v/UNKNOWN-X0/ImposterGame?label=version)](package.json)
+[![Checks](https://github.com/UNKNOWN-X0/Imposter-Game/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/UNKNOWN-X0/Imposter-Game/actions/workflows/ci.yml)
+[![Version](https://img.shields.io/github/package-json/v/UNKNOWN-X0/Imposter-Game?label=version)](package.json)
 [![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)](package.json)
 [![Languages](https://img.shields.io/badge/languages-English%20%7C%20Thai%20%7C%20German-6750A4)](src/i18n/strings/)
 [![Play](https://img.shields.io/badge/Play-on%20Netlify-00C7B7?logo=netlify&logoColor=white)](https://impostergamebyfocus.netlify.app/)
@@ -12,7 +12,7 @@ votes before the imposters take over.
 
 **[Play in your browser](https://impostergamebyfocus.netlify.app/)** ·
 [Changelog](CHANGELOG.md) · [Playtest guide](PLAYTEST.md) ·
-[Report a bug](https://github.com/UNKNOWN-X0/ImposterGame/issues)
+[Report a bug](https://github.com/UNKNOWN-X0/Imposter-Game/issues)
 
 Made by **Thanate Amornjiraporn (Focus)**.
 
@@ -37,8 +37,8 @@ Made by **Thanate Amornjiraporn (Focus)**.
 Install **Node.js 20 or newer**, then:
 
 ```bash
-git clone https://github.com/UNKNOWN-X0/ImposterGame.git
-cd ImposterGame
+git clone https://github.com/UNKNOWN-X0/Imposter-Game.git
+cd Imposter-Game
 npm install
 npm run dev        # http://localhost:5174 — one-phone mode, hot reload
 ```
