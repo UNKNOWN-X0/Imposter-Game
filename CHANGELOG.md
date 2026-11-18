@@ -7,7 +7,9 @@ and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
-Nothing yet.
+### Fixed
+
+- Re-hide pass-and-play cards when the phone is backgrounded or the page is hidden.
 
 ## [1.29.0] — 2026-10-21
 

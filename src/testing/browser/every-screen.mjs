@@ -136,6 +136,38 @@ async function dealAndReveal(page, seats) {
 
 const seen = [];
 
+/* --- a private card is covered again when the phone is backgrounded ------ */
+{
+  const { ctx, page, errors } = await openPage('en');
+  await page.locator('.mode').first().click();
+  await wait(300);
+  for (const name of ['Ann', 'Ben', 'Cal', 'Dee']) {
+    await page.locator('input').first().fill(name);
+    await page.locator('.row button').first().click();
+  }
+  await page.getByRole('button', { name: /Deal the cards|แจกไพ่|Karten austeilen/ }).click();
+  await wait(400);
+  await page.locator('.reveal.shield').click();
+  const gate = page.locator('.reveal.shield');
+  const box = await gate.boundingBox();
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  await page.mouse.down();
+  await wait(650);
+  await page.locator('.reveal.crew, .reveal.imposter, .reveal.neutral').waitFor();
+  await page.mouse.up();
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'hidden' });
+    document.dispatchEvent(new Event('visibilitychange'));
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'visible' });
+  });
+  await gate.waitFor();
+  if (await page.locator('.reveal.crew, .reveal.imposter, .reveal.neutral').count())
+    fail('backgrounding pass-and-play left the private card visible');
+  else if (errors.length) fail(`backgrounding pass-and-play: ${errors[0]}`);
+  else seen.push('backgrounding covers the private card');
+  await ctx.close();
+}
+
 /* --- 1. an imposter calls the word: the road to the game-over screen ---- */
 {
   const { ctx, page, errors } = await openPage('th');

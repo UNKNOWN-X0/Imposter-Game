@@ -9,6 +9,7 @@ import { useT } from '../../../i18n/index.jsx';
 import { PlayerList } from '../../../features/lobby/index.js';
 import { CallButton, CallPanel, NotTheImposter, PassGate, Timer, TurnOrder, VoteGrid, roundLabel } from '../../../features/round/index.js';
 import { PackChip } from '../../../features/packs/index.js';
+import { usePrivacyGate } from '../usePrivacyGate.js';
 
 /* ------------------------------------------------------------------ *
  * Talking — clues are spoken out loud, not typed
@@ -96,6 +97,7 @@ export function Talking({ state, run }) {
  */
 function CallOnOnePhone({ state, playerId, onCall, onCancel }) {
   const [holding, setHolding] = useState(false);
+  usePrivacyGate(setHolding);
   const player = playerById(state, playerId);
 
   if (!holding) {

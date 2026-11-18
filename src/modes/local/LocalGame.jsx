@@ -18,6 +18,7 @@ export { CONFIG_KEY, GAME_KEY, RECENT_WORDS_KEY, ROSTER_KEY, SCORES_KEY } from '
 import { clearGame, loadConfig, loadGame, loadRecentWords, loadRoster, loadScores, saveConfig, saveGame, saveRecentWords, saveRoster, saveScores} from './storage.js';
 import { describe, keepQuiet, note } from '../../features/errors/index.js';
 import { isPlaying, renderPhase } from '../screens.js';
+import { usePrivacyGate } from './usePrivacyGate.js';
 
 /**
  * Pass-and-play: one phone, handed around the table.
@@ -51,6 +52,7 @@ export default function LocalGame({ onExit }) {
   });
   const [error, setError] = useState(null);
   const [holding, setHolding] = useState(false); // has the next player taken the phone?
+  usePrivacyGate(setHolding);
 
   /**
    * A game this phone was in the middle of when it last closed.

@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { alivePlayers } from '../../../core/engine.js';
 import { useT } from '../../../i18n/index.jsx';
 import { PassGate, VoteGrid } from '../../../features/round/index.js';
+import { usePrivacyGate } from '../usePrivacyGate.js';
 
 /* ------------------------------------------------------------------ *
  * Voting — by hands, or by passing the phone
@@ -50,6 +51,7 @@ export function Voting({ state, run }) {
 function SecretVote({ state, run, onCancel }) {
   const { t } = useT();
   const [holding, setHolding] = useState(false);
+  usePrivacyGate(setHolding);
   const alive = alivePlayers(state);
   const voter = alive.find((p) => !(p.id in state.votes));
 

@@ -636,10 +636,10 @@
     "semantic_hash": "b131f38aa7ba6538a12c561698b69f49"
   },
   "src/modes/local/LocalGame.jsx": {
-    "mtime": 1792474464.0,
-    "seen": 1792796290.4196548,
-    "ast_hash": "08cc517be9e2e54d5ec604481e9c4eab",
-    "semantic_hash": "08cc517be9e2e54d5ec604481e9c4eab"
+    "mtime": 1795040544.2100992,
+    "seen": 1795040943.3149529,
+    "ast_hash": "ed6b443b947853c420bb3ecbfb46708a",
+    "semantic_hash": ""
   },
   "src/modes/local/screens/Lobby.jsx": {
     "mtime": 1792411786.0,
@@ -666,16 +666,16 @@
     "semantic_hash": "032e860edba763dff5dec80a9f526ba9"
   },
   "src/modes/local/screens/Talking.jsx": {
-    "mtime": 1790611304.0,
-    "seen": 1792796290.419658,
-    "ast_hash": "4f41e3f162ecd88711cc40224365a259",
-    "semantic_hash": "4f41e3f162ecd88711cc40224365a259"
+    "mtime": 1795040544.2781787,
+    "seen": 1795040943.3149598,
+    "ast_hash": "b73299db7115b44ffcf7dd1745232b2b",
+    "semantic_hash": ""
   },
   "src/modes/local/screens/Voting.jsx": {
-    "mtime": 1790611304.0,
-    "seen": 1792796290.419659,
-    "ast_hash": "4a6a24ac2cb4b90c5fbb99619f083dca",
-    "semantic_hash": "4a6a24ac2cb4b90c5fbb99619f083dca"
+    "mtime": 1795040544.32147,
+    "seen": 1795040943.314962,
+    "ast_hash": "bbf3f162f0712d8cab6fe86bb00e714d",
+    "semantic_hash": ""
   },
   "src/modes/local/storage.js": {
     "mtime": 1792765728.7293568,
@@ -762,10 +762,10 @@
     "semantic_hash": "185998b48aa8b63d870d8b158b0778b4"
   },
   "src/testing/browser/every-screen.mjs": {
-    "mtime": 1792428924.0,
-    "seen": 1792796290.419669,
-    "ast_hash": "736386f306e093c08600ce9701a7031f",
-    "semantic_hash": "736386f306e093c08600ce9701a7031f"
+    "mtime": 1795040544.3813014,
+    "seen": 1795040943.314985,
+    "ast_hash": "4093b54651c496fcf3cf01186ede00b2",
+    "semantic_hash": ""
   },
   "src/testing/browser/layout.mjs": {
     "mtime": 1792473396.0,
@@ -990,10 +990,10 @@
     "semantic_hash": "058dc3baf2ff63876155bd9a6ba85bf6"
   },
   "CHANGELOG.md": {
-    "mtime": 1792609394.0,
-    "seen": 1792796290.4196951,
-    "ast_hash": "dfaa9c802ebd434bc8b28bd341ff3b0d",
-    "semantic_hash": "dfaa9c802ebd434bc8b28bd341ff3b0d"
+    "mtime": 1795040565.0121107,
+    "seen": 1795040943.315041,
+    "ast_hash": "ecbd24d3f60d076429fc4cfa3978edb8",
+    "semantic_hash": ""
   },
   "PLAYTEST.md": {
     "mtime": 1792609394.0,
@@ -1002,10 +1002,10 @@
     "semantic_hash": "f4c9112937cdeb2ec578eed698c5ccfb"
   },
   "README.md": {
-    "mtime": 1792792286.8791792,
-    "seen": 1792796290.419696,
-    "ast_hash": "5dcf360bf33efa147c37c3ea44ca7e9b",
-    "semantic_hash": "5dcf360bf33efa147c37c3ea44ca7e9b"
+    "mtime": 1795040337.9354897,
+    "seen": 1795040943.3150458,
+    "ast_hash": "c272352584b75a47df98f869095e5317",
+    "semantic_hash": ""
   },
   "index.html": {
     "mtime": 1791339668.0,
@@ -1098,9 +1098,51 @@
     "semantic_hash": "31a2bb12a2dee3c548ea09d01a390a16"
   },
   "AGENTS.md": {
-    "mtime": 1792868331.155399,
-    "seen": 1792877215.106833,
-    "ast_hash": "1fd840c3868657581070dd0b1de8365e",
+    "mtime": 1795030391.078984,
+    "seen": 1795040943.315039,
+    "ast_hash": "f0f568a02667b587eb79c5ef17821b38",
+    "semantic_hash": ""
+  },
+  ".impeccable/design.json": {
+    "mtime": 1794840340.1986167,
+    "seen": 1795040943.314791,
+    "ast_hash": "aba7c024d11969103825cb5cc1ff3b3e",
+    "semantic_hash": ""
+  },
+  "src/modes/local/usePrivacyGate.js": {
+    "mtime": 1795040544.1443682,
+    "seen": 1795040943.314966,
+    "ast_hash": "72bee1c016b8581cf4f1ffb6735b2bc1",
+    "semantic_hash": ""
+  },
+  "DESIGN.md": {
+    "mtime": 1794840340.1328495,
+    "seen": 1795040943.315042,
+    "ast_hash": "0a239ad0f68fb8903a6bde16306f1516",
+    "semantic_hash": ""
+  },
+  "PRODUCT.md": {
+    "mtime": 1794840206.1797867,
+    "seen": 1795040943.315045,
+    "ast_hash": "d925faf090892a25dd7b4058bba7041a",
+    "semantic_hash": ""
+  },
+  "ROADMAP.md": {
+    "mtime": 1794840206.1823857,
+    "seen": 1795040943.315047,
+    "ast_hash": "80842b12d444213ecebee7d6255844e4",
+    "semantic_hash": ""
+  },
+  "STANDARDS.md": {
+    "mtime": 1795030391.0882425,
+    "seen": 1795040943.315048,
+    "ast_hash": "f70dafe9a484a9b1a4958c1a1c060721",
+    "semantic_hash": ""
+  },
+  "package-lock.json": {
+    "mtime": 1792610893.3862183,
+    "seen": 1795040943.315076,
+    "ast_hash": "facd7ee1349c83f6ebd34348888dd1e6",
     "semantic_hash": ""
   }
 }
