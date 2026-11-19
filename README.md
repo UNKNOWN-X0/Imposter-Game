@@ -8,27 +8,26 @@
 
 A social deduction party game built around secret words. Everyone but the imposters is dealt the same word, players give one-word clues, and the table votes before the imposters take over.
 
-**[Play in your browser →](https://impostergamebyfocus.netlify.app/)** · [Changelog](CHANGELOG.md) · [Playtest guide](PLAYTEST.md) · [Report a bug](https://github.com/UNKNOWN-X0/Imposter-Game/issues)
-
 Made by **Thanate Amornjiraporn (Focus)**.
+
+**[Play Imposter Game →](https://impostergamebyfocus.netlify.app/)** · [Changelog](CHANGELOG.md) · [Playtest guide](PLAYTEST.md) · [Report a bug](https://github.com/UNKNOWN-X0/Imposter-Game/issues)
 
 ## Features
 
-- English, Thai, and German, with separate choices for interface and word language.
-- Ten built-in word packs per language, plus custom packs you can create, import, and share as codes.
-- Configurable imposter counts, decoy modes, optional roles, and scoring.
-- Saved local rounds, room reconnection, and host transfer.
-- Light and dark modes, five colour themes, and reduced-motion support.
-- One rules engine for both play modes, and a server that never sends a phone a secret it should not hold.
-
-## Ways to play
-
-| Mode | How it works | What you need |
-| --- | --- | --- |
-| Pass-and-play | Pass one phone around; each player privately reveals their card. | A browser. Use the Netlify link above. |
-| Multiplayer rooms | Each player joins on their own device with a room code. | The Node server, on the same Wi-Fi or publicly hosted ([Deploying](#deploying)). |
+- **Three languages:** English, Thai, and German, with separate choices for interface and word language.
+- **Word packs:** ten built-in packs per language, plus custom packs you can create, import, and share as codes.
+- **Rules you set:** imposter counts, decoy modes, optional roles, and scoring.
+- **Picks up where you left off:** saved local rounds, room reconnection, and host transfer.
+- **Looks:** light and dark modes, five colour themes, and reduced-motion support.
+- **Fair by design:** one rules engine for both play modes, and a server that never sends a phone a secret it should not hold.
 
 ## Getting started
+
+### Use it online
+
+**[Play in your browser](https://impostergamebyfocus.netlify.app/)** for pass-and-play on one phone. Multiplayer rooms need the Node server (below, or [Deploying](#deploying)).
+
+### Run it yourself
 
 Install **Node.js 20 or newer**, then:
 
@@ -43,7 +42,22 @@ For phone-to-phone play, `npm run party` builds the site and serves it on your W
 
 **Without a terminal:** double-click `Play Imposter.command` (Mac; right-click and choose Open the first time) or `Play Imposter.bat` (Windows). It installs what is missing, builds, starts the server, and opens the browser.
 
-## Making it yours
+## Usage
+
+### Ways to play
+
+| Mode | How it works | What you need |
+| --- | --- | --- |
+| Pass-and-play | Pass one phone around; each player privately reveals their card. | A browser. Use the Netlify link above. |
+| Multiplayer rooms | Each player joins on their own device with a room code. | The Node server, on the same Wi-Fi or publicly hosted ([Deploying](#deploying)). |
+
+## Privacy
+
+Settings, custom packs, scores, and a saved local round stay in the browser's local storage. In multiplayer, the server keeps each room in memory and sends every phone a scrubbed copy plus its own card, so the word never reaches an imposter's device. To survive a restart it writes rooms, including the word in play, to `.rooms.json` (mode `0600`, ignored by Git, `ROOM_STORE=off` to disable). Error reports name the version, mode, phase, player count, and recent actions by name, never the word, the decoy, or who was dealt what.
+
+## Development
+
+### Making it yours
 
 Each recipe ends in the test that catches the step people forget.
 
@@ -59,7 +73,7 @@ Each recipe ends in the test that catches the step people forget.
 - **The home-screen icon** is `public/icon.svg` plus `icon-maskable.svg`; `npm run icons` renders the PNGs and `npm test` checks their sizes.
 - **When something goes wrong.** Rule violations are codes and show as a banner. Anything unplanned gets the error screen or one quiet line, and a report that names the version, mode, phase, player count, error, and the last dozen actions **by name**: never the word, the decoy, or who was dealt what. Open `#crash` to see the error screen without waiting for a bug.
 
-## Deploying
+### Deploying
 
 **Pass-and-play anywhere.** `npm run build`, then put `dist/` on Netlify, GitHub Pages, or any static host. Rooms cannot work there, and the join screen says so.
 
