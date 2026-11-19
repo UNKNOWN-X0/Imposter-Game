@@ -25,7 +25,7 @@ test('the app says the version it actually is', () => {
 
 test('CHANGELOG.md and the in-app history agree about the latest release', () => {
   const md = readFileSync(new URL('../../../CHANGELOG.md', import.meta.url), 'utf8');
-  const headings = [...md.matchAll(/^## \[([\d.]+)\] — (\d{4}-\d{2}-\d{2})$/gm)];
+  const headings = [...md.matchAll(/^## \[([\d.]+)\] - (\d{4}-\d{2}-\d{2})$/gm)];
   assert.ok(headings.length > 0, 'no releases found in CHANGELOG.md');
   assert.equal(headings[0][1], VERSION, 'CHANGELOG.md leads with a different version');
   assert.equal(headings[0][2], RELEASES[0].date, 'the two disagree about the date');

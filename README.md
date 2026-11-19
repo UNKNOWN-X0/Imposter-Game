@@ -8,9 +8,9 @@
 
 A social deduction party game built around secret words. Everyone but the imposters is dealt the same word, players give one-word clues, and the table votes before the imposters take over.
 
-Made by **Thanate Amornjiraporn (Focus)**.
-
 **[Play Imposter Game →](https://impostergamebyfocus.netlify.app/)** · [Changelog](CHANGELOG.md) · [Playtest guide](PLAYTEST.md) · [Report a bug](https://github.com/UNKNOWN-X0/Imposter-Game/issues)
+
+![Imposter Game](assets/preview.png)
 
 ## Features
 
@@ -112,19 +112,20 @@ The rules every change must meet, with the test that guards each one, are in [ST
 ## Project structure
 
 ```text
-src/core/       the rules: a pure reducer. No DOM, no network, no clock, no React.
-                engine.js (the reducer and how a round ends) · rules.js (limits and
-                modes) · select.js (whose turn, who may see what) · deal.js ·
-                roles/ (one file per optional role) · scoring/ (every way to win)
-src/content/    the words and the history, as data: words/builtin/ (ten packs of a
-                hundred per language), words/custom.js, words/sources.js, history/
-src/i18n/       one file per language, and the reader that picks a string
-src/ui/         pieces that know nothing about the game: primitives/, icons/,
-                theme/ (light/dark and the five colour families), styles/
-src/features/   pieces that do know: lobby, round, packs, rules, changelog, errors
-src/modes/      local (one phone) and online (a room), which wire the rest
-src/testing/    the checks that are about the project, not about the game
-server/         static files plus the room API, zero dependencies
+src/core/           the rules: a pure reducer. No DOM, no network, no clock, no React.
+                    engine.js (the reducer and how a round ends) · rules.js (limits and
+                    modes) · select.js (whose turn, who may see what) · deal.js ·
+                    roles/ (one file per optional role) · scoring/ (every way to win)
+src/content/        the words and the history, as data: words/builtin/ (ten packs of a
+                    hundred per language), words/custom.js, words/sources.js, history/
+src/i18n/           one file per language, and the reader that picks a string
+src/ui/             pieces that know nothing about the game: primitives/, icons/,
+                    theme/ (light/dark and the five colour families), styles/
+src/features/       pieces that do know: lobby, round, packs, rules, changelog, errors
+src/modes/          local (one phone) and online (a room), which wire the rest
+src/testing/        the checks that are about the project, not about the game
+server/             static files plus the room API, zero dependencies
+assets/preview.png  Screenshot for this README
 ```
 
 Nothing in `core` imports React; nothing in `ui` imports the engine; both modes render the same `features` and differ only in who is holding the phone. The server keeps the authoritative state and sends each phone a scrubbed copy plus its own card; live updates are Server-Sent Events. Interface language is a per-device choice; word language belongs to the table, which is why rule violations travel as codes (`core/errors.js`) and are rendered in each phone's own language.
