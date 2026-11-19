@@ -72,9 +72,9 @@
     "semantic_hash": "ca8396bcc769a04aaaa5b7b8f5127559"
   },
   "src/App.jsx": {
-    "mtime": 1795050364.7434425,
-    "seen": 1795051037.205348,
-    "ast_hash": "30d87742f6ef9806bf9570ec8d259528",
+    "mtime": 1795051318.8887675,
+    "seen": 1795051327.728399,
+    "ast_hash": "68b26f41c52ef0112f5a9acf1742a8d3",
     "semantic_hash": ""
   },
   "src/content/history/changelog.js": {
@@ -1002,9 +1002,9 @@
     "semantic_hash": "f4c9112937cdeb2ec578eed698c5ccfb"
   },
   "README.md": {
-    "mtime": 1795050999.3463116,
-    "seen": 1795051037.205531,
-    "ast_hash": "527e041cac0d62ca6f88f194df61a97c",
+    "mtime": 1795051247.4647627,
+    "seen": 1795051327.728549,
+    "ast_hash": "6d9b9b567cf38b8a0ca34655bf8e2541",
     "semantic_hash": ""
   },
   "index.html": {
@@ -1104,9 +1104,9 @@
     "semantic_hash": ""
   },
   ".impeccable/design.json": {
-    "mtime": 1794840340.1986167,
-    "seen": 1795040943.314791,
-    "ast_hash": "aba7c024d11969103825cb5cc1ff3b3e",
+    "mtime": 1795051291.4351928,
+    "seen": 1795051327.728384,
+    "ast_hash": "365e8111b64c29aecbf3d2f2be77e9fa",
     "semantic_hash": ""
   },
   "src/modes/local/usePrivacyGate.js": {
@@ -1116,9 +1116,9 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1794840340.1328495,
-    "seen": 1795040943.315042,
-    "ast_hash": "0a239ad0f68fb8903a6bde16306f1516",
+    "mtime": 1795051260.887455,
+    "seen": 1795051327.7285461,
+    "ast_hash": "d28cbc18f721198a35f78017f7e7429d",
     "semantic_hash": ""
   },
   "PRODUCT.md": {
@@ -1149,6 +1149,12 @@
     "mtime": 1795049951.070827,
     "seen": 1795051037.205524,
     "ast_hash": "aebd28694cde8651c3d09849295323b2",
+    "semantic_hash": ""
+  },
+  "assets/preview.png": {
+    "mtime": 1795051214.461483,
+    "seen": 1795051327.7285602,
+    "ast_hash": "ccd4ec375996496b00778777ef1e06cf",
     "semantic_hash": ""
   },
   "package-lock.json": {

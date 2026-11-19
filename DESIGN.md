@@ -171,7 +171,7 @@ One accent does the acting, two side colours do the naming, and the rest is tona
 
 ## Layout
 
-Game screens use a single centred column, 560px wide and 680px from 700px up, with the top bar pinned above it. The hub uses a 232px navigation rail on desktop and horizontal navigation below 760px, with content capped at 1040px. Its two play modes share one panel; the first game and word-pack library sit in adjacent columns on wide screens and stack on narrow screens. A short landscape phone (height under 520px) gets a tighter layout. Tap targets are at least 44px, with primary hub controls at 52px.
+Game screens use a single centred column, 560px wide and 680px from 700px up, with the top bar pinned above it. The hub uses a 232px navigation rail on desktop and horizontal navigation below 760px, with content capped at 1040px. Its two play modes share one panel; the first game and word-pack library sit in adjacent columns on wide screens and stack on narrow screens. A short landscape phone (height under 520px) gets a tighter layout. Tap targets are 52px tall.
 
 ## Elevation & Depth
 
@@ -225,7 +225,7 @@ Game surfaces use 18px cards (`--radius`), 12px small panels (`--radius-sm`), an
 ### Do:
 - **Do** declare every token for both modes when adding a theme, and run `src/ui/theme/theme.test.js`.
 - **Do** use `--accent-text`, never `--accent`, for words and hairlines on a plain surface.
-- **Do** keep game controls at 52px, hub navigation at 44px minimum, and the game column at 560px (680px wide).
+- **Do** keep touch targets at 52px and the game column at 560px (680px wide).
 - **Do** give a new icon one motion that is what that object does, off by default.
 
 ### Don't:

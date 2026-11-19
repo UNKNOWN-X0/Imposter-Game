@@ -102,66 +102,6 @@
   transform-origin: center 28px;
 }
 
-/* ------------------------------------------------------------------ *
- * Home
- * ------------------------------------------------------------------ */
-
-.hero {
-  align-items: flex-start;
-  margin-top: 10px;
-}
-
-.hero .brandmark {
-  margin-bottom: 4px;
-}
-
-.mode {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  position: relative;
-  overflow: hidden;
-}
-
-.mode-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 13px;
-  display: grid;
-  place-items: center;
-  background: var(--accent-deep);
-  color: var(--accent-text);
-  flex: none;
-}
-
-.mode:hover .mode-icon {
-  transform: scale(1.09) rotate(-5deg);
-}
-
-.mode-body {
-  display: block;
-  min-width: 0;
-}
-
-/* A sheen that crosses the card on hover. */
-.mode::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 30%,
-    var(--sheen) 50%,
-    transparent 70%
-  );
-  transform: translateX(-120%);
-  pointer-events: none;
-}
-
-.mode:hover::after {
-  transform: translateX(120%);
-}
-
 .credit {
   margin-top: auto;
   padding-top: 18px;
@@ -541,10 +481,6 @@
     75%, 100% { transform: translateX(72px); }
   }
   
-  @keyframes hero-in {
-    from { opacity: 0; transform: translateY(10px) scale(0.86) rotate(-8deg); }
-  }
-  
   @keyframes confetti-fall {
     0% { opacity: 0; transform: translateY(-10px) rotate(0deg); }
     12% { opacity: 1; }
@@ -753,18 +689,6 @@
     animation: glint 6.5s ease-in-out infinite;
   }
   
-  .hero .brandmark {
-    animation: hero-in 0.7s cubic-bezier(0.2, 1.1, 0.35, 1) both;
-  }
-  
-  .mode-icon {
-    transition: transform 0.25s cubic-bezier(0.2, 1.2, 0.4, 1);
-  }
-  
-  .mode::after {
-    transition: transform 0.7s ease;
-  }
-  
   .confetti span {
     animation: confetti-fall 1.5s cubic-bezier(0.25, 0.6, 0.4, 1) both;
   }
@@ -947,13 +871,6 @@
   
   .icon.anim .arc-3 {
     animation-delay: 0.28s;
-  }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .mode::after {
-    display: none;
   }
 }
 

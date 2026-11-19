@@ -1,7 +1,7 @@
 # Graph Report - Imposter-Game  (2026-11-19)
 
 ## Corpus Check
-- 177 files · ~165,812 words
+- 177 files · ~165,923 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 19 file(s) not represented in the graph (top: .css 13, (none) 2, .bat 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a2d05aeb`
+- Built from commit: `9b18277a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -270,16 +270,16 @@ Nodes (3): Local workflow, Project data, Project instructions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Project standards` connect `select.js` to `Project Guide`?**
-  _High betweenness centrality (0.148) - this node is a cross-community bridge._
+  _High betweenness centrality (0.140) - this node is a cross-community bridge._
 - **What connects `Central scoring table`, `Data-described optional roles`, `Separate interface and word languages` to the rest of the system?**
   _22 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `useT` be split into smaller, more focused modules?**
   _Cohesion score 0.06544049047047848 - nodes in this community are weakly interconnected._
 - **Why does `Invariants` connect `select.js` to `custom.js`?**
-  _High betweenness centrality (0.124) - this node is a cross-community bridge._
+  _High betweenness centrality (0.118) - this node is a cross-community bridge._
 - **Should `Room Server and Tests` be split into smaller, more focused modules?**
   _Cohesion score 0.06990622335890878 - nodes in this community are weakly interconnected._
 - **Why does `react` connect `useT` to `strings/index.js`, `Settings.jsx`, `custom.js`, `room.test.js`, `Error Handling`, `Build Dependencies`, `Theme Management`, `LocalGame.jsx`, `words/index.js`, `StringBoard.jsx`?**
-  _High betweenness centrality (0.068) - this node is a cross-community bridge._
+  _High betweenness centrality (0.061) - this node is a cross-community bridge._
 - **Should `strings/index.js` be split into smaller, more focused modules?**
   _Cohesion score 0.0919661733615222 - nodes in this community are weakly interconnected._

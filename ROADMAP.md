@@ -1,6 +1,83 @@
 # Roadmap
 
-Open directions the owner has stated, in the order they are likely to happen. Each becomes a CHANGELOG entry when it ships and leaves this file then; a finished plan is history, and git keeps it.
+Open directions the owner has stated, in likely delivery order. Candidate games below are ideas, not release promises. A shipped direction becomes a CHANGELOG entry and leaves this file; Git keeps it.
 
-1. **UX/UI overhaul** (stated 2026-11-16). The current look is captured in `DESIGN.md` as a baseline and anti-reference. The overhaul runs through Impeccable's new-work flow against `PRODUCT.md`; the invariants in `STANDARDS.md` (two colour dials, contrast-checked tokens, reduced motion, icons that carry no meaning) stay unless the owner retires them.
-2. **Minigames web** (stated 2026-11-16). One site, several party games, with players, rooms, languages, themes, and the server shared; Imposter is the first game. Open decisions: the shape of the shared hub, how a game registers itself (the role and scoring tables are the model), whether rooms can switch games mid-evening, and how the fingerprint and sweeps extend per game.
+## Direction
+
+One phone-first website for a group to start a party, choose a game, tune its rules, choose or make a content pack, and play together on one phone or in a room. Imposter is the first game and the reference for fast setup, meaningful rule choices, multilingual play, and custom word packs.
+
+Customization belongs to the platform. Players should be able to create, edit, import, share, and choose their own packs in every compatible game. The pack library should understand each game's content shape rather than making every game pretend its content is an Imposter word/decoy pair. Begin local-first with share codes; accounts and a public pack marketplace are not MVP requirements.
+
+## Now
+
+**Complete the party-hub UX/UI overhaul** (stated 2026-11-16; direction selected 2026-11-19). The Neighborhood Noticeboard hub is the first shipped slice. Finish the flows around it so a group can start, configure, and resume a party without losing its roster or privacy. See [DESIGN.md](DESIGN.md) and [issues #6–#10](https://github.com/UNKNOWN-X0/Imposter-Game/issues).
+
+*Done when* a host can start or join, understand and change settings, choose or manage a compatible pack, finish and return to the party, recover from common failures, and complete the core flows with keyboard, reduced motion, supported languages, themes, and mobile layouts.
+
+### Delivery plan
+
+- **Party-table flow:** host/join, roster continuity, return after a game, and room recovery or host change ([issue #6](https://github.com/UNKNOWN-X0/Imposter-Game/issues/6)).
+- **Game setup:** quick-start presets and clear explanations for consequential settings ([issue #7](https://github.com/UNKNOWN-X0/Imposter-Game/issues/7)).
+- **Pack library and studio:** local-first built-in and personal packs with create, edit, import, preview, copy, and share-code flows; validate each game's entry shape ([issue #8](https://github.com/UNKNOWN-X0/Imposter-Game/issues/8)).
+- **Motion and feedback:** brief, purposeful touch feedback; restrained menu and route transitions; explicit private-card handoff; clear clue, vote, and result sequencing; celebration only after a completed round. Prefer opacity and transform, avoid looping decoration and layout shifts, and preserve the existing hold-to-reveal privacy gate. Respect `prefers-reduced-motion` and keep focus and state changes understandable without animation ([issue #9](https://github.com/UNKNOWN-X0/Imposter-Game/issues/9)).
+- **Accessibility, language, and recovery:** keyboard and screen-reader review, visible focus, 52px touch targets, English/Thai/German coverage, all themes and modes, and empty, invalid, offline, disconnect, reconnect, saved, and success states ([issue #10](https://github.com/UNKNOWN-X0/Imposter-Game/issues/10)).
+
+### UX principles
+
+- Get a new group to a playable table in a few clear choices; keep advanced rules available without crowding the first screen.
+- Keep shared controls consistent while giving each game its own identity and play rhythm.
+- Show pack contents, compatible games and languages, and what will be shared with the room before play starts.
+- Make setup forgiving with presets, undoable edits, useful empty states, row-level import feedback, and recovery after reload or disconnection.
+- Keep private information behind explicit handoff and role-specific views on shared phones and in rooms.
+- Preserve keyboard access, visible focus, readable contrast, large touch targets, reduced motion, and English, Thai, and German support.
+
+## Next
+
+**Shared minigames site and game roster** (stated 2026-11-16). Build around a party lobby and shared platform services while each game owns its rules, content schema, and play screens. Prove the boundary with the first new game before extracting a generic game-plugin system.
+
+*Done when* Imposter and a second game share the party roster, room, preferences, and pack lifecycle, with separate rules and content validation and passing privacy checks for both play modes.
+
+### Candidate games
+
+Working titles and mechanics for discussion; select and name games deliberately before implementation.
+
+| Working title | What the group does | Players / play mode | Custom pack shape | Fit and priority |
+|---|---|---|---|---|
+| **Imposter** (existing) | Everyone except the imposters gets the secret word; the group gives clues and votes. | 4–10; shared phone or room | Word + decoy + optional hint | Anchor game and compatibility test for the shared platform. |
+| **Quick Clue** | Players give short clues to help one guesser identify a secret word; repeated clues can cancel before the guess. | 3–8; shared phone or room | A list of target words | Recommended second game: a small cooperative rules core and a different pack schema ([issue #11](https://github.com/UNKNOWN-X0/Imposter-Game/issues/11)). |
+| **Forbidden Clues** | Teams race to explain a target without saying its restricted clue words. | 4+; shared phone or room | Target word + forbidden words | A richer content-entry shape and team play; proposed third game. |
+| **Word Grid** | A clue-giver links visible words with a clue and count; teammates choose while avoiding traps. | 4–10; shared phone or room | Single-word deck; game generates board and hidden key | Tests role secrecy and a larger step in game flow. |
+| **Charade Relay** | Players act or draw prompts while a team guesses against a timer. | 3+; best in person, optionally room | Prompts with optional category and difficulty | Adds nonverbal play and content beyond word lists. |
+| **Spectrum Guess** | A player clues a hidden point between contrasting endpoints; the group estimates where it falls. | 3+; shared phone or room | Endpoint pair + topic or clue prompt | Conversational play; packs need editorial judgement. |
+| **Bluff the Meaning** | Players write plausible definitions for an unfamiliar term and vote for the real one. | 3+; room recommended | Term + correct definition; player-written decoys | Vocabulary angle; content quality and multilingual writing make it a later experiment. |
+
+These are common party-game patterns to explore, not instructions to copy a game's name, branding, text, or complete rules. Reference patterns include unique cooperative clues ([Just One](https://store.asmodee.com/products/just-one-refresh)), forbidden clue words ([Taboo](https://instructions.hasbro.com/en-gb/instruction/taboo-game-instructions-manual)), clue-plus-count word association ([Codenames](https://www.czechgames.com/games/codenames)), and a subjective clue spectrum ([Wavelength](https://www.wavelength.zone/about)).
+
+### Recommended build order
+
+1. Complete and validate the party-table flow and pack-library entry points.
+2. Define only the shared boundary needed by two games: roster/room, language and theme preferences, a game catalog entry, and a versioned pack envelope with game-specific entry schemas.
+3. Add Quick Clue to prove Imposter pair packs and single-word packs share library, editing, validation, importing, and share-code behavior without forcing one entry format.
+4. Add Forbidden Clues to test richer entries and the same pack lifecycle.
+5. Use Word Grid or Charade Relay to test a more distinct play mode before expanding shared infrastructure.
+
+### Pack system direction
+
+- A pack has shared metadata (name, language, version, local origin, and compatible game/content type) plus typed entries owned by that content type.
+- The library supports built-in, personal, and explicitly imported/shared packs, with search, preview, copy, edit, language filtering, and compatibility visible in one place.
+- Import and network boundaries validate version, size, language, compatibility, and every entry. Invalid rows receive useful correction messages.
+- Keep personal packs on-device initially and share them as versioned codes. Consider cloud sync or a public catalog only after players ask for it and ownership and moderation are designed.
+- Rooms send a selected pack only to the authoritative game server. Each game controls what a player may see; custom content must preserve secret-handling guarantees.
+
+### Decisions to settle before broad extraction
+
+- Whether the party lobby precedes game selection in both shared-phone and room play; the selected hub assumes yes.
+- How a pack declares compatibility when games use only some of its entry fields.
+- Whether content stays on-device or later syncs across a player's devices; the initial direction is local-first plus explicit share codes.
+- Whether game switching keeps only the roster or adds a party score; the initial direction keeps scores game-specific.
+- What minimal catalog contract each game exports and how browser sweeps, fingerprints, and room privacy checks extend per game.
+- Which future games use original mechanics versus licensed or branded adaptations; no borrowed title, art, wording, or exact presentation is assumed.
+
+## Later
+
+**Shared platform implementation** (after Imposter and Quick Clue prove the boundary). Extract only pieces used by both games. Keep roster, room transport, language/theme preferences, and pack lifecycle reusable; keep game rules, scoring, and content interpretation inside each game. A third game is evidence for the boundary, not a reason to build a configurable rules framework in advance.
