@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-16T14:45:40+00:00",
+  "generatedAt": "2026-11-19T01:20:10+00:00",
   "title": "Design System: ImposterGame",
   "extensions": {
     "colorMeta": {
@@ -172,15 +172,24 @@
       "description": "Answers \"what was the room again?\" across a table.",
       "html": "<span class=\"ds-roomcode\"><span class=\"ds-roomcode-word\">K7Q2</span><span class=\"ds-roomcode-action\">Copy</span></span>",
       "css": ".ds-roomcode { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 6px 6px 6px 14px; border-radius: 999px; background: #201c28; border: 1px solid #464054; color: #f2f1f4; font-weight: 800; font-size: 15px; letter-spacing: 0.22em; font-variant-numeric: tabular-nums; } .ds-roomcode-action { font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; color: #9b96a7; background: #2a2534; border-radius: 999px; padding: 4px 10px; }"
+    },
+    {
+      "name": "Party panel",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "The honest empty state and two clear ways to start a game.",
+      "html": "<section class=\"ds-party\"><span class=\"ds-party-tab\">YOUR TABLE</span><h2>No party underway</h2><p>Start a table on one phone or create a room everyone can join.</p><button>Pass one phone</button><button>Play in a room</button></section>",
+      "css": ".ds-party { position: relative; padding: 30px 24px 24px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface); color: var(--text); } .ds-party h2 { margin: 12px 0 6px; font-size: 22px; } .ds-party p { color: var(--text-dim); } .ds-party-tab { position: absolute; top: -1px; right: 24px; padding: 7px 12px 8px; border-radius: 0 0 9px 9px; background: var(--accent); color: var(--on-accent); font-size: 11px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; } .ds-party button { min-height: 52px; padding: 0 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-soft); color: var(--text); font-weight: 800; } .ds-party button:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }"
     }
   ],
   "narrative": {
-    "northStar": "The Phone at the Table",
-    "overview": "ImposterGame is a dark-by-default card table on a phone: soft deep surfaces, one warm accent that only ever means \"act now\", two team colours that mean crew and imposter and nothing else, and everything a thumb needs at least 52px tall. Five colour families each exist in a light and a dark mode, declared on two dials so nothing below the tokens knows which is on. Captured as the incumbent baseline before the planned UX/UI overhaul.",
+    "northStar": "The Neighborhood Noticeboard",
+    "overview": "ImposterGame brings friends to one table, whether they pass one phone around or join a room. The home hub borrows the clarity of a neighborhood noticeboard: paper-like surfaces, sign-ink text, and mustard tabs that mark the next action. Game screens remain a phone-first card table. Both surfaces use semantic theme tokens and support English, Thai, and German.",
     "keyCharacteristics": [
       "Two dials, data-mode and data-theme; every theme declares the same tokens in both modes, contrast-checked by a test.",
-      "One accent for actions, plus crew green and imposter red reserved for sides.",
-      "Pill buttons at 52px, cards at 18px radius with a hairline border, a 999px room-code chip with tracked tabular numerals.",
+      "One accent for actions, plus crew green and imposter red reserved for game sides.",
+      "A flat noticeboard hub with persistent navigation, an honest party state, two clear play paths, and a word-pack callout.",
+      "Game controls remain 52px pills; hub navigation is at least 44px and primary actions are 52px.",
       "A system sans stack with Thai faces listed first; weight does the hierarchy.",
       "One 24px icon set, 1.8 stroke, round caps, currentColor, each icon with a single motion behind anim."
     ],
@@ -214,14 +223,14 @@
     "dos": [
       "Do declare every token for both modes when adding a theme, and run src/ui/theme/theme.test.js.",
       "Do use --accent-text, never --accent, for words and hairlines on a plain surface.",
-      "Do keep every tap target at 52px and the column at 560px (680px wide).",
+      "Do keep game controls at 52px, hub navigation at 44px minimum, and the game column at 560px (680px wide).",
       "Do give a new icon one motion that is what that object does, off by default."
     ],
     "donts": [
       "Don't use crew green or imposter red for emphasis; they mean sides.",
       "Don't let a rule below tokens.css test for the mode or the theme.",
-      "Don't add a square corner, a second type family, or motion that carries meaning.",
-      "Don't treat this file as the target for the overhaul: it is the baseline the overhaul replaces through Impeccable's new-work flow against PRODUCT.md."
+      "Don't add a second type family or motion that carries meaning.",
+      "Don't use the mustard hub accent for player teams; crew green and imposter red remain reserved for game roles."
     ]
   }
 }

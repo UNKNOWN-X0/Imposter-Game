@@ -1,6 +1,6 @@
 ---
 name: ImposterGame
-description: A phone-first party game in five contrast-checked colour families, each with a light and a dark mode, built from pill buttons, rounded cards, and one 24px icon set. Captured as the incumbent baseline before the planned UX/UI overhaul.
+description: A customizable party-game hub and phone-first social deduction game in five contrast-checked colour families, each with a light and a dark mode.
 colors:
   midnight-bg: "#120f17"
   midnight-surface: "#201c28"
@@ -49,10 +49,38 @@ typography:
     fontSize: "12px"
     fontWeight: 700
     letterSpacing: "0.16em"
+  hub-headline:
+    fontSize: "clamp(34px, 4vw, 50px)"
+    fontWeight: 850
+    lineHeight: 1.08
+    letterSpacing: "-0.03em"
+  hub-headline-mobile:
+    fontSize: "clamp(31px, 8vw, 42px)"
+  hub-party-title:
+    fontSize: "22px"
+  hub-game-title:
+    fontSize: "20px"
+  hub-section-title:
+    fontSize: "18px"
+  hub-nav:
+    fontSize: "15px"
+  hub-nav-mobile:
+    fontSize: "14px"
+  hub-supporting:
+    fontSize: "14px"
+  hub-intro-mobile:
+    fontSize: "16px"
+  hub-footer:
+    fontSize: "13px"
+  hub-state-tab:
+    fontSize: "11px"
 rounded:
   sm: "12px"
   md: "18px"
   pill: "999px"
+  hub-action: "10px"
+  hub-panel: "15px"
+  hub-tab: "9px"
 spacing:
   xs: "6px"
   sm: "8px"
@@ -86,15 +114,13 @@ components:
 
 # Design System: ImposterGame
 
-<!-- BASELINE: the incumbent look, captured 2026-11-16 from the code without a creative interview, because a UX/UI overhaul is planned (ROADMAP.md). It is the reference and anti-reference for that work, not a commitment. -->
-
 ## Overview
 
-**Creative North Star: "The Phone at the Table"** (descriptive, not chosen: the baseline's own character)
+**Creative North Star: "The Neighborhood Noticeboard"**
 
-ImposterGame is a dark-by-default card table on a phone: soft deep surfaces, one warm accent that only ever means "act now", two team colours that mean crew and imposter and nothing else, and everything a thumb needs at least 52px tall. Density is low and the column is narrow (560px, 680px on wider screens) because the phone is passed around a table and read at arm's length by people who may be reading Thai or German. Five colour families (midnight, ember, forest, ocean, mono) each exist in a light and a dark mode, declared on two dials so nothing below the tokens knows which is on.
+ImposterGame brings friends to one table, whether they pass one phone around or join a room. The home hub borrows the clarity of a neighborhood noticeboard: paper-like surfaces, sign-ink text, and mustard tabs that mark the next action. The rest of the game remains a phone-first card table, with five colour families (midnight, ember, forest, ocean, mono), each in light and dark modes. Both surfaces use semantic theme tokens so user-selected themes continue to work.
 
-The system is friendly rather than editorial: pill buttons, 18px card corners, soft shadows that lift in the dark and settle in the light, and small motions (a word settling in, confetti at the end, an icon doing the one thing that object does) that are decoration on a layout that works without them.
+The hub is calm and flat: a persistent navigation rail on desktop becomes a horizontal strip on mobile, while bordered panels and one filled pack action make the party paths easy to scan. Game screens retain their existing softer cards, pill controls, and lightweight motion. All surfaces keep touch targets generous and support English, Thai, and German.
 
 **Key Characteristics:**
 - Two dials, `data-mode` and `data-theme`; every theme declares the same tokens in both modes, contrast-checked by a test.
@@ -126,7 +152,7 @@ One accent does the acting, two side colours do the naming, and the rest is tona
 
 ## Typography
 
-**Display Font:** the system sans stack (ui-sans-serif, system-ui, Segoe UI, Roboto), with Noto Sans Thai, IBM Plex Sans Thai, Sarabun, and Thonburi listed before the Latin fallbacks so Thai text gets a Thai face.
+**Display Font:** the system sans stack (ui-sans-serif, system-ui, Segoe UI, Roboto), with Noto Sans Thai, IBM Plex Sans Thai, Sarabun, and Thonburi listed before the Latin fallbacks so Thai text gets a Thai face. The hub carries this existing stack into the brand and page headline.
 **Body Font:** the same stack.
 
 **Character:** a plain system face used at heavy weights for names and light weights for reading; the hierarchy is carried by weight and tracking, not by a second family.
@@ -137,13 +163,15 @@ One accent does the acting, two side colours do the naming, and the rest is tona
 - **Title** (700, clamp(19px, 5.2vw, 24px), 1.45): the question or prompt a screen asks.
 - **Body** (400, 17px, 1.5): reading text, rules, explanations.
 - **Label** (700, 12px, tracking 0.16em to 0.22em, uppercase or tabular): the room-code chip, section eyebrows, and the small action chips; the brand mark at 800 / 20px / −0.02em.
+- **Hub headline** (850, clamp(34px, 4vw, 50px) desktop and clamp(31px, 8vw, 42px) mobile, 1.08, −0.03em); hub section headings use 18px, game names 20px, party titles 22px.
+- **Hub supporting text** uses 14px; introduction copy uses 17px desktop and 16px mobile. Hub navigation uses 14px mobile and 15px desktop; footer links use 13px and party-state tabs use 11px.
 
 ### Named Rules
 **The Weight Does The Work Rule.** 800 names, 700 acts, 400 reads; size changes little between roles on a phone.
 
 ## Layout
 
-A single centred column, 560px wide and 680px from 700px up, with the top bar (brand, spacer, room-code chip) pinned above it. Screens are stacks of cards with 18px internal padding and 8px to 24px gaps; controls fill the column width and stack vertically, because the player holds the phone in one hand. A short landscape phone (height under 520px) gets a tighter layout. Tap targets are 52px tall throughout.
+Game screens use a single centred column, 560px wide and 680px from 700px up, with the top bar pinned above it. The hub uses a 232px navigation rail on desktop and horizontal navigation below 760px, with content capped at 1040px. Its two play modes share one panel; the first game and word-pack library sit in adjacent columns on wide screens and stack on narrow screens. A short landscape phone (height under 520px) gets a tighter layout. Tap targets are at least 44px, with primary hub controls at 52px.
 
 ## Elevation & Depth
 
@@ -159,7 +187,7 @@ A hybrid: surfaces step up tonally (bg, bg-soft, surface, surface-2) and carry a
 
 ## Shapes
 
-Round and soft: 18px card corners (`--radius`), 12px for small panels (`--radius-sm`), and full pills (999px) for every button, chip, and the room code. Borders are 1px hairlines in `--line`; nothing is square-cornered.
+Game surfaces use 18px cards (`--radius`), 12px small panels (`--radius-sm`), and full pills for controls and room codes. The hub uses 10px action cards and 15px panels, with 9px party-state tabs and 1px hairlines in `--line`. Keep the distinction by surface: the hub reads like posted information, while the game reads like a card table.
 
 ## Components
 
@@ -170,6 +198,12 @@ Round and soft: 18px card corners (`--radius`), 12px for small panels (`--radius
 
 ### Cards
 - **Corner Style:** 18px. **Background:** `--surface` with a 1px `--line` border. **Internal Padding:** 18px (24px for `.pad-lg`, none for `.flush`). The hold card (the private reveal) adds the card shadow and the accent hold ring.
+
+### Party hub
+- **Navigation:** stable desktop rail, horizontal mobile tabs; the current section uses `--surface` and a visible border.
+- **Party panel:** `--surface` with a mustard state tab; the tab labels the party state and never implies players exist when it is empty.
+- **Play modes:** adjacent `--bg-soft` action panels with icons, clear labels, and full descriptions.
+- **Pack library:** the hub's single `--accent` panel; use `--on-accent` for its text and a contrasting `--surface` button.
 
 ### Room-code chip
 - A 999px pill on `--surface` with a hairline border, 800 weight, 0.22em tracking, tabular numerals, 40px tall, with an uppercase 12px action chip inside it. It never shrinks below the code: its job is to answer "what was the room again?" across a table.
@@ -191,11 +225,11 @@ Round and soft: 18px card corners (`--radius`), 12px for small panels (`--radius
 ### Do:
 - **Do** declare every token for both modes when adding a theme, and run `src/ui/theme/theme.test.js`.
 - **Do** use `--accent-text`, never `--accent`, for words and hairlines on a plain surface.
-- **Do** keep every tap target at 52px and the column at 560px (680px wide).
+- **Do** keep game controls at 52px, hub navigation at 44px minimum, and the game column at 560px (680px wide).
 - **Do** give a new icon one motion that is what that object does, off by default.
 
 ### Don't:
 - **Don't** use crew green or imposter red for emphasis; they mean sides.
 - **Don't** let a rule below `tokens.css` test for the mode or the theme.
 - **Don't** add a square corner, a second type family, or motion that carries meaning.
-- **Don't** treat this file as the target for the overhaul: it is the baseline the overhaul replaces through Impeccable's new-work flow against PRODUCT.md.
+- **Don't** use the mustard hub accent for player teams; crew green and imposter red remain reserved for game roles.

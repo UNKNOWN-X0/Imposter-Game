@@ -5,11 +5,9 @@ import OnlineGame from './modes/online/OnlineGame.jsx';
 import { loadSession } from './modes/online/useRoom.js';
 import { hasSavedGame } from './modes/local/storage.js';
 import { Shell } from './ui/primitives/index.js';
-import { BrandMark, PhoneIcon, WifiIcon } from './ui/icons/index.jsx';
 import { VERSION, hasNews } from './content/history/changelog.js';
-import { useT } from './i18n/index.jsx';
 import { FirstRun } from './features/rules/FirstRun.jsx';
-import { Credit } from './features/rules/Credit.jsx';
+import { PartyHub } from './features/hub/PartyHub.jsx';
 
 import { Rules } from './features/rules/Rules.jsx';
 import { Library } from './features/packs/Library.jsx';
@@ -79,7 +77,6 @@ export default function App() {
     return 'home';
   });
   const [joinCode] = useState(readHash);
-  const { t } = useT();
   // Somebody arriving on a join link is being waved into a game that is
   // already happening; the rules can wait until they are in it.
   const [showRules, setShowRules] = useState(() => !read(SEEN_KEY) && !readHash());
@@ -145,51 +142,16 @@ export default function App() {
   if (screen === 'changelog') return <Changelog onExit={home} seen={seenVersion} />;
 
   return (
-    <Shell>
+    <PartyHub
+      onLocal={() => open('local')}
+      onOnline={() => open('online')}
+      onPacks={() => open('packs')}
+      onRules={() => open('rules')}
+      onNews={openNews}
+      news={news}
+      version={VERSION}
+    >
       {showRules && <FirstRun onClose={closeRules} />}
-
-      <div className="hero stack tight">
-        <BrandMark size={84} />
-        <h1 className="title headline">{t('home.headline')}</h1>
-        <p className="subtitle">{t('home.sub')}</p>
-      </div>
-
-      <div className="stack modes">
-        <button className="mode" onClick={() => open('local')}>
-          <span className="mode-icon">
-            <PhoneIcon size={22} />
-          </span>
-          <span className="mode-body">
-            <span className="mode-title">{t('home.local.title')}</span>
-            <span className="mode-desc">{t('home.local.desc')}</span>
-          </span>
-        </button>
-
-        <button className="mode" onClick={() => open('online')}>
-          <span className="mode-icon">
-            <WifiIcon size={22} anim />
-          </span>
-          <span className="mode-body">
-            <span className="mode-title">{t('home.online.title')}</span>
-            <span className="mode-desc">{t('home.online.desc')}</span>
-          </span>
-        </button>
-      </div>
-
-      <div className="home-links">
-        <button className="btn-link" onClick={() => open('rules')}>
-          {t('home.rules')}
-        </button>
-        <button className="btn-link" onClick={() => open('packs')}>
-          {t('home.packs')}
-        </button>
-        <button className="btn-link" onClick={openNews}>
-          {t('home.whatsNew', { version: VERSION })}
-          {news && <span className="dot" aria-hidden="true" />}
-        </button>
-      </div>
-
-      <Credit />
-    </Shell>
+    </PartyHub>
   );
 }
