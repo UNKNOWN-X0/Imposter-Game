@@ -1,12 +1,8 @@
 {
-  "0": "Lobby and Round UI",
   "1": "Room Server and Tests",
   "6": "Error Handling",
-  "7": "Browser Layout Screenshot Checks",
   "8": "Build Dependencies",
   "9": "Continuous Integration",
-  "10": "Test Helpers",
-  "11": "Round Engine",
   "13": "Core Rules Engine",
   "14": "Theme Management",
   "15": "Node Platform APIs",
