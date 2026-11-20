@@ -36,8 +36,9 @@ Three claims a neighbouring game could not truthfully make together (owner, 2026
 - Static client plus a zero-dependency Node room server using Server-Sent Events; React and Vite are the only packages.
 - Rule violations travel as codes and are rendered in each phone's language; missing strings fall back to English.
 - Bug reports never contain the word, the decoy, or who was dealt what.
-- **Direction (owner, 2026-11-16): the product grows into one site with several party games sharing players, rooms, languages, themes, and the server.** Imposter is the first game. Architecture decisions should keep the roster, rooms, i18n, theme, and server reusable across games, and keep each game's rules in its own pure core. The shape of the shared hub is undecided; see `ROADMAP.md`.
-- **Direction (owner, 2026-11-16): a UX/UI overhaul is coming.** `DESIGN.md` records the incumbent look as a baseline and anti-reference for that work, not as a commitment.
+- **Direction (owner, 2026-11-16; hub selected 2026-11-19): the product grows into one site with several party games sharing players, rooms, languages, themes, and the server.** Imposter is the first game. The Neighborhood Noticeboard hub is the first shipped slice; architecture decisions should keep the roster, rooms, i18n, theme, and server reusable across games, and keep each game's rules in its own pure core. See `DESIGN.md` and `ROADMAP.md`.
+- **Direction (owner, 2026-11-16; visual direction selected 2026-11-19): redesign the site around the Neighborhood Noticeboard.** The direction is recorded in `DESIGN.md`; remaining hub, motion, pack, accessibility, and recovery work is in `ROADMAP.md`.
+- **Direction (owner, 2026-11-18): customization is a site-wide promise.** Players should be able to create, edit, import, and share their own word or prompt packs, then use them in compatible games. A shared library should support different game-specific entry shapes instead of forcing every game into Imposter's word/decoy pair. Start local-first with share codes; accounts and a public pack marketplace are not MVP requirements. See `ROADMAP.md`.
 
 ## Brand Commitments
 

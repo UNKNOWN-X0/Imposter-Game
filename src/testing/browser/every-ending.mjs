@@ -94,7 +94,7 @@ async function openGame(seats, settings = {}) {
   });
   await page.goto(BASE);
   await wait(600);
-  await page.locator('.mode').first().click();
+  await page.locator('.hub-mode').first().click();
   await wait(250);
   for (const name of ROSTER.slice(0, seats)) {
     await page.locator('input').first().fill(name);

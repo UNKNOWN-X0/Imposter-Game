@@ -22,14 +22,6 @@
     font-size: 46px;
   }
 
-  .modes {
-    flex-direction: row;
-  }
-
-  .modes .mode {
-    flex: 1;
-  }
-
   .vote-grid {
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   }

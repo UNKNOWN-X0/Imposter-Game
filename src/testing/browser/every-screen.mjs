@@ -99,7 +99,7 @@ async function openPage(lang = 'en', hash = '') {
 
 /** Deal a game and look at every card, remembering who got what. */
 async function dealAndReveal(page, seats) {
-  await page.locator('.mode').first().click();
+  await page.locator('.hub-mode').first().click();
   await wait(300);
   for (const n of ['Ann', 'Ben', 'Cal', 'Dee', 'Eli', 'Fay'].slice(0, seats)) {
     await page.locator('input').first().fill(n);
@@ -139,7 +139,7 @@ const seen = [];
 /* --- a private card is covered again when the phone is backgrounded ------ */
 {
   const { ctx, page, errors } = await openPage('en');
-  await page.locator('.mode').first().click();
+  await page.locator('.hub-mode').first().click();
   await wait(300);
   for (const name of ['Ann', 'Ben', 'Cal', 'Dee']) {
     await page.locator('input').first().fill(name);
@@ -238,8 +238,12 @@ for (const [name, hash] of [['icons', '#icons'], ['crash', '#crash']]) {
 
 {
   const { ctx, page, errors } = await openPage('de');
-  for (const label of [/Wie geht das/, /Welche Wörter/, /Was ist neu/]) {
-    await page.getByRole('button', { name: label }).click();
+  for (const [scope, label] of [
+    [page.getByRole('region', { name: /Erstes Spiel/ }), /Wie geht das/],
+    [page.getByRole('navigation'), /Wortpakete/],
+    [page.locator('footer'), /Was ist neu/],
+  ]) {
+    await scope.getByRole('button', { name: label }).click();
     await wait(500);
     await page.getByRole('button', { name: /Zurück|Alles klar/ }).first().click();
     await wait(400);

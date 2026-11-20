@@ -42,25 +42,3 @@
 .release-notes li::marker {
   color: var(--accent);
 }
-
-/* The home screen's three links sit in a row until they cannot. */
-.home-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2px 14px;
-}
-
-/* A dot on "what changed" means there is something there that was not
-   there last time. It is the only unread marker in the game, so it is
-   small and it goes away the moment the screen is opened. */
-.home-links .dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-left: 5px;
-  border-radius: 50%;
-  background: var(--accent);
-  vertical-align: 1px;
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
-}

@@ -189,7 +189,7 @@
       "Two dials, data-mode and data-theme; every theme declares the same tokens in both modes, contrast-checked by a test.",
       "One accent for actions, plus crew green and imposter red reserved for game sides.",
       "A flat noticeboard hub with persistent navigation, an honest party state, two clear play paths, and a word-pack callout.",
-      "Game controls remain 52px pills; hub navigation is at least 44px and primary actions are 52px.",
+      "Game controls remain 52px pills; hub navigation is 52px and primary actions are 52px.",
       "A system sans stack with Thai faces listed first; weight does the hierarchy.",
       "One 24px icon set, 1.8 stroke, round caps, currentColor, each icon with a single motion behind anim."
     ],
@@ -223,7 +223,7 @@
     "dos": [
       "Do declare every token for both modes when adding a theme, and run src/ui/theme/theme.test.js.",
       "Do use --accent-text, never --accent, for words and hairlines on a plain surface.",
-      "Do keep game controls at 52px, hub navigation at 44px minimum, and the game column at 560px (680px wide).",
+      "Do keep game controls at 52px, hub navigation at 52px, and the game column at 560px (680px wide).",
       "Do give a new icon one motion that is what that object does, off by default."
     ],
     "donts": [
