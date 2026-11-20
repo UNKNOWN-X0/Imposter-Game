@@ -6,9 +6,21 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [1.30.0] - 2026-11-20
+
+### Added
+
+- A party hub replaces the home screen: start on one phone or in a room, find the first game, and open the word-pack library from one place, with navigation as a rail on desktop and a strip on phones.
+
+### Changed
+
+- Hub navigation targets are 52px tall, like every other control.
+- Removed the old home screen's styles and pointed the browser sweeps at the hub.
+
 ### Fixed
 
 - Re-hide pass-and-play cards when the phone is backgrounded or the page is hidden.
+- The behaviour fingerprint is blessed again after the hub's new strings; no rule, word, or outcome changed.
 
 ## [1.29.0] - 2026-10-21
 

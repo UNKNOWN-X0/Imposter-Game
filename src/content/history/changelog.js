@@ -16,6 +16,11 @@
 
 export const RELEASES = [
   {
+    v: '1.30.0',
+    date: '2026-11-20',
+    notes: ['hub', 'privacy'],
+  },
+  {
     v: '1.29.0',
     date: '2026-10-21',
     notes: ['setup', 'roles', 'retry'],

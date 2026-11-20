@@ -4,6 +4,6 @@
 # you just wrote, or a change you meant, in which case read the diff and then
 # re-bless it with:  node tools/fingerprint.mjs --write
 #
-# blessed at v1.26.0, 2026-10-19 (pack-warning strings only; no word or outcome changed)
-lines  24315
-sha256 efbec4be7129bc98e013b45dc7f1d4b556181d1611f73b788ab0a64805f6812a
+# blessed at v1.30.0, 2026-11-20 (party-hub and release-note strings only; no word or outcome changed)
+lines  24321
+sha256 be51051d47fef95a296c3dd8a3a666823e01edb0cebff6b3e00528110b723cbe

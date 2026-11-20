@@ -265,6 +265,8 @@ export default {
   'log.1.29.0.setup': 'The lobby keeps the quick choices in view and tucks detailed rules away until you want them.',
   'log.1.29.0.roles': 'Role choices now explain what each role does right on its card.',
   'log.1.29.0.retry': 'A room that loses its connection still retries automatically, and now also lets you reconnect with one tap.',
+  'log.1.30.0.hub': 'A new home screen: start on one phone or in a room, find the first game, and open your word packs, all from one place.',
+  'log.1.30.0.privacy': 'On a shared phone, your card covers itself again when the phone locks or you switch apps.',
   'log.1.27.0.presets': 'A row at the top of the settings: Quick, Careful or Chaos. One tap sets the ten sections below, and changing any of them afterwards just puts you back on your own settings.',
   'log.1.27.0.stillness': 'If your phone is set to reduce motion, the game now holds completely still — every animation, not just the fourteen somebody had remembered to list.',
   'log.1.26.0.accents': 'Typing a word without its accent now counts. “Cafe” for Café, “Pokemon” for Pokémon — a plain keyboard no longer loses you the round.',

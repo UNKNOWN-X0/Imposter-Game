@@ -265,6 +265,8 @@ export default {
   'log.1.29.0.setup': 'Die schnellen Einstellungen bleiben in der Lobby sichtbar. Die ausführlichen Regeln kannst du bei Bedarf aufklappen.',
   'log.1.29.0.roles': 'Auf den Rollenkarten steht jetzt direkt, was die jeweilige Rolle macht.',
   'log.1.29.0.retry': 'Ein Raum versucht weiterhin automatisch, die Verbindung wiederherzustellen. Jetzt kannst du es auch mit einem Tipp versuchen.',
+  'log.1.30.0.hub': 'Neuer Startbildschirm: Startet auf einem Handy oder in einem Raum, findet das erste Spiel und öffnet eure Wortpakete, alles an einem Ort.',
+  'log.1.30.0.privacy': 'Auf einem geteilten Handy wird deine Karte wieder verdeckt, sobald das Handy sperrt oder du die App wechselst.',
   'log.1.27.0.presets': 'Eine Reihe über den Einstellungen: Schnell, Gründlich oder Chaos. Ein Tipp setzt die zehn Abschnitte darunter, und wer danach etwas ändert, ist einfach wieder bei den eigenen Einstellungen.',
   'log.1.27.0.stillness': 'Wer sein Handy auf reduzierte Bewegung gestellt hat, bekommt jetzt wirklich Ruhe — jede Animation, nicht nur die vierzehn, an die jemand gedacht hatte.',
   'log.1.26.0.accents': 'Ein Wort ohne seine Akzente zu tippen zählt jetzt. „Cafe“ für Café, „Pokemon“ für Pokémon — eine Tastatur ohne Akzente kostet euch die Runde nicht mehr.',
