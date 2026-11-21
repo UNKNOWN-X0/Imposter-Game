@@ -142,7 +142,7 @@ Warm wood tones shape the surfaces; a cool-blue accent marks actions and remains
 - **Crew Green** (`#55db8b` dark, `#126a3b` light) and **Imposter Red** (`#ff8294` dark, `#b51e3e` light, with `--imposter-deep` and `--imposter-line` washes): the crew and imposter colours, used for the side a player is on, the danger button, and the verdict; never for anything else.
 
 ### Woods
-- **Birch**: pale cream with soft tan grain; **Oak**: honey brown and the default; **Teak**: golden brown; **Mahogany**: red brown; **Walnut**: dark chocolate. Each has separate light and dark palettes. Warm plank seams carry through the page and table surfaces as low-contrast decoration; the texture never competes with text.
+- **Birch**: pale cream with soft tan grain; **Oak**: honey brown and the default; **Teak**: golden brown; **Mahogany**: red brown; **Walnut**: dark chocolate. Each has separate light and dark palettes. The picker chips carry a small wood-grain mark; the Joinery table receives its plank construction in the hub rebuild.
 - **Oak dark** uses ground `#191610`, surface `#29251e`, raised surface `#373126`, and line `#62533e`. **Oak light** uses ground `#eee4d1`, surface `#fff5df`, raised surface `#e7d6b7`, and line `#987b53`. The other four woods have their own warm surface ramps.
 - **Text** (`#fbefda` dark / `#30271d` light), **Dim**, and **Faint** text clear 4.5:1 on every surface in every palette.
 
