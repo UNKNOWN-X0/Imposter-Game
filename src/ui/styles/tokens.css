@@ -36,8 +36,8 @@
 
   /* Thai faces are listed before the Latin fallbacks so Thai text picks up a
      proper Thai font instead of whatever the browser substitutes. */
-  --font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
-    'Noto Sans Thai', 'IBM Plex Sans Thai', 'Sarabun', 'Thonburi', sans-serif;
+  --font: 'Thonburi', 'Noto Sans Thai', 'IBM Plex Sans Thai', 'Sarabun',
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   color-scheme: dark;
 }

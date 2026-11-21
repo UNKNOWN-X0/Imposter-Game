@@ -1128,9 +1128,9 @@
     "semantic_hash": ""
   },
   "ROADMAP.md": {
-    "mtime": 1795293081.5489333,
-    "seen": 1795293366.8165371,
-    "ast_hash": "0056de96cf2bd2d59612f1525ff2be6a",
+    "mtime": 1795293549.9111505,
+    "seen": 1795293618.593558,
+    "ast_hash": "b23735d25fd1f6e8258c23f6dc1f09be",
     "semantic_hash": ""
   },
   "STANDARDS.md": {
@@ -1206,9 +1206,9 @@
     "semantic_hash": ""
   },
   "note.md": {
-    "mtime": 1795292613.3030164,
-    "seen": 1795293366.8165388,
-    "ast_hash": "3d9eab95cd12aa97d71f26325d65f458",
+    "mtime": 1795293579.8584218,
+    "seen": 1795293618.5935612,
+    "ast_hash": "1c71ac142a3d0442c6f89b2a436c7bd2",
     "semantic_hash": ""
   },
   "package-lock.json": {

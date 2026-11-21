@@ -26,29 +26,29 @@ colors:
   imposter-light: "#b51e3e"
 typography:
   display:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, Thonburi, sans-serif"
+    fontFamily: "Thonburi, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
     fontSize: "32px"
     fontWeight: 800
     lineHeight: 1.2
     letterSpacing: "-0.025em"
   headline:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, Thonburi, sans-serif"
+    fontFamily: "Thonburi, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
     fontSize: "30px"
     fontWeight: 800
     lineHeight: 1.15
     letterSpacing: "-0.03em"
   title:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, Thonburi, sans-serif"
+    fontFamily: "Thonburi, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
     fontSize: "23px"
     fontWeight: 700
     lineHeight: 1.3
   body:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, Thonburi, sans-serif"
+    fontFamily: "Thonburi, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.5
   label:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, Thonburi, sans-serif"
+    fontFamily: "Thonburi, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
     fontSize: "13px"
     fontWeight: 700
     lineHeight: 1.3
@@ -113,7 +113,7 @@ Each theme changes the warm wood surfaces; blue remains the action colour, while
 
 ## Typography
 
-**Display Font:** the platform sans stack, with Noto Sans Thai, IBM Plex Sans Thai, Sarabun, and Thonburi before Latin fallbacks.
+**Display Font:** the platform sans stack, with Thonburi, Noto Sans Thai, IBM Plex Sans Thai, and Sarabun before Latin fallbacks, matching the approved mock.
 **Body Font:** the same stack.
 
 **Character:** direct, friendly, and readable in a busy room. Use weight and clear size steps for hierarchy; keep names and controls horizontal and untransformed in every language.
