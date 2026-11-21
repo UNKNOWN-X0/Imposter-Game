@@ -15,14 +15,14 @@ Friends at a table or party; one host starts a shared-phone game or creates a ro
 
 ## Direction contract
 
-THESIS: A clear neighborhood noticeboard makes the current party and its next action the first, most visible posting; it refuses a catalog that leaves the host unsure how to begin.
+THESIS: A flush rectangular wooden tabletop keeps gathering and the next game action central. The hub and private play share one table rather than separate visual systems.
 
-OWN-WORLD: Community noticeboards contribute deep sign-ink, paper surfaces, mustard and coral status marks, compact friendly sans typography, and one colored tab that pins the party’s current state. Keep standard web navigation and controls. Express the world through the existing semantic theme tokens so user-selected modes and themes remain effective.
+OWN-WORLD: Wood-toned surfaces, an inlaid edge, upright multilingual text, and a distinct action accent. Birch, Oak (default), Teak, Mahogany and Walnut each support light and dark. Crew green and imposter red retain their side meanings.
 
-STORY: The host sees how to start or join, knows Imposter is ready as the first game, and can find the pack library to make the words fit their group. A status tab follows the active party’s next step; the empty home state does not pretend a party is already underway.
+STORY: The host starts on one phone or hosts a room; guests join by code. An empty table is honestly empty. Players gather along the long sides, set rules and packs, then pass a covered card.
 
-FIRST VIEWPORT: Use a clear app shell with stable navigation for Your Party, Games, and Word Packs. Lead with “Bring everyone to one table.” Place Start a Party and Join with a Code together in the first main panel; put the empty current-table state and next step in the colored notice tab. Below, show Imposter and the pack library as separate, scannable work areas.
+FIRST VIEWPORT: Compact navigation and language/display tools lead into the empty table and explicit start/host/join controls. The game and library remain easy to find. On phones the table stays rectangular and recomposes for ten readable seats; desktop adds adjacent controls without moving players to the short sides.
 
-FORM: candidate 7 of 7; Neighborhood Noticeboard; selected assigned sketch `.impeccable/mocks/decision/assigned.html`; seed:5d898dac7e21162e.
+FORM: candidate 3 of 7; The Joiner’s Table; owner selected 2026-11-21; `.impeccable/mocks/tavern-direction/joinery-sketch.html`; seed:e36057f7b57e486b. Code-led.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
