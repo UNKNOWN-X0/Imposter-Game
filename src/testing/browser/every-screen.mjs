@@ -239,7 +239,7 @@ for (const [name, hash] of [['icons', '#icons'], ['crash', '#crash']]) {
 {
   const { ctx, page, errors } = await openPage('de');
   for (const [scope, label] of [
-    [page.getByRole('region', { name: /Erstes Spiel/ }), /Wie geht das/],
+    [page.getByRole('region', { name: /Spiele/ }), /Wie geht das/],
     [page.getByRole('navigation'), /Wortpakete/],
     [page.locator('footer'), /Was ist neu/],
   ]) {

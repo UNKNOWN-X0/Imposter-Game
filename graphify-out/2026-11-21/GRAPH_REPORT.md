@@ -1,7 +1,7 @@
 # Graph Report - Imposter-Game  (2026-11-21)
 
 ## Corpus Check
-- 180 files · ~171,547 words
+- 180 files · ~171,551 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 19 file(s) not represented in the graph (top: .css 13, (none) 2, .bat 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `54fb6da0`
+- Built from commit: `61d543d8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -87,10 +87,10 @@
 ## Surprising Connections (you probably didn't know these)
 - `Invariants` --references--> `validatePack()`  [INFERRED]
   STANDARDS.md → src/content/words/custom.js
-- `Invariants` --references--> `normaliseConfig()`  [INFERRED]
-  STANDARDS.md → src/core/rules.js
 - `Lessons` --references--> `publicState()`  [INFERRED]
   STANDARDS.md → src/core/select.js
+- `Invariants` --references--> `normaliseConfig()`  [INFERRED]
+  STANDARDS.md → src/core/rules.js
 - `Invariants` --references--> `publicState()`  [INFERRED]
   STANDARDS.md → src/core/select.js
 - `wordsLoaded()` --calls--> `loadAllWords()`  [EXTRACTED]
@@ -279,16 +279,16 @@ Nodes (5): Colors, Named Rules, Neutral, Primary, Secondary
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Project standards` connect `Room Server and Tests` to `Project Guide`?**
-  _High betweenness centrality (0.126) - this node is a cross-community bridge._
+  _High betweenness centrality (0.123) - this node is a cross-community bridge._
 - **What connects `Central scoring table`, `Data-described optional roles`, `Separate interface and word languages` to the rest of the system?**
   _22 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `words/index.js` be split into smaller, more focused modules?**
   _Cohesion score 0.054945054945054944 - nodes in this community are weakly interconnected._
 - **Why does `Invariants` connect `Room Server and Tests` to `words/index.js`, `createGame`?**
-  _High betweenness centrality (0.105) - this node is a cross-community bridge._
+  _High betweenness centrality (0.103) - this node is a cross-community bridge._
 - **Should `Room Server and Tests` be split into smaller, more focused modules?**
   _Cohesion score 0.056790123456790124 - nodes in this community are weakly interconnected._
 - **Why does `react` connect `useT` to `words/index.js`, `i18n/index.jsx`, `Settings.jsx`, `room.test.js`, `Error Handling`, `Build Dependencies`, `theme.test.js`, `LocalGame.jsx`?**
-  _High betweenness centrality (0.057) - this node is a cross-community bridge._
+  _High betweenness centrality (0.058) - this node is a cross-community bridge._
 - **Should `i18n/index.jsx` be split into smaller, more focused modules?**
   _Cohesion score 0.07103825136612021 - nodes in this community are weakly interconnected._
