@@ -10,17 +10,24 @@ Customization belongs to the platform. Players should be able to create, edit, i
 
 ## Now
 
-**Complete the party-hub UX/UI overhaul** (stated 2026-11-16; direction selected 2026-11-19). The Neighborhood Noticeboard hub is the first shipped slice. Finish the flows around it so a group can start, configure, and resume a party without losing its roster or privacy. See [DESIGN.md](DESIGN.md) and [issues #6–#10](https://github.com/UNKNOWN-X0/Imposter-Game/issues).
+**Redesign the hub, then bring every Imposter screen into the same design** (owner, 2026-11-20; tracked in [#2](https://github.com/UNKNOWN-X0/Imposter-Game/issues/2)). Codex's Neighborhood Noticeboard hub (1.30.0) shipped, but it is not the owner's target, and Imposter's screens still use the old design inside it. No new game is built until this is done.
 
-*Done when* a host can start or join, understand and change settings, choose or manage a compatible pack, finish and return to the party, recover from common failures, and complete the core flows with keyboard, reduced motion, supported languages, themes, and mobile layouts.
+**Direction brief:** a fantasy-tavern table where friends gather, with a **rectangular** table and players along its long sides; the colour themes become **wood themes**, each named after its wood. The brief is a mood: copy no characters, artwork, or composition from any reference picture. The owner picks the concrete direction in [#13](https://github.com/UNKNOWN-X0/Imposter-Game/issues/13).
+
+*Done when* the hub and every Imposter screen share one design system in `DESIGN.md`, the wood themes pass the theme test, and the redesign is released ([#21](https://github.com/UNKNOWN-X0/Imposter-Game/issues/21)).
 
 ### Delivery plan
 
-- **Party-table flow:** host/join, roster continuity, return after a game, and room recovery or host change ([issue #6](https://github.com/UNKNOWN-X0/Imposter-Game/issues/6)).
-- **Game setup:** quick-start presets and clear explanations for consequential settings ([issue #7](https://github.com/UNKNOWN-X0/Imposter-Game/issues/7)).
-- **Pack library and studio:** local-first built-in and personal packs with create, edit, import, preview, copy, and share-code flows; validate each game's entry shape ([issue #8](https://github.com/UNKNOWN-X0/Imposter-Game/issues/8)).
-- **Motion and feedback:** brief, purposeful touch feedback; restrained menu and route transitions; explicit private-card handoff; clear clue, vote, and result sequencing; celebration only after a completed round. Prefer opacity and transform, avoid looping decoration and layout shifts, and preserve the existing hold-to-reveal privacy gate. Respect `prefers-reduced-motion` and keep focus and state changes understandable without animation ([issue #9](https://github.com/UNKNOWN-X0/Imposter-Game/issues/9)).
-- **Accessibility, language, and recovery:** keyboard and screen-reader review, visible focus, 52px touch targets, English/Thai/German coverage, all themes and modes, and empty, invalid, offline, disconnect, reconnect, saved, and success states ([issue #10](https://github.com/UNKNOWN-X0/Imposter-Game/issues/10)).
+Work the issues in this order; each one's blocked-by links on GitHub enforce it. How to pick up an issue is in [AGENTS.md](AGENTS.md#redesign-issues).
+
+1. [#13](https://github.com/UNKNOWN-X0/Imposter-Game/issues/13) Choose the tavern-table direction. **The owner picks; stop and ask.**
+2. [#14](https://github.com/UNKNOWN-X0/Imposter-Game/issues/14) Wood themes · [#15](https://github.com/UNKNOWN-X0/Imposter-Game/issues/15) One design system for the hub and the game
+3. [#16](https://github.com/UNKNOWN-X0/Imposter-Game/issues/16) Rebuild the hub
+4. [#17](https://github.com/UNKNOWN-X0/Imposter-Game/issues/17) Shared game frame, then the screens: [#7](https://github.com/UNKNOWN-X0/Imposter-Game/issues/7) lobby and settings · [#8](https://github.com/UNKNOWN-X0/Imposter-Game/issues/8) pack library screens · [#22](https://github.com/UNKNOWN-X0/Imposter-Game/issues/22) passing the phone and the private reveal · [#18](https://github.com/UNKNOWN-X0/Imposter-Game/issues/18) clues, voting, result, endings · [#19](https://github.com/UNKNOWN-X0/Imposter-Game/issues/19) room screens · [#20](https://github.com/UNKNOWN-X0/Imposter-Game/issues/20) rules, what's new, errors, crash
+5. [#9](https://github.com/UNKNOWN-X0/Imposter-Game/issues/9) Motion and [#10](https://github.com/UNKNOWN-X0/Imposter-Game/issues/10) accessibility, languages, recovery: each screen issue does its own part; [#10](https://github.com/UNKNOWN-X0/Imposter-Game/issues/10) ends with the full review and a playtest
+6. [#21](https://github.com/UNKNOWN-X0/Imposter-Game/issues/21) Release as 1.31.0
+
+[#6](https://github.com/UNKNOWN-X0/Imposter-Game/issues/6) keeps the host, join, and return behaviour inside the new design.
 
 ### UX principles
 
@@ -32,6 +39,8 @@ Customization belongs to the platform. Players should be able to create, edit, i
 - Preserve keyboard access, visible focus, readable contrast, large touch targets, reduced motion, and English, Thai, and German support.
 
 ## Next
+
+*Deferred (owner, 2026-11-20): no new game until the redesign in Now ships. Quick Clue ([#11](https://github.com/UNKNOWN-X0/Imposter-Game/issues/11)) is on Later.*
 
 **Shared minigames site and game roster** (stated 2026-11-16). Build around a party lobby and shared platform services while each game owns its rules, content schema, and play screens. Prove the boundary with the first new game before extracting a generic game-plugin system.
 

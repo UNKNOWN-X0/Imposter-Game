@@ -118,6 +118,8 @@ components:
 
 **Creative North Star: "The Neighborhood Noticeboard"**
 
+> **Being replaced (owner, 2026-11-20).** This file describes what shipped in 1.30.0, not the target. The new direction is a fantasy-tavern table (rectangular, wood themes); it is chosen in issue #13 and this file is rewritten in issue #15. Until then, do not extend the Noticeboard look or the separate hub and game styles; change only what an issue in `ROADMAP.md` asks for.
+
 ImposterGame brings friends to one table, whether they pass one phone around or join a room. The home hub borrows the clarity of a neighborhood noticeboard: paper-like surfaces, sign-ink text, and mustard tabs that mark the next action. The rest of the game remains a phone-first card table, with five colour families (midnight, ember, forest, ocean, mono), each in light and dark modes. Both surfaces use semantic theme tokens so user-selected themes continue to work.
 
 The hub is calm and flat: a persistent navigation rail on desktop becomes a horizontal strip on mobile, while bordered panels and one filled pack action make the party paths easy to scan. Game screens retain their existing softer cards, pill controls, and lightweight motion. All surfaces keep touch targets generous and support English, Thai, and German.
