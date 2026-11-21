@@ -18,7 +18,7 @@ A social deduction party game built around secret words. Everyone but the impost
 - **Word packs:** ten built-in packs per language, plus custom packs you can create, import, and share as codes.
 - **Rules you set:** imposter counts, decoy modes, optional roles, and scoring.
 - **Picks up where you left off:** saved local rounds, room reconnection, and host transfer.
-- **Looks:** light and dark modes, five colour themes, and reduced-motion support.
+- **Looks:** light and dark modes, five wood themes, and reduced-motion support.
 - **Fair by design:** one rules engine for both play modes, and a server that never sends a phone a secret it should not hold.
 
 ## Getting started
@@ -120,7 +120,7 @@ src/content/        the words and the history, as data: words/builtin/ (ten pack
                     hundred per language), words/custom.js, words/sources.js, history/
 src/i18n/           one file per language, and the reader that picks a string
 src/ui/             pieces that know nothing about the game: primitives/, icons/,
-                    theme/ (light/dark and the five colour families), styles/
+                    theme/ (light/dark and the five wood families), styles/
 src/features/       pieces that do know: lobby, round, packs, rules, changelog, errors
 src/modes/          local (one phone) and online (a room), which wire the rest
 src/testing/        the checks that are about the project, not about the game

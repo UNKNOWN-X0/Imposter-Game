@@ -189,13 +189,10 @@
 
 .swatches {
   display: grid;
-  /* One column in the menu, two wherever there is room for them.
-     `auto-fit` cannot know how long a word is, and the names differ by
-     language: at two columns a chip is about 119px, which fits "Midnight"
-     and slices the last letter off "Mitternacht" with no ellipsis to say
-     so. A min of 124px means the menu — 244px of usable width — takes one
-     column in every language, which is also the easier thing to tap. A
-     wider container still gets its two. */
+  /* One column in the menu, two wherever there is room for them. At two
+     columns a chip is about 119px, too narrow for Mahogany in every language.
+     A 124px minimum means the menu takes one column; a wider container still
+     gets its two. */
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 124px), 1fr));
   gap: 6px;
 }
@@ -234,7 +231,7 @@
   color: var(--text);
 }
 
-/* The chip is the theme in two colours: its page, and its accent on top. */
+/* The chip is the theme in two colours: its wood surface and action accent. */
 .swatch-chip {
   width: 22px;
   height: 22px;
@@ -243,6 +240,14 @@
   display: grid;
   place-items: center;
   flex: none;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0 7px,
+    var(--stripe) 7px 8px,
+    transparent 8px 15px,
+    var(--stripe) 15px 16px,
+    transparent 16px
+  );
 }
 
 .swatch-chip > span {
