@@ -1,6 +1,6 @@
 # Tavern direction study · issue #13
 
-Working material, 2026-11-21. No direction is approved yet.
+Working material, 2026-11-21. **Owner selected The Joiner’s Table (Joinery) on 2026-11-21.** Other variations remain unapproved comparison material.
 
 ## Product and physical scene
 Four to ten friends pass a phone around a real table in a noisy room. One shared word drives clues and hidden votes. The interface must make who acts next obvious while keeping private information covered. Wood and lamplight establish the tavern; normal buttons and navigation keep the game usable.
@@ -17,5 +17,5 @@ Impeccable direction assignment: candidate 3, seed:e36057f7b57e486b. Candidate 1
 ## Boundaries
 The examples are synthetic. Hub begins empty. The private card stays covered. No real word, role or secret vote appears. These files are visual exploration, not a working game, and do not prove production privacy or translated-copy quality.
 
-## Owner decisions pending
-Choose one direction (or request a revision) and confirm or revise the proposed woods: Birch, Oak (default), Teak, Mahogany, Walnut. Each wood retains light and dark modes. #14 and #15 begin after this choice.
+## Owner decisions
+The owner chose Joinery and confirmed Birch, Oak (default), Teak, Mahogany, Walnut, each in light and dark, on the same decision board. #14 and #15 can proceed after this direction study lands.

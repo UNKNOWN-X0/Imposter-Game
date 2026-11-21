@@ -25,10 +25,10 @@ Coverage is reached screens, not every possible variant: import/share/delete err
 ## Evidence locations
 Current captures and detector output: `.impeccable/review/tavern-before/`. Mocks: this folder’s three interactive HTML files. Mock review: `.impeccable/review/tavern-mocks-review/` when available. Raw captures are local working evidence and are not player data or approved design assets.
 
-## Decisions to make
-The direction board compares three ways to express the requested rectangular table, each with a populated lobby, covered private card and voting/result. Choose a direction and confirm the five wood names before #14/#15. The audit’s recommendations are incorporated in that comparison; it does not request a separate change queue.
+## Owner decision
+The direction board compares three ways to express the requested rectangular table, each with a populated lobby, covered private card and voting/result. On 2026-11-21 the owner selected Joinery and confirmed Birch, Oak (default), Teak, Mahogany and Walnut, each in light and dark. The audit’s recommendations are incorporated in that comparison; it does not request a separate change queue.
 
-Questions skipped: delegated assessments; owner direction selection is collected by the issue #13 decision board.
+Questions skipped: delegated assessments; owner direction and wood-name selections were received through the issue #13 decision board.
 
 ## Independent mock verification
 A separate reviewer from the producer checked the final files in Chromium: 180 combinations (three directions × 390/1440 × light/dark × EN/TH/DE × five screens), with ten seats. No horizontal overflow; all hubs empty; all private cards covered. It caught and rechecked a fixed desktop aspect-ratio error. Final table sizes were 344×392 overhead, 423×465 angled, 428×488 joinery, with seats along their long sides. Keyboard/click host→lobby→covered handoff→vote→result→empty hub passed for all three. Verdict: ready for owner comparison, with no material blocker in the reviewed mocks.

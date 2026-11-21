@@ -116,9 +116,9 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Neighborhood Noticeboard"**
+**Creative North Star: "The Joiner’s Table"** (owner selected, 2026-11-21)
 
-> **Being replaced (owner, 2026-11-20).** This file describes what shipped in 1.30.0, not the target. The new direction is a fantasy-tavern table (rectangular, wood themes); it is chosen in issue #13 and this file is rewritten in issue #15. Until then, do not extend the Noticeboard look or the separate hub and game styles; change only what an issue in `ROADMAP.md` asks for.
+> **Selected direction; implementation pending.** In issue #13 the owner chose the Joinery study: a flush rectangular wooden tabletop with an inlaid edge, players along its long sides, ordinary readable controls, and a covered private card. The approved study is `.impeccable/mocks/tavern-direction/joinery.html`; its phone composition is `joinery-sketch.html` in the same folder. The owner confirmed Birch, Oak (default), Teak, Mahogany, and Walnut, each in light and dark. Issue #14 implements the woods and #15 replaces the legacy system documented below. Until then, the tokens and remaining sections describe 1.30.0; do not extend the Noticeboard look or the separate hub/game styles.
 
 ImposterGame brings friends to one table, whether they pass one phone around or join a room. The home hub borrows the clarity of a neighborhood noticeboard: paper-like surfaces, sign-ink text, and mustard tabs that mark the next action. The rest of the game remains a phone-first card table, with five colour families (midnight, ember, forest, ocean, mono), each in light and dark modes. Both surfaces use semantic theme tokens so user-selected themes continue to work.
 
