@@ -1,80 +1,140 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-19T01:20:10+00:00",
+  "generatedAt": "2026-11-21T20:36:00+00:00",
   "title": "Design System: ImposterGame",
   "extensions": {
     "colorMeta": {
-      "midnight-accent": {
-        "role": "primary",
-        "displayName": "Amber Accent (dark)",
-        "canonical": "#f5bc42"
+      "birch-dark-wood": {
+        "role": "neutral",
+        "displayName": "Birch Dark Wood",
+        "canonical": "#383429"
       },
-      "light-accent": {
-        "role": "primary",
-        "displayName": "Amber Accent (light)",
-        "canonical": "#f4a806"
+      "birch-light-wood": {
+        "role": "neutral",
+        "displayName": "Birch Light Wood",
+        "canonical": "#e9dfca"
       },
-      "light-accent-text": {
-        "role": "primary",
-        "displayName": "Accent Text",
-        "canonical": "#906404"
+      "oak-dark-ground": {
+        "role": "neutral",
+        "displayName": "Oak Dark Ground",
+        "canonical": "#191610"
       },
-      "midnight-crew": {
+      "oak-dark-surface": {
+        "role": "neutral",
+        "displayName": "Oak Dark Surface",
+        "canonical": "#29251e"
+      },
+      "oak-dark-raised": {
+        "role": "neutral",
+        "displayName": "Oak Dark Raised Surface",
+        "canonical": "#373126"
+      },
+      "oak-light-ground": {
+        "role": "neutral",
+        "displayName": "Oak Light Ground",
+        "canonical": "#eee4d1"
+      },
+      "oak-light-surface": {
+        "role": "neutral",
+        "displayName": "Oak Light Surface",
+        "canonical": "#fff5df"
+      },
+      "oak-light-raised": {
+        "role": "neutral",
+        "displayName": "Oak Light Raised Surface",
+        "canonical": "#e7d6b7"
+      },
+      "teak-dark-wood": {
+        "role": "neutral",
+        "displayName": "Teak Dark Wood",
+        "canonical": "#3d2c1c"
+      },
+      "teak-light-wood": {
+        "role": "neutral",
+        "displayName": "Teak Light Wood",
+        "canonical": "#e7ca99"
+      },
+      "mahogany-dark-wood": {
+        "role": "neutral",
+        "displayName": "Mahogany Dark Wood",
+        "canonical": "#3a2822"
+      },
+      "mahogany-light-wood": {
+        "role": "neutral",
+        "displayName": "Mahogany Light Wood",
+        "canonical": "#e7c9bb"
+      },
+      "walnut-dark-wood": {
+        "role": "neutral",
+        "displayName": "Walnut Dark Wood",
+        "canonical": "#382b24"
+      },
+      "walnut-light-wood": {
+        "role": "neutral",
+        "displayName": "Walnut Light Wood",
+        "canonical": "#ddcbb4"
+      },
+      "accent-dark": {
+        "role": "primary",
+        "displayName": "Cool Blue Action Accent (dark)",
+        "canonical": "#91c5ff"
+      },
+      "accent-light": {
+        "role": "primary",
+        "displayName": "Cool Blue Action Accent (light)",
+        "canonical": "#1d568b"
+      },
+      "crew-dark": {
         "role": "secondary",
         "displayName": "Crew Green (dark)",
-        "canonical": "#4bdd80"
+        "canonical": "#55db8b"
       },
-      "light-crew": {
+      "crew-light": {
         "role": "secondary",
         "displayName": "Crew Green (light)",
-        "canonical": "#147b47"
+        "canonical": "#126a3b"
       },
-      "light-imposter": {
+      "imposter-dark": {
         "role": "secondary",
-        "displayName": "Imposter Red",
-        "canonical": "#c11f40"
+        "displayName": "Imposter Red (dark)",
+        "canonical": "#ff8294"
       },
-      "midnight-bg": {
-        "role": "neutral",
-        "displayName": "Night Ground",
-        "canonical": "#120f17"
+      "imposter-light": {
+        "role": "secondary",
+        "displayName": "Imposter Red (light)",
+        "canonical": "#b51e3e"
       },
-      "midnight-surface": {
+      "on-accent-dark": {
         "role": "neutral",
-        "displayName": "Surface",
-        "canonical": "#201c28"
+        "displayName": "Button Text (dark mode)",
+        "canonical": "#112b48"
       },
-      "light-bg": {
+      "on-accent-light": {
         "role": "neutral",
-        "displayName": "Paper",
-        "canonical": "#f8f7fa"
-      },
-      "light-surface": {
-        "role": "neutral",
-        "displayName": "White Surface",
+        "displayName": "Button Text (light mode)",
         "canonical": "#ffffff"
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The hero word on a card and the end-of-game screen."
+        "purpose": "Main title and prominent round outcome."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Screen titles."
+        "purpose": "Screen and section headings."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "The question or prompt a screen asks."
+        "purpose": "Table prompt and important question."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Reading text, rules, explanations."
+        "purpose": "Instructions, player details, and supporting text."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Room-code chip, eyebrows, small action chips."
+        "purpose": "Compact seat details, status, and utility controls."
       }
     },
     "shadows": [
@@ -106,29 +166,63 @@
     ],
     "motion": [
       {
-        "name": "ease-settle",
+        "name": "motion-press",
+        "value": "80ms",
+        "purpose": "Brief control press response."
+      },
+      {
+        "name": "motion-state",
+        "value": "150ms",
+        "purpose": "Control and selection state change."
+      },
+      {
+        "name": "motion-enter",
+        "value": "320ms",
+        "purpose": "Panel and screen entrance."
+      },
+      {
+        "name": "motion-reveal",
+        "value": "450ms",
+        "purpose": "Private-card and content reveal after the privacy gate."
+      },
+      {
+        "name": "motion-celebration",
+        "value": "700ms",
+        "purpose": "Round outcome celebration."
+      },
+      {
+        "name": "motion-confetti",
+        "value": "1500ms",
+        "purpose": "Finite end-of-round confetti."
+      },
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.2, 0, 0, 1)",
+        "purpose": "Quiet control and screen transitions."
+      },
+      {
+        "name": "ease-emphasis",
         "value": "cubic-bezier(0.2, 1.1, 0.35, 1)",
-        "purpose": "A word or hero settling in, 0.25s to 0.7s."
+        "purpose": "Tactile settle for a selected or revealed item."
       },
       {
-        "name": "ease-confetti",
+        "name": "ease-celebration",
         "value": "cubic-bezier(0.25, 0.6, 0.4, 1)",
-        "purpose": "Confetti fall at the end of a game, 1.5s."
-      },
-      {
-        "name": "press",
-        "value": "transform 0.08s ease",
-        "purpose": "A button scaling to 0.975 while pressed."
+        "purpose": "Soft deceleration for confetti."
       }
     ],
     "breakpoints": [
       {
-        "name": "wide",
-        "value": "700px"
+        "name": "phone-to-wide",
+        "value": "760px"
       },
       {
         "name": "short-landscape",
         "value": "max-height 520px"
+      },
+      {
+        "name": "experience-max-width",
+        "value": "1200px"
       }
     ]
   },

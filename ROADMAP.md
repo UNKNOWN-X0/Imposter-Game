@@ -10,9 +10,9 @@ Customization belongs to the platform. Players should be able to create, edit, i
 
 ## Now
 
-**Redesign the hub, then bring every Imposter screen into the same design** (owner, 2026-11-20; tracked in [#2](https://github.com/UNKNOWN-X0/Imposter-Game/issues/2)). Codex's Neighborhood Noticeboard hub (1.30.0) shipped, but it is not the owner's target, and Imposter's screens still use the old design inside it. No new game is built until this is done.
+**Redesign the hub, then bring every Imposter screen into the same design** (owner, 2026-11-20; tracked in [#2](https://github.com/UNKNOWN-X0/Imposter-Game/issues/2)). The current hub shipped as an interim step in 1.30.0. The hub and game screens are now being replaced by the selected tavern-table system. No new game is built until the redesign is done.
 
-**Direction brief:** a fantasy-tavern table where friends gather, with a **rectangular** table and players along its long sides; the colour themes become **wood themes**, each named after its wood. The brief is a mood: copy no characters, artwork, or composition from any reference picture. The owner picks the concrete direction in [#13](https://github.com/UNKNOWN-X0/Imposter-Game/issues/13).
+**Selected direction (owner, 2026-11-21): The Joiner’s Table.** Follow the approved [Joinery study](.impeccable/mocks/tavern-direction/joinery.html): a flush rectangular plank table, players along its long sides, readable controls, and a covered private card. The five wood themes are Birch, Oak (default), Teak, Mahogany, and Walnut, each in light and dark mode. Reproduce the approved mock’s composition and interaction states; keep the wooden tabletop distinct from the clean controls and page surfaces.
 
 *Done when* the hub and every Imposter screen share one design system in `DESIGN.md`, the wood themes pass the theme test, and the redesign is released ([#21](https://github.com/UNKNOWN-X0/Imposter-Game/issues/21)).
 
@@ -20,7 +20,7 @@ Customization belongs to the platform. Players should be able to create, edit, i
 
 Work the issues in this order; each one's blocked-by links on GitHub enforce it. How to pick up an issue is in [AGENTS.md](AGENTS.md#redesign-issues).
 
-1. [#13](https://github.com/UNKNOWN-X0/Imposter-Game/issues/13) Choose the tavern-table direction. **The owner picks; stop and ask.**
+1. [#13](https://github.com/UNKNOWN-X0/Imposter-Game/issues/13) Choose the tavern-table direction. **Done: the owner selected Joinery.**
 2. [#14](https://github.com/UNKNOWN-X0/Imposter-Game/issues/14) Wood themes · [#15](https://github.com/UNKNOWN-X0/Imposter-Game/issues/15) One design system for the hub and the game
 3. [#16](https://github.com/UNKNOWN-X0/Imposter-Game/issues/16) Rebuild the hub
 4. [#17](https://github.com/UNKNOWN-X0/Imposter-Game/issues/17) Shared game frame, then the screens: [#7](https://github.com/UNKNOWN-X0/Imposter-Game/issues/7) lobby and settings · [#8](https://github.com/UNKNOWN-X0/Imposter-Game/issues/8) pack library screens · [#22](https://github.com/UNKNOWN-X0/Imposter-Game/issues/22) passing the phone and the private reveal · [#18](https://github.com/UNKNOWN-X0/Imposter-Game/issues/18) clues, voting, result, endings · [#19](https://github.com/UNKNOWN-X0/Imposter-Game/issues/19) room screens · [#20](https://github.com/UNKNOWN-X0/Imposter-Game/issues/20) rules, what's new, errors, crash
@@ -38,9 +38,9 @@ Work the issues in this order; each one's blocked-by links on GitHub enforce it.
 - Keep private information behind explicit handoff and role-specific views on shared phones and in rooms.
 - Preserve keyboard access, visible focus, readable contrast, large touch targets, reduced motion, and English, Thai, and German support.
 
-## Next
+## Later
 
-*Deferred (owner, 2026-11-20): no new game until the redesign in Now ships. Quick Clue ([#11](https://github.com/UNKNOWN-X0/Imposter-Game/issues/11)) is on Later.*
+**Quick Clue** ([#11](https://github.com/UNKNOWN-X0/Imposter-Game/issues/11)) remains deferred until the Imposter redesign ships.
 
 **Shared minigames site and game roster** (stated 2026-11-16). Build around a party lobby and shared platform services while each game owns its rules, content schema, and play screens. Prove the boundary with the first new game before extracting a generic game-plugin system.
 
@@ -87,6 +87,6 @@ These are common party-game patterns to explore, not instructions to copy a game
 - What minimal catalog contract each game exports and how browser sweeps, fingerprints, and room privacy checks extend per game.
 - Which future games use original mechanics versus licensed or branded adaptations; no borrowed title, art, wording, or exact presentation is assumed.
 
-## Later
+### Shared platform implementation
 
-**Shared platform implementation** (after Imposter and Quick Clue prove the boundary). Extract only pieces used by both games. Keep roster, room transport, language/theme preferences, and pack lifecycle reusable; keep game rules, scoring, and content interpretation inside each game. A third game is evidence for the boundary, not a reason to build a configurable rules framework in advance.
+After Imposter and Quick Clue prove the boundary, extract only pieces used by both games. Keep roster, room transport, language/theme preferences, and pack lifecycle reusable; keep game rules, scoring, and content interpretation inside each game. A third game is evidence for the boundary, not a reason to build a configurable rules framework in advance.

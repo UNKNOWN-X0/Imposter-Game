@@ -148,7 +148,7 @@
 /* The card turning over. The shield and the face are separate elements, so
    this fakes the second half of a flip rather than rotating a real pair. */
 .card-flip-in {
-  animation: card-flip-in 0.45s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+  animation: card-flip-in var(--motion-reveal) var(--ease-standard) both;
   transform-origin: center;
   backface-visibility: hidden;
 }
@@ -184,7 +184,7 @@
 
 /* Lists arrive one after another instead of all at once. */
 .stagger > * {
-  animation: rise 0.34s ease both;
+  animation: rise var(--motion-enter) var(--ease-standard) both;
 }
 
 .stagger > *:nth-child(1) { animation-delay: 0.02s; }
@@ -205,7 +205,7 @@
 }
 
 .pop-in {
-  animation: pop-in 0.18s ease both;
+  animation: pop-in var(--motion-state) var(--ease-standard) both;
 }
 
 @keyframes pop-in {
@@ -217,7 +217,7 @@
 
 /* The verdict lands rather than fades. */
 .stamp {
-  animation: stamp 0.42s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  animation: stamp var(--motion-enter) var(--ease-emphasis) both;
 }
 
 @keyframes stamp {
@@ -233,7 +233,7 @@
 
 /* A win is worth a beat of celebration. */
 .celebrate {
-  animation: celebrate 0.7s cubic-bezier(0.2, 1.3, 0.4, 1) both;
+  animation: celebrate var(--motion-celebration) var(--ease-emphasis) both;
 }
 
 @keyframes celebrate {
@@ -252,7 +252,7 @@
 
 .celebrate .card-emoji,
 .celebrate > [aria-hidden='true']:first-child {
-  animation: cheer 0.9s ease both 0.15s;
+  animation: cheer var(--motion-celebration) var(--ease-celebration) both 0.15s;
 }
 
 @keyframes cheer {
