@@ -5,7 +5,7 @@ circle.bd-two @ 48,274 718×718
 div.hub-page @ 0,0 390×1370
 div.hub-main @ 0,0 390×1370
 header.hub-topbar @ 16,12 358×52
-a.hub-brand @ 16,12 166×52
+a.hub-brand @ 16,12 192×52
 svg.brandmark @ 16,18 40×40
 g.bm-eyes @ 26,38 18×6
 circle.bm-pupil @ 26,38 6×6

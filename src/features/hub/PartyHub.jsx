@@ -25,7 +25,7 @@ export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews
         <main className="hub-content" aria-label={t('hub.nav.party')}>
           <section className="hub-intro">
             <h1>{t('home.headline')}</h1>
-            <p>{t('home.sub')}</p>
+            <p>{t('hub.intro')}</p>
           </section>
 
           <div className="hub-layout">
