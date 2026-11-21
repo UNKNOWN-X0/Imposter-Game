@@ -2,7 +2,7 @@
   min-height: 100dvh;
   display: grid;
   grid-template-columns: 232px minmax(0, 1fr);
-  background: var(--bg);
+  background: transparent;
   color: var(--text);
 }
 
@@ -188,7 +188,7 @@
 
 .hub-mode:hover {
   border-color: var(--accent-text);
-  background: var(--surface-2);
+  background-color: var(--surface-2);
 }
 
 .hub-mode > svg {
@@ -277,8 +277,8 @@
   gap: 12px;
   min-height: 164px;
   padding: 19px;
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--surface);
+  color: var(--text);
 }
 
 .hub-library-panel p {
@@ -288,10 +288,10 @@
 .hub-primary-action {
   min-height: 52px;
   padding: 0 14px;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: 10px;
-  background: var(--surface);
-  color: var(--accent-text);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .hub-primary-action:hover {

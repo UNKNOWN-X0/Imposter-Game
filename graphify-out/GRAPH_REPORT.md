@@ -1,36 +1,36 @@
-# Graph Report - Imposter-Game  (2026-11-20)
+# Graph Report - Imposter-Game  (2026-11-21)
 
 ## Corpus Check
-- 177 files · ~165,614 words
+- 180 files · ~171,664 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 19 file(s) not represented in the graph (top: .css 13, (none) 2, .bat 1)
 
 ## Summary
-- 998 nodes · 3037 edges · 53 communities (39 shown, 14 thin omitted)
+- 1025 nodes · 3063 edges · 56 communities (41 shown, 15 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 51 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `079b73bb`
+- Built from commit: `6297c374`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- useT
+- words/index.js
 - Room Server and Tests
 - strings/index.js
 - Settings.jsx
-- Components
-- room.test.js
+- StringBoard.jsx
+- FakeEventSource
 - Error Handling
 - server/store.js
 - Build Dependencies
 - Continuous Integration
 - dead.test.js
 - engine.js
-- layout.mjs
+- ref_node_fs
 - Core Rules Engine
-- Theme Management
+- theme.test.js
 - Node Platform APIs
 - PWA Icons
 - settings.test.js
@@ -40,14 +40,14 @@
 - Special Roles
 - Screen Flow Checks
 - useT
-- words/index.js
+- OnlineGame.jsx
 - Hosting Configuration
-- ref_node_assert
-- screens.test.js
+- changelog.test.js
+- LocalGame.jsx
 - Design System: ImposterGame
 - Style Checks
 - Project Guide
-- GameError
+- Imposter-Game work note
 - Imposter Icon
 - Product
 - App Icon
@@ -63,12 +63,15 @@
 - Home Layout
 - Icon Layout
 - Thai Layout
-- deal.js
-- engine.test.js
+- createGame
+- Current interface audit · issue #13
 - Next
 - Party Hub
+- Tavern direction study · issue #13
 - ImposterGame changelog
 - Project instructions
+- Custom word packs
+- select.js
 
 ## God Nodes (most connected - your core abstractions)
 1. `useT()` - 95 edges
@@ -83,50 +86,46 @@
 10. `Settings()` - 21 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Invariants` --references--> `validatePack()`  [INFERRED]
-  STANDARDS.md → src/content/words/custom.js
-- `Invariants` --references--> `normaliseConfig()`  [INFERRED]
-  STANDARDS.md → src/core/rules.js
 - `Lessons` --references--> `publicState()`  [INFERRED]
   STANDARDS.md → src/core/select.js
+- `Invariants` --references--> `validatePack()`  [INFERRED]
+  STANDARDS.md → src/content/words/custom.js
 - `Invariants` --references--> `publicState()`  [INFERRED]
   STANDARDS.md → src/core/select.js
-- `createRoom()` --calls--> `createGame()`  [EXTRACTED]
-  server/rooms.js → src/core/deal.js
+- `Invariants` --references--> `normaliseConfig()`  [INFERRED]
+  STANDARDS.md → src/core/rules.js
+- `dispatch()` --calls--> `GameError`  [EXTRACTED]
+  server/rooms.js → src/core/errors.js
 
 ## Import Cycles
 - 2-file cycle: `src/App.jsx -> src/features/packs/Library.jsx -> src/App.jsx`
 - 2-file cycle: `src/core/deal.js -> src/core/engine.js -> src/core/deal.js`
 
-## Communities (53 total, 14 thin omitted)
+## Communities (56 total, 15 thin omitted)
 
-### Community 0 - "useT"
-Cohesion: 0.10
-Nodes (48): IconBoard(), ICONS, PartyHub(), hintLine(), PackChip(), RoleCard(), GameOverCard(), VerdictCard() (+40 more)
+### Community 0 - "words/index.js"
+Cohesion: 0.08
+Nodes (34): BUILTIN_LANGUAGES, _forgetWords(), inFlight, loadAllWords(), loaded, LOADERS, loadWords(), wordsReady() (+26 more)
 
 ### Community 1 - "Room Server and Tests"
-Cohesion: 0.06
-Nodes (60): aRoom(), same(), callerOf(), Limit, LIMITS, _resetLimits(), sweepLimits(), withServer() (+52 more)
+Cohesion: 0.07
+Nodes (52): aRoom(), same(), callerOf(), Limit, LIMITS, _resetLimits(), sweepLimits(), withServer() (+44 more)
 
 ### Community 2 - "strings/index.js"
-Cohesion: 0.07
-Nodes (35): hasNews(), noteKey(), RELEASES, since(), pkg, VERSION, Changelog(), FILTERS (+27 more)
+Cohesion: 0.14
+Nodes (12): translator(), FALLBACK_LANG, inFlight, LANGUAGES, LOADERS, STRINGS, stringsReady(), localeNumber() (+4 more)
 
 ### Community 3 - "Settings.jsx"
-Cohesion: 0.17
+Cohesion: 0.16
 Nodes (27): WORD_LANGUAGES, Roles(), Scoring(), HowMany(), WhatTheySee(), WhetherTheyKnow(), Calling(), Rounds() (+19 more)
 
-### Community 4 - "Components"
-Cohesion: 0.22
-Nodes (9): Banner, Buttons, Cards, Components, Icons, Motion, Party hub, Room-code chip (+1 more)
-
-### Community 5 - "room.test.js"
-Cohesion: 0.06
-Nodes (60): App(), IconBoard, LIB_LANG_KEY, read(), readHash(), StringBoard, write(), buildPack() (+52 more)
+### Community 4 - "StringBoard.jsx"
+Cohesion: 0.31
+Nodes (10): FILTERS, StringBoard(), StringRow(), compareAll(), compareKey(), hasTrouble(), placeholdersIn(), placeholderTrouble() (+2 more)
 
 ### Community 6 - "Error Handling"
-Cohesion: 0.14
-Nodes (25): ErrorBoundary, ErrorScreen(), FailureNotice(), breadcrumbs, currentSecrets(), describe(), described(), facts (+17 more)
+Cohesion: 0.11
+Nodes (31): ErrorBoundary, ErrorScreen(), FailureNotice(), breadcrumbs, currentSecrets(), describe(), described(), facts (+23 more)
 
 ### Community 7 - "server/store.js"
 Cohesion: 0.25
@@ -145,84 +144,88 @@ Cohesion: 0.14
 Nodes (22): builtAtRuntime(), errorCodesInSource(), root, AMBIENT, bindings(), NOT_SOURCE, sourceFiles(), stripNonCode() (+14 more)
 
 ### Community 11 - "engine.js"
-Cohesion: 0.22
-Nodes (21): pickWord(), advanceAfterVerdict(), finish(), normalise(), resolveOutcome(), resolveVote(), sameClue(), sameWord() (+13 more)
+Cohesion: 0.15
+Nodes (31): dealRoles(), decoyFor(), EMPTY_HISTORY, hintFor(), makePlayerId(), nextHistory(), pickImposters(), pickWord() (+23 more)
 
-### Community 12 - "layout.mjs"
-Cohesion: 0.38
-Nodes (6): here, LAYOUTS, measure(), SHOTS, slug(), snapshot()
+### Community 12 - "ref_node_fs"
+Cohesion: 0.12
+Nodes (8): here, args, file, here, { lines, text, hash }, here, ICONS, PUBLIC
 
 ### Community 13 - "Core Rules Engine"
-Cohesion: 0.15
-Nodes (17): createGame(), reduce(), voteOut(), normaliseConfig(), deepFreeze(), guard(), isStrict(), setStrict() (+9 more)
+Cohesion: 0.14
+Nodes (21): applyAll(), reduce(), clueRound(), deals(), FIVE, one(), OURS, revealAll() (+13 more)
 
-### Community 14 - "Theme Management"
-Cohesion: 0.30
-Nodes (9): read(), systemMode(), ThemeContext, ThemeProvider(), useTheme(), DEFAULT_MODE, DEFAULT_THEME, MODES (+1 more)
+### Community 14 - "theme.test.js"
+Cohesion: 0.14
+Nodes (19): read(), systemMode(), ThemeContext, ThemeProvider(), useTheme(), ALL, contrast(), css (+11 more)
 
 ### Community 15 - "Node Platform APIs"
-Cohesion: 0.13
-Nodes (9): here, ICONS, PUBLIC, canBuild, failed, mark, results, root (+1 more)
+Cohesion: 0.18
+Nodes (6): canBuild, failed, mark, results, root, skipped
 
 ### Community 16 - "PWA Icons"
 Cohesion: 0.15
 Nodes (16): inPublic(), linkedFiles(), manifestIcons(), missing(), PNG_MAGIC, pngSize(), cssFilesIn(), parseStrictly() (+8 more)
 
 ### Community 17 - "settings.test.js"
-Cohesion: 0.21
-Nodes (15): autoImposterCount(), DECOY, DEFAULT_CONFIG, IMPOSTERS_AUTO, IMPOSTERS_RANDOM, maxImpostersFor(), resolveImposterCount(), ROUNDS_UNLIMITED (+7 more)
+Cohesion: 0.22
+Nodes (14): autoImposterCount(), DECOY, DEFAULT_CONFIG, IMPOSTERS_AUTO, IMPOSTERS_RANDOM, ROUNDS_UNLIMITED, PRESET_KEYS, presetFor() (+6 more)
 
 ### Community 18 - "Coverage Reporting"
 Cohesion: 0.12
 Nodes (14): all, floorsFile, isHarness(), isTest(), measured, MODULES, order, out (+6 more)
 
 ### Community 19 - "Voting and Fuzz Tests"
-Cohesion: 0.14
-Nodes (22): tally(), clueRound(), chaosAction(), FIRST, NAMES, PHASES, ROLE_IDS, RUNS (+14 more)
+Cohesion: 0.16
+Nodes (13): fail(), GameError, chaosAction(), FIRST, NAMES, PHASES, ROLE_IDS, RUNS (+5 more)
 
 ### Community 20 - "Game Ending Checks"
 Cohesion: 0.17
 Nodes (13): dealAndReveal(), declare(), dist, here, newest(), openGame(), PLANS, root (+5 more)
 
 ### Community 21 - "Special Roles"
-Cohesion: 0.26
-Nodes (8): BY_ID, endingFor(), ROLE, ROLES, roleSpec(), SPECIAL_ROLES, winsWithImposters(), TELLTALE_DECOYS
+Cohesion: 0.22
+Nodes (11): BY_ID, endingFor(), ROLE, ROLES, roleSpec(), SPECIAL_ROLES, winsWithImposters(), maxImpostersFor() (+3 more)
 
 ### Community 22 - "Screen Flow Checks"
-Cohesion: 0.16
-Nodes (11): dealAndReveal(), dist, here, moved, newest(), openPage(), root, seen (+3 more)
+Cohesion: 0.11
+Nodes (17): dealAndReveal(), dist, here, moved, newest(), openPage(), root, seen (+9 more)
 
 ### Community 23 - "useT"
-Cohesion: 0.09
-Nodes (60): react, MAX_PLAYERS, MIN_PLAYERS, AddPlayerForm(), LobbyHint(), EndGameButton(), PlayerList(), Scoreboard() (+52 more)
-
-### Community 24 - "words/index.js"
 Cohesion: 0.07
-Nodes (38): BUILTIN_LANGUAGES, _forgetWords(), inFlight, loadAllWords(), loaded, LOADERS, loadWords(), wordsReady() (+30 more)
+Nodes (88): react, MAX_PLAYERS, MIN_PLAYERS, alivePlayers(), playerById(), IconBoard(), ICONS, PartyHub() (+80 more)
+
+### Community 24 - "OnlineGame.jsx"
+Cohesion: 0.07
+Nodes (58): App(), IconBoard, LIB_LANG_KEY, read(), readHash(), StringBoard, write(), buildPack() (+50 more)
 
 ### Community 25 - "Hosting Configuration"
 Cohesion: 0.17
 Nodes (11): key, value, services, buildCommand, envVars, healthCheckPath, name, plan (+3 more)
 
-### Community 26 - "ref_node_assert"
-Cohesion: 0.13
-Nodes (9): here, ALL, contrast(), css, here, index, luminance(), parts (+1 more)
+### Community 26 - "changelog.test.js"
+Cohesion: 0.38
+Nodes (7): hasNews(), noteKey(), RELEASES, since(), pkg, VERSION, Changelog()
 
-### Community 27 - "screens.test.js"
-Cohesion: 0.39
-Nodes (7): isPlaying(), renderPhase(), SCREEN_FOR_PHASE, SCREEN_NAMES, screenFor(), here, MODES
+### Community 27 - "LocalGame.jsx"
+Cohesion: 0.14
+Nodes (29): EndGameButton(), LocalGame(), Resume(), clearGame(), CONFIG_KEY, GAME_KEY, isResumable(), loadConfig() (+21 more)
 
 ### Community 28 - "Design System: ImposterGame"
-Cohesion: 0.11
-Nodes (18): Colors, Design System: ImposterGame, Do:, Do's and Don'ts, Don't:, Elevation & Depth, Hierarchy, Layout (+10 more)
+Cohesion: 0.07
+Nodes (27): Banner, Buttons, Cards, Colors, Components, Design System: ImposterGame, Do:, Do's and Don'ts (+19 more)
 
 ### Community 29 - "Style Checks"
 Cohesion: 0.20
 Nodes (10): braces(), code(), gateAt, here, index, motion, parts, projectRoot (+2 more)
 
 ### Community 30 - "Project Guide"
+Cohesion: 0.21
+Nodes (8): HTML application shell, Playtest guide, Central scoring table, Data-described optional roles, ImposterGame README, Separate interface and word languages, Server-Sent Events for room updates, Shared deterministic rules engine
+
+### Community 31 - "Imposter-Game work note"
 Cohesion: 0.18
-Nodes (9): HTML application shell, Playtest guide, Central scoring table, Custom word packs, Data-described optional roles, ImposterGame README, Separate interface and word languages, Server-Sent Events for room updates (+1 more)
+Nodes (10): #14 scope correction (2026-11-21), Current handoff point, Evidence and actions, Goal and authorization, Imposter-Game work note, Issue metadata cleanup (2026-11-21), Next-issue scope mapped (no implementation started), Owner decisions received (+2 more)
 
 ### Community 32 - "Imposter Icon"
 Cohesion: 0.67
@@ -232,13 +235,13 @@ Nodes (3): Disguise, Hat, Imposter
 Cohesion: 0.18
 Nodes (11): Accessibility & Inclusion, Brand Commitments, Capabilities and Constraints, Evidence on Hand, Operating Context, Platform, Positioning, Product (+3 more)
 
-### Community 47 - "deal.js"
-Cohesion: 0.19
-Nodes (11): dealRoles(), decoyFor(), EMPTY_HISTORY, hintFor(), makePlayerId(), nextHistory(), pickImposters(), recentWordWindow() (+3 more)
+### Community 47 - "createGame"
+Cohesion: 0.15
+Nodes (17): createGame(), normaliseConfig(), buildPublicState(), publicState(), deepFreeze(), guard(), isStrict(), setStrict() (+9 more)
 
-### Community 48 - "engine.test.js"
-Cohesion: 0.23
-Nodes (12): applyAll(), deals(), FIVE, one(), OURS, revealAll(), roleIds(), SEVEN (+4 more)
+### Community 48 - "Current interface audit · issue #13"
+Cohesion: 0.29
+Nodes (6): Assessment A, Assessment B (initial evidence), Current interface audit · issue #13, Evidence locations, Independent mock verification, Owner decision
 
 ### Community 49 - "Next"
 Cohesion: 0.18
@@ -248,33 +251,41 @@ Nodes (11): Candidate games, Decisions to settle before broad extraction, Delive
 Cohesion: 0.40
 Nodes (4): Audience and task, Direction contract, Party Hub, Scope and visitor mode
 
+### Community 51 - "Tavern direction study · issue #13"
+Cohesion: 0.33
+Nodes (5): Boundaries, Owner decisions, Product and physical scene, Tavern direction study · issue #13, Variations
+
 ### Community 52 - "ImposterGame changelog"
 Cohesion: 0.29
 Nodes (4): Imposter-side parity cap includes sidekick, ImposterGame changelog, Persisted multiplayer rooms, Text-based browser layout baselines
 
 ### Community 53 - "Project instructions"
-Cohesion: 0.67
-Nodes (3): Local workflow, Project data, Project instructions
+Cohesion: 0.50
+Nodes (4): Local workflow, Project data, Project instructions, Redesign issues
+
+### Community 55 - "select.js"
+Cohesion: 0.31
+Nodes (7): tally(), PHASE, canCall(), cluesThisRound(), isAlive(), scrubbed, speakingOrder()
 
 ## Knowledge Gaps
 - **22 isolated node(s):** `Central scoring table`, `Data-described optional roles`, `Separate interface and word languages`, `Server-Sent Events for room updates`, `Shared deterministic rules engine` (+17 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 317 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 340 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Project standards` connect `Room Server and Tests` to `Project Guide`?**
-  _High betweenness centrality (0.137) - this node is a cross-community bridge._
+- **Why does `Project standards` connect `createGame` to `Project Guide`?**
+  _High betweenness centrality (0.149) - this node is a cross-community bridge._
 - **What connects `Central scoring table`, `Data-described optional roles`, `Separate interface and word languages` to the rest of the system?**
   _22 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `useT` be split into smaller, more focused modules?**
-  _Cohesion score 0.09724106739032112 - nodes in this community are weakly interconnected._
-- **Why does `Invariants` connect `Room Server and Tests` to `Core Rules Engine`, `room.test.js`?**
-  _High betweenness centrality (0.117) - this node is a cross-community bridge._
+- **Should `words/index.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.0797872340425532 - nodes in this community are weakly interconnected._
+- **Why does `Invariants` connect `createGame` to `OnlineGame.jsx`?**
+  _High betweenness centrality (0.125) - this node is a cross-community bridge._
 - **Should `Room Server and Tests` be split into smaller, more focused modules?**
-  _Cohesion score 0.06070175438596491 - nodes in this community are weakly interconnected._
-- **Why does `react` connect `useT` to `useT`, `strings/index.js`, `Settings.jsx`, `room.test.js`, `Error Handling`, `Build Dependencies`, `Theme Management`?**
-  _High betweenness centrality (0.076) - this node is a cross-community bridge._
+  _Cohesion score 0.06603346901854365 - nodes in this community are weakly interconnected._
+- **Why does `publicState()` connect `createGame` to `words/index.js`, `Room Server and Tests`, `Core Rules Engine`, `select.js`?**
+  _High betweenness centrality (0.054) - this node is a cross-community bridge._
 - **Should `strings/index.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1380952380952381 - nodes in this community are weakly interconnected._

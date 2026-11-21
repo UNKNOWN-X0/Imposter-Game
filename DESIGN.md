@@ -1,26 +1,26 @@
 ---
 name: ImposterGame
-description: A customizable party-game hub and phone-first social deduction game in five contrast-checked colour families, each with a light and a dark mode.
+description: A customizable party-game hub and phone-first social deduction game in five contrast-checked wood families, each with a light and a dark mode.
 colors:
-  midnight-bg: "#120f17"
-  midnight-surface: "#201c28"
-  midnight-surface-2: "#2a2534"
-  midnight-line: "#464054"
-  midnight-text: "#f2f1f4"
-  midnight-text-dim: "#bab6c3"
-  midnight-accent: "#f5bc42"
-  midnight-on-accent: "#10121a"
-  midnight-crew: "#4bdd80"
-  light-bg: "#f8f7fa"
-  light-surface: "#ffffff"
-  light-surface-2: "#ebe9ef"
-  light-line: "#c9c5d3"
-  light-text: "#201e25"
-  light-text-dim: "#585365"
-  light-accent: "#f4a806"
-  light-accent-text: "#906404"
-  light-crew: "#147b47"
-  light-imposter: "#c11f40"
+  oak-bg: "#191610"
+  oak-surface: "#29251e"
+  oak-surface-2: "#373126"
+  oak-line: "#62533e"
+  oak-text: "#fbefda"
+  oak-text-dim: "#cfbfa6"
+  oak-accent: "#91c5ff"
+  oak-on-accent: "#112b48"
+  oak-crew: "#55db8b"
+  light-bg: "#eee4d1"
+  light-surface: "#fff5df"
+  light-surface-2: "#e7d6b7"
+  light-line: "#987b53"
+  light-text: "#30271d"
+  light-text-dim: "#554735"
+  light-accent: "#1d568b"
+  light-accent-text: "#1d568b"
+  light-crew: "#126a3b"
+  light-imposter: "#b51e3e"
 typography:
   display:
     fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, Thonburi, sans-serif"
@@ -118,9 +118,9 @@ components:
 
 **Creative North Star: "The Joiner’s Table"** (owner selected, 2026-11-21)
 
-> **Selected direction; implementation pending.** In issue #13 the owner chose the Joinery study: a flush rectangular wooden tabletop with an inlaid edge, players along its long sides, ordinary readable controls, and a covered private card. The approved study is `.impeccable/mocks/tavern-direction/joinery.html`; its phone composition is `joinery-sketch.html` in the same folder. The owner confirmed Birch, Oak (default), Teak, Mahogany, and Walnut, each in light and dark. Issue #14 implements the woods and #15 replaces the legacy system documented below. Until then, the tokens and remaining sections describe 1.30.0; do not extend the Noticeboard look or the separate hub/game styles.
+> **Selected direction; implementation underway.** In issue #13 the owner chose the Joinery study: a flush rectangular wooden tabletop with an inlaid edge, players along its long sides, ordinary readable controls, and a covered private card. The approved study is `.impeccable/mocks/tavern-direction/joinery.html`; its phone composition is `joinery-sketch.html` in the same folder. The owner confirmed Birch, Oak (default), Teak, Mahogany, and Walnut, each in light and dark. Issue #14 replaces the colour palettes; #15 replaces the remaining legacy system documented below. Until #15, the layout and component sections still describe 1.30.0; do not extend the Noticeboard look or the split hub/game styles.
 
-ImposterGame brings friends to one table, whether they pass one phone around or join a room. The home hub borrows the clarity of a neighborhood noticeboard: paper-like surfaces, sign-ink text, and mustard tabs that mark the next action. The rest of the game remains a phone-first card table, with five colour families (midnight, ember, forest, ocean, mono), each in light and dark modes. Both surfaces use semantic theme tokens so user-selected themes continue to work.
+ImposterGame brings friends to one table, whether they pass one phone around or join a room. The current home hub borrows the clarity of a neighborhood noticeboard: paper-like surfaces, sign-ink text, and action tabs. The current game remains a phone-first card table. Five wood families (Birch, Oak, Teak, Mahogany, Walnut), each in light and dark modes, now supply the warm surfaces; the cool-blue accent marks actions on both. Both surfaces use semantic theme tokens so user-selected themes continue to work.
 
 The hub is calm and flat: a persistent navigation rail on desktop becomes a horizontal strip on mobile, while bordered panels and one filled pack action make the party paths easy to scan. Game screens retain their existing softer cards, pill controls, and lightweight motion. All surfaces keep touch targets generous and support English, Thai, and German.
 
@@ -133,17 +133,18 @@ The hub is calm and flat: a persistent navigation rail on desktop becomes a hori
 
 ## Colors
 
-One accent does the acting, two side colours do the naming, and the rest is tonal: the palette is generated and contrast-checked per theme and mode, not picked by eye.
+Warm wood tones shape the surfaces; a cool-blue accent marks actions and remains distinct from every wood. Crew green and imposter red identify the sides. Every text pairing is contrast-checked per wood and mode.
 
 ### Primary
-- **Amber Accent** (midnight-accent `#f5bc42` dark, light-accent `#f4a806` light): the fill of the primary button and the hold ring. On a pale surface the same hue is darkened to **Accent Text** (`#906404`) for words, icons, and hairlines, because the bright fill cannot be read as text on white.
+- **Cool-blue Action Accent** (`#91c5ff` dark, `#1d568b` light): the fill of the primary button and the hold ring, set apart from the warm wood surfaces. `--accent-text` uses the same blue for words and icons; it clears 4.5:1 on every surface.
 
 ### Secondary: the sides
-- **Crew Green** (`#4bdd80` dark, `#147b47` light) and **Imposter Red** (`#c11f40` light, with `--imposter-deep` and `--imposter-line` washes): the crew and imposter colours, used for the side a player is on, the danger button, and the verdict; never for anything else.
+- **Crew Green** (`#55db8b` dark, `#126a3b` light) and **Imposter Red** (`#ff8294` dark, `#b51e3e` light, with `--imposter-deep` and `--imposter-line` washes): the crew and imposter colours, used for the side a player is on, the danger button, and the verdict; never for anything else.
 
-### Neutral
-- **Night Ground** (midnight-bg `#120f17`), **Surface** (`#201c28`), **Raised Surface** (`#2a2534`), **Line** (`#464054`): the dark stack, lifted with white overlays. In light mode the stack inverts to **Paper** (`#f8f7fa`), **White Surface**, **Cool Surface** (`#ebe9ef`) and **Line** (`#c9c5d3`), settled with black overlays.
-- **Text** (`#f2f1f4` / `#201e25`), **Dim** and **Faint** text for secondary lines and labels; every one clears 4.5:1 on every surface it can land on.
+### Woods
+- **Birch**: pale cream with soft tan grain; **Oak**: honey brown and the default; **Teak**: golden brown; **Mahogany**: red brown; **Walnut**: dark chocolate. Each has separate light and dark palettes. The picker chips carry a small wood-grain mark; the Joinery table receives its plank construction in the hub rebuild.
+- **Oak dark** uses ground `#191610`, surface `#29251e`, raised surface `#373126`, and line `#62533e`. **Oak light** uses ground `#eee4d1`, surface `#fff5df`, raised surface `#e7d6b7`, and line `#987b53`. The other four woods have their own warm surface ramps.
+- **Text** (`#fbefda` dark / `#30271d` light), **Dim**, and **Faint** text clear 4.5:1 on every surface in every palette.
 
 ### Named Rules
 **The Two Dials Rule.** Mode and theme are set once on the root; a rule below the tokens never asks which is on.

@@ -1,5 +1,5 @@
 /**
- * Appearance: light or dark, and which family of colours.
+ * Appearance: light or dark, and which wood family.
  *
  * Two separate choices, both per device and both remembered — like the
  * interface language, and unlike the game settings, which belong to whoever
@@ -12,7 +12,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-import { MODES, THEMES, DEFAULT_THEME, DEFAULT_MODE } from './themes.js';
+import { MODES, THEMES, DEFAULT_THEME, DEFAULT_MODE, resolveTheme } from './themes.js';
 
 export { MODES, THEMES, DEFAULT_THEME };
 
@@ -38,9 +38,13 @@ function systemMode() {
 
 export function ThemeProvider({ children }) {
   const [mode, setModeState] = useState(() => read(MODE_KEY, MODES, DEFAULT_MODE));
-  const [theme, setThemeState] = useState(() =>
-    read(THEME_KEY, THEMES.map((t) => t.id), DEFAULT_THEME),
-  );
+  const [theme, setThemeState] = useState(() => {
+    try {
+      return resolveTheme(localStorage.getItem(THEME_KEY));
+    } catch {
+      return DEFAULT_THEME;
+    }
+  });
   const [system, setSystem] = useState(systemMode);
 
   // Keep following the phone for as long as the reader leaves it on system.

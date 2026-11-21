@@ -9,7 +9,7 @@ import { useT } from '../../i18n/index.jsx';
 import { Segmented } from '../primitives/Segmented.jsx';
 
 /**
- * Light, dark or whatever the phone says — and which colours.
+ * Light, dark or whatever the phone says — and which wood.
  *
  * Both live on this device and are remembered here. They are deliberately not
  * game settings: the host does not get to decide what everyone else's screen

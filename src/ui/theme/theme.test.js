@@ -15,7 +15,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
-import { THEMES, MODES } from './themes.js';
+import { THEMES, MODES, DEFAULT_THEME, resolveTheme } from './themes.js';
 import '../../testing/ready.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -60,14 +60,15 @@ const contrast = (a, b) => {
 
 const ALL = THEMES.flatMap((t) => ['dark', 'light'].map((mode) => [t.id, mode]));
 
-test('every palette declares the same tokens', () => {
-  const reference = Object.keys(palette('midnight', 'dark')).sort();
+test('every wood palette declares the same tokens', () => {
+  const referenceTheme = THEMES[0].id;
+  const reference = Object.keys(palette(referenceTheme, 'dark')).sort();
   assert.ok(reference.length > 15, 'the reference palette looks too small');
   for (const [theme, mode] of ALL) {
     assert.deepEqual(
       Object.keys(palette(theme, mode)).sort(),
       reference,
-      `${theme}/${mode} does not declare the same tokens as midnight/dark`,
+      `${theme}/${mode} does not declare the same tokens as ${referenceTheme}/dark`,
     );
   }
 });
@@ -114,16 +115,31 @@ test('a label on a filled button is readable on the fill', () => {
 test('the accent can be read as text, which is what accent-text is for', () => {
   // `--accent` is a fill and may be bright; `--accent-text` is the version
   // used wherever the accent paints words or an icon on a plain surface.
+  const surfaces = ['--surface', '--bg', '--bg-soft', '--surface-2', '--accent-deep'];
   for (const [theme, mode] of ALL) {
     const p = palette(theme, mode);
-    for (const on of ['--surface', '--bg', '--accent-deep']) {
+    for (const on of surfaces) {
       const ratio = contrast(p['--accent-text'], p[on]);
       assert.ok(ratio >= 4.5, `${theme}/${mode}: --accent-text on ${on} is ${ratio}:1`);
     }
   }
 });
 
-test('crew and imposter stay legible against their own backgrounds', () => {
+test('the cool-blue action accent stands apart from every warm wood surface', () => {
+  const surfaces = ['--bg', '--bg-soft', '--surface', '--surface-2'];
+  for (const [theme, mode] of ALL) {
+    const p = palette(theme, mode);
+    for (const surface of surfaces) {
+      assert.ok(
+        contrast(p['--accent'], p[surface]) >= 3,
+        `${theme}/${mode}: accent on ${surface} is not distinct enough`,
+      );
+    }
+  }
+});
+
+test('crew and imposter stay legible against their own backgrounds and every wood surface', () => {
+  const surfaces = ['--bg', '--bg-soft', '--surface', '--surface-2'];
   for (const [theme, mode] of ALL) {
     const p = palette(theme, mode);
     assert.ok(contrast(p['--crew'], p['--crew-deep']) >= 4.5, `${theme}/${mode}: crew on crew-deep`);
@@ -131,12 +147,10 @@ test('crew and imposter stay legible against their own backgrounds', () => {
       contrast(p['--imposter'], p['--imposter-deep']) >= 4.5,
       `${theme}/${mode}: imposter on imposter-deep`,
     );
-    // They are also read as large shapes on an ordinary card.
-    assert.ok(contrast(p['--crew'], p['--surface']) >= 3, `${theme}/${mode}: crew on surface`);
-    assert.ok(
-      contrast(p['--imposter'], p['--surface']) >= 3,
-      `${theme}/${mode}: imposter on surface`,
-    );
+    for (const surface of surfaces) {
+      assert.ok(contrast(p['--crew'], p[surface]) >= 3, `${theme}/${mode}: crew on ${surface}`);
+      assert.ok(contrast(p['--imposter'], p[surface]) >= 3, `${theme}/${mode}: imposter on ${surface}`);
+    }
   }
 });
 
@@ -150,7 +164,14 @@ test('light really is light and dark really is dark', () => {
   }
 });
 
-test('the swatch a theme shows in the picker is a colour from that theme', () => {
+test('a saved id from a retired colour theme opens the default wood', () => {
+  for (const saved of ['midnight', 'ember', 'forest', 'ocean', 'mono']) {
+    assert.equal(resolveTheme(saved), DEFAULT_THEME, `${saved} should fall back to ${DEFAULT_THEME}`);
+  }
+  assert.equal(resolveTheme('teak'), 'teak', 'a current saved wood stays selected');
+});
+
+test('the swatch a wood theme shows in the picker is a colour from that theme', () => {
   // The picker paints its chips from constants rather than from the CSS, so
   // they can drift. Near enough is fine; unrecognisable is not.
   for (const theme of THEMES) {
@@ -158,8 +179,8 @@ test('the swatch a theme shows in the picker is a colour from that theme', () =>
       const [surface, accent] = theme[mode];
       const p = palette(theme.id, mode);
       assert.ok(
-        contrast(surface, p['--surface']) < 1.6,
-        `${theme.id}/${mode}: the swatch surface ${surface} is nothing like ${p['--surface']}`,
+        contrast(surface, p['--surface-2']) < 1.6,
+        `${theme.id}/${mode}: the swatch wood ${surface} is nothing like ${p['--surface-2']}`,
       );
       assert.ok(
         contrast(accent, p['--accent-text']) < 1.9,
