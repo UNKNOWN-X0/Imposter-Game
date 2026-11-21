@@ -97,6 +97,14 @@ test('text is readable on every surface it can land on, in every palette', () =>
   }
 });
 
+test('table text stays readable on every themed plank surface', () => {
+  for (const [theme, mode] of ALL) {
+    const p = palette(theme, mode);
+    const ratio = contrast(p['--table-text'], p['--table-wood']);
+    assert.ok(ratio >= 4.5, `${theme}/${mode}: table text on planks is ${ratio}:1`);
+  }
+});
+
 test('a label on a filled button is readable on the fill', () => {
   const pairs = [
     ['--on-accent', '--accent'],

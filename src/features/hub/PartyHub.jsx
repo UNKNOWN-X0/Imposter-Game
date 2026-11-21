@@ -10,54 +10,64 @@ export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews
   return (
     <div className="hub-page" id="hub-top">
       {children}
-      <aside className="hub-sidebar">
-        <div className="hub-brand">{t('hub.brand')}</div>
-        <nav className="hub-nav" aria-label={t('hub.navigation')}>
-          <a className="hub-nav-link is-current" href="#hub-top" aria-current="page">
-            {t('hub.nav.party')}
-          </a>
-          <a className="hub-nav-link" href="#hub-games">{t('hub.nav.games')}</a>
-          <button className="hub-nav-link" onClick={onPacks}>{t('hub.nav.packs')}</button>
-        </nav>
-      </aside>
-
-      <main className="hub-main">
+      <div className="hub-main">
         <header className="hub-topbar">
-          <span>{t('hub.nav.party')}</span>
+          <a className="hub-brand" href="#hub-top" aria-label={t('app.name')}>
+            <BrandMark size={40} animated={false} />
+            <span>{t('app.name')}<small>{t('hub.brand')}</small></span>
+          </a>
           <div className="hub-tools">
             <ThemePicker />
             <LanguagePicker />
           </div>
         </header>
 
-        <div className="hub-content">
+        <main className="hub-content" aria-label={t('hub.nav.party')}>
           <section className="hub-intro">
             <h1>{t('home.headline')}</h1>
-            <p>{t('home.sub')}</p>
+            <p>{t('hub.intro')}</p>
           </section>
 
-          <section className="hub-party" aria-labelledby="hub-party-title">
-            <span className="hub-party-tab">{t('hub.table')}</span>
-            <h2 id="hub-party-title">{t('hub.noParty')}</h2>
-            <p className="hub-supporting">{t('hub.noPartyBody')}</p>
-            <div className="hub-mode-grid">
-              <button className="hub-mode" onClick={onLocal}>
-                <PhoneIcon size={24} />
-                <span className="hub-mode-title">{t('home.local.title')}</span>
-                <span className="hub-supporting">{t('home.local.desc')}</span>
-              </button>
-              <button className="hub-mode" onClick={onOnline}>
-                <WifiIcon size={24} />
-                <span className="hub-mode-title">{t('home.online.title')}</span>
-                <span className="hub-supporting">{t('home.online.desc')}</span>
-              </button>
-            </div>
-          </section>
+          <div className="hub-layout">
+            <section aria-labelledby="hub-party-title">
+              <div className="hub-stage">
+                <div className="hub-table" aria-hidden="true">
+                  {Array.from({ length: 5 }, (_, index) => <span className="hub-plank" key={index} />)}
+                </div>
+                <div className="hub-seats hub-seats-left" aria-hidden="true">
+                  {[0, 1, 2].map((seat) => <span className="hub-seat" key={seat} />)}
+                </div>
+                <div className="hub-seats hub-seats-right" aria-hidden="true">
+                  {[3, 4, 5].map((seat) => <span className="hub-seat" key={seat} />)}
+                </div>
+                <div className="hub-table-center">
+                  <h2 id="hub-party-title">{t('hub.noParty')}</h2>
+                  <p>{t('hub.noPartyBody')}</p>
+                </div>
+              </div>
+            </section>
+
+            <section className="hub-actions" aria-label={t('hub.navigation')}>
+              <h2>{t('hub.table')}</h2>
+              <div className="hub-mode-grid">
+                <button className="hub-mode" onClick={onLocal}>
+                  <PhoneIcon size={22} />
+                  <span className="hub-mode-title">{t('home.local.title')}</span>
+                  <span className="hub-supporting">{t('home.local.desc')}</span>
+                </button>
+                <button className="hub-mode" onClick={onOnline}>
+                  <WifiIcon size={22} />
+                  <span className="hub-mode-title">{t('home.online.title')}</span>
+                  <span className="hub-supporting">{t('home.online.desc')}</span>
+                </button>
+              </div>
+            </section>
+          </div>
 
           <div className="hub-sections">
-            <section className="hub-section" id="hub-games" aria-labelledby="hub-first-game-title">
+            <section className="hub-section" id="hub-games" aria-label={t('hub.nav.games')}>
               <div className="hub-section-heading">
-                <h2 id="hub-first-game-title">{t('hub.firstGame')}</h2>
+                <h2>{t('hub.firstGame')}</h2>
                 <button className="hub-text-action" onClick={onRules}>{t('home.rules')}</button>
               </div>
               <div className="hub-game-row">
@@ -70,22 +80,27 @@ export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews
             </section>
 
             <section className="hub-library-panel" aria-labelledby="hub-packs-title">
-              <h2 id="hub-packs-title">{t('hub.packsTitle')}</h2>
-              <p>{t('hub.packsDescription')}</p>
+              <div>
+                <h2 id="hub-packs-title">{t('hub.packsTitle')}</h2>
+                <p>{t('hub.packsDescription')}</p>
+              </div>
               <button className="hub-primary-action" onClick={onPacks}>{t('home.packs')}</button>
             </section>
           </div>
 
           <footer className="hub-footer">
-            <button className="hub-footer-link" onClick={onRules}>{t('home.rules')}</button>
-            <button className="hub-footer-link" onClick={onNews}>
-              {t('home.whatsNew', { version })}
-              {news && <span className="hub-news-dot" aria-hidden="true" />}
-            </button>
+            <nav className="hub-footer-nav" aria-label={t('hub.navigation')}>
+              <button className="hub-footer-link" onClick={onPacks}>{t('hub.nav.packs')}</button>
+              <button className="hub-footer-link" onClick={onRules}>{t('home.rules')}</button>
+              <button className="hub-footer-link" onClick={onNews}>
+                {t('home.whatsNew', { version })}
+                {news && <span className="hub-news-dot" aria-hidden="true" />}
+              </button>
+            </nav>
             <Credit />
           </footer>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 }

@@ -19,6 +19,10 @@
  */
 
 :root {
+  --table-wood: #765032;
+  --table-grain: #4b321f;
+  --table-edge: #ad8050;
+  --table-text: #fff2dc;
   --radius: 8px;
   --radius-sm: 8px;
   --radius-pill: 999px;
@@ -74,6 +78,10 @@
 }
 
 [data-theme='birch'][data-mode='dark'] {
+  --table-wood: #655640;
+  --table-grain: #493c2d;
+  --table-edge: #af9462;
+  --table-text: #fff2dc;
   --bg: #18160f;
   --bg-soft: #211f17;
   --surface: #2b281f;
@@ -97,6 +105,10 @@
 }
 
 [data-theme='oak'][data-mode='dark'] {
+  --table-wood: #765032;
+  --table-grain: #4b321f;
+  --table-edge: #ad8050;
+  --table-text: #fff2dc;
   --bg: #191610;
   --bg-soft: #211c14;
   --surface: #29251e;
@@ -120,6 +132,10 @@
 }
 
 [data-theme='teak'][data-mode='dark'] {
+  --table-wood: #77502b;
+  --table-grain: #4b321f;
+  --table-edge: #b98a4d;
+  --table-text: #fff2dc;
   --bg: #19140e;
   --bg-soft: #231a11;
   --surface: #2e2115;
@@ -143,6 +159,10 @@
 }
 
 [data-theme='mahogany'][data-mode='dark'] {
+  --table-wood: #63392e;
+  --table-grain: #3b241f;
+  --table-edge: #a06c57;
+  --table-text: #fff2dc;
   --bg: #19110f;
   --bg-soft: #231714;
   --surface: #2d1e1a;
@@ -166,6 +186,10 @@
 }
 
 [data-theme='walnut'][data-mode='dark'] {
+  --table-wood: #51362d;
+  --table-grain: #34251f;
+  --table-edge: #8b6250;
+  --table-text: #fff2dc;
   --bg: #17120f;
   --bg-soft: #201814;
   --surface: #2a201b;
@@ -189,6 +213,10 @@
 }
 
 [data-theme='birch'][data-mode='light'] {
+  --table-wood: #d5bc8d;
+  --table-grain: #a68958;
+  --table-edge: #f4dfb4;
+  --table-text: #35291b;
   --bg: #f0eadc;
   --bg-soft: #e7dfcf;
   --surface: #fff8eb;
@@ -212,6 +240,10 @@
 }
 
 [data-theme='oak'][data-mode='light'] {
+  --table-wood: #c69b62;
+  --table-grain: #8f6436;
+  --table-edge: #e3c18a;
+  --table-text: #30271d;
   --bg: #eee4d1;
   --bg-soft: #e5d8bf;
   --surface: #fff5df;
@@ -235,6 +267,10 @@
 }
 
 [data-theme='teak'][data-mode='light'] {
+  --table-wood: #c79b55;
+  --table-grain: #8d6332;
+  --table-edge: #efd095;
+  --table-text: #30271d;
   --bg: #efe0c5;
   --bg-soft: #e5d0aa;
   --surface: #fff2d8;
@@ -258,6 +294,10 @@
 }
 
 [data-theme='mahogany'][data-mode='light'] {
+  --table-wood: #b47b63;
+  --table-grain: #794b3b;
+  --table-edge: #d6a18a;
+  --table-text: #21140f;
   --bg: #efe0d9;
   --bg-soft: #e7d1c8;
   --surface: #fff1e9;
@@ -281,6 +321,10 @@
 }
 
 [data-theme='walnut'][data-mode='light'] {
+  --table-wood: #ad8968;
+  --table-grain: #73563f;
+  --table-edge: #d4b698;
+  --table-text: #30271d;
   --bg: #e9dfd2;
   --bg-soft: #ded0bd;
   --surface: #f8eedf;
@@ -339,6 +383,10 @@
   --shadow-thumb: 0 2px 10px rgb(0 0 0 / 0.25);
   --glow: 0.85;
   --backdrop-alpha: 0.5;
+  --table-wood: #765032;
+  --table-grain: #4b321f;
+  --table-edge: #ad8050;
+  --table-text: #fff2dc;
 }
 
 @media (prefers-color-scheme: light) {
@@ -375,6 +423,10 @@
     --shadow-thumb: 0 2px 8px rgb(0 0 0 / 0.14);
     --glow: 0.35;
     --backdrop-alpha: 0.3;
+    --table-wood: #c69b62;
+    --table-grain: #8f6436;
+    --table-edge: #e3c18a;
+    --table-text: #30271d;
   }
 }
 
