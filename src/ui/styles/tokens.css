@@ -12,21 +12,32 @@
  * colours: every theme declares the same tokens for both modes, so nothing in
  * the stylesheet below ever has to know which is on.
  *
- * The palettes are generated and contrast-checked rather than picked by eye:
+ * The palettes follow their named woods and are contrast-checked:
  * every text token clears 4.5:1 on every surface it can land on, in both
  * modes, in all five woods. `--accent` is the action fill; `--accent-text` is
  * the blue used for text and icons on the warm wood surfaces.
  */
 
 :root {
-  --radius: 18px;
-  --radius-sm: 12px;
+  --radius: 8px;
+  --radius-sm: 8px;
+  --radius-pill: 999px;
   --tap: 52px;
+  --font-size-body: 16px;
+  --motion-press: 80ms;
+  --motion-state: 150ms;
+  --motion-enter: 320ms;
+  --motion-reveal: 450ms;
+  --motion-celebration: 700ms;
+  --motion-confetti: 1500ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasis: cubic-bezier(0.2, 1.1, 0.35, 1);
+  --ease-celebration: cubic-bezier(0.25, 0.6, 0.4, 1);
 
   /* Thai faces are listed before the Latin fallbacks so Thai text picks up a
      proper Thai font instead of whatever the browser substitutes. */
-  --font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
-    'Noto Sans Thai', 'IBM Plex Sans Thai', 'Sarabun', 'Thonburi', sans-serif;
+  --font: 'Thonburi', 'Noto Sans Thai', 'IBM Plex Sans Thai', 'Sarabun',
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   color-scheme: dark;
 }

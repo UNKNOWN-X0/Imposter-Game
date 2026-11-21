@@ -1,238 +1,189 @@
 ---
 name: ImposterGame
-description: A customizable party-game hub and phone-first social deduction game in five contrast-checked wood families, each with a light and a dark mode.
+description: A phone-first party game where friends gather around a crafted tavern table.
 colors:
-  oak-bg: "#191610"
-  oak-surface: "#29251e"
-  oak-surface-2: "#373126"
-  oak-line: "#62533e"
-  oak-text: "#fbefda"
-  oak-text-dim: "#cfbfa6"
-  oak-accent: "#91c5ff"
-  oak-on-accent: "#112b48"
-  oak-crew: "#55db8b"
-  light-bg: "#eee4d1"
-  light-surface: "#fff5df"
-  light-surface-2: "#e7d6b7"
-  light-line: "#987b53"
-  light-text: "#30271d"
-  light-text-dim: "#554735"
-  light-accent: "#1d568b"
-  light-accent-text: "#1d568b"
-  light-crew: "#126a3b"
-  light-imposter: "#b51e3e"
+  birch-dark-wood: "#383429"
+  birch-light-wood: "#e9dfca"
+  oak-dark-ground: "#191610"
+  oak-dark-surface: "#29251e"
+  oak-dark-raised: "#373126"
+  oak-light-ground: "#eee4d1"
+  oak-light-surface: "#fff5df"
+  oak-light-raised: "#e7d6b7"
+  teak-dark-wood: "#3d2c1c"
+  teak-light-wood: "#e7ca99"
+  mahogany-dark-wood: "#3a2822"
+  mahogany-light-wood: "#e7c9bb"
+  walnut-dark-wood: "#382b24"
+  walnut-light-wood: "#ddcbb4"
+  accent-dark: "#91c5ff"
+  accent-light: "#1d568b"
+  on-accent-dark: "#112b48"
+  on-accent-light: "#ffffff"
+  crew-dark: "#55db8b"
+  crew-light: "#126a3b"
+  imposter-dark: "#ff8294"
+  imposter-light: "#b51e3e"
 typography:
   display:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, Thonburi, sans-serif"
-    fontSize: "clamp(30px, 9vw, 46px)"
+    fontFamily: "Thonburi, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+    fontSize: "32px"
     fontWeight: 800
-    lineHeight: 1.1
-    letterSpacing: "-0.03em"
+    lineHeight: 1.2
+    letterSpacing: "-0.025em"
   headline:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, Thonburi, sans-serif"
+    fontFamily: "Thonburi, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
     fontSize: "30px"
     fontWeight: 800
     lineHeight: 1.15
     letterSpacing: "-0.03em"
   title:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, Thonburi, sans-serif"
-    fontSize: "clamp(19px, 5.2vw, 24px)"
+    fontFamily: "Thonburi, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+    fontSize: "23px"
     fontWeight: 700
-    lineHeight: 1.45
+    lineHeight: 1.3
   body:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, Thonburi, sans-serif"
-    fontSize: "17px"
+    fontFamily: "Thonburi, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+    fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.5
   label:
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, Thonburi, sans-serif"
-    fontSize: "12px"
-    fontWeight: 700
-    letterSpacing: "0.16em"
-  hub-headline:
-    fontSize: "clamp(34px, 4vw, 50px)"
-    fontWeight: 850
-    lineHeight: 1.08
-    letterSpacing: "-0.03em"
-  hub-headline-mobile:
-    fontSize: "clamp(31px, 8vw, 42px)"
-  hub-party-title:
-    fontSize: "22px"
-  hub-game-title:
-    fontSize: "20px"
-  hub-section-title:
-    fontSize: "18px"
-  hub-nav:
-    fontSize: "15px"
-  hub-nav-mobile:
-    fontSize: "14px"
-  hub-supporting:
-    fontSize: "14px"
-  hub-intro-mobile:
-    fontSize: "16px"
-  hub-footer:
+    fontFamily: "Thonburi, Noto Sans Thai, IBM Plex Sans Thai, Sarabun, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
     fontSize: "13px"
-  hub-state-tab:
-    fontSize: "11px"
+    fontWeight: 700
+    lineHeight: 1.3
 rounded:
-  sm: "12px"
-  md: "18px"
+  control: "8px"
+  table: "2px"
   pill: "999px"
-  hub-action: "10px"
-  hub-panel: "15px"
-  hub-tab: "9px"
 spacing:
-  xs: "6px"
-  sm: "8px"
-  md: "18px"
-  lg: "24px"
   tap: "52px"
 components:
-  button-primary:
-    backgroundColor: "{colors.midnight-accent}"
-    textColor: "{colors.midnight-on-accent}"
-    rounded: "{rounded.pill}"
-    padding: "0 20px"
+  button-primary-dark:
+    backgroundColor: "{colors.accent-dark}"
+    textColor: "{colors.on-accent-dark}"
+    rounded: "{rounded.control}"
     height: "{spacing.tap}"
-  button-default:
-    backgroundColor: "{colors.midnight-surface-2}"
-    textColor: "{colors.midnight-text}"
-    rounded: "{rounded.pill}"
-    padding: "0 20px"
+  button-primary-light:
+    backgroundColor: "{colors.accent-light}"
+    textColor: "{colors.on-accent-light}"
+    rounded: "{rounded.control}"
     height: "{spacing.tap}"
-  button-ghost:
-    backgroundColor: "transparent"
-    textColor: "{colors.midnight-text-dim}"
-    rounded: "{rounded.pill}"
-    padding: "0 20px"
-    height: "{spacing.tap}"
-  card:
-    backgroundColor: "{colors.midnight-surface}"
-    rounded: "{rounded.md}"
-    padding: "{spacing.md}"
+  panel:
+    backgroundColor: "{colors.oak-dark-surface}"
+    rounded: "{rounded.control}"
 ---
 
 # Design System: ImposterGame
 
 ## Overview
 
-**Creative North Star: "The Joiner’s Table"** (owner selected, 2026-11-21)
+**Creative North Star: “The Joiner’s Table”**
 
-> **Selected direction; implementation underway.** In issue #13 the owner chose the Joinery study: a flush rectangular wooden tabletop with an inlaid edge, players along its long sides, ordinary readable controls, and a covered private card. The approved study is `.impeccable/mocks/tavern-direction/joinery.html`; its phone composition is `joinery-sketch.html` in the same folder. The owner confirmed Birch, Oak (default), Teak, Mahogany, and Walnut, each in light and dark. Issue #14 replaces the colour palettes; #15 replaces the remaining legacy system documented below. Until #15, the layout and component sections still describe 1.30.0; do not extend the Noticeboard look or the split hub/game styles.
+Friends gather around one rectangular wooden table, whether passing one phone or joining a room. Follow the approved `.impeccable/mocks/tavern-direction/joinery.html` composition: the flush tabletop is built from visible planks with a crafted edge; players sit along its long sides; ordinary controls remain easy to read beside or below it. On a shared phone, keep the private card covered until its deliberate handoff. Preserve the mock’s English, Thai, and German layouts and its light and dark modes.
 
-ImposterGame brings friends to one table, whether they pass one phone around or join a room. The current home hub borrows the clarity of a neighborhood noticeboard: paper-like surfaces, sign-ink text, and action tabs. The current game remains a phone-first card table. Five wood families (Birch, Oak, Teak, Mahogany, Walnut), each in light and dark modes, now supply the warm surfaces; the cool-blue accent marks actions on both. Both surfaces use semantic theme tokens so user-selected themes continue to work.
-
-The hub is calm and flat: a persistent navigation rail on desktop becomes a horizontal strip on mobile, while bordered panels and one filled pack action make the party paths easy to scan. Game screens retain their existing softer cards, pill controls, and lightweight motion. All surfaces keep touch targets generous and support English, Thai, and German.
+The tavern comes from the table, the warm wood palettes, and the party gathered around it. Keep the rest of the page and controls calm, legible surfaces. Do not spread plank stripes across the page or ordinary control panels. Use the exact approved table arrangement and interaction states as the source for the hub rebuild and carry its table language into every Imposter screen.
 
 **Key Characteristics:**
-- Two dials, `data-mode` and `data-theme`; every theme declares the same tokens in both modes, contrast-checked by a test.
-- One accent for actions (`--accent` as fill with `--on-accent` on it; `--accent-text` for words), plus crew green and imposter red reserved for sides.
-- Pill buttons at 52px, cards at 18px radius with a hairline border, a 999px room-code chip with tracked tabular numerals.
-- A system sans stack with Thai faces listed first; weight does the hierarchy (800 names, 700 acts, 400 reads).
-- One 24px icon set, 1.8 stroke, round caps, `currentColor`, each icon with a single motion behind `anim`.
+- Five wood palettes, each with light and dark mode; Oak is the default.
+- A blue accent identifies actions; green and red identify the two sides.
+- Rectangular plank table, long-side seating, covered private card, readable controls.
+- System sans typography with Thai-capable faces; 52px minimum primary tap targets.
 
 ## Colors
 
-Warm wood tones shape the surfaces; a cool-blue accent marks actions and remains distinct from every wood. Crew green and imposter red identify the sides. Every text pairing is contrast-checked per wood and mode.
+Each theme changes the warm wood surfaces; blue remains the action colour, while green and red retain their game meanings. The complete palettes and contrast checks live in `src/ui/styles/tokens.css` and `src/ui/theme/theme.test.js`.
 
 ### Primary
-- **Cool-blue Action Accent** (`#91c5ff` dark, `#1d568b` light): the fill of the primary button and the hold ring, set apart from the warm wood surfaces. `--accent-text` uses the same blue for words and icons; it clears 4.5:1 on every surface.
+- **Cool-blue Action Accent:** fills primary actions and marks actionable words and icons; white text sits on the filled button. It stays distinct from every wood surface.
 
-### Secondary: the sides
-- **Crew Green** (`#55db8b` dark, `#126a3b` light) and **Imposter Red** (`#ff8294` dark, `#b51e3e` light, with `--imposter-deep` and `--imposter-line` washes): the crew and imposter colours, used for the side a player is on, the danger button, and the verdict; never for anything else.
+### Secondary
+- **Crew Green:** marks the crew side and crew outcomes.
+- **Imposter Red:** marks the imposter side, danger actions, and imposter outcomes.
 
-### Woods
-- **Birch**: pale cream with soft tan grain; **Oak**: honey brown and the default; **Teak**: golden brown; **Mahogany**: red brown; **Walnut**: dark chocolate. Each has separate light and dark palettes. The picker chips carry a small wood-grain mark; the Joinery table receives its plank construction in the hub rebuild.
-- **Oak dark** uses ground `#191610`, surface `#29251e`, raised surface `#373126`, and line `#62533e`. **Oak light** uses ground `#eee4d1`, surface `#fff5df`, raised surface `#e7d6b7`, and line `#987b53`. The other four woods have their own warm surface ramps.
-- **Text** (`#fbefda` dark / `#30271d` light), **Dim**, and **Faint** text clear 4.5:1 on every surface in every palette.
+### Neutral
+- **Wood surfaces:** Birch is pale cream, Oak is honey brown, Teak is golden brown, Mahogany is red brown, and Walnut is dark chocolate. Each uses its own warm ramp in both modes.
+- **Text and lines:** warm cream text on dark wood and deep brown text on light wood; dividers and outlines use the theme’s wood line token.
+- **Table:** use the selected wood palette for the plank boards, grain, and edge. Keep table text or icons contrast-safe; keep controls on their own solid surfaces.
 
 ### Named Rules
-**The Two Dials Rule.** Mode and theme are set once on the root; a rule below the tokens never asks which is on.
+**The Action Is Blue Rule.** Blue marks something to tap or a current interactive state. Green and red communicate sides, never generic emphasis.
 
-**The Accent Is An Action Rule.** `--accent` fills only things you tap; `--accent-text` is its readable twin for words. Crew and imposter colours mean sides, never emphasis.
-
-**The Every Theme Declares Everything Rule.** A new theme declares every token in both modes; `src/ui/theme/theme.test.js` fails on a missing token, a contrast failure, or a chip unlike its theme.
+**The Table Holds The Texture Rule.** Visible plank construction belongs to the tabletop. Do not texture the page background or ordinary panels.
 
 ## Typography
 
-**Display Font:** the system sans stack (ui-sans-serif, system-ui, Segoe UI, Roboto), with Noto Sans Thai, IBM Plex Sans Thai, Sarabun, and Thonburi listed before the Latin fallbacks so Thai text gets a Thai face. The hub carries this existing stack into the brand and page headline.
+**Display Font:** the platform sans stack, with Thonburi, Noto Sans Thai, IBM Plex Sans Thai, and Sarabun before Latin fallbacks, matching the approved mock.
 **Body Font:** the same stack.
 
-**Character:** a plain system face used at heavy weights for names and light weights for reading; the hierarchy is carried by weight and tracking, not by a second family.
+**Character:** direct, friendly, and readable in a busy room. Use weight and clear size steps for hierarchy; keep names and controls horizontal and untransformed in every language.
 
 ### Hierarchy
-- **Display** (800, clamp(30px, 9vw, 46px), line-height 1.1, tracking −0.03em): the hero word on a card and the end-of-game screen.
-- **Headline** (800, 30px, 1.15, −0.03em): screen titles.
-- **Title** (700, clamp(19px, 5.2vw, 24px), 1.45): the question or prompt a screen asks.
-- **Body** (400, 17px, 1.5): reading text, rules, explanations.
-- **Label** (700, 12px, tracking 0.16em to 0.22em, uppercase or tabular): the room-code chip, section eyebrows, and the small action chips; the brand mark at 800 / 20px / −0.02em.
-- **Hub headline** (850, clamp(34px, 4vw, 50px) desktop and clamp(31px, 8vw, 42px) mobile, 1.08, −0.03em); hub section headings use 18px, game names 20px, party titles 22px.
-- **Hub supporting text** uses 14px; introduction copy uses 17px desktop and 16px mobile. Hub navigation uses 14px mobile and 15px desktop; footer links use 13px and party-state tabs use 11px.
+- **Display** (800, 32px, 1.2): the main title and prominent round outcome.
+- **Headline** (800, 30px, 1.15): screen and section headings.
+- **Title** (700, 23px, 1.3): the table prompt and important question.
+- **Body** (400, 16px, 1.5): instructions, player details, and supporting text; keep paragraphs to about 65ch.
+- **Label** (650, 13px, 1.3): compact seat details, status, and utility controls.
 
 ### Named Rules
-**The Weight Does The Work Rule.** 800 names, 700 acts, 400 reads; size changes little between roles on a phone.
+**The Name Stays Readable Rule.** Player names, room codes, and action labels stay horizontal, wrap safely, and never become texture or ornament.
 
 ## Layout
 
-Game screens use a single centred column, 560px wide and 680px from 700px up, with the top bar pinned above it. The hub uses a 232px navigation rail on desktop and horizontal navigation below 760px, with content capped at 1040px. Its two play modes share one panel; the first game and word-pack library sit in adjacent columns on wide screens and stack on narrow screens. A short landscape phone (height under 520px) gets a tighter layout. Tap targets are 52px tall.
+The table is the main spatial anchor. It is rectangular and wider than it is tall, with seats along the two long sides and the covered card or table state centered between them. Keep names and controls outside the plank seams. On a desktop, place the action group beside the table; on a phone, stack it below the table with the intro and primary choice still easy to reach. At narrow widths, reduce side gutters and seat widths before allowing the table or text to overflow. At wider widths, cap the experience near 1200px and keep the table near 480px wide. Use English, Thai, and German copy at phone and desktop widths when checking the layout.
+
+The hub starts with the brand and a short invitation, then the shared table and its actions. Library, help, news, settings, and language remain available as utility navigation without displacing the gathering area. Do not imply that anyone is seated when the party is empty.
 
 ## Elevation & Depth
 
-A hybrid: surfaces step up tonally (bg, bg-soft, surface, surface-2) and carry a 1px hairline, and cards and floating elements get a soft shadow whose strength belongs to the mode, not the theme. Dark mode lifts a surface with white washes (`--overlay`, `--sheen`) and deeper shadows; light mode settles it with black washes and lighter shadows, and halves the glow because a glow on a pale page reads as a smudge.
+The system is mostly flat. Wood colour, the table’s inlaid edge, and fine borders define surfaces; use soft shadows only to separate a tabletop from its floor or a covered card from the table. Floating menus and dialogs may use the mode’s shared shadow. Avoid card-on-card stacks, oversized glows, and hard offset shadows.
 
 ### Shadow Vocabulary
-- **Shadow** (`0 10px 30px rgb(0 0 0 / 0.45)` dark, `/ 0.1` light): floating panels and menus.
-- **Card shadow** (`0 18px 45px rgb(0 0 0 / 0.35)` dark, `0 16px 40px rgb(0 0 0 / 0.1)` light): the hold card and the hero card.
-- **Thumb shadow** (`0 2px 10px rgb(0 0 0 / 0.25)` dark, `0 2px 8px rgb(0 0 0 / 0.14)` light): segmented-control thumbs.
-
-### Named Rules
-**The Mode Owns The Shadow Rule.** Washes, hairlines, shadows, and glow are declared per mode and shared by every theme.
+- **Floating surface** (`--shadow`): a menu or dialog lifted above the page.
+- **Private card** (`--shadow-card`): separation for the covered or revealed card during handoff.
+- **Control thumb** (`--shadow-thumb`): the moving thumb in a segmented control.
 
 ## Shapes
 
-Game surfaces use 18px cards (`--radius`), 12px small panels (`--radius-sm`), and full pills for controls and room codes. The hub uses 10px action cards and 15px panels, with 9px party-state tabs and 1px hairlines in `--line`. Keep the distinction by surface: the hub reads like posted information, while the game reads like a card table.
+Use the mock’s crisp joinery: 2px corners on the tabletop and seats, 8px corners on controls and panels, and pill geometry only for compact room codes or segmented-control tracks. The table edge is a full, inlaid border; seats are distinct blocks along its sides. Borders follow the wood line token. Keep focus rings visible outside every shape and never rely on colour alone for selection.
 
 ## Components
 
 ### Buttons
-- **Shape:** pill (999px), 52px tall, 20px side padding, 700 weight, 8px gap to an icon.
-- **Primary:** accent fill with on-accent text. **Default:** raised surface (`--surface-2`) with body text. **Ghost:** transparent with a hairline border and dim text. **Danger:** imposter red with on-imposter text.
-- **Active:** scales to 0.975 over 80ms; **disabled:** 40% opacity.
+- **Shape:** 8px corners and at least 52px high for primary actions.
+- **Primary:** cool-blue fill with white text; one clear action per decision.
+- **Secondary:** solid wood surface with a full theme-line border.
+- **Hover / Focus / Press:** subtle colour change, visible 3px focus outline, and brief press response; state remains clear without motion.
 
-### Cards
-- **Corner Style:** 18px. **Background:** `--surface` with a 1px `--line` border. **Internal Padding:** 18px (24px for `.pad-lg`, none for `.flush`). The hold card (the private reveal) adds the card shadow and the accent hold ring.
+### Panels
+- **Style:** solid warm surface, full border, readable padding, and no plank texture.
+- **Use:** group related choices and status; do not nest panels as page scaffolding.
 
-### Party hub
-- **Navigation:** stable desktop rail, horizontal mobile tabs; the current section uses `--surface` and a visible border.
-- **Party panel:** `--surface` with a mustard state tab; the tab labels the party state and never implies players exist when it is empty.
-- **Play modes:** adjacent `--bg-soft` action panels with icons, clear labels, and full descriptions.
-- **Pack library:** the hub's single `--accent` panel; use `--on-accent` for its text and a contrasting `--surface` button.
+### Table and Seats
+- **Table:** rectangular flush tabletop with visible boards, fine grain, and an inlaid edge. Its board direction and joins follow the approved Joinery mock.
+- **Seats:** readable name blocks on the long sides; empty seats are visibly empty. Selected and occupied states include a shape or label cue as well as colour.
 
-### Room-code chip
-- A 999px pill on `--surface` with a hairline border, 800 weight, 0.22em tracking, tabular numerals, 40px tall, with an uppercase 12px action chip inside it. It never shrinks below the code: its job is to answer "what was the room again?" across a table.
+### Private Card
+- **Style:** covered until an explicit hold-to-reveal action completes.
+- **State:** handoff and reveal animation never disclose the word or role before the existing privacy gate permits it; reduced motion preserves the same gate.
 
-### Segmented control
-- A pill track on the raised surface with a sliding thumb carrying the thumb shadow; the selected segment reads in body text, the rest in dim text.
+### Room-code Chip
+- **Style:** tracked, tabular code with an obvious copy action; pill-shaped and large enough to tap.
 
-### Banner
-- A full-width card-radius strip for rule violations and notices, rendered from an error code in the phone's own language.
+### Banners and Dialogs
+- **Style:** theme-surface background, complete border, concise status or action, and a visible keyboard focus path. Do not use colour as the only success or error signal.
 
-### Icons
-- Inline SVG on a 24×24 grid, 20×20 live area, one 1.8 stroke with round caps and joins, `currentColor`, `aria-hidden`; each icon has one movement (the bell swings, the die rolls) that runs only when `anim` is passed. `#icons` is the sheet.
+### Segmented Control
+- **Style:** one compact, fully rounded track; the active option uses the blue action accent. Preserve text labels and visible focus.
 
-### Motion
-- Spring-like ease-outs (`cubic-bezier(0.2, 1.1, 0.35, 1)` and kin) over 0.25s to 0.7s for a word or hero settling in, 1.5s for confetti; the `prefers-reduced-motion` block at the end of the stylesheet switches all of it off.
+### Navigation
+- **Style:** utility actions stay secondary to the table and primary party actions. On phones they wrap or stack without clipping; do not reinstate the permanent noticeboard rail.
 
 ## Do's and Don'ts
 
-### Do:
-- **Do** declare every token for both modes when adding a theme, and run `src/ui/theme/theme.test.js`.
-- **Do** use `--accent-text`, never `--accent`, for words and hairlines on a plain surface.
-- **Do** keep touch targets at 52px and the game column at 560px (680px wide).
-- **Do** give a new icon one motion that is what that object does, off by default.
-
-### Don't:
-- **Don't** use crew green or imposter red for emphasis; they mean sides.
-- **Don't** let a rule below `tokens.css` test for the mode or the theme.
-- **Don't** add a square corner, a second type family, or motion that carries meaning.
-- **Don't** use the mustard hub accent for player teams; crew green and imposter red remain reserved for game roles.
+- **Do** reproduce the approved Joinery mock’s rectangular plank table, long-side seats, covered private card, and adjacent actions.
+- **Do** keep the table as the one strongly textured surface; use wood tones without page-wide stripes.
+- **Do** keep controls, player names, status text, and the wood itself distinct at every mode and language.
+- **Do** respect 52px touch targets, visible keyboard focus, and `prefers-reduced-motion`.
+- **Don't** use the superseded Neighborhood Noticeboard hierarchy or its separate hub/game styles.
+- **Don't** add decoration, texture, or motion that lowers contrast or implies a state that is not true.

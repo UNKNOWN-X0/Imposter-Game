@@ -690,11 +690,11 @@
   }
   
   .confetti span {
-    animation: confetti-fall 1.5s cubic-bezier(0.25, 0.6, 0.4, 1) both;
+    animation: confetti-fall var(--motion-confetti) var(--ease-celebration) both;
   }
   
   .shell > * {
-    animation: screen-in 0.4s ease both;
+    animation: screen-in var(--motion-enter) var(--ease-standard) both;
   }
   
   .eyes {
@@ -719,22 +719,22 @@
   }
   
   .draw-on {
-    animation: draw-on 0.45s ease 0.22s forwards;
+    animation: draw-on var(--motion-reveal) var(--ease-standard) 0.22s forwards;
   }
   
   .glyph.settle {
-    animation: settle 0.5s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+    animation: settle var(--motion-reveal) var(--ease-emphasis) both;
   }
   
   .word-in {
-    animation: word-in 0.44s cubic-bezier(0.2, 0.9, 0.3, 1) 0.18s both;
+    animation: word-in var(--motion-reveal) var(--ease-standard) 0.18s both;
   }
   
   .turn-chip {
     transition:
-      background 0.25s ease,
-      color 0.25s ease,
-      opacity 0.25s ease;
+      background var(--motion-enter) var(--ease-standard),
+      color var(--motion-enter) var(--ease-standard),
+      opacity var(--motion-enter) var(--ease-standard);
   }
   
   .turn-chip.now::after {
@@ -742,7 +742,7 @@
   }
   
   .timer .colon {
-    transition: opacity 0.15s linear;
+    transition: opacity var(--motion-state) linear;
   }
   
   .timer .colon.ticking {
@@ -751,8 +751,8 @@
   
   .voter {
     transition:
-      border-color 0.3s ease,
-      color 0.3s ease;
+      border-color var(--motion-enter) var(--ease-standard),
+      color var(--motion-enter) var(--ease-standard);
   }
   
   .voter.voted {
@@ -761,9 +761,9 @@
   
   .vote-btn {
     transition:
-      transform 0.14s ease,
-      border-color 0.2s ease,
-      background 0.2s ease;
+      transform var(--motion-press) var(--ease-standard),
+      border-color var(--motion-state) var(--ease-standard),
+      background var(--motion-state) var(--ease-standard);
   }
   
   .bar > span.grow-in {
