@@ -126,7 +126,6 @@ export default {
   'hub.packsDescription': 'Erstellt, bearbeitet, importiert oder teilt eigene Wortpakete.',
   'home.headline': 'Ein Platz für alle.',
   'hub.intro': 'Kostenlose Partyspiele für Freunde an einem Tisch. Alle eintragen, wählen, wie ihr spielt, dann ein Spiel aussuchen.',
-  'home.sub': 'Hier beginnt ihr gemeinsam. Wählt den Spielmodus und startet mit Imposter.',
   'home.local.title': 'Mit einem Handy spielen',
   'home.local.desc': 'Ein Handy, das ihr am Tisch herumgebt.',
   'home.online.title': 'Im Raum spielen',
@@ -136,6 +135,7 @@ export default {
   'home.whatsNew': 'Was ist neu in {version}?',
 
   'rules.title': 'So wird gespielt',
+  'rules.firstSub': 'Euer erstes Spiel Falschspieler. So läuft es.',
   'rules.1.title': 'Jeder bekommt eine Karte',
   'rules.1.body':
     'Alle in der Crew sehen dasselbe geheime Wort. Einer — der Falschspieler — sieht ein ähnliches, aber falsches. Im schweren Modus sieht er gar nichts.',

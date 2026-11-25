@@ -33,6 +33,7 @@ import Changelog from './features/changelog/Changelog.jsx';
 const IconBoard = lazy(() => import('./features/dev/IconBoard.jsx'));
 const StringBoard = lazy(() => import('./features/dev/StringBoard.jsx'));
 
+// Imposter's own: whether this phone has seen how Imposter is played.
 const SEEN_KEY = 'imposter.seenRules';
 const VERSION_KEY = 'imposter.seenVersion';
 export const LIB_LANG_KEY = 'imposter.libraryLang';
@@ -144,8 +145,12 @@ export default function App() {
   );
 
   if (screen === 'crash') return <Crash />;
-  if (screen === 'local') return <LocalGame onExit={home} />;
-  if (screen === 'online') return <OnlineGame onExit={home} initialCode={joinCode} />;
+  // A game's rules show the first time that game is opened, over its own
+  // lobby, not over the hub before anyone has chosen a game (#53). The key
+  // is the game's own, so the next game has one of its own.
+  const firstRules = showRules ? <FirstRun onClose={closeRules} /> : null;
+  if (screen === 'local') return <><LocalGame onExit={home} />{firstRules}</>;
+  if (screen === 'online') return <><OnlineGame onExit={home} initialCode={joinCode} />{firstRules}</>;
   if (screen === 'icons') return fetched(<IconBoard />);
   if (screen === 'strings') return fetched(<StringBoard />);
   if (screen === 'rules') return <Rules onExit={home} />;
@@ -174,8 +179,6 @@ export default function App() {
       onNews={openNews}
       news={news}
       version={VERSION}
-    >
-      {showRules && <FirstRun onClose={closeRules} />}
-    </PartyHub>
+    />
   );
 }

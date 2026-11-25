@@ -126,7 +126,6 @@ export default {
   'hub.packsDescription': 'Create, edit, import, or share custom word packs.',
   'home.headline': 'Make room for everyone.',
   'hub.intro': 'Free party games for friends around one table. Seat everyone, choose how to play, then pick a game.',
-  'home.sub': 'Start together here. Choose how to play, then begin with Imposter.',
   'home.local.title': 'Play on one phone',
   'home.local.desc': 'One phone passed around the table.',
   'home.online.title': 'Play in a room',
@@ -136,6 +135,7 @@ export default {
   'home.whatsNew': 'What changed in {version}?',
 
   'rules.title': 'How to play',
+  'rules.firstSub': 'Your first game of Imposter. Here is how it goes.',
   'rules.1.title': 'Everyone gets a card',
   'rules.1.body':
     'The crew all see the same secret word. One player — the imposter — sees a similar but wrong word, or nothing at all on hard mode.',
