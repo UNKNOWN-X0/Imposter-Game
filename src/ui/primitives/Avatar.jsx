@@ -1,27 +1,32 @@
 /**
- * A player, in one letter.
+ * A player, as the emblem they sat down with.
+ *
+ * On one phone each player picks an emblem as they join; the mode that knows
+ * who picked what provides it through `EmblemContext` (a map from name to
+ * emblem id). Anywhere without one, such as a room until rooms carry
+ * emblems, a name falls back on a stable default, so the same person keeps
+ * the same mark from screen to screen.
  */
 
-import { useMemo } from 'react';
+import { createContext, useContext } from 'react';
+import { EmblemIcon, defaultEmblem, emblemFor } from '../icons/EmblemIcon.jsx';
 
-const AVATAR_COLOURS = [
-  '#f5b642', '#7dd3fc', '#c4b5fd', '#fda4af',
-  '#86efac', '#fcd34d', '#f0abfc', '#5eead4',
-];
+export const EmblemContext = createContext({});
 
-export function Avatar({ name, dim }) {
-  const colour = useMemo(() => {
-    let hash = 0;
-    for (const ch of name) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
-    return AVATAR_COLOURS[hash % AVATAR_COLOURS.length];
-  }, [name]);
+export function useEmblem(name) {
+  const picked = useContext(EmblemContext);
+  return picked[name] ?? defaultEmblem(name);
+}
+
+export function Avatar({ name, dim, size }) {
+  const id = useEmblem(name);
   return (
     <span
       className={`avatar${dim ? ' dim' : ''}`}
-      style={{ background: colour }}
+      style={{ background: emblemFor(id).colour, ...(size && { width: size, height: size }) }}
       aria-hidden="true"
     >
-      {[...name][0]?.toUpperCase()}
+      <EmblemIcon id={id} />
     </span>
   );
 }

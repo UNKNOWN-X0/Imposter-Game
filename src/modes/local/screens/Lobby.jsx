@@ -7,18 +7,28 @@ import { MAX_PLAYERS, MIN_PLAYERS } from '../../../core/engine.js';
 import { useT } from '../../../i18n/index.jsx';
 import { AddPlayerForm, LobbyHint, PlayerList, Scoreboard, Settings, WinValues } from '../../../features/lobby/index.js';
 import { useWords } from '../../../features/packs/useWords.js';
+import { TableScene, chairsFor } from '../../../ui/table/TableScene.jsx';
+import { defaultEmblem } from '../../../ui/icons/emblems.js';
 
 /* ------------------------------------------------------------------ *
  * Lobby
  * ------------------------------------------------------------------ */
 
-export function Lobby({ state, run, onEditPack, onBrowsePacks }) {
+export function Lobby({ state, run, emblems = {}, onSeat, onEditPack, onBrowsePacks }) {
   const { t } = useT();
   // The words for this language are fetched rather than bundled, so a table
   // that has just switched language waits a moment. Almost always already
   // true by the time anybody has finished typing in names.
   const haveWords = useWords(state.config.wordLang);
   const ready = state.players.length >= MIN_PLAYERS && haveWords;
+  const taken = state.players.map((p) => emblems[p.name] ?? defaultEmblem(p.name));
+  const add = (name, emblem) => {
+    // The reducer turns away a name already at the table; the emblem must not
+    // quietly move to that person either.
+    const known = state.players.some((p) => p.name.toLowerCase() === name.toLowerCase());
+    if (!known && state.players.length < MAX_PLAYERS && emblem) onSeat?.(name, emblem);
+    run({ type: 'ADD_PLAYER', name });
+  };
   return (
     <div className="stack">
       <div className="stack tight">
@@ -26,16 +36,19 @@ export function Lobby({ state, run, onEditPack, onBrowsePacks }) {
         <p className="subtitle">{t('lobby.sub')}</p>
       </div>
 
-      <AddPlayerForm
-        onAdd={(name) => run({ type: 'ADD_PLAYER', name })}
-        disabled={state.players.length >= MAX_PLAYERS}
-      />
+      <TableScene
+        seated={state.players.map((p) => ({ key: p.id, name: p.name }))}
+        chairs={chairsFor(state.players.length, MAX_PLAYERS)}
+      >
+        <LobbyHint count={state.players.length} />
+      </TableScene>
+
+      <AddPlayerForm onAdd={add} taken={taken} disabled={state.players.length >= MAX_PLAYERS} />
 
       <PlayerList
         players={state.players}
         onRemove={(id) => run({ type: 'REMOVE_PLAYER', playerId: id })}
       />
-      <LobbyHint count={state.players.length} />
 
       {state.config.scoring && (
         <Scoreboard

@@ -19,14 +19,17 @@ import { createGame, reduce, PHASE } from '../../core/engine.js';
 import { VERSION } from '../../content/history/changelog.js';
 import '../../testing/ready.js';
 import {
+  EMBLEMS_KEY,
   GAME_KEY,
   ROSTER_KEY,
   clearGame,
   isResumable,
+  loadEmblems,
   loadGame,
   loadRecentWords,
   loadRoster,
   loadScores,
+  saveEmblems,
   saveGame,
   saveRecentWords,
   saveRoster,
@@ -230,6 +233,26 @@ test('the roster comes back, and nonsense in it does not', () => {
 
     store.setItem(ROSTER_KEY, JSON.stringify(new Array(40).fill('Ann')));
     assert.equal(loadRoster().length, 12, 'no more than a full table');
+  });
+});
+
+test('emblems come back by name, only for people still seated, and junk is dropped', () => {
+  const store = fakeStorage();
+  withStorage(store, () => {
+    saveEmblems([{ id: '1', name: 'Ann' }, { id: '2', name: 'Ben' }], { Ann: 'moon', Ben: 'key', Gone: 'fish' });
+    assert.deepEqual(loadEmblems(), { Ann: 'moon', Ben: 'key' });
+
+    store.setItem(EMBLEMS_KEY, JSON.stringify({ Ann: 'moon', Ben: 'dragon', Cat: 7 }));
+    assert.deepEqual(loadEmblems(), { Ann: 'moon' }, 'only emblems that exist');
+
+    store.setItem(EMBLEMS_KEY, '["moon"]');
+    assert.deepEqual(loadEmblems(), {});
+    store.setItem(EMBLEMS_KEY, '{oops');
+    assert.deepEqual(loadEmblems(), {});
+  });
+  withStorage(lockedStorage, () => {
+    assert.deepEqual(loadEmblems(), {});
+    assert.doesNotThrow(() => saveEmblems([{ id: '1', name: 'Ann' }], { Ann: 'moon' }));
   });
 });
 

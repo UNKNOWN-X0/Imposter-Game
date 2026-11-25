@@ -44,9 +44,7 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-weight: 800;
-  font-size: 15px;
-  color: var(--on-accent);
+  color: #fff7e8;
   flex: none;
 }
 
@@ -364,7 +362,6 @@
 .cluegrid tbody th .avatar {
   width: 26px;
   height: 26px;
-  font-size: 12px;
 }
 
 .cluegrid td {
@@ -481,4 +478,10 @@
   background: var(--accent);
   border-radius: 999px;
   transition: width 0.4s ease;
+}
+
+/* The emblem inside an avatar scales with the circle, whatever its size. */
+.avatar .emblem-icon {
+  width: 58%;
+  height: 58%;
 }

@@ -10,6 +10,7 @@
 
 import { MAX_PLAYERS, MIN_PLAYERS, PHASE } from '../../core/engine.js';
 import { VERSION } from '../../content/history/changelog.js';
+import { EMBLEM_IDS } from '../../ui/icons/emblems.js';
 
 /**
  * What each thing is filed under.
@@ -24,6 +25,7 @@ export const RECENT_WORDS_KEY = 'imposter.recentWords';
 export const SCORES_KEY = 'imposter.scores';
 export const CONFIG_KEY = 'imposter.config';
 export const GAME_KEY = 'imposter.game';
+export const EMBLEMS_KEY = 'imposter.emblems';
 
 /**
  * Recent words survive a reload, so closing the tab and coming back does not
@@ -132,6 +134,38 @@ export function loadRoster() {
 export function saveRoster(players) {
   try {
     localStorage.setItem(ROSTER_KEY, JSON.stringify(players.map((p) => p.name)));
+  } catch {
+    /* private browsing — no harm done */
+  }
+}
+
+/**
+ * The emblem each person sat down with, by name like the scores, so the
+ * same friends keep the same marks next week. Unknown ids are dropped; the
+ * table falls back on a default for anyone without one.
+ */
+export function loadEmblems() {
+  try {
+    const raw = localStorage.getItem(EMBLEMS_KEY);
+    const saved = raw ? JSON.parse(raw) : {};
+    const out = {};
+    if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
+      for (const [name, id] of Object.entries(saved)) {
+        if (typeof id === 'string' && EMBLEM_IDS.includes(id)) out[name] = id;
+      }
+    }
+    return out;
+  } catch {
+    return {};
+  }
+}
+
+/** Only the people still at the table are kept, so the map never grows. */
+export function saveEmblems(players, emblems) {
+  try {
+    const byName = {};
+    for (const { name } of players) if (emblems[name]) byName[name] = emblems[name];
+    localStorage.setItem(EMBLEMS_KEY, JSON.stringify(byName));
   } catch {
     /* private browsing — no harm done */
   }

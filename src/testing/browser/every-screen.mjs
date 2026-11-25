@@ -102,7 +102,7 @@ async function dealAndReveal(page, seats) {
   await page.locator('.hub-mode').first().click();
   await wait(300);
   for (const n of ['Ann', 'Ben', 'Cal', 'Dee', 'Eli', 'Fay'].slice(0, seats)) {
-    await page.locator('input').first().fill(n);
+    await page.locator('input:not([type=radio])').first().fill(n);
     await page.locator('.row button').first().click();
   }
   await page.getByRole('button', { name: /Deal the cards|แจกไพ่|Karten austeilen/ }).click();
@@ -142,7 +142,7 @@ const seen = [];
   await page.locator('.hub-mode').first().click();
   await wait(300);
   for (const name of ['Ann', 'Ben', 'Cal', 'Dee']) {
-    await page.locator('input').first().fill(name);
+    await page.locator('input:not([type=radio])').first().fill(name);
     await page.locator('.row button').first().click();
   }
   await page.getByRole('button', { name: /Deal the cards|แจกไพ่|Karten austeilen/ }).click();
@@ -187,7 +187,7 @@ const seen = [];
     const buttons = await page.locator('button').allTextContents();
     console.log('  (buttons:', buttons.map((b) => b.trim()).filter(Boolean).join(' | '), ')');
   }
-  await page.locator('input').first().fill(word);
+  await page.locator('input:not([type=radio])').first().fill(word);
   await page.getByRole('button', { name: /ทายเลย|Call it/ }).last().click();
   await wait(800);
   // the verdict of a call, then the game-over screen
@@ -212,7 +212,7 @@ for (const lang of ['en', 'th', 'de']) {
   await wait(600);
   // verdict → steal or game over → play again
   for (let i = 0; i < 4; i++) {
-    const guess = page.locator('input').first();
+    const guess = page.locator('input:not([type=radio])').first();
     if (await guess.count() && (await page.locator('.shell').innerText()).match(/guess|ทาย|raten/i)) {
       await guess.fill('not the word');
     }

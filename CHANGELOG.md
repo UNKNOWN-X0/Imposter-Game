@@ -13,6 +13,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Standardized the shared body type, control corners, and motion timings for the tavern-table redesign.
 - Each wood now has its own action colour (honey amber, brass, burnt amber, copper, antique bronze) instead of a shared cool blue.
 - Game screens share one frame: the brand beside Back, a rule under the top bar, and a centred game column; every control in the top bar and menus is 52px tall.
+- The hub and the lobby now show a crafted feast table under lamplight, with chairs down both long sides; it turns upright on phones so a full table of twelve fits.
+- Players pick an emblem as they sit down (mug, key, flame and nine more, drawn from the Lucide icon set); it is their avatar at the table and in every list, and it is remembered by name with the roster.
+- The hub's play heading now reads "How will you play?" instead of repeating the first button, and rooms are described as "Everyone on their own phone, joined by a code", in English, Thai and German.
 
 ## [1.30.0] - 2026-11-20
 
