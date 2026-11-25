@@ -212,8 +212,12 @@ button.ts-seat-body:focus-visible {
 /* The emblem picker in the lobby (features/lobby/AddPlayerForm.jsx). */
 .emblem-picker {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 8px;
+  /* Two even rows of six. A column is never narrower than a choice plus
+     its selection ring (44 + 2 × 5px), so a ring cannot reach the emblem
+     beside it; 6 × 54px plus the gaps fits a 358px phone column. */
+  grid-template-columns: repeat(6, minmax(54px, 64px));
+  justify-content: start;
+  gap: 12px 6px;
   margin: 0;
   padding: 0;
   border: 0;
@@ -224,10 +228,6 @@ button.ts-seat-body:focus-visible {
   grid-column: 1 / -1;
   padding: 0;
   margin-bottom: 6px;
-}
-
-@media (min-width: 600px) {
-  .emblem-picker { grid-template-columns: repeat(12, minmax(0, 1fr)); }
 }
 
 .emblem-choice {
