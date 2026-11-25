@@ -4,6 +4,7 @@
  */
 
 export { PlayerList } from './PlayerList.jsx';
+export { SeatActions } from './SeatActions.jsx';
 export { AddPlayerForm, LobbyHint } from './AddPlayerForm.jsx';
 export { Scoreboard, WinValues } from './Scoreboard.jsx';
 export { EndGameButton } from './EndGameButton.jsx';

@@ -92,12 +92,22 @@ function Candle({ x, y, glow }) {
 }
 
 /**
- * @param seated  people in the chairs, in order: `{ key, name, host, away }`
+ * @param seated  people in the chairs, in order: `{ key, name, host, away, you }`
  * @param chairs  how many chairs to set; at least `seated.length`
  * @param children what sits on the plate in the middle of the table
  * @param className for the screen to size its own table
+ * @param picked  the key of the seat that is selected, if any
+ * @param onPick  makes each taken seat a button; called with its key (or
+ *                null when the selected seat is pressed again)
  */
-export function TableScene({ seated = [], chairs = chairsFor(seated.length), children, className = '' }) {
+export function TableScene({
+  seated = [],
+  chairs = chairsFor(seated.length),
+  children,
+  className = '',
+  picked = null,
+  onPick,
+}) {
   const { t } = useT();
   const narrow = useNarrow();
   const id = useId().replace(/:/g, '');
@@ -184,21 +194,36 @@ export function TableScene({ seated = [], chairs = chairsFor(seated.length), chi
               </li>
             );
           }
+          const Seat = onPick ? 'button' : 'span';
+          const seatProps = onPick
+            ? {
+                type: 'button',
+                'aria-pressed': picked === who.key,
+                onClick: () => onPick(picked === who.key ? null : who.key),
+              }
+            : {};
           return (
-            <li className={`ts-seat filled${who.away ? ' away' : ''}`} key={who.key} style={place(p)}>
-              <span className="ts-token">
-                <Avatar name={who.name} dim={who.away} />
-                {who.host && (
-                  <span className="ts-host" title={t('tag.host')}>
-                    <Crown />
-                  </span>
-                )}
-              </span>
-              <span className="ts-name">
-                <span className="ts-name-text" title={who.name}>{who.name}</span>
-                {who.host && <span className="sr-only"> · {t('tag.host')}</span>}
-                {who.away && <span className="ts-away"> · {t('table.away')}</span>}
-              </span>
+            <li
+              className={`ts-seat filled${who.away ? ' away' : ''}${picked === who.key ? ' picked' : ''}`}
+              key={who.key}
+              style={place(p)}
+            >
+              <Seat className="ts-seat-body" {...seatProps}>
+                <span className="ts-token">
+                  <Avatar name={who.name} dim={who.away} />
+                  {who.host && (
+                    <span className="ts-host" title={t('tag.host')}>
+                      <Crown />
+                    </span>
+                  )}
+                </span>
+                <span className="ts-name">
+                  <span className="ts-name-text" title={who.name}>{who.name}</span>
+                  {who.host && <span className="sr-only"> · {t('tag.host')}</span>}
+                  {who.you && <span className="ts-you">{t('tag.you')}</span>}
+                  {who.away && <span className="ts-away"> · {t('table.away')}</span>}
+                </span>
+              </Seat>
             </li>
           );
         })}
