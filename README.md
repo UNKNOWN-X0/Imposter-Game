@@ -8,14 +8,18 @@
 
 A social deduction party game built around secret words. Everyone but the imposters is dealt the same word, players give one-word clues, and the table votes before the imposters take over.
 
+**Free, and yours to shape.** Free to play, with no account, no ads, no tracking and nothing to buy, and open source ([MIT](LICENSE)). Almost everything can be changed to suit your group: write your own word packs (or have an AI chat write one), share them as codes, set every rule, add roles, keep score, and pick your language and wood. And if that is not enough, the code is built to be changed: see [Making it yours](#making-it-yours).
+
 **[Play Imposter Game →](https://impostergamebyfocus.netlify.app/)** · [Changelog](CHANGELOG.md) · [Playtest guide](PLAYTEST.md) · [Report a bug](https://github.com/UNKNOWN-X0/Imposter-Game/issues)
 
 ![Imposter Game](assets/preview.png)
 
 ## Features
 
+- **Free:** no account, no ads, no tracking, no purchases. Pass-and-play runs from any static host; rooms need only a small Node server you can run on your own wifi.
+- **Highly customisable:** your own word packs (typed, pasted, written with any AI chat, or loaded from a friend's share code), presets or every rule by hand, optional roles, scoring, emblems for every player, five wood themes in light or dark.
 - **Three languages:** English, Thai, and German, with separate choices for interface and word language.
-- **Word packs:** ten built-in packs per language, plus custom packs you can create, import, and share as codes.
+- **Word packs:** ten built-in packs per language, plus as many of your own as you like.
 - **Rules you set:** imposter counts, decoy modes, optional roles, and scoring.
 - **Picks up where you left off:** saved local rounds, room reconnection, and host transfer.
 - **Looks:** light and dark modes, five wood themes, and reduced-motion support.

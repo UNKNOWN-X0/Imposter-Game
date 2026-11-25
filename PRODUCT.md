@@ -43,6 +43,7 @@ Three claims a neighbouring game could not truthfully make together (owner, 2026
 
 - Made by Thanate Amornjiraporn (Focus); the game's own mark (`public/icon.svg`) and a hold ring, confetti, and backdrop drawn in the same icon set.
 - Disclaimer-free: it is a finished game, not a demo. No analytics, no player names collected (playtests use anonymous labels).
+- **Free and highly customisable** (owner, 2026-11-25: the two qualities to lead with for the community). Free means no account, no ads, no tracking and nothing to buy, and open source (code MIT, built-in packs CC BY-NC-SA 4.0). Customisable means the group's own word packs, rules, roles, scoring, emblems and looks, and code built to be changed. Lead community-facing text (README, CONTRIBUTING, repository description) with these two.
 
 ## Evidence on Hand
 
@@ -56,7 +57,8 @@ Three claims a neighbouring game could not truthfully make together (owner, 2026
 2. **The table comes first.** Everything a host does happens in the lobby, in front of the group, in their language.
 3. **One engine, every mode.** Rules are data and pure functions; modes only decide who is holding the phone.
 4. **Honest failure.** A game that quietly stops working is worse than one that says so; errors show, and reports are safe to paste into the group chat.
-5. **Built to grow.** Roles, ways to win, languages, themes, word sources, and soon other games are each a file and a line, guarded by a test.
+5. **Free, and the group's to shape.** Nothing stands between a group and a game: no price, account, ad or tracker. Whatever a group might reasonably want to change (words, rules, roles, looks) is a setting or a pack, not a fork.
+6. **Built to grow.** Roles, ways to win, languages, themes, word sources, and soon other games are each a file and a line, guarded by a test.
 
 ## Accessibility & Inclusion
 

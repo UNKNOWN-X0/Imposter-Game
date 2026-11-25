@@ -1,6 +1,8 @@
 # Contributing
 
-Thanks for helping. Imposter is a party game played on phones around a table, so the most useful contributions are a bug from a real game night, a better word pack, or a fix.
+Thanks for helping. Imposter is a party game played on phones around a table, and two things about it matter most: it is **free** (no account, no ads, no tracking, nothing to buy) and it is **highly customisable** (your own word packs, rules, roles and looks). Changes should keep both true.
+
+The most useful contributions are a bug from a real game night, a better word pack, a fix, or a way to let a group shape the game more to its taste. A change that would put a price, an account, an ad or a tracker between a group and a game will not be accepted.
 
 ## Report a problem
 

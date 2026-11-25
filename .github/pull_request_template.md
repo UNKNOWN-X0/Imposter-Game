@@ -9,4 +9,5 @@
 - [ ] Fingerprint moved only for an intended change, and the diff was read before blessing
 - [ ] No secret (word, near miss, role, unrevealed vote) reaches a phone that should not have it
 - [ ] CHANGELOG Unreleased updated if players will see the change
+- [ ] Keeps the game free (no account, ad, tracker or purchase) and does not take away a way to customise it
 - [ ] Docs (README, DESIGN, STANDARDS) updated if behaviour changed
