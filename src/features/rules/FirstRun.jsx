@@ -53,7 +53,7 @@ export function FirstRun({ onClose }) {
           <h2 className="title" id="firstrun-title">
             {t('rules.title')}
           </h2>
-          <p className="subtitle">{t('home.sub')}</p>
+          <p className="subtitle">{t('rules.firstSub')}</p>
         </div>
 
         <div className="stack">

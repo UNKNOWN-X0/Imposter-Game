@@ -143,6 +143,32 @@ async function dealAndReveal(page, seats) {
 
 const seen = [];
 
+/* --- a first visit: no dialog on the hub, Imposter's rules once (#53) ----- */
+{
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await ctx.newPage();
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto(BASE);
+  await wait(700);
+  const onHub = await page.locator('[role=dialog]').count();
+  await page.locator('.hub-mode').first().click();
+  await page.locator('.game-card .btn.primary').first().click();
+  await wait(400);
+  const inGame = await page.locator('[role=dialog]').count();
+  if (inGame) await page.locator('[role=dialog] .btn.primary').click();
+  await wait(300);
+  await page.reload();
+  await wait(700);
+  const again = await page.locator('[role=dialog]').count();
+  if (onHub) fail('a first visit opens a dialog over the hub');
+  else if (!inGame) fail("opening Imposter for the first time did not show its rules");
+  else if (again) fail("Imposter's rules showed a second time");
+  else if (errors.length) fail(`first visit: ${errors[0]}`);
+  else seen.push("a first visit: nothing over the hub, Imposter's rules once");
+  await ctx.close();
+}
+
 /* --- a private card is covered again when the phone is backgrounded ------ */
 {
   const { ctx, page, errors } = await openPage('en');
