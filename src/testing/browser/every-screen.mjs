@@ -71,6 +71,12 @@ const browser = await chromium.launch({
   args: ['--no-sandbox'],
 });
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** Pick somebody in a vote or a "who" list, then press the confirm that names them. */
+async function choose(page, name) {
+  await page.locator('.vote-grid button, .ts-seat button.ts-seat-body', { hasText: name }).first().click();
+  await page.locator('.confirm-bar .btn.primary').click();
+}
 let bad = 0;
 const UPDATE = process.argv.includes('--update');
 const browserStamp = `chromium ${browser.version()}`;
@@ -188,7 +194,7 @@ const seen = [];
   await callButton.click();
   await wait(400);
   // pick the imposter as the caller, take the phone, then name the word
-  await page.locator('.vote-grid button', { hasText: imposters[0] }).first().click();
+  await choose(page, imposters[0]);
   await wait(350);
   const gate = page.getByRole('button', { name: /ถือไว้แล้วค่อยแตะ|tap when holding|Tippe/i }).first();
   if (await gate.count()) { await gate.click(); await wait(350); }
@@ -218,7 +224,12 @@ for (const lang of ['en', 'th', 'de']) {
   const { imposters } = await dealAndReveal(page, 4);
   await page.getByRole('button', { name: /Everyone has spoken|พูดครบ|abgestimmt|abstimmen|โหวต/i }).first().click();
   await wait(300);
-  await page.locator('.vote-grid button', { hasText: imposters[0] }).first().click();
+  // One tap only picks: the table is still voting until the confirm is pressed.
+  await page.locator('.ts-seat button.ts-seat-body', { hasText: imposters[0] }).first().click();
+  await wait(300);
+  if (!(await page.locator('.confirm-bar').count()) || (await page.locator('.reveal.crew, .reveal.imposter, .verdict').count()))
+    fail(`${lang}: one tap on a seat decided the vote`);
+  await page.locator('.confirm-bar .btn.primary').click();
   await wait(600);
   // verdict → steal or game over → play again
   for (let i = 0; i < 4; i++) {

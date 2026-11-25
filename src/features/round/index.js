@@ -9,5 +9,5 @@ export { PhaseStepper } from './PhaseStepper.jsx';
 export { RoleCard, PassGate } from './RoleCard.jsx';
 export { TurnOrder, ClueList, ClueGrid, ClueInput, Timer, roundLabel } from './Clues.jsx';
 export { CallButton, CallPanel, NotTheImposter } from './Call.jsx';
-export { VoteGrid, VoteProgress, Tally } from './Voting.jsx';
+export { ConfirmBar, VoteGrid, VoteProgress, Tally } from './Voting.jsx';
 export { VerdictCard, StealCard, GameOverCard } from './Verdict.jsx';

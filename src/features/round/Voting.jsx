@@ -2,31 +2,65 @@
  * Choosing somebody, and watching everyone else choose.
  */
 
+import { useState } from 'react';
 import { CheckIcon } from '../../ui/icons/index.jsx';
 import { useT } from '../../i18n/index.jsx';
 import { Avatar } from '../../ui/primitives/Avatar.jsx';
 
-export function VoteGrid({ players, eliminated = [], youId, chosenId, onVote, disabled }) {
+export function VoteGrid({ players, eliminated = [], youId, chosenId, onVote, disabled, confirmLabel }) {
+  const { t } = useT();
+  // A tap only picks. Nothing is sent until the bar under the grid, which
+  // names the player, is pressed: a slip of the thumb must not vote somebody
+  // out, because nothing in the rules can take that back.
+  const [picked, setPicked] = useState(null);
+  const pickedPlayer = players.find((p) => p.id === picked);
+  return (
+    <div className="stack tight">
+      <div className="vote-grid stagger">
+        {players.map((p) => {
+          const out = eliminated.includes(p.id);
+          const self = p.id === youId;
+          return (
+            <button
+              key={p.id}
+              className={`vote-btn${(picked ?? chosenId) === p.id ? ' chosen' : ''}`}
+              aria-pressed={picked === p.id}
+              disabled={disabled || out || self}
+              onClick={() => setPicked(picked === p.id ? null : p.id)}
+            >
+              <Avatar name={p.name} dim={out} />
+              <span className="grow">{p.name}</span>
+              {self && <span className="tag you">{t('tag.you')}</span>}
+              {out && <span className="tag">{t('tag.out')}</span>}
+            </button>
+          );
+        })}
+      </div>
+      {pickedPlayer && (
+        <ConfirmBar
+          label={confirmLabel(pickedPlayer.name)}
+          onConfirm={() => {
+            setPicked(null);
+            onVote(pickedPlayer.id);
+          }}
+          onCancel={() => setPicked(null)}
+        />
+      )}
+    </div>
+  );
+}
+
+/** The second step of any choice that cannot be undone: say it, then do it. */
+export function ConfirmBar({ label, onConfirm, onCancel }) {
   const { t } = useT();
   return (
-    <div className="vote-grid stagger">
-      {players.map((p) => {
-        const out = eliminated.includes(p.id);
-        const self = p.id === youId;
-        return (
-          <button
-            key={p.id}
-            className={`vote-btn${chosenId === p.id ? ' chosen' : ''}`}
-            disabled={disabled || out || self}
-            onClick={() => onVote(p.id)}
-          >
-            <Avatar name={p.name} dim={out} />
-            <span className="grow">{p.name}</span>
-            {self && <span className="tag you">{t('tag.you')}</span>}
-            {out && <span className="tag">{t('tag.out')}</span>}
-          </button>
-        );
-      })}
+    <div className="confirm-bar" role="group" aria-label={label}>
+      <button type="button" className="btn" onClick={onCancel}>
+        {t('common.cancel')}
+      </button>
+      <button type="button" className="btn primary grow" onClick={onConfirm}>
+        {label}
+      </button>
     </div>
   );
 }
