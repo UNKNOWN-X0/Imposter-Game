@@ -15,7 +15,8 @@ import { OnlineLobby} from './screens/Lobby.jsx';
 import { OnlineReveal} from './screens/Reveal.jsx';
 import { OnlineVote} from './screens/Vote.jsx';
 import { describe, keepQuiet, note } from '../../features/errors/index.js';
-import { renderPhase } from '../screens.js';
+import { isPlaying, renderPhase } from '../screens.js';
+import { EndGameButton } from '../../features/lobby/index.js';
 
 /**
  * LAN play: everyone on their own phone, same wifi.
@@ -276,6 +277,9 @@ function Room({ session, onLeave, onExit }) {
         {error && <Banner kind="error">{errorText(error)}</Banner>}
         {hostNote && <Banner>{hostNote}</Banner>}
         {body}
+        {/* The host can stop a game and bring everyone back to this room's
+            table, with the same code and the same seats. */}
+        {isHost && isPlaying(state.phase) && <EndGameButton onEnd={() => act({ type: 'RESET' })} />}
         {state.phase === PHASE.LOBBY && (
           <button className="btn-link" onClick={onLeave}>
             {t('room.leave')}
