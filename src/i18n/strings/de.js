@@ -160,6 +160,8 @@ export default {
   'resume.no': 'Neu anfangen',
 
   'lobby.title': 'Wer spielt mit?',
+  'lobby.edit': 'Bearbeiten',
+  'lobby.done': 'Fertig',
   'lobby.sub':
     'Alle bekommen dasselbe Wort — außer einem von euch. Gebt reihum je einen Hinweis aus einem Wort und findet heraus, wer blufft.',
   'lobby.addPlaceholder': 'Neuer Name…',

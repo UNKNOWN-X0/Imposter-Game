@@ -160,6 +160,8 @@ export default {
   'resume.no': 'Start again',
 
   'lobby.title': 'Who is playing?',
+  'lobby.edit': 'Edit',
+  'lobby.done': 'Done',
   'lobby.sub':
     'Everyone gets the same word — except one of you. Give a one-word clue each, then work out who is faking it.',
   'lobby.addPlaceholder': 'Add a player…',
