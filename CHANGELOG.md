@@ -28,6 +28,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Fixed
 
+- Every control is at least 52px to tap: the pack chips, the pack-icon choices, the fold-out headings, and the info dots (which keep their small look with a larger touch area).
 - How to play, What's new and the error screen sit in the same frame as the game, and open at their top instead of halfway down where the hub was scrolled.
 - On a phone, the top bar of a screen with Back keeps to one row by showing the mark without the name.
 - The selected emblem's ring no longer overlaps the emblem beside it on wide screens; the picker is two even rows of six.

@@ -217,9 +217,10 @@
    taps in the app, and a 24px target is half what a thumb needs. This grows
    the hit area to 44px without moving a pixel of what is drawn. */
 .info-dot::after {
+  /* The real touch target: 52px, centred on the 24px dot. */
   content: '';
   position: absolute;
-  inset: -10px;
+  inset: -14px;
 }
 
 .info-dot:hover,
