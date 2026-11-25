@@ -6,6 +6,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [1.31.0] - 2026-11-25
+
 ### Changed
 
 - Rebuilt the party hub around the tavern table, with visible plank grain, empty seats, and play choices beside it on desktop or below it on phones.
