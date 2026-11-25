@@ -15,7 +15,7 @@
  * The palettes follow their named woods and are contrast-checked:
  * every text token clears 4.5:1 on every surface it can land on, in both
  * modes, in all five woods. `--accent` is the action fill; `--accent-text` is
- * the blue used for text and icons on the warm wood surfaces.
+ * the same hue darkened or lightened for text and icons on the wood surfaces.
  */
 
 :root {
@@ -90,10 +90,10 @@
   --text: #f5efdf;
   --text-dim: #d3c9b2;
   --text-faint: #aea48b;
-  --accent: #91c5ff;
-  --accent-text: #91c5ff;
-  --accent-deep: #132b41;
-  --on-accent: #112b48;
+  --accent: #db9e25;
+  --accent-text: #db9e25;
+  --accent-deep: #302612;
+  --on-accent: #1b1309;
   --crew: #55db8b;
   --crew-deep: #103a26;
   --crew-line: #2f8158;
@@ -117,10 +117,10 @@
   --text: #fbefda;
   --text-dim: #cfbfa6;
   --text-faint: #aea087;
-  --accent: #91c5ff;
-  --accent-text: #91c5ff;
-  --accent-deep: #132b41;
-  --on-accent: #112b48;
+  --accent: #d9ac27;
+  --accent-text: #d9ac27;
+  --accent-deep: #302912;
+  --on-accent: #1b1309;
   --crew: #55db8b;
   --crew-deep: #103a26;
   --crew-line: #2f8158;
@@ -144,10 +144,10 @@
   --text: #f8edda;
   --text-dim: #d5c1a1;
   --text-faint: #b09a77;
-  --accent: #91c5ff;
-  --accent-text: #91c5ff;
-  --accent-deep: #132b41;
-  --on-accent: #112b48;
+  --accent: #e3801d;
+  --accent-text: #e3801d;
+  --accent-deep: #302112;
+  --on-accent: #1b1309;
   --crew: #55db8b;
   --crew-deep: #103a26;
   --crew-line: #2f8158;
@@ -171,10 +171,10 @@
   --text: #f6eae3;
   --text-dim: #d2bdb2;
   --text-faint: #b29a8e;
-  --accent: #91c5ff;
-  --accent-text: #91c5ff;
-  --accent-deep: #132b41;
-  --on-accent: #112b48;
+  --accent: #e0753f;
+  --accent-text: #e0753f;
+  --accent-deep: #301c12;
+  --on-accent: #1b1309;
   --crew: #55db8b;
   --crew-deep: #103a26;
   --crew-line: #2f8158;
@@ -198,10 +198,10 @@
   --text: #f3e9df;
   --text-dim: #cdbbad;
   --text-faint: #aa9787;
-  --accent: #91c5ff;
-  --accent-text: #91c5ff;
-  --accent-deep: #132b41;
-  --on-accent: #112b48;
+  --accent: #c69c3a;
+  --accent-text: #c69c3a;
+  --accent-deep: #302712;
+  --on-accent: #1b1309;
   --crew: #55db8b;
   --crew-deep: #103a26;
   --crew-line: #2f8158;
@@ -225,9 +225,9 @@
   --text: #30291f;
   --text-dim: #584d3d;
   --text-faint: #675b49;
-  --accent: #1d568b;
-  --accent-text: #1d568b;
-  --accent-deep: #d8eaff;
+  --accent: #865a18;
+  --accent-text: #865a18;
+  --accent-deep: #f5e9d6;
   --on-accent: #ffffff;
   --crew: #126a3b;
   --crew-deep: #d9f1e3;
@@ -252,9 +252,9 @@
   --text: #30271d;
   --text-dim: #554735;
   --text-faint: #65543e;
-  --accent: #1d568b;
-  --accent-text: #1d568b;
-  --accent-deep: #d8eaff;
+  --accent: #7d5714;
+  --accent-text: #7d5714;
+  --accent-deep: #f5ead6;
   --on-accent: #ffffff;
   --crew: #126a3b;
   --crew-deep: #d9f1e3;
@@ -279,9 +279,9 @@
   --text: #30261b;
   --text-dim: #534332;
   --text-faint: #624d33;
-  --accent: #1d568b;
-  --accent-text: #1d568b;
-  --accent-deep: #d8eaff;
+  --accent: #884711;
+  --accent-text: #884711;
+  --accent-deep: #f5e4d6;
   --on-accent: #ffffff;
   --crew: #126a3b;
   --crew-deep: #d9f1e3;
@@ -306,9 +306,9 @@
   --text: #33231e;
   --text-dim: #594338;
   --text-faint: #684e43;
-  --accent: #1d568b;
-  --accent-text: #1d568b;
-  --accent-deep: #d8eaff;
+  --accent: #963d1a;
+  --accent-text: #963d1a;
+  --accent-deep: #f5dfd6;
   --on-accent: #ffffff;
   --crew: #126a3b;
   --crew-deep: #d9f1e3;
@@ -333,9 +333,9 @@
   --text: #2d231d;
   --text-dim: #514136;
   --text-faint: #615044;
-  --accent: #1d568b;
-  --accent-text: #1d568b;
-  --accent-deep: #d8eaff;
+  --accent: #765022;
+  --accent-text: #765022;
+  --accent-deep: #f5e7d6;
   --on-accent: #ffffff;
   --crew: #126a3b;
   --crew-deep: #d9f1e3;
@@ -360,10 +360,10 @@
   --text: #fbefda;
   --text-dim: #cfbfa6;
   --text-faint: #aea087;
-  --accent: #91c5ff;
-  --accent-text: #91c5ff;
-  --accent-deep: #132b41;
-  --on-accent: #112b48;
+  --accent: #d9ac27;
+  --accent-text: #d9ac27;
+  --accent-deep: #302912;
+  --on-accent: #1b1309;
   --crew: #55db8b;
   --crew-deep: #103a26;
   --crew-line: #2f8158;
@@ -400,9 +400,9 @@
     --text: #30271d;
     --text-dim: #554735;
     --text-faint: #65543e;
-    --accent: #1d568b;
-    --accent-text: #1d568b;
-    --accent-deep: #d8eaff;
+    --accent: #7d5714;
+    --accent-text: #7d5714;
+    --accent-deep: #f5ead6;
     --on-accent: #ffffff;
     --crew: #126a3b;
     --crew-deep: #d9f1e3;

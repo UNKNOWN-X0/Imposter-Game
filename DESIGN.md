@@ -16,9 +16,9 @@ colors:
   mahogany-light-wood: "#e7c9bb"
   walnut-dark-wood: "#382b24"
   walnut-light-wood: "#ddcbb4"
-  accent-dark: "#91c5ff"
-  accent-light: "#1d568b"
-  on-accent-dark: "#112b48"
+  accent-dark: "#d9ac27"
+  accent-light: "#7d5714"
+  on-accent-dark: "#1b1309"
   on-accent-light: "#ffffff"
   crew-dark: "#55db8b"
   crew-light: "#126a3b"
@@ -86,16 +86,26 @@ The tavern comes from the table, the warm wood palettes, and the party gathered 
 
 **Key Characteristics:**
 - Five wood palettes, each with light and dark mode; Oak is the default.
-- A blue accent identifies actions; green and red identify the two sides.
+- Each wood carries its own warm-metal accent for actions; green and red identify the two sides.
 - Rectangular plank table, long-side seating, covered private card, readable controls.
 - System sans typography with Thai-capable faces; 52px minimum primary tap targets.
 
 ## Colors
 
-Each theme changes the warm wood surfaces; blue remains the action colour, while green and red retain their game meanings. The complete palettes and contrast checks live in `src/ui/styles/tokens.css` and `src/ui/theme/theme.test.js`.
+Each theme changes the warm wood surfaces and brings its own action accent, while green and red retain their game meanings. The complete palettes and contrast checks live in `src/ui/styles/tokens.css` and `src/ui/theme/theme.test.js`.
 
 ### Primary
-- **Cool-blue Action Accent:** fills primary actions and marks actionable words and icons; white text sits on the filled button. It stays distinct from every wood surface.
+- **Wood Accent** (owner, 2026-11-25: the accent follows the theme; the earlier cool blue is retired): each wood has its own warm-metal action colour that fills primary actions and marks actionable words and icons. Dark mode fills a bright metal with dark text; light mode fills the same hue deepened, with white text.
+
+  | Wood | Dark fill | Light fill | Reads as |
+  |---|---|---|---|
+  | Birch | `#db9e25` | `#865a18` | honey amber |
+  | Oak (default) | `#d9ac27` | `#7d5714` | brass |
+  | Teak | `#e3801d` | `#884711` | burnt amber |
+  | Mahogany | `#e0753f` | `#963d1a` | copper |
+  | Walnut | `#c69c3a` | `#765022` | antique bronze |
+
+  Each accent stays distinct from every wood surface and at least 25° of hue away from crew green and imposter red (the copper on Mahogany is the close call); `src/ui/theme/theme.test.js` enforces both.
 
 ### Secondary
 - **Crew Green:** marks the crew side and crew outcomes.
@@ -107,7 +117,7 @@ Each theme changes the warm wood surfaces; blue remains the action colour, while
 - **Table:** use the selected wood palette for the plank boards, grain, and edge. Keep table text or icons contrast-safe; keep controls on their own solid surfaces.
 
 ### Named Rules
-**The Action Is Blue Rule.** Blue marks something to tap or a current interactive state. Green and red communicate sides, never generic emphasis.
+**The Accent Follows The Wood Rule.** The wood's accent marks something to tap or a current interactive state; it is never blue and never borrowed from another wood. Green and red communicate sides, never generic emphasis.
 
 **The Table Holds The Texture Rule.** Visible plank construction belongs to the tabletop. Do not texture the page background or ordinary panels.
 
@@ -151,7 +161,7 @@ Use the mock’s crisp joinery: 2px corners on the tabletop and seats, 8px corne
 
 ### Buttons
 - **Shape:** 8px corners and at least 52px high for primary actions.
-- **Primary:** cool-blue fill with white text; one clear action per decision.
+- **Primary:** the wood accent as fill with `--on-accent` text; one clear action per decision.
 - **Secondary:** solid wood surface with a full theme-line border.
 - **Hover / Focus / Press:** subtle colour change, visible 3px focus outline, and brief press response; state remains clear without motion.
 
@@ -174,7 +184,7 @@ Use the mock’s crisp joinery: 2px corners on the tabletop and seats, 8px corne
 - **Style:** theme-surface background, complete border, concise status or action, and a visible keyboard focus path. Do not use colour as the only success or error signal.
 
 ### Segmented Control
-- **Style:** one compact, fully rounded track; the active option uses the blue action accent. Preserve text labels and visible focus.
+- **Style:** one compact, fully rounded track; the active option uses the wood accent. Preserve text labels and visible focus.
 
 ### Navigation
 - **Style:** utility actions stay secondary to the table and primary party actions. On phones they wrap or stack without clipping; do not reinstate the permanent noticeboard rail.
