@@ -52,7 +52,7 @@ test('every preset deals a real game', () => {
   }
 });
 
-test('the presets are three different evenings, not three names for one', () => {
+test('the presets are different evenings, not several names for one', () => {
   const shapes = PRESETS.map((p) => JSON.stringify(PRESET_KEYS.map((k) => p.config[k])));
   assert.equal(new Set(shapes).size, PRESETS.length, 'two presets are the same settings');
 });
@@ -83,7 +83,9 @@ test('a preset only sets the keys it is allowed to', () => {
 test('nothing and nonsense are not presets', () => {
   assert.equal(presetFor(null), null);
   assert.equal(presetFor({}), null);
-  assert.equal(presetFor(DEFAULT_CONFIG), null, 'the defaults are deliberately not one of them');
+  // The defaults used to be deliberately no preset, which showed a first-time
+  // table "Yours" before it had chosen anything; since #55 they are Standard.
+  assert.equal(presetFor(DEFAULT_CONFIG), 'standard');
 });
 
 test('every preset has a name and a line under it, in every language', () => {
@@ -96,4 +98,9 @@ test('every preset has a name and a line under it, in every language', () => {
       );
     }
   }
+});
+
+test('a table that has changed nothing is on a named preset: Standard', async () => {
+  const { createGame } = await import('../../core/engine.js');
+  assert.equal(presetFor(createGame({ wordLang: 'en' }).config), 'standard');
 });

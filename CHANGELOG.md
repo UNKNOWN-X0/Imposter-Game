@@ -12,6 +12,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Fixed
 
+- A first-time host's settings show **Standard** (the game as it comes: four rounds) instead of "Yours". Standard joins Quick, Careful and Chaos; when the settings match none of them, the line under the row says "Yours".
 - A vote never goes through on one tap. Tapping a player only picks them; a bar that names them ("Vote Nok out", "My vote: Nok", "Nobody goes this round") sends it, or Cancel. On one phone the show-of-hands vote is now made at the table.
 
 ## [1.31.0] - 2026-11-25

@@ -400,6 +400,8 @@ export default {
   'settings.packsAll': 'Alles — {count} Wörter',
   'settings.packsSome': '{count} Wörter ausgewählt',
   'settings.preset': 'Wie wollt ihr spielen?',
+  'settings.preset.standard': 'Standard',
+  'settings.preset.standardHint': 'Vier Runden, eine Karte mit Fastwort, Ansagen und letzter Tipp an, keine Rollen, keine Punkte.',
   'settings.preset.quick': 'Schnell',
   'settings.preset.quickHint': 'Zwei Runden, ein Fastwort, und jeder frühe Ausweg bleibt an.',
   'settings.preset.careful': 'Gründlich',
@@ -407,7 +409,7 @@ export default {
   'settings.preset.chaos': 'Chaos',
   'settings.preset.chaosHint': 'Niemand erfährt etwas, die Zahl der Imposter bleibt verborgen, und es läuft bis es endet.',
   'settings.preset.custom': 'Eure',
-  'settings.preset.customHint': 'Was ihr unten eingestellt habt.',
+  'settings.preset.customHint': 'was ihr unten eingestellt habt.',
   'settings.wordLang': 'Sprache der Wörter',
   'settings.wordLangHint': 'Aus welcher Sprache die geheimen Wörter kommen',
 

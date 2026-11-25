@@ -15,7 +15,7 @@
  * to the table, not to how hard they want the round to be.
  */
 
-import { DECOY, IMPOSTERS_AUTO, IMPOSTERS_RANDOM, ROUNDS_UNLIMITED } from '../../core/engine.js';
+import { DECOY, DEFAULT_CONFIG, IMPOSTERS_AUTO, IMPOSTERS_RANDOM, ROUNDS_UNLIMITED } from '../../core/engine.js';
 
 /** The keys a preset decides. Anything not here is the table's own business. */
 export const PRESET_KEYS = [
@@ -30,6 +30,13 @@ export const PRESET_KEYS = [
 ];
 
 export const PRESETS = [
+  {
+    id: 'standard',
+    // The game as it comes, read from the engine's own defaults rather than
+    // copied, so a first-time table always sees a named preset selected
+    // (owner, 2026-11-25, issue #55: option C).
+    config: Object.fromEntries(PRESET_KEYS.map((key) => [key, DEFAULT_CONFIG[key]])),
+  },
   {
     id: 'quick',
     // Short rounds, a friendly card, and every way of ending it early left

@@ -1,10 +1,11 @@
 /**
- * Three ways a table usually wants to play, as one row of buttons.
+ * The ways a table usually wants to play, as one row of buttons: Standard
+ * (the game as it comes), Quick, Careful and Chaos.
  *
- * It sits above the ten sections rather than replacing them: tapping one
- * sets several of them at once, and changing anything afterwards simply
- * leaves the row showing "Yours". Nothing is hidden and nothing is locked —
- * somebody who wants to read every section still can.
+ * It sits above the sections rather than replacing them: tapping one sets
+ * several of them at once, and changing anything afterwards leaves no chip
+ * pressed and the line under the row saying "Yours". Nothing is hidden and
+ * nothing is locked; somebody who wants to read every section still can.
  */
 
 import { Segmented } from '../../../ui/primitives/index.js';
@@ -29,15 +30,14 @@ export function Presets({ t, config, onChange, disabled }) {
             {t(`settings.preset.${preset.id}`)}
           </button>
         ))}
-        {/* Not a choice anybody makes — it is what the row says when the
-            settings below have stopped matching any of the three. Pressing
-            it would mean nothing, so it does not respond. */}
-        <button aria-pressed={current === null} disabled>
-          {t('settings.preset.custom')}
-        </button>
       </Segmented>
-      <p className="hint">
-        {t(current ? `settings.preset.${current}Hint` : 'settings.preset.customHint')}
+      {/* When the settings below match no preset, the line says so. It was a
+          disabled fifth chip, which said the same thing but wrapped onto a
+          second row in Thai and German once Standard joined the row (#55). */}
+      <p className="hint" aria-live="polite">
+        {current
+          ? t(`settings.preset.${current}Hint`)
+          : `${t('settings.preset.custom')}: ${t('settings.preset.customHint')}`}
       </p>
     </div>
   );
