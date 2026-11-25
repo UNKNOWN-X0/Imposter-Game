@@ -23,6 +23,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Fixed
 
+- The selected emblem's ring no longer overlaps the emblem beside it on wide screens; the picker is two even rows of six.
 - Pack editor warnings named the wrong line once a list had blank lines, notes or skipped lines; they now point at the line you typed.
 
 ## [1.30.0] - 2026-11-20
