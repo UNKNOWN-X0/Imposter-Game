@@ -195,6 +195,18 @@ test('crew and imposter stay legible against their own backgrounds and every woo
   }
 });
 
+test('a skipped line in the pack editor is readable on its red tint', () => {
+  // .pack-findings li.skipped: --text, and the quoted line in --text-faint,
+  // on --imposter-deep.
+  for (const [theme, mode] of ALL) {
+    const p = palette(theme, mode);
+    for (const ink of ['--text', '--text-faint']) {
+      const ratio = contrast(p[ink], p['--imposter-deep']);
+      assert.ok(ratio >= 4.5, `${theme}/${mode}: ${ink} on --imposter-deep is ${ratio}:1`);
+    }
+  }
+});
+
 test('light really is light and dark really is dark', () => {
   for (const theme of THEMES.map((t) => t.id)) {
     assert.ok(

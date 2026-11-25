@@ -31,12 +31,36 @@
   flex-wrap: wrap;
 }
 
-.skipped {
+/* Every finding about the pasted words, in line order. A long list scrolls
+   inside itself rather than pushing Save off the screen. */
+.pack-findings {
   margin: 2px 0 0;
-  padding-left: 18px;
+  padding: 0;
+  list-style: none;
+  max-height: 14em;
+  overflow-y: auto;
   font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+
+.pack-findings li {
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+
+.pack-findings li + li { margin-top: 4px; }
+
+.pack-findings li.skipped {
+  background: var(--imposter-deep);
+  color: var(--text);
+}
+
+.pack-finding-line {
+  display: block;
   color: var(--text-faint);
-  line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
 .emoji-grid {

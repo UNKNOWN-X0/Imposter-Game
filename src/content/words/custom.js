@@ -74,11 +74,15 @@ const clean = (text) =>
  *
  * Returns the pairs it understood and a line-by-line account of what it
  * skipped, so the editor can show somebody exactly which line was wrong
- * instead of refusing the whole paste.
+ * instead of refusing the whole paste. `notes` lists the near misses it had
+ * to drop while keeping the word, and `lines[i]` is the line `pairs[i]` came
+ * from, so a warning about a pair can name the line somebody actually typed.
  */
 export function parsePairs(text) {
   const pairs = [];
   const skipped = [];
+  const notes = [];
+  const lines = [];
   const seen = new Set();
 
   String(text ?? '')
@@ -110,18 +114,22 @@ export function parsePairs(text) {
       }
 
       seen.add(word.toLowerCase());
-      pairs.push({
-        word,
-        // A near miss equal to the word is not a near miss, and one that is
-        // too long is somebody's sentence.
-        decoy:
-          decoy && decoy.toLowerCase() !== word.toLowerCase() && decoy.length <= PACK_LIMITS.word
-            ? decoy
-            : null,
-      });
+      // A near miss equal to the word is not a near miss, and one that is
+      // too long is somebody's sentence. The word stays; the editor says why
+      // its near miss did not.
+      let kept = decoy || null;
+      if (kept && kept.toLowerCase() === word.toLowerCase()) {
+        notes.push({ at, line, word, decoy: kept, why: 'decoyIsTheWord' });
+        kept = null;
+      } else if (kept && kept.length > PACK_LIMITS.word) {
+        notes.push({ at, line, word, decoy: kept, why: 'decoyTooLong' });
+        kept = null;
+      }
+      pairs.push({ word, decoy: kept });
+      lines.push(at);
     });
 
-  return { pairs, skipped };
+  return { pairs, skipped, notes, lines };
 }
 
 /** Turns pairs back into the text somebody pasted, for editing a pack again. */
