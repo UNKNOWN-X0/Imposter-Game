@@ -498,10 +498,10 @@
     "semantic_hash": "e4272146cefc46be8ddec0eea4cd238b"
   },
   "src/features/round/Clues.jsx": {
-    "mtime": 1790610246.0,
-    "seen": 1792796290.419639,
-    "ast_hash": "1856845dcc5ea16ef7a4a2b0e7a66d43",
-    "semantic_hash": "1856845dcc5ea16ef7a4a2b0e7a66d43"
+    "mtime": 1795644465.5715103,
+    "seen": 1795644684.5056021,
+    "ast_hash": "90b5a3de428b8212f4fc35ec1f17fb8e",
+    "semantic_hash": ""
   },
   "src/features/round/PhaseStepper.jsx": {
     "mtime": 1790610246.0,
@@ -588,15 +588,15 @@
     "semantic_hash": "b30997083c1e0282003e501ec0b6e9a0"
   },
   "src/i18n/strings/de.js": {
-    "mtime": 1795643859.9965677,
-    "seen": 1795644104.649476,
-    "ast_hash": "dd6543c08132261c58731f119a7f6344",
+    "mtime": 1795644465.5718374,
+    "seen": 1795644684.5056179,
+    "ast_hash": "3485ec3ca49f8c4ad388a901772ac9b3",
     "semantic_hash": ""
   },
   "src/i18n/strings/en.js": {
-    "mtime": 1795643859.996922,
-    "seen": 1795644104.649477,
-    "ast_hash": "4a1c6f361effe3e967bba4fd7ab5c3fe",
+    "mtime": 1795644465.5721512,
+    "seen": 1795644684.505619,
+    "ast_hash": "14aa4f1d7ec21fede7365d2b84cc32bc",
     "semantic_hash": ""
   },
   "src/i18n/strings/index.js": {
@@ -606,9 +606,9 @@
     "semantic_hash": "52c5357bda9630b19ae1ec9857ed9ada"
   },
   "src/i18n/strings/th.js": {
-    "mtime": 1795643859.9976196,
-    "seen": 1795644104.649478,
-    "ast_hash": "9a82adc3878341b84b83f8b0d365eaa1",
+    "mtime": 1795644465.5724747,
+    "seen": 1795644684.50562,
+    "ast_hash": "58fd98c64fd7de244a98578ae83a5e25",
     "semantic_hash": ""
   },
   "src/i18n/translate.js": {
@@ -660,9 +660,9 @@
     "semantic_hash": "032e860edba763dff5dec80a9f526ba9"
   },
   "src/modes/local/screens/Talking.jsx": {
-    "mtime": 1795637333.1834116,
-    "seen": 1795640803.455581,
-    "ast_hash": "0150164e6cda511e8b2f2f3aa9e2b1c2",
+    "mtime": 1795644465.572791,
+    "seen": 1795644684.5056279,
+    "ast_hash": "7a0e6b7d5c94fa0eb12678363af7af13",
     "semantic_hash": ""
   },
   "src/modes/local/screens/Voting.jsx": {
@@ -672,20 +672,20 @@
     "semantic_hash": ""
   },
   "src/modes/local/storage.js": {
-    "mtime": 1795603547.8233564,
-    "seen": 1795603837.212887,
-    "ast_hash": "942f2633a8b7996034752371c8b27e9e",
+    "mtime": 1795644465.573147,
+    "seen": 1795644684.50563,
+    "ast_hash": "afc3db8a39a1ccc25a299698f2bb82ae",
     "semantic_hash": ""
   },
   "src/modes/local/storage.test.js": {
-    "mtime": 1795599529.3999155,
-    "seen": 1795600320.814656,
-    "ast_hash": "1dca19589a2b5e5fa2a783331d252465",
+    "mtime": 1795644466.5364094,
+    "seen": 1795644684.505631,
+    "ast_hash": "ad994e22f06651460bf43bffb56fafe0",
     "semantic_hash": ""
   },
   "src/modes/online/JoinScreen.jsx": {
-    "mtime": 1795643916.4799328,
-    "seen": 1795644104.6494899,
+    "mtime": 1795644347.4064274,
+    "seen": 1795644684.505633,
     "ast_hash": "9a9b861b86df8254a099ce87f208317e",
     "semantic_hash": ""
   },
@@ -984,9 +984,9 @@
     "semantic_hash": "058dc3baf2ff63876155bd9a6ba85bf6"
   },
   "CHANGELOG.md": {
-    "mtime": 1795643916.5274484,
-    "seen": 1795644104.649555,
-    "ast_hash": "04b0e00a143d4f58fb03ccba607f2ed3",
+    "mtime": 1795644497.6041121,
+    "seen": 1795644684.5056992,
+    "ast_hash": "a4a97819f8206ebd781b6ea839a002e3",
     "semantic_hash": ""
   },
   "PLAYTEST.md": {
@@ -1110,9 +1110,9 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1795643916.5277815,
-    "seen": 1795644104.6495569,
-    "ast_hash": "043515f04642488e046b3a62f3dc26d0",
+    "mtime": 1795644497.6043787,
+    "seen": 1795644684.505701,
+    "ast_hash": "5fc42e1d8569b51048ababa0c2ef58f4",
     "semantic_hash": ""
   },
   "PRODUCT.md": {
@@ -1200,8 +1200,8 @@
     "semantic_hash": ""
   },
   "note.md": {
-    "mtime": 1795643860.012976,
-    "seen": 1795644104.649566,
+    "mtime": 1795644465.5869536,
+    "seen": 1795644684.5057101,
     "ast_hash": "218dfd05798bf35afdc1b9bf2745520c",
     "semantic_hash": ""
   },
@@ -1278,8 +1278,8 @@
     "semantic_hash": ""
   },
   "src/testing/browser/every-room.mjs": {
-    "mtime": 1795643859.9981837,
-    "seen": 1795644104.649506,
+    "mtime": 1795644347.4070473,
+    "seen": 1795644684.5056489,
     "ast_hash": "7e3317a342779be64050c0063db79649",
     "semantic_hash": ""
   },

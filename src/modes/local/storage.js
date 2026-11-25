@@ -23,6 +23,7 @@ export const RECENT_WORDS_KEY = 'imposter.recentWords';
 export const SCORES_KEY = 'imposter.scores';
 export const CONFIG_KEY = 'imposter.config';
 export const GAME_KEY = 'imposter.game';
+export const CLUE_TIMER_KEY = 'imposter.clueTimer';
 
 /**
  * Recent words survive a reload, so closing the tab and coming back does not
@@ -128,6 +129,30 @@ export {
   saveEmblems,
   saveRoster,
 } from '../../party/storage.js';
+
+/**
+ * Seconds each speaker gets on this phone's clue timer: 0 (off), 30 or 60.
+ * A preference of the phone, not a rule of the game, so it is not in the
+ * game state and never reaches a room (#57).
+ */
+export const CLUE_TIMER_CHOICES = [0, 30, 60];
+
+export function loadClueTimer() {
+  try {
+    const n = Number(localStorage.getItem(CLUE_TIMER_KEY));
+    return CLUE_TIMER_CHOICES.includes(n) ? n : 0;
+  } catch {
+    return 0;
+  }
+}
+
+export function saveClueTimer(seconds) {
+  try {
+    localStorage.setItem(CLUE_TIMER_KEY, String(seconds));
+  } catch {
+    /* private browsing — no harm done */
+  }
+}
 
 /* ------------------------------------------------------------------ *
  * The game in progress

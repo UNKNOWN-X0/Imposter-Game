@@ -19,16 +19,19 @@ import { createGame, reduce, PHASE } from '../../core/engine.js';
 import { VERSION } from '../../content/history/changelog.js';
 import '../../testing/ready.js';
 import {
+  CLUE_TIMER_KEY,
   EMBLEMS_KEY,
   GAME_KEY,
   ROSTER_KEY,
   clearGame,
   isResumable,
+  loadClueTimer,
   loadEmblems,
   loadGame,
   loadRecentWords,
   loadRoster,
   loadScores,
+  saveClueTimer,
   saveEmblems,
   saveGame,
   saveRecentWords,
@@ -323,4 +326,16 @@ test('incomplete saved rounds are rejected and removed before the UI resumes the
       assert.equal(store.getItem(GAME_KEY), null, 'invalid round is removed');
     });
   }
+});
+
+test('the clue timer is a phone preference: off, 30 or 60, nothing else', () => {
+  const store = fakeStorage();
+  withStorage(store, () => {
+    assert.equal(loadClueTimer(), 0, 'off until somebody turns it on');
+    saveClueTimer(30);
+    assert.equal(loadClueTimer(), 30);
+    store.setItem(CLUE_TIMER_KEY, '45');
+    assert.equal(loadClueTimer(), 0, 'a value it never offers is off');
+  });
+  withStorage(lockedStorage, () => assert.equal(loadClueTimer(), 0));
 });

@@ -141,10 +141,10 @@ export function ClueInput({ onSubmit, disabled }) {
 }
 
 /** A plain clock for the talking phase. */
-export function Timer({ seconds = 90 }) {
+export function Timer({ seconds = 90, autoStart = false, label }) {
   const { t } = useT();
   const [left, setLeft] = useState(seconds);
-  const [running, setRunning] = useState(false);
+  const [running, setRunning] = useState(autoStart);
 
   useEffect(() => {
     if (!running || left <= 0) return undefined;
@@ -157,6 +157,7 @@ export function Timer({ seconds = 90 }) {
 
   return (
     <div className="card center stack tight">
+      {label && <div className="eyebrow">{label}</div>}
       <div className={`timer${left === 0 ? ' out' : left <= 10 && running ? ' low' : ''}`}>
         {mm}
         {/* A clock that is running should look like it. The colon blinks on

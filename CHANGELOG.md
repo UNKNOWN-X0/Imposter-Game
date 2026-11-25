@@ -12,6 +12,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Fixed
 
+- On one phone the clue screen no longer says earlier clues are "still on the table" (they were spoken, not written); it shows the speaking order once; and it has an optional timer per speaker (Off, 30 s, 60 s), remembered on the phone, which "Next" restarts.
 - Joining or starting a room from a phone that already has people seated: tap **This is me** to fill in your name and emblem instead of typing. The join screen now sits in the same frame as the other screens.
 - A game's lobby leads with the game and **Deal**. The people seated at the hub show as a strip of emblems with **Edit**; the table and the add form open from there, or by themselves while too few are seated.
 - A first visit no longer opens Imposter's rules over the hub; they show the first time you open Imposter.

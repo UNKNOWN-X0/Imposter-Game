@@ -7,7 +7,9 @@ import { useEffect, useState } from 'react';
 import { alivePlayers, isImposter, playerById, speakingOrder } from '../../../core/engine.js';
 import { useT } from '../../../i18n/index.jsx';
 import { TableScene } from '../../../ui/table/TableScene.jsx';
-import { CallButton, CallPanel, NotTheImposter, PassGate, Timer, TurnOrder, VoteGrid, roundLabel } from '../../../features/round/index.js';
+import { CallButton, CallPanel, NotTheImposter, PassGate, Timer, VoteGrid, roundLabel } from '../../../features/round/index.js';
+import { Segmented } from '../../../ui/primitives/index.js';
+import { CLUE_TIMER_CHOICES, loadClueTimer, saveClueTimer } from '../storage.js';
 import { PackChip } from '../../../features/packs/index.js';
 import { usePrivacyGate } from '../usePrivacyGate.js';
 
@@ -27,6 +29,9 @@ export function Talking({ state, run }) {
   const current = order[Math.min(turn, order.length - 1)];
   const last = turn >= order.length - 1;
   const nextUp = playerById(state, order[turn + 1]);
+  const speaker = playerById(state, current);
+  // Seconds per speaker on this phone; "Next" restarts the clock (#57).
+  const [perSpeaker, setPerSpeaker] = useState(loadClueTimer);
 
   if (calling === 'who') {
     return (
@@ -70,7 +75,7 @@ export function Talking({ state, run }) {
           />
         </div>
         <h1 className="title">{t('clues.title')}</h1>
-        <p className="subtitle">{state.round > 1 ? t('clues.oneMore') : t('clues.sub')}</p>
+        <p className="subtitle">{state.round > 1 ? t('clues.oneMoreSpoken') : t('clues.sub')}</p>
       </div>
 
       <TableScene
@@ -84,12 +89,34 @@ export function Talking({ state, run }) {
         chairs={state.players.length}
       />
 
-      <div className="card stack tight">
-        <div className="eyebrow">{t('clues.order')}</div>
-        <TurnOrder order={order} players={state.players} current={current} done={order.slice(0, turn)} />
+      {/* The table marks who is speaking and the button names who is next,
+          so the order is not spelled out a second time (#57). */}
+      <div className="stack tight">
+        <span className="eyebrow" id="clue-timer-label">{t('clues.timer')}</span>
+        <Segmented>
+          {CLUE_TIMER_CHOICES.map((n) => (
+            <button
+              key={n}
+              aria-pressed={perSpeaker === n}
+              aria-describedby="clue-timer-label"
+              onClick={() => {
+                setPerSpeaker(n);
+                saveClueTimer(n);
+              }}
+            >
+              {n ? t('clues.timerSeconds', { count: n }) : t('clues.timerOff')}
+            </button>
+          ))}
+        </Segmented>
       </div>
-
-      <Timer seconds={90} />
+      {perSpeaker > 0 && speaker && (
+        <Timer
+          key={`${state.round}-${turn}-${perSpeaker}`}
+          seconds={perSpeaker}
+          autoStart
+          label={t('clues.timerFor', { name: speaker.name })}
+        />
+      )}
 
       {/* Until the last clue, the big button moves the turn on; the vote is
           still one tap away for a table that is done early. */}
