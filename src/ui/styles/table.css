@@ -351,3 +351,39 @@ button.ts-seat-body:focus-visible {
 }
 
 .add-player .row > .input { min-width: 0; flex: 1 1 8ch; }
+
+/* The party in a game's lobby, folded to a strip (#54). */
+.party-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.party-strip-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 44px;
+}
+
+.party-strip-head h2 { margin: 0; }
+
+.party-strip-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.party-strip-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  min-width: 0;
+}
+
+.party-strip-list li span { overflow-wrap: anywhere; }

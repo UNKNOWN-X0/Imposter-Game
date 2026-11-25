@@ -157,6 +157,8 @@ export default {
   'resume.no': 'เริ่มใหม่',
 
   'lobby.title': 'ใครเล่นบ้าง?',
+  'lobby.edit': 'แก้ไข',
+  'lobby.done': 'เสร็จ',
   'lobby.sub':
     'ทุกคนได้คำเดียวกัน ยกเว้นหนึ่งคน ผลัดกันใบ้คนละคำ แล้วหาให้เจอว่าใครโกหก',
   'lobby.addPlaceholder': 'เพิ่มผู้เล่น…',
