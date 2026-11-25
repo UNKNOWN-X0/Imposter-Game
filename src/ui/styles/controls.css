@@ -27,7 +27,7 @@
 .btn {
   min-height: var(--tap);
   padding: 0 20px;
-  border-radius: 999px;
+  border-radius: var(--radius);
   border: 1px solid transparent;
   background: var(--surface-2);
   font-weight: 700;
@@ -75,12 +75,16 @@
 }
 
 .btn.sm {
-  min-height: 38px;
+  min-height: var(--tap);
   padding: 0 14px;
   font-size: 14px;
 }
 
 .btn-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
   background: none;
   border: 0;
   color: var(--text-faint);

@@ -61,7 +61,7 @@
   font-weight: 700;
   font-size: 14px;
   color: var(--text-dim);
-  min-height: 38px;
+  min-height: var(--tap);
   transition:
     color var(--motion-state) var(--ease-standard),
     transform var(--motion-press) var(--ease-standard);

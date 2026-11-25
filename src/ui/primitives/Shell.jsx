@@ -11,20 +11,22 @@ import { ThemePicker } from '../theme/ThemePicker.jsx';
 
 export function Shell({ children, onBack, code, right, phase }) {
   const { t } = useT();
+  const gameFrame = Boolean(phase || code);
   return (
-    <div className="shell">
-      <div className="topbar">
-        {onBack ? (
-          <button className="btn ghost sm" onClick={onBack}>
-            <ChevronLeftIcon size={17} /> {t('common.back')}
-          </button>
-        ) : (
+    <div className={`shell${gameFrame ? ' game-shell' : ''}`}>
+      <div className={`topbar${gameFrame ? ' game-topbar' : ''}`}>
+        {(!onBack || gameFrame) && (
           <div className="brand">
             <BrandMark size={30} />
             {/* The name is a span so the narrowest phones can drop it and
                 keep the mark, which is what makes room for the controls. */}
             <span className="brand-name">{t('app.name')}</span>
           </div>
+        )}
+        {onBack && (
+          <button className="btn ghost sm" onClick={onBack}>
+            <ChevronLeftIcon size={17} /> {t('common.back')}
+          </button>
         )}
         <div className="spacer" />
         {code ? <RoomCode code={code} /> : null}
@@ -35,8 +37,12 @@ export function Shell({ children, onBack, code, right, phase }) {
           </>
         )}
       </div>
-      {phase ? <PhaseStepper phase={phase} /> : null}
-      {children}
+      {gameFrame ? (
+        <main className="game-column">
+          {phase ? <PhaseStepper phase={phase} /> : null}
+          {children}
+        </main>
+      ) : children}
     </div>
   );
 }

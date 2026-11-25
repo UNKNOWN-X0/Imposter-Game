@@ -71,36 +71,6 @@
 }
 
 /* ------------------------------------------------------------------ *
- * Language picker
- * ------------------------------------------------------------------ */
-
-.langpicker {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 40px;
-  padding: 0 12px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-dim);
-  cursor: pointer;
-}
-
-.langpicker select {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  cursor: pointer;
-}
-
-/* ------------------------------------------------------------------ *
  * Phase stepper
  * ------------------------------------------------------------------ */
 
