@@ -4,14 +4,14 @@ circle.bd-one @ -312,-126 634×634
 circle.bd-two @ 48,274 718×718
 div.shell.game-shell @ 0,0 390×844
 div.topbar.game-topbar @ 16,16 358×66
-div.brand @ 16,28 120×30
+div.brand @ 16,28 184×30
 svg.brandmark.alive @ 16,28 30×30
 g.bm-eyes @ 24,42 14×4
 circle.bm-pupil @ 24,42 4×4
 circle.bm-pupil @ 34,42 4×4
 rect.bm-glint @ 2,38 8×12
-span.brand-name @ 54,28 82×30
-div.spacer @ 148,42 84×0
+span.brand-name @ 54,28 146×30
+div.spacer @ 212,42 20×0
 div.pickerwrap @ 244,16 52×52
 button.iconpicker @ 244,16 52×52
 svg.icon @ 262,34 18×18

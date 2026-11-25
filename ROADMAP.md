@@ -10,26 +10,26 @@ Customization belongs to the platform. Players should be able to create, edit, i
 
 ## Now
 
-**Redesign the hub, then bring every Imposter screen into the same design** (owner, 2026-11-20; tracked in [#2](https://github.com/UNKNOWN-X0/Imposter-Game/issues/2)). The current hub shipped as an interim step in 1.30.0. The hub and game screens are now being replaced by the selected tavern-table system. No new game is built until the redesign is done.
+**Redesign the hub, then bring every Imposter screen into the same design** (owner, 2026-11-20; tracked in [#2](https://github.com/UNKNOWN-X0/The-Long-Table/issues/2)). The current hub shipped as an interim step in 1.30.0. The hub and game screens are now being replaced by the selected tavern-table system. No new game is built until the redesign is done.
 
-**Selected direction (owner, 2026-11-21): The Joiner’s Table**, refined 2026-11-25 to the **Feast table** (top-down, lamplit, chairs on both long sides, upright on phones) with **emblems players pick** as their avatars ([#28](https://github.com/UNKNOWN-X0/Imposter-Game/issues/28)). The five wood themes are Birch, Oak (default), Teak, Mahogany, and Walnut, each in light and dark mode, with an action accent that follows the wood. `DESIGN.md` is the current description.
+**Selected direction (owner, 2026-11-21): The Joiner’s Table**, refined 2026-11-25 to the **Feast table** (top-down, lamplit, chairs on both long sides, upright on phones) with **emblems players pick** as their avatars ([#28](https://github.com/UNKNOWN-X0/The-Long-Table/issues/28)). The five wood themes are Birch, Oak (default), Teak, Mahogany, and Walnut, each in light and dark mode, with an action accent that follows the wood. `DESIGN.md` is the current description.
 
-**Progress (2026-11-25):** every design issue below is merged, as are the party roster at the hub ([#37](https://github.com/UNKNOWN-X0/Imposter-Game/issues/37)), the AI prompt for packs ([#38](https://github.com/UNKNOWN-X0/Imposter-Game/issues/38)), Lucide icons ([#39](https://github.com/UNKNOWN-X0/Imposter-Game/issues/39)) and the room paths ([#6](https://github.com/UNKNOWN-X0/Imposter-Game/issues/6)). The automated review for [#10](https://github.com/UNKNOWN-X0/Imposter-Game/issues/10) passed. Left: the owner's playtest with `PLAYTEST.md` on phones, then the release ([#21](https://github.com/UNKNOWN-X0/Imposter-Game/issues/21)).
+**Progress (2026-11-25):** every design issue below is merged, as are the party roster at the hub ([#37](https://github.com/UNKNOWN-X0/The-Long-Table/issues/37)), the AI prompt for packs ([#38](https://github.com/UNKNOWN-X0/The-Long-Table/issues/38)), Lucide icons ([#39](https://github.com/UNKNOWN-X0/The-Long-Table/issues/39)) and the room paths ([#6](https://github.com/UNKNOWN-X0/The-Long-Table/issues/6)). The automated review for [#10](https://github.com/UNKNOWN-X0/The-Long-Table/issues/10) passed. Left: the owner's playtest with `PLAYTEST.md` on phones, then the release ([#21](https://github.com/UNKNOWN-X0/The-Long-Table/issues/21)).
 
-*Done when* the hub and every Imposter screen share one design system in `DESIGN.md`, the wood themes pass the theme test, and the redesign is released ([#21](https://github.com/UNKNOWN-X0/Imposter-Game/issues/21)).
+*Done when* the hub and every Imposter screen share one design system in `DESIGN.md`, the wood themes pass the theme test, and the redesign is released ([#21](https://github.com/UNKNOWN-X0/The-Long-Table/issues/21)).
 
 ### Delivery plan
 
 Work the issues in this order; each one's blocked-by links on GitHub enforce it. How to pick up an issue is in [AGENTS.md](AGENTS.md#redesign-issues).
 
-1. [#13](https://github.com/UNKNOWN-X0/Imposter-Game/issues/13) Choose the tavern-table direction. **Done: the owner selected Joinery.**
-2. [#14](https://github.com/UNKNOWN-X0/Imposter-Game/issues/14) Wood themes · [#15](https://github.com/UNKNOWN-X0/Imposter-Game/issues/15) One design system for the hub and the game
-3. [#16](https://github.com/UNKNOWN-X0/Imposter-Game/issues/16) Rebuild the hub
-4. [#17](https://github.com/UNKNOWN-X0/Imposter-Game/issues/17) Shared game frame, then the screens: [#7](https://github.com/UNKNOWN-X0/Imposter-Game/issues/7) lobby and settings · [#8](https://github.com/UNKNOWN-X0/Imposter-Game/issues/8) pack library screens · [#22](https://github.com/UNKNOWN-X0/Imposter-Game/issues/22) passing the phone and the private reveal · [#18](https://github.com/UNKNOWN-X0/Imposter-Game/issues/18) clues, voting, result, endings · [#19](https://github.com/UNKNOWN-X0/Imposter-Game/issues/19) room screens · [#20](https://github.com/UNKNOWN-X0/Imposter-Game/issues/20) rules, what's new, errors, crash
-5. [#9](https://github.com/UNKNOWN-X0/Imposter-Game/issues/9) Motion and [#10](https://github.com/UNKNOWN-X0/Imposter-Game/issues/10) accessibility, languages, recovery: each screen issue does its own part; [#10](https://github.com/UNKNOWN-X0/Imposter-Game/issues/10) ends with the full review and a playtest
-6. [#21](https://github.com/UNKNOWN-X0/Imposter-Game/issues/21) Release as 1.31.0
+1. [#13](https://github.com/UNKNOWN-X0/The-Long-Table/issues/13) Choose the tavern-table direction. **Done: the owner selected Joinery.**
+2. [#14](https://github.com/UNKNOWN-X0/The-Long-Table/issues/14) Wood themes · [#15](https://github.com/UNKNOWN-X0/The-Long-Table/issues/15) One design system for the hub and the game
+3. [#16](https://github.com/UNKNOWN-X0/The-Long-Table/issues/16) Rebuild the hub
+4. [#17](https://github.com/UNKNOWN-X0/The-Long-Table/issues/17) Shared game frame, then the screens: [#7](https://github.com/UNKNOWN-X0/The-Long-Table/issues/7) lobby and settings · [#8](https://github.com/UNKNOWN-X0/The-Long-Table/issues/8) pack library screens · [#22](https://github.com/UNKNOWN-X0/The-Long-Table/issues/22) passing the phone and the private reveal · [#18](https://github.com/UNKNOWN-X0/The-Long-Table/issues/18) clues, voting, result, endings · [#19](https://github.com/UNKNOWN-X0/The-Long-Table/issues/19) room screens · [#20](https://github.com/UNKNOWN-X0/The-Long-Table/issues/20) rules, what's new, errors, crash
+5. [#9](https://github.com/UNKNOWN-X0/The-Long-Table/issues/9) Motion and [#10](https://github.com/UNKNOWN-X0/The-Long-Table/issues/10) accessibility, languages, recovery: each screen issue does its own part; [#10](https://github.com/UNKNOWN-X0/The-Long-Table/issues/10) ends with the full review and a playtest
+6. [#21](https://github.com/UNKNOWN-X0/The-Long-Table/issues/21) Release as 1.31.0
 
-[#6](https://github.com/UNKNOWN-X0/Imposter-Game/issues/6) keeps the host, join, and return behaviour inside the new design.
+[#6](https://github.com/UNKNOWN-X0/The-Long-Table/issues/6) keeps the host, join, and return behaviour inside the new design.
 
 ### UX principles
 
@@ -42,7 +42,7 @@ Work the issues in this order; each one's blocked-by links on GitHub enforce it.
 
 ## Later
 
-**Quick Clue** ([#11](https://github.com/UNKNOWN-X0/Imposter-Game/issues/11)) remains deferred until the Imposter redesign ships.
+**Quick Clue** ([#11](https://github.com/UNKNOWN-X0/The-Long-Table/issues/11)) remains deferred until the Imposter redesign ships.
 
 **Shared minigames site and game roster** (stated 2026-11-16). Build around a party lobby and shared platform services while each game owns its rules, content schema, and play screens. Prove the boundary with the first new game before extracting a generic game-plugin system.
 
@@ -55,7 +55,7 @@ Working titles and mechanics for discussion; select and name games deliberately 
 | Working title | What the group does | Players / play mode | Custom pack shape | Fit and priority |
 |---|---|---|---|---|
 | **Imposter** (existing) | Everyone except the imposters gets the secret word; the group gives clues and votes. | 4–10; shared phone or room | Word + decoy + optional hint | Anchor game and compatibility test for the shared platform. |
-| **Quick Clue** | Players give short clues to help one guesser identify a secret word; repeated clues can cancel before the guess. | 3–8; shared phone or room | A list of target words | Recommended second game: a small cooperative rules core and a different pack schema ([issue #11](https://github.com/UNKNOWN-X0/Imposter-Game/issues/11)). |
+| **Quick Clue** | Players give short clues to help one guesser identify a secret word; repeated clues can cancel before the guess. | 3–8; shared phone or room | A list of target words | Recommended second game: a small cooperative rules core and a different pack schema ([issue #11](https://github.com/UNKNOWN-X0/The-Long-Table/issues/11)). |
 | **Forbidden Clues** | Teams race to explain a target without saying its restricted clue words. | 4+; shared phone or room | Target word + forbidden words | A richer content-entry shape and team play; proposed third game. |
 | **Word Grid** | A clue-giver links visible words with a clue and count; teammates choose while avoiding traps. | 4–10; shared phone or room | Single-word deck; game generates board and hidden key | Tests role secrecy and a larger step in game flow. |
 | **Charade Relay** | Players act or draw prompts while a team guesses against a timer. | 3+; best in person, optionally room | Prompts with optional category and difficulty | Adds nonverbal play and content beyond word lists. |

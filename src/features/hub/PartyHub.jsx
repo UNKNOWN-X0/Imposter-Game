@@ -106,7 +106,7 @@ export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews
               <div className="hub-game-row">
                 <BrandMark size={44} animated={false} />
                 <div>
-                  <h3>{t('app.name')}</h3>
+                  <h3>{t('game.imposter.name')}</h3>
                   <p className="hub-supporting">{t('hub.gameDescription')}</p>
                 </div>
               </div>
