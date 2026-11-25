@@ -143,3 +143,12 @@ Nothing in `core` imports React; nothing in `ui` imports the engine; both modes 
 | [ROADMAP.md](ROADMAP.md) | Where the game is going |
 | [CHANGELOG.md](CHANGELOG.md) | Release history |
 | [PLAYTEST.md](PLAYTEST.md) | A script for checking that a new host can run a game without coaching |
+| [NOTICE.md](NOTICE.md) | Third-party work the game ships (the Lucide icons) and its licence |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to report a problem or send a change |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | How people treat each other here |
+| [SECURITY.md](SECURITY.md) | How to report a way to see someone else's card, privately |
+| [LICENSE](LICENSE) · [LICENSE-CONTENT.md](LICENSE-CONTENT.md) | Code under MIT; the built-in word packs under CC BY-NC-SA 4.0 |
+
+## License
+
+The code is under the [MIT License](LICENSE). The built-in word packs are under [CC BY-NC-SA 4.0](LICENSE-CONTENT.md). Third-party icons keep their own licence ([NOTICE.md](NOTICE.md)).

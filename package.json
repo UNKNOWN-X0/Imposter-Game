@@ -1,6 +1,7 @@
 {
   "name": "imposter-game",
   "private": true,
+  "license": "SEE LICENSE IN LICENSE-CONTENT.md",
   "version": "1.31.0",
   "type": "module",
   "description": "A word-imposter party game in English, Thai and German. Pass one phone around, or play from everyone’s phone over the same wifi.",

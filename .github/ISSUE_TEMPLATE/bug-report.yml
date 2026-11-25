@@ -1,0 +1,37 @@
+name: Bug report
+description: Something in the game is broken or looks wrong.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: mode
+    attributes:
+      label: How were you playing
+      options: ["One phone (pass and play)", "In a room (own phones)", "Not in a game (hub, packs, rules)"]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected and what you saw. A screenshot helps, but please cover anyone's card.
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Error report
+      description: If the game showed "The game stopped", paste the text from "Copy the report". It never contains the word or anyone's role.
+      render: text
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options: ["Safari (iPhone or iPad)", "Safari (Mac)", "Chrome (Android)", "Chrome (desktop)", "Firefox", "Edge", "Other"]
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options: ["English", "ไทย", "Deutsch"]
