@@ -11,13 +11,13 @@
 /** What the reader can choose. `system` resolves to one of the other two. */
 export const MODES = ['system', 'light', 'dark'];
 
-/** `dark` and `light` are [wood surface, action accent] — the theme in two colours. */
+/** `dark` and `light` are [wood surface, the wood's own action accent] — the theme in two colours. */
 export const THEMES = [
-  { id: 'birch', dark: ['#383429', '#91c5ff'], light: ['#e9dfca', '#1d568b'] },
-  { id: 'oak', dark: ['#373126', '#91c5ff'], light: ['#e7d6b7', '#1d568b'] },
-  { id: 'teak', dark: ['#3d2c1c', '#91c5ff'], light: ['#e7ca99', '#1d568b'] },
-  { id: 'mahogany', dark: ['#3a2822', '#91c5ff'], light: ['#e7c9bb', '#1d568b'] },
-  { id: 'walnut', dark: ['#382b24', '#91c5ff'], light: ['#ddcbb4', '#1d568b'] },
+  { id: 'birch', dark: ['#383429', '#db9e25'], light: ['#e9dfca', '#865a18'] },
+  { id: 'oak', dark: ['#373126', '#d9ac27'], light: ['#e7d6b7', '#7d5714'] },
+  { id: 'teak', dark: ['#3d2c1c', '#e3801d'], light: ['#e7ca99', '#884711'] },
+  { id: 'mahogany', dark: ['#3a2822', '#e0753f'], light: ['#e7c9bb', '#963d1a'] },
+  { id: 'walnut', dark: ['#382b24', '#c69c3a'], light: ['#ddcbb4', '#765022'] },
 ];
 
 export const DEFAULT_THEME = 'oak';

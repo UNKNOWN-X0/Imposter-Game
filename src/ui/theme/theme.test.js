@@ -133,7 +133,21 @@ test('the accent can be read as text, which is what accent-text is for', () => {
   }
 });
 
-test('the cool-blue action accent stands apart from every warm wood surface', () => {
+/** Hue in degrees, for telling the accent apart from the two side colours. */
+function hue(hex) {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+  const max = Math.max(r, g, b);
+  const d = max - Math.min(r, g, b);
+  if (d === 0) return 0;
+  const h = max === r ? ((g - b) / d) % 6 : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+  return (h * 60 + 360) % 360;
+}
+const hueGap = (a, b) => {
+  const d = Math.abs(hue(a) - hue(b));
+  return Math.min(d, 360 - d);
+};
+
+test("each wood's own action accent stands apart from the wood surfaces", () => {
   const surfaces = ['--bg', '--bg-soft', '--surface', '--surface-2'];
   for (const [theme, mode] of ALL) {
     const p = palette(theme, mode);
@@ -143,6 +157,25 @@ test('the cool-blue action accent stands apart from every warm wood surface', ()
         `${theme}/${mode}: accent on ${surface} is not distinct enough`,
       );
     }
+  }
+});
+
+test('the accent cannot be mistaken for a side: it keeps its hue away from crew and imposter', () => {
+  // The accents are warm metals that sit with the wood; crew green and
+  // imposter red mean sides. A copper accent on Mahogany is the close call.
+  for (const [theme, mode] of ALL) {
+    const p = palette(theme, mode);
+    for (const side of ['--crew', '--imposter']) {
+      const gap = hueGap(p['--accent'], p[side]);
+      assert.ok(gap >= 25, `${theme}/${mode}: accent is only ${Math.round(gap)}° from ${side}`);
+    }
+  }
+});
+
+test('no wood falls back on the old cool-blue action colour', () => {
+  for (const [theme, mode] of ALL) {
+    const h = hue(palette(theme, mode)['--accent']);
+    assert.ok(h < 180 || h > 260, `${theme}/${mode}: the accent is blue (${Math.round(h)}°)`);
   }
 });
 

@@ -9,8 +9,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 ### Changed
 
 - Rebuilt the party hub around the tavern table, with visible plank grain, empty seats, and play choices beside it on desktop or below it on phones.
-- Replaced the five colour themes with Birch, Oak (default), Teak, Mahogany and Walnut wood themes, each in light and dark. Old saved theme IDs open Oak; the action accent stays cool blue against the warm wood.
+- Replaced the five colour themes with Birch, Oak (default), Teak, Mahogany and Walnut wood themes, each in light and dark. Old saved theme IDs open Oak.
 - Standardized the shared body type, control corners, and motion timings for the tavern-table redesign.
+- Each wood now has its own action colour (honey amber, brass, burnt amber, copper, antique bronze) instead of a shared cool blue.
+- Game screens share one frame: the brand beside Back, a rule under the top bar, and a centred game column; every control in the top bar and menus is 52px tall.
 
 ## [1.30.0] - 2026-11-20
 

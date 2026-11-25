@@ -918,8 +918,8 @@
     "semantic_hash": "c3e8c1b1991aa3c70089a25d65697552"
   },
   "src/ui/primitives/Shell.jsx": {
-    "mtime": 1795297633.140903,
-    "seen": 1795567783.956735,
+    "mtime": 1795571031.1764688,
+    "seen": 1795571366.1006331,
     "ast_hash": "dbaefb8dfa00cdee38ce54cb524cdbb9",
     "semantic_hash": ""
   },
@@ -948,15 +948,15 @@
     "semantic_hash": ""
   },
   "src/ui/theme/theme.test.js": {
-    "mtime": 1795297189.4665143,
-    "seen": 1795567783.956741,
-    "ast_hash": "77211477d810bd97ce6afee6d86feb06",
+    "mtime": 1795571071.8226628,
+    "seen": 1795571366.10064,
+    "ast_hash": "606893b1b29672eb2b019cf9771ea748",
     "semantic_hash": ""
   },
   "src/ui/theme/themes.js": {
-    "mtime": 1795292827.4911046,
-    "seen": 1795293366.8165178,
-    "ast_hash": "38cea35ab032a1947f71939b94fe8dfb",
+    "mtime": 1795571057.061839,
+    "seen": 1795571366.100641,
+    "ast_hash": "6d1478518e34ead544bd267262d9a38e",
     "semantic_hash": ""
   },
   "tools/coverage.mjs": {
@@ -990,9 +990,9 @@
     "semantic_hash": "058dc3baf2ff63876155bd9a6ba85bf6"
   },
   "CHANGELOG.md": {
-    "mtime": 1795297189.4233906,
-    "seen": 1795567783.9567611,
-    "ast_hash": "ad17338823b6f72fcd83cb0e48a53dec",
+    "mtime": 1795571111.260935,
+    "seen": 1795571366.100661,
+    "ast_hash": "a6df69bd9a9b89c3eeb5c735dc4bc96d",
     "semantic_hash": ""
   },
   "PLAYTEST.md": {
@@ -1104,9 +1104,9 @@
     "semantic_hash": ""
   },
   ".impeccable/design.json": {
-    "mtime": 1795294029.897239,
-    "seen": 1795295479.991682,
-    "ast_hash": "3400c78d0916c8e70b35ff416858f3c8",
+    "mtime": 1795571102.7471488,
+    "seen": 1795571366.10044,
+    "ast_hash": "7054edf559e13f0566d29469d4434935",
     "semantic_hash": ""
   },
   "src/modes/local/usePrivacyGate.js": {
@@ -1116,9 +1116,9 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1795294029.9004385,
-    "seen": 1795295479.991848,
-    "ast_hash": "4ed2a2ee51990d3f2869bfc765edaad0",
+    "mtime": 1795571102.7459702,
+    "seen": 1795571366.100662,
+    "ast_hash": "9acd7bebf54c7fb3872f7d39c90071f1",
     "semantic_hash": ""
   },
   "PRODUCT.md": {

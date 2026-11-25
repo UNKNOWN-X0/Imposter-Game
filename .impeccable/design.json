@@ -76,13 +76,13 @@
       },
       "accent-dark": {
         "role": "primary",
-        "displayName": "Cool Blue Action Accent (dark)",
-        "canonical": "#91c5ff"
+        "displayName": "Wood Accent, Oak default (dark)",
+        "canonical": "#d9ac27"
       },
       "accent-light": {
         "role": "primary",
-        "displayName": "Cool Blue Action Accent (light)",
-        "canonical": "#1d568b"
+        "displayName": "Wood Accent, Oak default (light)",
+        "canonical": "#7d5714"
       },
       "crew-dark": {
         "role": "secondary",
@@ -107,7 +107,7 @@
       "on-accent-dark": {
         "role": "neutral",
         "displayName": "Button Text (dark mode)",
-        "canonical": "#112b48"
+        "canonical": "#1b1309"
       },
       "on-accent-light": {
         "role": "neutral",
