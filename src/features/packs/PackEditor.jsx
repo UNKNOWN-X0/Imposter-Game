@@ -24,6 +24,7 @@ import {
 import { WORD_LANGUAGES } from '../../content/words/index.js';
 import { useT, useErrorText } from '../../i18n/index.jsx';
 import { CheckIcon, CopyIcon } from '../../ui/icons/index.jsx';
+import { AiPrompt } from './AiPrompt.jsx';
 
 const EMOJI = ['✏️', '🏠', '💼', '🎬', '🎵', '🍜', '⚽️', '🐈', '🌏', '🎉', '💀', '🧠'];
 
@@ -157,6 +158,7 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
       <div className="card stack tight">
         <span className="eyebrow">{t('packs.words')}</span>
         <p className="hint">{t('packs.wordsHelp')}</p>
+        <AiPrompt topic={name} langName={langName} />
         <textarea
           className="input words"
           value={text}

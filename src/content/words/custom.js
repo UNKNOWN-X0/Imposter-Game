@@ -90,8 +90,16 @@ export function parsePairs(text) {
     .forEach((rawLine, index) => {
       // Split the raw line, then tidy the parts. Tidying first would turn a
       // tab into a space, and a tab is how a spreadsheet says "next column".
-      const raw = rawLine.split('#')[0];
+      // What an AI chat wraps a list in: a code fence, and list markers
+      // ("1.", "-", "•") in front of each line. Those go; the line stays.
+      if (/^\s*```/.test(rawLine)) return;
+      const raw = rawLine.split('#')[0].replace(/^\s*(?:[-*•]|\d{1,3}[.)])\s+/, '');
       if (!clean(raw)) return;
+      // "Here are 50 words:" is a sentence about the list, not an entry.
+      if (/:\s*$/.test(raw)) {
+        skipped.push({ at: index + 1, line: clean(raw), why: 'notAnEntry' });
+        return;
+      }
 
       const [wordPart, ...rest] = raw.split(/\s*[,;|\t]\s*|\s+[–—]\s+/);
       const line = clean(raw);

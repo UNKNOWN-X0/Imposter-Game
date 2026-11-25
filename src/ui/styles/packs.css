@@ -254,3 +254,31 @@
   margin: 0 14px 14px;
   width: calc(100% - 28px);
 }
+
+/* The prompt for writing a pack with an AI chat (features/packs/AiPrompt.jsx). */
+.ai-prompt {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+
+.ai-prompt summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-weight: 700;
+  color: var(--accent-text);
+  cursor: pointer;
+}
+
+.ai-prompt-body {
+  padding: 0 12px 12px;
+}
+
+.ai-prompt-text {
+  min-height: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  background: var(--surface);
+}

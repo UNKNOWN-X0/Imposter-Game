@@ -251,3 +251,21 @@ test('a dropped near miss is reported, and every pair knows the line it came fro
   );
   assert.equal(pairs[2].decoy, null, 'the word stays when its near miss goes');
 });
+
+test('a typical AI reply to the editor prompt pastes straight in', () => {
+  const reply = [
+    'Here are your words:',
+    '```',
+    '1. Sushi, Sashimi',
+    '2. Ramen, Udon',
+    '- Pad thai, Pad see ew',
+    '• Khao soi, Khao man gai',
+    '* Tom yum, Tom kha',
+    'Mango sticky rice, Coconut pudding',
+    '```',
+  ].join('\n');
+  const { pairs, skipped } = parsePairs(reply);
+  assert.deepEqual(pairs.map((p) => p.word), ['Sushi', 'Ramen', 'Pad thai', 'Khao soi', 'Tom yum', 'Mango sticky rice']);
+  assert.equal(pairs[0].decoy, 'Sashimi');
+  assert.deepEqual(skipped.map((s) => [s.at, s.why]), [[1, 'notAnEntry']]);
+});
