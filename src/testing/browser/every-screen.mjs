@@ -128,7 +128,7 @@ async function dealAndReveal(page, seats) {
     else if (!word && text) word = text;
     await page.mouse.up();
     await wait(120);
-    await page.getByRole('button', { name: /Got it|start the round|เข้าใจแล้ว|เริ่มรอบ|Verstanden|Runde/i }).first().click();
+    await page.getByRole('button', { name: /Got it|Covered|start the round|เข้าใจแล้ว|ปิดแล้ว|เริ่มรอบ|Verstanden|Verdeckt|Runde/i }).first().click();
     await wait(120);
   }
   return { word, imposters };
@@ -155,14 +155,24 @@ const seen = [];
   await wait(650);
   await page.locator('.reveal.crew, .reveal.imposter, .reveal.neutral').waitFor();
   await page.mouse.up();
+  await wait(60);
+  // Letting go covers the card at once: nothing of it is left on screen.
+  if (await page.locator('.reveal:not(.shield)').count())
+    fail('releasing the hold left the private card visible');
+  // Look again, and background the phone while the card is still held.
+  await page.mouse.down();
+  await wait(650);
+  await page.locator('.reveal:not(.shield)').waitFor();
   await page.evaluate(() => {
     Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'hidden' });
     document.dispatchEvent(new Event('visibilitychange'));
     Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'visible' });
   });
   await gate.waitFor();
-  if (await page.locator('.reveal.crew, .reveal.imposter, .reveal.neutral').count())
-    fail('backgrounding pass-and-play left the private card visible');
+  // Checked with the finger still down: backgrounding alone must cover it.
+  const stillShowing = await page.locator('.reveal:not(.shield)').count();
+  await page.mouse.up();
+  if (stillShowing) fail('backgrounding pass-and-play left the private card visible');
   else if (errors.length) fail(`backgrounding pass-and-play: ${errors[0]}`);
   else seen.push('backgrounding covers the private card');
   await ctx.close();

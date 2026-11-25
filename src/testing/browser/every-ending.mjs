@@ -165,7 +165,7 @@ async function dealAndReveal(page, seats) {
     }
     await page.mouse.up();
     await wait(120);
-    await page.getByRole('button', { name: /Got it|start the round/i }).first().click();
+    await page.getByRole('button', { name: /Got it|Covered|start the round/i }).first().click();
     await wait(120);
   }
   return who;

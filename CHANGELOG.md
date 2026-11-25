@@ -19,6 +19,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - The hub's play heading now reads "How will you play?" instead of repeating the first button, and rooms are described as "Everyone on their own phone, joined by a code", in English, Thai and German.
 - The word-pack library opened from the hub now sits in the same frame as the game screens.
 - The pack editor lists every problem with a pasted list in line order, quotes each skipped line, and says when a near miss was dropped because it was too long or the same as its word.
+- On one phone, your card shows only while you hold it and covers again the moment you let go; the pass screen shows the next player's emblem, and the button after your card says who to pass to. The card back is a framed card instead of stripes.
 
 ### Fixed
 

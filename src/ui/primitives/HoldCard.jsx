@@ -13,8 +13,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
  *
  * Keyboard users get it on Enter or Space without the hold, since holding a
  * key is not a gesture assistive tech reliably produces.
+ *
+ * With `onRelease` it is a peek: the card is open only while it is held, and
+ * lifting the finger (or sliding off, or the pointer being cancelled) calls
+ * `onRelease` straight away. A keyboard opens it with Enter or Space and
+ * covers it again with the same key, Escape, or moving focus away. Without
+ * `onRelease` it opens once and stays open, as rooms use it on a phone of
+ * your own. `className` replaces the face-down look (`shield`) when given.
  */
-export function HoldCard({ onOpen, children, duration = 550, className = '' }) {
+export function HoldCard({ onOpen, onRelease, children, duration = 550, className = '' }) {
   const [progress, setProgress] = useState(0);
   const raf = useRef(0);
   const startedAt = useRef(0);
@@ -24,6 +31,15 @@ export function HoldCard({ onOpen, children, duration = 550, className = '' }) {
     cancelAnimationFrame(raf.current);
     setProgress(0);
   }, []);
+
+  // Letting go: stop the ring, and in a peek cover the card again at once.
+  const release = useCallback(() => {
+    cancel();
+    if (onRelease && opened.current) {
+      opened.current = false;
+      onRelease();
+    }
+  }, [cancel, onRelease]);
 
   useEffect(() => cancel, [cancel]);
 
@@ -57,16 +73,21 @@ export function HoldCard({ onOpen, children, duration = 550, className = '' }) {
 
   return (
     <button
-      className={`reveal shield ${className}`}
+      className={`reveal ${className || 'shield'}`}
       onPointerDown={begin}
-      onPointerUp={cancel}
-      onPointerLeave={cancel}
-      onPointerCancel={cancel}
+      onPointerUp={release}
+      onPointerLeave={release}
+      onPointerCancel={release}
+      onBlur={release}
       onContextMenu={(e) => e.preventDefault()}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+        if (e.key === 'Escape') {
+          release();
+        } else if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          open();
+          if (e.repeat) return;
+          if (onRelease && opened.current) release();
+          else open();
         }
       }}
     >
