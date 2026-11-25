@@ -400,6 +400,8 @@ export default {
   'settings.packsAll': 'Everything — {count} words',
   'settings.packsSome': '{count} words selected',
   'settings.preset': 'How do you want to play?',
+  'settings.preset.standard': 'Standard',
+  'settings.preset.standardHint': 'Four rounds, a near-miss card, calling the word and a last guess on, no roles, no score.',
   'settings.preset.quick': 'Quick',
   'settings.preset.quickHint': 'Two rounds, a near-miss card, and every way of ending it early left on.',
   'settings.preset.careful': 'Careful',
@@ -407,7 +409,7 @@ export default {
   'settings.preset.chaos': 'Chaos',
   'settings.preset.chaosHint': 'Nobody is told anything, the number of imposters is hidden, and it runs until it ends.',
   'settings.preset.custom': 'Yours',
-  'settings.preset.customHint': 'Whatever you have set below.',
+  'settings.preset.customHint': 'whatever you have set below.',
   'settings.wordLang': 'Word language',
   'settings.wordLangHint': 'Which language the secret words come from',
 

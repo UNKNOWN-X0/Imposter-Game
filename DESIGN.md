@@ -193,6 +193,9 @@ Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and *
 - **Flow (owner, 2026-11-25, issue #51):** who is playing (the hub's table), then how (**Play on one phone** / **Play in a room**), then which game: each mode opens the library, which lists the games for that mode. Only through a mode, and shown even while Imposter is the only game. In a room, **Have a code? Join a room** sits above the games, because a guest's game was chosen by the host.
 - **Card:** the game's mark, name (Title), player range, one-line pitch, a "needs at least N" note when the party is short (one phone), then **How to play** beside the primary **Play <game>**.
 
+### Presets
+- **Row (owner, 2026-11-25, issue #55: option C):** Standard (the engine's defaults, read from them so they cannot drift), Quick, Careful, Chaos, as one segmented row that fits a 390px phone in all three languages. A table that has changed nothing is on Standard. When the settings match no preset, no chip is pressed and the line under the row reads "Yours: whatever you have set below."
+
 ### Private Card
 - **Style:** a face-down card: a plain back with an inlaid frame inside the edge, no stripes. It opens only when an explicit hold completes.
 - **Peek (issue #22, 2026-11-25):** on one phone the card is open only while it is held; lifting the finger, sliding off, a cancelled pointer, or backgrounding the phone covers it at once. A keyboard opens it with Enter or Space and covers it with the same key, Escape, or moving focus. Holding again looks again.

@@ -393,6 +393,8 @@ export default {
   'settings.packsAll': 'ทั้งหมด — {count} คำ',
   'settings.packsSome': 'เลือกไว้ {count} คำ',
   'settings.preset': 'อยากเล่นแบบไหน?',
+  'settings.preset.standard': 'มาตรฐาน',
+  'settings.preset.standardHint': 'สี่รอบ ไพ่คำใกล้เคียง ทายคำและเดาครั้งสุดท้ายได้ ไม่มีบทบาทพิเศษ ไม่นับคะแนน',
   'settings.preset.quick': 'ไว ๆ',
   'settings.preset.quickHint': 'สองรอบ คำใกล้เคียง และเปิดทุกทางที่จบเกมได้เร็ว',
   'settings.preset.careful': 'ค่อย ๆ คิด',
