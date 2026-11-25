@@ -66,7 +66,7 @@ function builtAtRuntime() {
   keys.add('step.clues');
   keys.add('step.result');
   // Why a pasted line was skipped, and why a pair would not play.
-  for (const why of ['duplicate', 'tooLong', 'tooMany']) keys.add(`packs.skipped.${why}`);
+  for (const why of ['duplicate', 'tooLong', 'tooMany', 'notAnEntry']) keys.add(`packs.skipped.${why}`);
   for (const why of [
     'decoyIsTheWord',
     'decoyIsTheSameWord',

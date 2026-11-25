@@ -21,6 +21,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - The pack editor lists every problem with a pasted list in line order, quotes each skipped line, and says when a near miss was dropped because it was too long or the same as its word.
 - On one phone, your card shows only while you hold it and covers again the moment you let go; the pass screen shows the next player's emblem, and the button after your card says who to pass to. The card back is a framed card instead of stripes.
 - Players gather at the hub's table before choosing how to play, and every game starts with that party; adding or removing someone in a game's lobby changes the same list.
+- The pack editor has a "Write it with AI" prompt to copy into any AI chat, in the pack's word language and the editor's format; pasting the answer back works even when the chat wraps it in a code block or numbers the lines.
 
 ### Fixed
 

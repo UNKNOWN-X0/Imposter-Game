@@ -184,6 +184,8 @@ Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and *
 - **Frame:** opened from the hub or from a lobby, the library and editor sit in the game frame (brand beside Back, rule under the top bar, centred column).
 - **Findings:** the editor lists every finding about the pasted words in line order, numbered by the line as typed. Skipped lines sit on the imposter-deep tint and quote what was typed; warnings (a dropped or risky near miss) sit on `--surface-2`. Tinted rows, never a coloured side stripe. The list scrolls inside itself so Save stays in reach.
 
+- **Write it with AI:** a fold-out panel above the word box holds a copyable prompt (topic from the pack name, words in the pack's word language, 30/50/100 entries). It is text only: no network call, no key.
+
 ### Private Card
 - **Style:** a face-down card: a plain back with an inlaid frame inside the edge, no stripes. It opens only when an explicit hold completes.
 - **Peek (issue #22, 2026-11-25):** on one phone the card is open only while it is held; lifting the finger, sliding off, a cancelled pointer, or backgrounding the phone covers it at once. A keyboard opens it with Enter or Space and covers it with the same key, Escape, or moving focus. Holding again looks again.
