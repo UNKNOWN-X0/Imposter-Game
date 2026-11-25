@@ -50,8 +50,8 @@ For phone-to-phone play, `npm run party` builds the site and serves it on your w
 
 | Mode | How it works | What you need |
 | --- | --- | --- |
-| One phone | Seat everyone at the hub, then pass the phone; each player holds their card to see it, and it covers again when they let go. | A browser. Use the link above. |
-| Room | Each player joins on their own phone with the room code or the link the host shares. | The Node server, on the same wifi or publicly hosted ([Deploying](#deploying)). |
+| One phone | Seat everyone at the hub, choose **Play on one phone**, pick a game, then pass the phone; each player holds their card to see it, and it covers again when they let go. | A browser. Use the link above. |
+| Room | The host chooses **Play in a room** and picks a game; everyone else joins on their own phone with the code (**Have a code?**) or the link the host shares. | The Node server, on the same wifi or publicly hosted ([Deploying](#deploying)). |
 
 ### Making it yours
 
@@ -82,7 +82,7 @@ Each recipe ends in the test that catches the step people forget.
 
 - **Add words.** `src/content/words/builtin/{en,th,de}.js` hold ten packs of a hundred `{ word, decoy }` pairs, each pack with a `hint` line. A good decoy sounds reasonable as a clue and is still catchable: `Pizza`/`Lasagna`, not `Pizza`/`Helicopter`. Packs are written for the people who speak that language, never translated. `npm test` rejects duplicates, a word equal to its decoy, and a missing hint.
 - **Add a language.** A strings table in `src/i18n/strings/` shaped like `en.js`, a pack file shaped like the others, both registered in the `index.js` beside them. Missing strings fall back to English.
-- **Add a game.** The players belong to the party, not to a game: `useParty()` (`src/party/`) gives `names` in seat order and each one's emblem, and `setNames` takes a lobby's changes back. A new game reads `names` when it starts and renders `Avatar` for each player (emblems already come through the app-wide `EmblemContext`); it writes no roster or emblem storage of its own. Names go through `nameProblem` in `src/core/rules.js`, the same rule the hub uses. `src/party/party.test.js` checks that rule and the storage.
+- **Add a game.** One entry in `src/games/index.js` (`id`, name and pitch strings, `minPlayers`/`maxPlayers`, the `modes` it supports and the screen App opens for each), plus the game's own screens; the hub and the game library read only that list, and `src/games/games.test.js` fails on a missing field or string. The players belong to the party, not to a game: `useParty()` (`src/party/`) gives `names` in seat order and each one's emblem, and `setNames` takes a lobby's changes back. A new game reads `names` when it starts and renders `Avatar` for each player (emblems already come through the app-wide `EmblemContext`); it writes no roster or emblem storage of its own. Names go through `nameProblem` in `src/core/rules.js`, the same rule the hub uses. `src/party/party.test.js` checks that rule and the storage.
 - **Add a role.** One file in `src/core/roles/` (`id`, `side`, `reveals`, optional `deal()`, `endsGameWhenVotedOut`), registered in `roles/index.js`, with a face in `ROLE_FACE` (`src/ui/primitives/RoleGlyph.jsx`) and a name and explanation in each language. The engine reads those fields; a test fails if it ever names a role.
 - **Add a way to win.** One row in `src/core/scoring/index.js`: who won, what it pays, whether being voted out costs your share. A test fails if the engine hard-codes an award anywhere else.
 - **Change the rules.** Everything is in `reduce()`: `resolveOutcome` decides who won, `advanceAfterVerdict` who is owed a final guess, `normaliseConfig` settles settings that cannot both be true, in the lobby, where the table can see them. Optional rules are flags on the config.
@@ -144,7 +144,9 @@ src/party/          the people at the table, shared by the hub and every game: r
 src/ui/             pieces that know nothing about a game: primitives/, icons/ (Lucide
                     drawings and the twelve emblems), table/ (the feast table),
                     theme/ (light, dark and the five woods), styles/
-src/features/       pieces that do know: hub, lobby, round, packs, rules, changelog, errors
+src/games/          the game catalog: one entry per game, read by the hub and the library
+src/features/       pieces that do know: hub, library, lobby, round, packs, rules, changelog,
+                    errors
 src/modes/          local (one phone) and online (a room), which wire the rest
 src/testing/        the checks that are about the project, not about a game, and the
                     three browser sweeps (every screen, every ending, every room)

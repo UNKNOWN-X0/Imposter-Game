@@ -98,20 +98,6 @@ export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews
           </div>
 
           <div className="hub-sections">
-            <section className="hub-section" id="hub-games" aria-label={t('hub.nav.games')}>
-              <div className="hub-section-heading">
-                <h2>{t('hub.firstGame')}</h2>
-                <button className="hub-text-action" onClick={onRules}>{t('home.rules')}</button>
-              </div>
-              <div className="hub-game-row">
-                <BrandMark size={44} animated={false} />
-                <div>
-                  <h3>{t('game.imposter.name')}</h3>
-                  <p className="hub-supporting">{t('hub.gameDescription')}</p>
-                </div>
-              </div>
-            </section>
-
             <section className="hub-library-panel" aria-labelledby="hub-packs-title">
               <div>
                 <h2 id="hub-packs-title">{t('hub.packsTitle')}</h2>

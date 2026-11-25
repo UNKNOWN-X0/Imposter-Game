@@ -87,6 +87,7 @@ const text = (page) => page.locator('body').innerText();
 /* --- host, join by code, join by link ---------------------------------- */
 const host = await phone();
 await host.page.locator('.hub-mode').nth(1).click();
+await host.page.locator('.game-card .btn.primary').first().click();
 await wait(500);
 await nameBox(host.page).fill('Ann');
 await host.page.getByRole('button', { name: 'Start a new room' }).click();
@@ -98,7 +99,9 @@ const guests = {};
 for (const [name, how] of [['Ben', 'code'], ['Cal', 'link'], ['Dee', 'code']]) {
   const g = how === 'link' ? await phone(`#join=${code}`) : await phone();
   if (how === 'code') {
+    // A guest with a code skips the game choice: the host already made it.
     await g.page.locator('.hub-mode').nth(1).click();
+    await g.page.getByRole('button', { name: 'Have a code? Join a room' }).click();
     await wait(400);
     await g.page.getByPlaceholder('CODE').fill(code);
   } else if ((await g.page.getByPlaceholder('CODE').inputValue()) !== code) {
@@ -195,6 +198,7 @@ if (!(benHosts || calHosts)) {
   // Two are left; one more joins by code, so the new host can deal again.
   const eve = await phone();
   await eve.page.locator('.hub-mode').nth(1).click();
+  await eve.page.getByRole('button', { name: 'Have a code? Join a room' }).click();
   await wait(400);
   await eve.page.getByPlaceholder('CODE').fill(code);
   await nameBox(eve.page).fill('Eve');

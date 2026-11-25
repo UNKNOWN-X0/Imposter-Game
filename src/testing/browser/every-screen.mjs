@@ -106,6 +106,7 @@ async function openPage(lang = 'en', hash = '') {
 /** Deal a game and look at every card, remembering who got what. */
 async function dealAndReveal(page, seats) {
   await page.locator('.hub-mode').first().click();
+  await page.locator('.game-card .btn.primary').first().click();
   await wait(300);
   for (const n of ['Ann', 'Ben', 'Cal', 'Dee', 'Eli', 'Fay'].slice(0, seats)) {
     await page.locator('input:not([type=radio])').first().fill(n);
@@ -146,6 +147,7 @@ const seen = [];
 {
   const { ctx, page, errors } = await openPage('en');
   await page.locator('.hub-mode').first().click();
+  await page.locator('.game-card .btn.primary').first().click();
   await wait(300);
   for (const name of ['Ann', 'Ben', 'Cal', 'Dee']) {
     await page.locator('input:not([type=radio])').first().fill(name);
@@ -259,8 +261,16 @@ for (const [name, hash] of [['icons', '#icons'], ['crash', '#crash']]) {
 
 {
   const { ctx, page, errors } = await openPage('de');
+  // Each way to play opens the game library, with Imposter in it (#51).
+  for (const nth of [0, 1]) {
+    await page.locator('.hub-mode').nth(nth).click();
+    await wait(400);
+    if (!(await page.locator('.game-card').count())) fail(`mode ${nth} did not open the game library`);
+    await page.getByRole('button', { name: /Zurück/ }).first().click();
+    await wait(400);
+  }
   for (const [scope, label] of [
-    [page.getByRole('region', { name: /Spiele/ }), /Wie geht das/],
+    [page.locator('footer'), /Wie geht das/],
     [page.getByRole('navigation'), /Wortpakete/],
     [page.locator('footer'), /Was ist neu/],
   ]) {
@@ -270,7 +280,7 @@ for (const [name, hash] of [['icons', '#icons'], ['crash', '#crash']]) {
     await wait(400);
   }
   if (errors.length) fail(`the home-screen links: ${errors[0]}`);
-  else { seen.push('rules, library and what is new'); await look(page, 'home links'); }
+  else { seen.push('game library from both modes, rules, pack library and what is new'); await look(page, 'home links'); }
   await ctx.close();
 }
 

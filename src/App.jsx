@@ -8,6 +8,8 @@ import { Shell } from './ui/primitives/index.js';
 import { VERSION, hasNews } from './content/history/changelog.js';
 import { FirstRun } from './features/rules/FirstRun.jsx';
 import { PartyHub } from './features/hub/PartyHub.jsx';
+import { GameLibrary } from './features/library/GameLibrary.jsx';
+import { gameById } from './games/index.js';
 
 import { Rules } from './features/rules/Rules.jsx';
 import { Library } from './features/packs/Library.jsx';
@@ -148,12 +150,25 @@ export default function App() {
   if (screen === 'strings') return fetched(<StringBoard />);
   if (screen === 'rules') return <Rules onExit={home} />;
   if (screen === 'packs') return <Library onExit={home} />;
+  // Who is playing, then how, then which game (#51).
+  if (screen === 'library-local' || screen === 'library-room') {
+    const mode = screen === 'library-local' ? 'local' : 'room';
+    return (
+      <GameLibrary
+        mode={mode}
+        onBack={home}
+        onRules={() => open('rules')}
+        onJoin={() => open('online')}
+        onPick={(id) => open(gameById(id).screen[mode])}
+      />
+    );
+  }
   if (screen === 'changelog') return <Changelog onExit={home} seen={seenVersion} />;
 
   return (
     <PartyHub
-      onLocal={() => open('local')}
-      onOnline={() => open('online')}
+      onLocal={() => open('library-local')}
+      onOnline={() => open('library-room')}
       onPacks={() => open('packs')}
       onRules={() => open('rules')}
       onNews={openNews}
