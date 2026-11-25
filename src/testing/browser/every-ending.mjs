@@ -105,7 +105,7 @@ async function openGame(seats, settings = {}) {
   await wait(250);
   for (const name of ROSTER.slice(0, seats)) {
     await page.locator('input:not([type=radio])').first().fill(name);
-    await page.locator('.row button').first().click();
+    await page.keyboard.press('Enter');
   }
   // Detailed controls are progressively disclosed to keep first-time setup
   // short; ending sweeps open them before choosing specialized rule settings.

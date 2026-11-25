@@ -272,7 +272,7 @@
 /* The hub's table is empty, so upright on a phone it can be smaller and leave
    the ways to play above the fold. */
 .hub-page .hub-table-scene.upright {
-  max-width: 290px;
+  max-width: 240px;
 }
 
 /* The game library (features/library/GameLibrary.jsx). */
@@ -303,3 +303,9 @@
 }
 
 .game-card p { margin: 0; }
+
+/* On the narrow empty table the intro above already says what to do, so the
+   plate keeps only its heading. */
+.hub-page .hub-table-scene.upright .ts-plate p {
+  display: none;
+}

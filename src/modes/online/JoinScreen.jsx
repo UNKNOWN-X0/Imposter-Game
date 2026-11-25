@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import { useErrorText, useT } from '../../i18n/index.jsx';
 import { createRoom, joinRoom, serverInfo } from './useRoom.js';
 import { Banner, Shell } from '../../ui/primitives/index.js';
-import { EmblemPicker, useParty } from '../../party/index.js';
+import { EmblemChoice, useParty } from '../../party/index.js';
 import { defaultEmblem } from '../../ui/icons/emblems.js';
 
 /* ------------------------------------------------------------------ *
@@ -88,7 +88,10 @@ export function JoinScreen({ onJoined, onExit, initialCode }) {
           />
         </label>
 
-        <EmblemPicker value={emblem} onChange={setPicked} disabled={busy} />
+        <div className="row wrap">
+          <EmblemChoice value={emblem} onChange={setPicked} disabled={busy} />
+          <span className="hint">{t('lobby.emblemYours')}</span>
+        </div>
 
         <button
           className="btn primary block lg"
