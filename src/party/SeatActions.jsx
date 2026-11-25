@@ -4,8 +4,8 @@
  * a full table of twelve on a phone still has room for a real button.
  */
 
-import { useT } from '../../i18n/index.jsx';
-import { Avatar } from '../../ui/primitives/Avatar.jsx';
+import { useT } from '../i18n/index.jsx';
+import { Avatar } from '../ui/primitives/Avatar.jsx';
 
 export function SeatActions({ player, onRemove, onClose }) {
   const { t } = useT();

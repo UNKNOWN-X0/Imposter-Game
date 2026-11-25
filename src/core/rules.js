@@ -17,6 +17,25 @@ import { pointsFor } from './scoring/index.js';
 
 export const MIN_PLAYERS = 3;
 export const MAX_PLAYERS = 12;
+export const MAX_NAME = 16;
+
+/**
+ * Why a name cannot take a seat, or null if it can.
+ *
+ * One rule for every place a player is added: the engine's ADD_PLAYER, and
+ * the party at the hub, before any game has started. `names` are the people
+ * already seated. Returns an error code and its params, as `fail` takes them.
+ */
+export function nameProblem(names, rawName) {
+  const name = String(rawName || '').trim();
+  if (!name) return { code: 'emptyName' };
+  if (name.length > MAX_NAME) return { code: 'longName' };
+  if (names.some((n) => n.toLowerCase() === name.toLowerCase())) {
+    return { code: 'duplicateName', params: { name } };
+  }
+  if (names.length >= MAX_PLAYERS) return { code: 'roomFull', params: { max: MAX_PLAYERS } };
+  return null;
+}
 
 /** What the imposter is shown in place of the real word. */
 export const DECOY = {

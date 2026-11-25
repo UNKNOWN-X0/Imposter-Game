@@ -3,9 +3,9 @@
  */
 
 import { useState } from 'react';
-import { MAX_PLAYERS, MIN_PLAYERS } from '../../core/engine.js';
-import { useT } from '../../i18n/index.jsx';
-import { EMBLEMS, EmblemIcon, firstFree } from '../../ui/icons/EmblemIcon.jsx';
+import { MAX_PLAYERS, MIN_PLAYERS } from '../core/rules.js';
+import { useT } from '../i18n/index.jsx';
+import { EMBLEMS, EmblemIcon, firstFree } from '../ui/icons/EmblemIcon.jsx';
 
 /**
  * A name and an emblem. `taken` lists the emblems already at the table; they

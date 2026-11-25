@@ -24,7 +24,7 @@ import { PACK_LIMITS, validatePack } from '../content/words/custom.js';
 import { ROLE, endingFor, roleSpec, winsWithImposters } from './roles/index.js';
 import { paysTheEliminated, pointsFor } from './scoring/index.js';
 import { mulberry32, randomSeed, shuffle } from './rng.js';
-import { DECOY, MAX_PLAYERS, MIN_PLAYERS, ROUNDS_UNLIMITED, SAFETY_ROUNDS, normaliseConfig, resolveImposterCount } from './rules.js';
+import { DECOY, MAX_PLAYERS, MIN_PLAYERS, ROUNDS_UNLIMITED, SAFETY_ROUNDS, nameProblem, normaliseConfig, resolveImposterCount } from './rules.js';
 import { alivePlayers, currentTurn, isAlive, isImposter, isImposterSide, pendingVoters, playerById, roleOf } from './select.js';
 import { createGame, dealRoles, decoyFor, hintFor, makePlayerId, nextHistory, pickImposters, pickWord } from './deal.js';
 import { fail } from './errors.js';
@@ -52,11 +52,8 @@ function step(state, action) {
     case 'ADD_PLAYER': {
       if (state.phase !== PHASE.LOBBY) fail('alreadyStarted');
       const name = String(action.name || '').trim();
-      if (!name) fail('emptyName');
-      if (name.length > 16) fail('longName');
-      if (state.players.some((p) => p.name.toLowerCase() === name.toLowerCase()))
-        fail('duplicateName', { name });
-      if (state.players.length >= MAX_PLAYERS) fail('roomFull', { max: MAX_PLAYERS });
+      const problem = nameProblem(state.players.map((p) => p.name), name);
+      if (problem) fail(problem.code, problem.params);
       const player = { id: action.id || makePlayerId(), name };
       return { ...state, players: [...state.players, player] };
     }

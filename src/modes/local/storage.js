@@ -10,7 +10,6 @@
 
 import { MAX_PLAYERS, MIN_PLAYERS, PHASE } from '../../core/engine.js';
 import { VERSION } from '../../content/history/changelog.js';
-import { EMBLEM_IDS } from '../../ui/icons/emblems.js';
 
 /**
  * What each thing is filed under.
@@ -20,12 +19,10 @@ import { EMBLEM_IDS } from '../../ui/icons/emblems.js';
  * JSX transform. While they sat in LocalGame.jsx, importing storage.js meant
  * importing a React component, and `node --test` cannot read one.
  */
-export const ROSTER_KEY = 'imposter.roster';
 export const RECENT_WORDS_KEY = 'imposter.recentWords';
 export const SCORES_KEY = 'imposter.scores';
 export const CONFIG_KEY = 'imposter.config';
 export const GAME_KEY = 'imposter.game';
-export const EMBLEMS_KEY = 'imposter.emblems';
 
 /**
  * Recent words survive a reload, so closing the tab and coming back does not
@@ -118,58 +115,19 @@ export function saveScores(players, scores) {
   }
 }
 
-/** Remember the group between sessions — it is the same friends most nights. */
-export function loadRoster() {
-  try {
-    const raw = localStorage.getItem(ROSTER_KEY);
-    const names = raw ? JSON.parse(raw) : [];
-    return Array.isArray(names)
-      ? names.filter((n) => typeof n === 'string').slice(0, MAX_PLAYERS)
-      : [];
-  } catch {
-    return [];
-  }
-}
-
-export function saveRoster(players) {
-  try {
-    localStorage.setItem(ROSTER_KEY, JSON.stringify(players.map((p) => p.name)));
-  } catch {
-    /* private browsing — no harm done */
-  }
-}
-
 /**
- * The emblem each person sat down with, by name like the scores, so the
- * same friends keep the same marks next week. Unknown ids are dropped; the
- * table falls back on a default for anyone without one.
+ * Who is at the table now belongs to the party, which every game shares
+ * (src/party/storage.js). Re-exported so this file stays the one place the
+ * one-phone mode reads its storage from.
  */
-export function loadEmblems() {
-  try {
-    const raw = localStorage.getItem(EMBLEMS_KEY);
-    const saved = raw ? JSON.parse(raw) : {};
-    const out = {};
-    if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
-      for (const [name, id] of Object.entries(saved)) {
-        if (typeof id === 'string' && EMBLEM_IDS.includes(id)) out[name] = id;
-      }
-    }
-    return out;
-  } catch {
-    return {};
-  }
-}
-
-/** Only the people still at the table are kept, so the map never grows. */
-export function saveEmblems(players, emblems) {
-  try {
-    const byName = {};
-    for (const { name } of players) if (emblems[name]) byName[name] = emblems[name];
-    localStorage.setItem(EMBLEMS_KEY, JSON.stringify(byName));
-  } catch {
-    /* private browsing — no harm done */
-  }
-}
+export {
+  EMBLEMS_KEY,
+  ROSTER_KEY,
+  loadEmblems,
+  loadRoster,
+  saveEmblems,
+  saveRoster,
+} from '../../party/storage.js';
 
 /* ------------------------------------------------------------------ *
  * The game in progress

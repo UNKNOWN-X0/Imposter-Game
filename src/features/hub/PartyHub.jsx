@@ -2,11 +2,23 @@ import { BrandMark, PhoneIcon, WifiIcon } from '../../ui/icons/index.jsx';
 import { ThemePicker } from '../../ui/theme/ThemePicker.jsx';
 import { LanguagePicker } from '../../i18n/LanguagePicker.jsx';
 import { Credit } from '../rules/Credit.jsx';
-import { useT } from '../../i18n/index.jsx';
-import { TableScene } from '../../ui/table/TableScene.jsx';
+import { useState } from 'react';
+import { useErrorText, useT } from '../../i18n/index.jsx';
+import { AddPlayerForm, SeatActions, useParty } from '../../party/index.js';
+import { Banner } from '../../ui/primitives/index.js';
+import { TableScene, chairsFor } from '../../ui/table/TableScene.jsx';
+import { MAX_PLAYERS } from '../../core/rules.js';
+import { defaultEmblem } from '../../ui/icons/emblems.js';
 
 export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews, news, version }) {
   const { t } = useT();
+  const errorText = useErrorText();
+  // The party gathers here, before anyone picks a game; every game reads it.
+  const party = useParty();
+  const [picked, setPicked] = useState(null);
+  const [problem, setProblem] = useState(null);
+  const pickedName = party.names.includes(picked) ? picked : null;
+  const taken = party.names.map((n) => party.emblems[n] ?? defaultEmblem(n));
 
   return (
     <div className="hub-page" id="hub-top">
@@ -31,10 +43,41 @@ export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews
 
           <div className="hub-layout">
             <section aria-labelledby="hub-party-title">
-              <TableScene chairs={6} className="hub-table-scene">
-                <h2 id="hub-party-title">{t('hub.noParty')}</h2>
-                <p>{t('hub.noPartyBody')}</p>
+              <TableScene
+                // An empty table can be smaller on a phone; a seated one needs the room.
+                className={party.names.length ? '' : 'hub-table-scene'}
+                seated={party.names.map((name) => ({ key: name, name }))}
+                chairs={chairsFor(party.names.length)}
+                picked={pickedName}
+                onPick={setPicked}
+              >
+                {party.names.length === 0 ? (
+                  <>
+                    <h2 id="hub-party-title">{t('hub.noParty')}</h2>
+                    <p>{t('hub.noPartyBody')}</p>
+                  </>
+                ) : (
+                  <h2 id="hub-party-title">{t('hub.seated', { count: party.names.length })}</h2>
+                )}
               </TableScene>
+              <div className="stack tight hub-seating">
+                {pickedName && (
+                  <SeatActions
+                    player={{ id: pickedName, name: pickedName }}
+                    onClose={() => setPicked(null)}
+                    onRemove={(name) => {
+                      party.remove(name);
+                      setPicked(null);
+                    }}
+                  />
+                )}
+                {problem && <Banner kind="error">{errorText(problem)}</Banner>}
+                <AddPlayerForm
+                  taken={taken}
+                  disabled={party.names.length >= MAX_PLAYERS}
+                  onAdd={(name, emblem) => setProblem(party.add(name, emblem))}
+                />
+              </div>
             </section>
 
             <section className="hub-actions" aria-label={t('hub.navigation')}>

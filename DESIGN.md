@@ -143,7 +143,7 @@ Each theme changes the warm wood surfaces and brings its own action accent, whil
 
 The table is the main spatial anchor. It is rectangular and wider than it is tall, with seats along the two long sides and the covered card or table state centered between them. Keep names and controls outside the plank seams. On a desktop, place the action group beside the table; on a phone, stack it below the table with the intro and primary choice still easy to reach. At narrow widths, reduce side gutters and seat widths before allowing the table or text to overflow. At wider widths, cap the experience near 1200px; the table scene grows with its column up to 760px. Below 600px the top-down table turns upright so its long sides run down the phone and twelve seats still fit at 390px without sideways scrolling. Use English, Thai, and German copy at phone and desktop widths when checking the layout.
 
-The hub starts with the brand and a short invitation, then the shared table and its actions. Library, help, news, settings, and language remain available as utility navigation without displacing the gathering area. Do not imply that anyone is seated when the party is empty.
+The hub starts with the brand and a short invitation, then the shared table and its actions. Since 2026-11-25 (issue #37, owner: "why add players in game instead of at lobby") the party gathers at the hub's table: people add themselves there with an emblem before anyone picks a game, and every game starts with that party; a game's own lobby edits the same list. Library, help, news, settings, and language remain available as utility navigation without displacing the gathering area. Do not imply that anyone is seated when the party is empty.
 
 ## Elevation & Depth
 
