@@ -80,7 +80,7 @@ components:
 
 **Creative North Star: “The Joiner’s Table”**
 
-Friends gather around one rectangular wooden table, whether passing one phone or joining a room. Follow the approved `.impeccable/mocks/tavern-direction/joinery.html` composition: the flush tabletop is built from visible planks with a crafted edge; players sit along its long sides; ordinary controls remain easy to read beside or below it. On a shared phone, keep the private card covered until its deliberate handoff. Preserve the mock’s English, Thai, and German layouts and its light and dark modes.
+Friends gather around one rectangular wooden table, whether passing one phone or joining a room. The table itself is the Feast table chosen on 2026-11-25 (`.impeccable/mocks/table-avatars/index.html?v=a`, built as `src/ui/table/TableScene.jsx`), which replaces the earlier Joinery mock's flat plank panel: a lamplit tabletop with a thick rim; players sit along its long sides as emblem avatars; ordinary controls remain easy to read beside or below it. On a shared phone, keep the private card covered until its deliberate handoff. Preserve the mock’s English, Thai, and German layouts and its light and dark modes.
 
 The tavern comes from the table, the warm wood palettes, and the party gathered around it. Keep the rest of the page and controls calm, legible surfaces. Do not spread plank stripes across the page or ordinary control panels. Use the exact approved table arrangement and interaction states as the source for the hub rebuild and carry its table language into every Imposter screen.
 
@@ -140,7 +140,7 @@ Each theme changes the warm wood surfaces and brings its own action accent, whil
 
 ## Layout
 
-The table is the main spatial anchor. It is rectangular and wider than it is tall, with seats along the two long sides and the covered card or table state centered between them. Keep names and controls outside the plank seams. On a desktop, place the action group beside the table; on a phone, stack it below the table with the intro and primary choice still easy to reach. At narrow widths, reduce side gutters and seat widths before allowing the table or text to overflow. At wider widths, cap the experience near 1200px and keep the table near 480px wide. Use English, Thai, and German copy at phone and desktop widths when checking the layout.
+The table is the main spatial anchor. It is rectangular and wider than it is tall, with seats along the two long sides and the covered card or table state centered between them. Keep names and controls outside the plank seams. On a desktop, place the action group beside the table; on a phone, stack it below the table with the intro and primary choice still easy to reach. At narrow widths, reduce side gutters and seat widths before allowing the table or text to overflow. At wider widths, cap the experience near 1200px; the table scene grows with its column up to 760px. Below 600px the top-down table turns upright so its long sides run down the phone and twelve seats still fit at 390px without sideways scrolling. Use English, Thai, and German copy at phone and desktop widths when checking the layout.
 
 The hub starts with the brand and a short invitation, then the shared table and its actions. Library, help, news, settings, and language remain available as utility navigation without displacing the gathering area. Do not imply that anyone is seated when the party is empty.
 
@@ -155,7 +155,7 @@ The system is mostly flat. Wood colour, the table’s inlaid edge, and fine bord
 
 ## Shapes
 
-Use the mock’s crisp joinery: 2px corners on the tabletop and seats, 8px corners on controls and panels, and pill geometry only for compact room codes or segmented-control tracks. The table edge is a full, inlaid border; seats are distinct blocks along its sides. Borders follow the wood line token. Keep focus rings visible outside every shape and never rely on colour alone for selection.
+Use crisp joinery: rounded rim corners on the feast table and circular seat tokens, 8px corners on controls and panels, and pill geometry only for compact room codes or segmented-control tracks. The table edge is a full, inlaid border; seats are distinct blocks along its sides. Borders follow the wood line token. Keep focus rings visible outside every shape and never rely on colour alone for selection.
 
 ## Components
 
@@ -170,8 +170,13 @@ Use the mock’s crisp joinery: 2px corners on the tabletop and seats, 8px corne
 - **Use:** group related choices and status; do not nest panels as page scaffolding.
 
 ### Table and Seats
-- **Table:** rectangular flush tabletop with visible boards, fine grain, and an inlaid edge. Its board direction and joins follow the approved Joinery mock.
-- **Seats:** readable name blocks on the long sides; empty seats are visibly empty. Selected and occupied states include a shape or label cue as well as colour.
+Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and **players pick their own emblem** for the avatar. One component draws it, `src/ui/table/TableScene.jsx`, which takes the seated people in order and a chair count and knows nothing about the rules; the hub and the local lobby use it now, and the room screens and the round reuse it.
+
+- **Table:** a top-down tabletop, wider than it is tall, under warm lamplight: five planks with joins and butt ends, a thick rim, an inlaid edge, a soft floor shadow, and a few original props (two mugs, a candle) at the corners where they never cover a seat or text. Every wood colour comes from the theme's `--table-*` tokens.
+- **Chairs:** drawn on both long sides, one always free, never fewer than six and never more than twelve, in even numbers (`chairsFor`). Seats fill alternately far side and near side, so people sit across from each other.
+- **Seats:** a taken seat shows the player's emblem in a ringed circle with their name on a surface chip below it; the host wears a small crown, with "host" spoken for screen readers; a dropped room player stays seated, dimmed and labelled "away". An open seat is a dashed circle with "+" and "Open". Joining plays a short sit-down; reduced motion removes it.
+- **Plate:** any text on the table sits on a plate (surface colour, fine border) in the middle, never on the grain.
+- **Avatars:** twelve emblems (mug, key, flame, dice, feather, moon, anchor, leaf, star, bell, sun, fish), one per seat, drawn from Lucide (ISC, credited in `NOTICE.md`) on the shared 24px icon grid. Each owns a muted ink colour of its own; `#fff7e8` on every one meets 4.5:1, and none comes within 25° of hue of crew green or imposter red (`src/ui/icons/emblems.test.js`). On one phone, the lobby's picker offers the emblems nobody has taken; a name without a choice falls back on a stable default. Nothing about an avatar or seat changes with a role, word or vote.
 
 ### Private Card
 - **Style:** covered until an explicit hold-to-reveal action completes.
@@ -191,7 +196,7 @@ Use the mock’s crisp joinery: 2px corners on the tabletop and seats, 8px corne
 
 ## Do's and Don'ts
 
-- **Do** reproduce the approved Joinery mock’s rectangular plank table, long-side seats, covered private card, and adjacent actions.
+- **Do** use the feast table scene (owner's choice, 2026-11-25) for the table, long-side seats and emblem avatars, with the covered private card and actions beside or below it.
 - **Do** keep the table as the one strongly textured surface; use wood tones without page-wide stripes.
 - **Do** keep controls, player names, status text, and the wood itself distinct at every mode and language.
 - **Do** respect 52px touch targets, visible keyboard focus, and `prefers-reduced-motion`.

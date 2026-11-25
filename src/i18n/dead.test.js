@@ -27,6 +27,7 @@ import { STRINGS, LANGUAGES } from './strings/index.js';
 import { ROLES, WIN_REASONS } from '../core/engine.js';
 import { RELEASES } from '../content/history/changelog.js';
 import { MODES, THEMES } from '../ui/theme/themes.js';
+import { EMBLEM_IDS } from '../ui/icons/emblems.js';
 import { PACK_LIMITS } from '../content/words/custom.js';
 import { PRESETS } from '../features/lobby/presets.js';
 
@@ -60,6 +61,7 @@ function builtAtRuntime() {
   }
   for (const mode of MODES) keys.add(`display.mode.${mode}`);
   for (const theme of THEMES) keys.add(`theme.${theme.id}`);
+  for (const id of EMBLEM_IDS) keys.add(`emblem.${id}`);
   // The stepper announces one of two things, not one per phase.
   keys.add('step.clues');
   keys.add('step.result');

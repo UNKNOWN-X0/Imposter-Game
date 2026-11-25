@@ -6,6 +6,7 @@ import PackLibrary from '../../features/packs/PackLibrary.jsx';
 import { PACK_LIMITS } from '../../content/words/custom.js';
 import { loadPacks, savePacks } from '../../features/packs/store.js';
 import { Announce, Banner, Shell } from '../../ui/primitives/index.js';
+import { EmblemContext } from '../../ui/primitives/Avatar.jsx';
 import { EndGameButton } from '../../features/lobby/index.js';
 import { GameOverCard, VerdictCard } from '../../features/round/index.js';
 import { Lobby} from './screens/Lobby.jsx';
@@ -15,7 +16,7 @@ import { Steal} from './screens/Steal.jsx';
 import { Talking} from './screens/Talking.jsx';
 import { Voting} from './screens/Voting.jsx';
 export { CONFIG_KEY, GAME_KEY, RECENT_WORDS_KEY, ROSTER_KEY, SCORES_KEY } from './storage.js';
-import { clearGame, loadConfig, loadGame, loadRecentWords, loadRoster, loadScores, saveConfig, saveGame, saveRecentWords, saveRoster, saveScores} from './storage.js';
+import { clearGame, loadConfig, loadEmblems, loadGame, loadRecentWords, loadRoster, loadScores, saveConfig, saveEmblems, saveGame, saveRecentWords, saveRoster, saveScores} from './storage.js';
 import { describe, keepQuiet, note } from '../../features/errors/index.js';
 import { isPlaying, renderPhase } from '../screens.js';
 import { usePrivacyGate } from './usePrivacyGate.js';
@@ -50,6 +51,12 @@ export default function LocalGame({ onExit }) {
     // The roster has to exist before the points can be matched back to it.
     return { ...s, scores: loadScores(s.players), customPacks: loadPacks() };
   });
+  // Who sat down with which emblem. Kept beside the game, not in it: the
+  // rules never need to know, and the fingerprint stays on the rules.
+  const [emblems, setEmblems] = useState(loadEmblems);
+  const seat = useCallback((name, emblem) => {
+    setEmblems((current) => ({ ...current, [name]: emblem }));
+  }, []);
   const [error, setError] = useState(null);
   const [holding, setHolding] = useState(false); // has the next player taken the phone?
   usePrivacyGate(setHolding);
@@ -89,8 +96,11 @@ export default function LocalGame({ onExit }) {
   }, []);
 
   useEffect(() => {
-    if (state.phase === PHASE.LOBBY) saveRoster(state.players);
-  }, [state.phase, state.players]);
+    if (state.phase === PHASE.LOBBY) {
+      saveRoster(state.players);
+      saveEmblems(state.players, emblems);
+    }
+  }, [state.phase, state.players, emblems]);
 
   useEffect(() => {
     saveRecentWords(state.history.words);
@@ -203,6 +213,8 @@ export default function LocalGame({ onExit }) {
         <Lobby
           state={state}
           run={run}
+          emblems={emblems}
+          onSeat={seat}
           onEditPack={setEditing}
           onBrowsePacks={() => setBrowsing(true)}
         />
@@ -219,12 +231,14 @@ export default function LocalGame({ onExit }) {
   const playing = isPlaying(state.phase);
 
   return (
-    <Shell onBack={state.phase === PHASE.LOBBY ? onExit : undefined} phase={state.phase}>
-      {interrupted && <Resume game={interrupted} onResume={resume} onFresh={startFresh} />}
-      <Announce>{t(`step.${state.phase === PHASE.CLUES ? 'clues' : 'result'}`)}</Announce>
-      {error && <Banner kind="error">{errorText(error)}</Banner>}
-      {body}
-      {playing && <EndGameButton onEnd={() => run({ type: 'RESET' })} />}
-    </Shell>
+    <EmblemContext.Provider value={emblems}>
+      <Shell onBack={state.phase === PHASE.LOBBY ? onExit : undefined} phase={state.phase}>
+        {interrupted && <Resume game={interrupted} onResume={resume} onFresh={startFresh} />}
+        <Announce>{t(`step.${state.phase === PHASE.CLUES ? 'clues' : 'result'}`)}</Announce>
+        {error && <Banner kind="error">{errorText(error)}</Banner>}
+        {body}
+        {playing && <EndGameButton onEnd={() => run({ type: 'RESET' })} />}
+      </Shell>
+    </EmblemContext.Provider>
   );
 }

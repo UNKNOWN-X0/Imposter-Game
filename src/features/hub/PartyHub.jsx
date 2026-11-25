@@ -3,6 +3,7 @@ import { ThemePicker } from '../../ui/theme/ThemePicker.jsx';
 import { LanguagePicker } from '../../i18n/LanguagePicker.jsx';
 import { Credit } from '../rules/Credit.jsx';
 import { useT } from '../../i18n/index.jsx';
+import { TableScene } from '../../ui/table/TableScene.jsx';
 
 export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews, news, version }) {
   const { t } = useT();
@@ -30,21 +31,10 @@ export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews
 
           <div className="hub-layout">
             <section aria-labelledby="hub-party-title">
-              <div className="hub-stage">
-                <div className="hub-table" aria-hidden="true">
-                  {Array.from({ length: 5 }, (_, index) => <span className="hub-plank" key={index} />)}
-                </div>
-                <div className="hub-seats hub-seats-left" aria-hidden="true">
-                  {[0, 1, 2].map((seat) => <span className="hub-seat" key={seat} />)}
-                </div>
-                <div className="hub-seats hub-seats-right" aria-hidden="true">
-                  {[3, 4, 5].map((seat) => <span className="hub-seat" key={seat} />)}
-                </div>
-                <div className="hub-table-center">
-                  <h2 id="hub-party-title">{t('hub.noParty')}</h2>
-                  <p>{t('hub.noPartyBody')}</p>
-                </div>
-              </div>
+              <TableScene chairs={6} className="hub-table-scene">
+                <h2 id="hub-party-title">{t('hub.noParty')}</h2>
+                <p>{t('hub.noPartyBody')}</p>
+              </TableScene>
             </section>
 
             <section className="hub-actions" aria-label={t('hub.navigation')}>

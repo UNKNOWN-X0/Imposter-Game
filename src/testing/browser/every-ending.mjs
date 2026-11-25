@@ -97,7 +97,7 @@ async function openGame(seats, settings = {}) {
   await page.locator('.hub-mode').first().click();
   await wait(250);
   for (const name of ROSTER.slice(0, seats)) {
-    await page.locator('input').first().fill(name);
+    await page.locator('input:not([type=radio])').first().fill(name);
     await page.locator('.row button').first().click();
   }
   // Detailed controls are progressively disclosed to keep first-time setup
@@ -298,7 +298,7 @@ const ROUTES = {
       await gate.click();
       await wait(300);
     }
-    await page.locator('input').first().fill(who.word);
+    await page.locator('input:not([type=radio])').first().fill(who.word);
     await page.getByRole('button', { name: 'Call it' }).last().click();
     await wait(600);
     const next = page.getByRole('button', { name: /Continue|Got it/i }).first();
@@ -326,7 +326,7 @@ const ROUTES = {
       await gate.click();
       await wait(300);
     }
-    await page.locator('input').first().fill('completely the wrong word');
+    await page.locator('input:not([type=radio])').first().fill('completely the wrong word');
     await page.getByRole('button', { name: 'Call it' }).last().click();
     await wait(600);
     for (let step = 0; step < 3; step += 1) {
