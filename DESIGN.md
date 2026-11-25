@@ -209,6 +209,24 @@ Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and *
 ### Navigation
 - **Style:** utility actions stay secondary to the table and primary party actions. On phones they wrap or stack without clipping; do not reinstate the permanent noticeboard rail.
 
+## Motion
+
+Motion explains a change; it never carries meaning on its own. Every animation sits inside one `@media (prefers-reduced-motion: no-preference)` block, and `src/ui/styles/styles.test.js` fails the build if one does not, or if anything drawn on by an animation would be left invisible without it. With reduced motion the game is completely still and every state still reads.
+
+### Vocabulary (tokens in `tokens.css`)
+- **Press** `--motion-press` 80ms, `--ease-standard`: buttons, chips, seats.
+- **State** `--motion-state` 150ms, `--ease-standard`: selection rings, toggles, focus, picker choices.
+- **Enter** `--motion-enter` 320ms, `--ease-emphasis`: a panel, banner or seat arriving (a player sitting down at the table).
+- **Reveal** `--motion-reveal` 450ms: the private card turning over, only after the hold completes.
+- **Celebration** `--motion-celebration` 700ms and **Confetti** `--motion-confetti` 1500ms, `--ease-celebration`: the game-over screen only.
+
+### Where it is used
+- **Table:** a seat fills with a short sit-down (Enter); the speaking ring and the selected seat change with State. No lamplight flicker.
+- **Private card:** the hold ring fills while held; the face turns in (Reveal) only once the hold completes and covers at once on release, with no exit animation that could leave the word on screen.
+- **Icons:** each icon has one motion behind `anim` (the hand waves, the bell swings, the eyes blink), used where it says something; never looping decoration elsewhere.
+- **Round:** the verdict and the game-over card enter; the winners' confetti plays once.
+- Transform and opacity only, so nothing shifts the layout; focus stays where it was while anything moves.
+
 ## Do's and Don'ts
 
 - **Do** use the feast table scene (owner's choice, 2026-11-25) for the table, long-side seats and emblem avatars, with the covered private card and actions beside or below it.
