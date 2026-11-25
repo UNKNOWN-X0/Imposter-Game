@@ -12,6 +12,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Fixed
 
+- On a phone the hub shows the way to play on the first screen: the emblem is one button beside the name that opens the picker, the empty table is smaller, and the intro now describes The Long Table rather than one game.
+- Players already seated no longer replay the sit-down every time the hub loads; it plays when someone joins.
 - A first-time host's settings show **Standard** (the game as it comes: four rounds) instead of "Yours". Standard joins Quick, Careful and Chaos; when the settings match none of them, the line under the row says "Yours".
 - A vote never goes through on one tap. Tapping a player only picks them; a bar that names them ("Vote Nok out", "My vote: Nok", "Nobody goes this round") sends it, or Cancel. On one phone the show-of-hands vote is now made at the table.
 

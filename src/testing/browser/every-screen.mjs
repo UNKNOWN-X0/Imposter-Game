@@ -110,7 +110,7 @@ async function dealAndReveal(page, seats) {
   await wait(300);
   for (const n of ['Ann', 'Ben', 'Cal', 'Dee', 'Eli', 'Fay'].slice(0, seats)) {
     await page.locator('input:not([type=radio])').first().fill(n);
-    await page.locator('.row button').first().click();
+    await page.keyboard.press('Enter');
   }
   await page.getByRole('button', { name: /Deal the cards|แจกไพ่|Karten austeilen/ }).click();
   await wait(400);
@@ -151,7 +151,7 @@ const seen = [];
   await wait(300);
   for (const name of ['Ann', 'Ben', 'Cal', 'Dee']) {
     await page.locator('input:not([type=radio])').first().fill(name);
-    await page.locator('.row button').first().click();
+    await page.keyboard.press('Enter');
   }
   await page.getByRole('button', { name: /Deal the cards|แจกไพ่|Karten austeilen/ }).click();
   await wait(400);

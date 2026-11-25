@@ -4,5 +4,5 @@
  */
 
 export { PartyProvider, useParty } from './PartyProvider.jsx';
-export { AddPlayerForm, EmblemPicker, LobbyHint } from './AddPlayerForm.jsx';
+export { AddPlayerForm, EmblemChoice, EmblemPicker, LobbyHint } from './AddPlayerForm.jsx';
 export { SeatActions } from './SeatActions.jsx';

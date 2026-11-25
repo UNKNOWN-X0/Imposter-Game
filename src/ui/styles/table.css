@@ -207,7 +207,7 @@ button.ts-seat-body:focus-visible {
 .upright .ts-name { font-size: 12px; padding: 1px 5px; }
 
 @media (prefers-reduced-motion: no-preference) {
-  .ts-seat.filled .avatar {
+  .ts-seat.just-sat .avatar {
     animation: ts-sit var(--motion-enter, 260ms) var(--ease-emphasis, ease-out) both;
   }
 
@@ -316,3 +316,38 @@ button.ts-seat-body:focus-visible {
 .confirm-bar .btn {
   min-height: 52px;
 }
+
+/* The emblem as one button beside the name (party/AddPlayerForm.jsx, #52). */
+.emblem-choice-button {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: var(--emblem);
+  color: #fff7e8;
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--line);
+  cursor: pointer;
+}
+
+.emblem-choice-button[aria-expanded='true'] {
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent-text);
+}
+
+.emblem-choice-button:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 5px;
+}
+
+.emblem-choice-button .emblem-icon { width: 26px; height: 26px; }
+
+/* The picker opens on its own line under the name row. */
+.emblem-choice-panel {
+  flex-basis: 100%;
+  order: 10;
+  padding-top: 6px;
+}
+
+.add-player .row > .input { min-width: 0; flex: 1 1 8ch; }

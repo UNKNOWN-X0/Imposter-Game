@@ -13,7 +13,7 @@
  * reads aloud. Nothing here changes with a player's role, word or vote.
  */
 
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useT } from '../../i18n/index.jsx';
 import { Avatar } from '../primitives/Avatar.jsx';
 
@@ -114,6 +114,10 @@ export function TableScene({
   const id = useId().replace(/:/g, '');
   const ids = { grain: `${id}g`, lamp: `${id}l`, glow: `${id}c`, blur: `${id}b`, clip: `${id}k` };
   const points = seatPoints(Math.max(chairs, seated.length));
+  // Whoever was already seated when the table first drew is not sitting
+  // down now; only a seat filled after that plays the sit-down (#52).
+  const firstSeated = useRef(null);
+  if (firstSeated.current === null) firstSeated.current = new Set(seated.map((w) => w.key));
   const { x, y, w, h, r } = TABLE;
   const ph = h / PLANKS;
 
@@ -206,7 +210,7 @@ export function TableScene({
             : {};
           return (
             <li
-              className={`ts-seat filled${who.away ? ' away' : ''}${who.out ? ' out' : ''}${who.speaking ? ' speaking' : ''}${picked === who.key ? ' picked' : ''}`}
+              className={`ts-seat filled${firstSeated.current.has(who.key) ? '' : ' just-sat'}${who.away ? ' away' : ''}${who.out ? ' out' : ''}${who.speaking ? ' speaking' : ''}${picked === who.key ? ' picked' : ''}`}
               key={who.key}
               style={place(p)}
             >

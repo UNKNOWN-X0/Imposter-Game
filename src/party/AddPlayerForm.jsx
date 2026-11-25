@@ -5,12 +5,14 @@
 import { useState } from 'react';
 import { MAX_PLAYERS, MIN_PLAYERS } from '../core/rules.js';
 import { useT } from '../i18n/index.jsx';
-import { EMBLEMS, EmblemIcon, firstFree } from '../ui/icons/EmblemIcon.jsx';
+import { EMBLEMS, EmblemIcon, emblemFor, firstFree } from '../ui/icons/EmblemIcon.jsx';
 
 /**
- * A name and an emblem. `taken` lists the emblems already at the table; they
- * stay visible but cannot be picked, so no two players share a mark. Without
- * `taken` (a room, until rooms carry emblems) there is no picker.
+ * A name and an emblem. The emblem starts on the first free one and shows
+ * as one button beside the name, so adding a player stays name + Enter;
+ * tapping it opens the picker (#52). `taken` lists the emblems already at
+ * the table: they stay visible but cannot be picked. Without `taken` there
+ * is no emblem at all.
  */
 export function AddPlayerForm({ onAdd, disabled, taken }) {
   const { t } = useT();
@@ -29,10 +31,10 @@ export function AddPlayerForm({ onAdd, disabled, taken }) {
         setChosen(null);
       }}
     >
-      {picking && (
-        <EmblemPicker value={emblem} onChange={setChosen} taken={taken} disabled={disabled} />
-      )}
-      <div className="row">
+      <div className="row wrap">
+        {picking && (
+          <EmblemChoice value={emblem} onChange={setChosen} taken={taken} disabled={disabled} />
+        )}
         <input
           className="input grow"
           value={name}
@@ -56,6 +58,46 @@ export function LobbyHint({ count }) {
     return <p className="hint center">{t('lobby.needMore', { count: MIN_PLAYERS - count })}</p>;
   if (count >= MAX_PLAYERS) return <p className="hint center">{t('lobby.full')}</p>;
   return <p className="hint center">{t('lobby.count', { count })}</p>;
+}
+
+/**
+ * The emblem as one 52px button that opens the picker, and closes it again
+ * once one is picked. On a phone the full picker is two rows of six, which
+ * is too much to show before anyone has typed a name.
+ */
+export function EmblemChoice({ value, onChange, taken = [], disabled }) {
+  const { t } = useT();
+  const [open, setOpen] = useState(false);
+  const current = emblemFor(value);
+  return (
+    <>
+      <button
+        type="button"
+        className="emblem-choice-button"
+        style={{ '--emblem': current.colour }}
+        aria-expanded={open}
+        aria-label={t('lobby.emblemNow', { emblem: t(`emblem.${current.id}`) })}
+        title={t('lobby.emblemNow', { emblem: t(`emblem.${current.id}`) })}
+        disabled={disabled}
+        onClick={() => setOpen((o) => !o)}
+      >
+        <EmblemIcon id={current.id} />
+      </button>
+      {open && (
+        <div className="emblem-choice-panel">
+          <EmblemPicker
+            value={value}
+            taken={taken}
+            disabled={disabled}
+            onChange={(id) => {
+              onChange(id);
+              setOpen(false);
+            }}
+          />
+        </div>
+      )}
+    </>
+  );
 }
 
 /**
