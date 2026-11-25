@@ -201,6 +201,9 @@ Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and *
 ### Segmented Control
 - **Style:** one compact, fully rounded track; the active option uses the wood accent. Preserve text labels and visible focus.
 
+### Icons
+- **Set (owner, 2026-11-25, issue #39):** interface icons are Lucide drawings (ISC, `NOTICE.md`) on a 24px grid at a 1.8 stroke with round caps, painted in `currentColor`; single-point dots are drawn at 2.4 to 2.6 so they read. Each keeps one motion behind `anim`, and reduced motion stops it. The brand mark, the jester, the blind card and the card back are the project's own; a new icon starts from the nearest Lucide drawing.
+
 ### Navigation
 - **Style:** utility actions stay secondary to the table and primary party actions. On phones they wrap or stack without clipping; do not reinstate the permanent noticeboard rail.
 
