@@ -12,8 +12,10 @@ import { PassGate, RoleCard } from '../../../features/round/index.js';
 
 export function Reveal({ state, run, holding, setHolding }) {
   const { t } = useT();
-  const nextId = state.order.find((id) => !state.revealed.includes(id));
-  const player = playerById(state, nextId);
+  const waiting = state.order.filter((id) => !state.revealed.includes(id));
+  const player = playerById(state, waiting[0]);
+  // Who takes the phone after this card, so the button can say so.
+  const after = playerById(state, waiting[1]);
   const left = state.players.length - state.revealed.length;
 
   if (!player) return null;
@@ -37,7 +39,8 @@ export function Reveal({ state, run, holding, setHolding }) {
       wordLang={state.config.wordLang}
       customPacks={state.customPacks}
       name={player.name}
-      doneLabel={left === 1 ? t('reveal.start') : t('reveal.next')}
+      peek
+      doneLabel={after ? t('reveal.passNext', { name: after.name }) : t('reveal.start')}
       onDone={() => {
         setHolding(false);
         run({ type: 'MARK_REVEALED', playerId: player.id });

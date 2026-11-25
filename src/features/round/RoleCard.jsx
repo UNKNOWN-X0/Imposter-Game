@@ -10,11 +10,13 @@ import { hintLine } from '../lobby/Settings.jsx';
 import { PackChip } from '../packs/PackChip.jsx';
 import { HoldCard } from '../../ui/primitives/HoldCard.jsx';
 import { Rich } from '../../ui/primitives/Rich.jsx';
+import { Avatar } from '../../ui/primitives/Avatar.jsx';
 import { ROLE_FACE } from '../../ui/primitives/RoleGlyph.jsx';
 
-export function RoleCard({ view, name, onDone, doneLabel, wordLang, customPacks = [] }) {
+export function RoleCard({ view, name, onDone, doneLabel, wordLang, customPacks = [], peek = false }) {
   const { t } = useT();
   const [shown, setShown] = useState(false);
+  const [open, setOpen] = useState(false); // peek: only while held
   const imposter = view.role === ROLE.IMPOSTER;
   // In blind mode the card must give nothing away: no colour, no label, just
   // a word. Everyone's card looks identical, which is the whole point.
@@ -22,110 +24,137 @@ export function RoleCard({ view, name, onDone, doneLabel, wordLang, customPacks 
   const face = ROLE_FACE[view.role] ?? ROLE_FACE[ROLE.CREW];
   const tone = blind ? 'neutral' : face.tone;
 
+  const back = (progress) => (
+    <div className="stack tight center">
+      <div className="card-face" aria-hidden="true">
+        <HoldRing progress={progress} />
+        <span className="card-face-icon">
+          {progress > 0 ? <EyeIcon size={30} anim /> : <CardBackIcon size={30} anim />}
+        </span>
+      </div>
+      {name && <div className="title">{name}</div>}
+      <div className={`subtitle${progress > 0 ? '' : ' pulse'}`}>
+        {progress > 0 ? t('reveal.holding') : t(peek && shown ? 'reveal.holdAgain' : 'reveal.hold')}
+      </div>
+      <div className="hint">{t('reveal.makeSure')}</div>
+    </div>
+  );
+
+  const front = (
+    <div className="stack tight center">
+      <span className="glyph role settle" aria-hidden="true">
+        {blind ? (
+          <UnknownIcon size={26} anim />
+        ) : imposter && view.hint ? (
+          <HintIcon size={26} anim />
+        ) : (
+          <face.icon size={26} anim={view.role !== ROLE.CREW} />
+        )}
+      </span>
+      <div className="role-name">
+        {blind
+          ? t('reveal.blind')
+          : imposter && view.hint
+            ? t('reveal.hintLabel')
+            : t(face.label)}
+      </div>
+      {view.word ? (
+        <>
+          <div className="big-word word-in">{view.word}</div>
+          <PackChip lang={wordLang} packId={view.packId} customPacks={customPacks} />
+          <div className="hint">
+            {blind
+              ? t('reveal.blindHint')
+              : imposter
+                ? t('reveal.imposterHint')
+                : t('reveal.crewHint')}
+          </div>
+        </>
+      ) : view.hint ? (
+        // Hint mode: no word at all, a description of one instead.
+        <>
+          <div className="hint-line word-in">{hintLine(t, view.hint)}</div>
+          <PackChip lang={wordLang} packId={view.packId} customPacks={customPacks} />
+          <div className="hint">{t('reveal.hintHelp')}</div>
+        </>
+      ) : (
+        <>
+          <div className="big-word">{t('reveal.noWord')}</div>
+          <PackChip lang={wordLang} packId={view.packId} customPacks={customPacks} />
+          <div className="hint">{t('reveal.noWordHint')}</div>
+        </>
+      )}
+      {view.role === ROLE.DETECTIVE && (
+        <div className="banner" style={{ marginTop: 10 }}>
+          <Rich
+            text={
+              view.cleared
+                ? t('role.detectiveKnows', { name: view.cleared })
+                : t('role.detectiveAlone')
+            }
+          />
+        </div>
+      )}
+
+      {view.role === ROLE.SIDEKICK && view.knownImposters?.length > 0 && (
+        <div className="banner" style={{ marginTop: 10 }}>
+          <Rich
+            text={t('role.sidekickKnows', {
+              names: view.knownImposters.join(' & '),
+            })}
+          />
+        </div>
+      )}
+
+      {view.role === ROLE.JESTER && (
+        <div className="banner" style={{ marginTop: 10 }}>
+          {t('role.jesterGoal')}
+        </div>
+      )}
+
+      {view.fellowImposters?.length > 0 && (
+        <div className="banner" style={{ marginTop: 10 }}>
+          <Rich
+            text={t('reveal.workingWith', {
+              names: `<b>${view.fellowImposters.join(' & ')}</b>`,
+            })}
+          />
+        </div>
+      )}
+    </div>
+  );
+
+  if (peek) {
+    // One phone: the card is open only while it is held, so nothing is on
+    // the screen once the finger lifts, whatever happens next.
+    return (
+      <div className="stack fill">
+        <HoldCard
+          className={open ? `${tone} card-flip-in` : ''}
+          onOpen={() => {
+            setOpen(true);
+            setShown(true);
+          }}
+          onRelease={() => setOpen(false)}
+        >
+          {(progress) => (open ? front : back(progress))}
+        </HoldCard>
+        {/* Only once the card is covered again, because the label says so. */}
+        {shown && !open && (
+          <button className="btn primary block lg" onClick={onDone}>
+            {doneLabel ?? t('common.gotIt')}
+          </button>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="stack fill">
       {!shown ? (
-        <HoldCard onOpen={() => setShown(true)}>
-          {(progress) => (
-            <div className="stack tight center">
-              <div className="card-face" aria-hidden="true">
-                <HoldRing progress={progress} />
-                <span className="card-face-icon">
-                  {progress > 0 ? <EyeIcon size={30} anim /> : <CardBackIcon size={30} anim />}
-                </span>
-              </div>
-              {name && <div className="title">{name}</div>}
-              <div className={`subtitle${progress > 0 ? '' : ' pulse'}`}>
-                {progress > 0 ? t('reveal.holding') : t('reveal.hold')}
-              </div>
-              <div className="hint">{t('reveal.makeSure')}</div>
-            </div>
-          )}
-        </HoldCard>
+        <HoldCard onOpen={() => setShown(true)}>{back}</HoldCard>
       ) : (
-        <div className={`reveal ${tone} card-flip-in`}>
-          <div className="stack tight center">
-            <span className="glyph role settle" aria-hidden="true">
-              {blind ? (
-                <UnknownIcon size={26} anim />
-              ) : imposter && view.hint ? (
-                <HintIcon size={26} anim />
-              ) : (
-                <face.icon size={26} anim={view.role !== ROLE.CREW} />
-              )}
-            </span>
-            <div className="role-name">
-              {blind
-                ? t('reveal.blind')
-                : imposter && view.hint
-                  ? t('reveal.hintLabel')
-                  : t(face.label)}
-            </div>
-            {view.word ? (
-              <>
-                <div className="big-word word-in">{view.word}</div>
-                <PackChip lang={wordLang} packId={view.packId} customPacks={customPacks} />
-                <div className="hint">
-                  {blind
-                    ? t('reveal.blindHint')
-                    : imposter
-                      ? t('reveal.imposterHint')
-                      : t('reveal.crewHint')}
-                </div>
-              </>
-            ) : view.hint ? (
-              // Hint mode: no word at all, a description of one instead.
-              <>
-                <div className="hint-line word-in">{hintLine(t, view.hint)}</div>
-                <PackChip lang={wordLang} packId={view.packId} customPacks={customPacks} />
-                <div className="hint">{t('reveal.hintHelp')}</div>
-              </>
-            ) : (
-              <>
-                <div className="big-word">{t('reveal.noWord')}</div>
-                <PackChip lang={wordLang} packId={view.packId} customPacks={customPacks} />
-                <div className="hint">{t('reveal.noWordHint')}</div>
-              </>
-            )}
-            {view.role === ROLE.DETECTIVE && (
-              <div className="banner" style={{ marginTop: 10 }}>
-                <Rich
-                  text={
-                    view.cleared
-                      ? t('role.detectiveKnows', { name: view.cleared })
-                      : t('role.detectiveAlone')
-                  }
-                />
-              </div>
-            )}
-
-            {view.role === ROLE.SIDEKICK && view.knownImposters?.length > 0 && (
-              <div className="banner" style={{ marginTop: 10 }}>
-                <Rich
-                  text={t('role.sidekickKnows', {
-                    names: view.knownImposters.join(' & '),
-                  })}
-                />
-              </div>
-            )}
-
-            {view.role === ROLE.JESTER && (
-              <div className="banner" style={{ marginTop: 10 }}>
-                {t('role.jesterGoal')}
-              </div>
-            )}
-
-            {view.fellowImposters?.length > 0 && (
-              <div className="banner" style={{ marginTop: 10 }}>
-                <Rich
-                  text={t('reveal.workingWith', {
-                    names: `<b>${view.fellowImposters.join(' & ')}</b>`,
-                  })}
-                />
-              </div>
-            )}
-          </div>
-        </div>
+        <div className={`reveal ${tone} card-flip-in`}>{front}</div>
       )}
 
       {shown && (
@@ -143,8 +172,13 @@ export function PassGate({ name, onReady, note }) {
   return (
     <button className="reveal shield" onClick={onReady}>
       <div className="stack tight center">
-        <span className="glyph">
-          <PassIcon size={30} anim />
+        {/* Their emblem, so whoever is passing sees at a glance whose hand
+            the phone belongs in. */}
+        <span className="pass-avatar">
+          <Avatar name={name} size={64} />
+          <span className="pass-avatar-icon" aria-hidden="true">
+            <PassIcon size={18} />
+          </span>
         </span>
         <div className="eyebrow">{t('reveal.passTo')}</div>
         {/* A name with no space in it used to push this card wider than the

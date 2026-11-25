@@ -125,6 +125,7 @@ Each theme changes the warm wood surfaces and brings its own action accent, whil
 
 **Display Font:** the platform sans stack, with Thonburi, Noto Sans Thai, IBM Plex Sans Thai, and Sarabun before Latin fallbacks, matching the approved mock.
 **Body Font:** the same stack.
+**Mono Font:** `ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`, only where people paste or read raw text: the pack editor's word list (so word and near miss line up) and the crash report. Never for interface copy.
 
 **Character:** direct, friendly, and readable in a busy room. Use weight and clear size steps for hierarchy; keep names and controls horizontal and untransformed in every language.
 
@@ -184,8 +185,10 @@ Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and *
 - **Findings:** the editor lists every finding about the pasted words in line order, numbered by the line as typed. Skipped lines sit on the imposter-deep tint and quote what was typed; warnings (a dropped or risky near miss) sit on `--surface-2`. Tinted rows, never a coloured side stripe. The list scrolls inside itself so Save stays in reach.
 
 ### Private Card
-- **Style:** covered until an explicit hold-to-reveal action completes.
-- **State:** handoff and reveal animation never disclose the word or role before the existing privacy gate permits it; reduced motion preserves the same gate.
+- **Style:** a face-down card: a plain back with an inlaid frame inside the edge, no stripes. It opens only when an explicit hold completes.
+- **Peek (issue #22, 2026-11-25):** on one phone the card is open only while it is held; lifting the finger, sliding off, a cancelled pointer, or backgrounding the phone covers it at once. A keyboard opens it with Enter or Space and covers it with the same key, Escape, or moving focus. Holding again looks again.
+- **Handoff:** the pass screen shows the next player's emblem with the pass mark and their name. Once the card has been seen and is covered again, the button names who gets the phone next ("Covered — pass to Nok"), or starts the round after the last card.
+- **State:** handoff and reveal animation never disclose the word or role before the existing privacy gate permits it; reduced motion preserves the same gate. In a room, on a phone of your own, the card stays open after the hold.
 
 ### Room-code Chip
 - **Style:** tracked, tabular code with an obvious copy action; pill-shaped and large enough to tap.

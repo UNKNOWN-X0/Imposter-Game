@@ -485,3 +485,29 @@
   width: 58%;
   height: 58%;
 }
+
+/* Whose turn it is to take the phone: their emblem, with the pass mark. */
+.pass-avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 6px;
+}
+
+.pass-avatar .avatar {
+  box-shadow: 0 0 0 3px var(--surface-2), 0 0 0 4px var(--line);
+}
+
+.pass-avatar-icon {
+  position: absolute;
+  right: -8px;
+  bottom: -4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+}
