@@ -69,3 +69,12 @@
  * on a layout that already worked, so the reduced-motion block at the very
  * end can switch the movement off without anything losing its meaning.
  * ==================================================================== */
+
+/* A framed screen with Back in its bar fits the mark, Back, display and
+   language on one row of a 390px phone only without the name beside the
+   mark; the mark still says where you are. */
+@media (max-width: 479px) {
+  .game-topbar:has(> .btn) .brand-name {
+    display: none;
+  }
+}
