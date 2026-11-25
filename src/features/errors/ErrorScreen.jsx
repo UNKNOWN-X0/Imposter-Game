@@ -20,7 +20,7 @@ export function ErrorScreen({ report, onRestart }) {
   const { t } = useT();
 
   return (
-    <Shell>
+    <Shell frame>
       <div className="card pad-lg center stack">
         <span className="glyph big danger">
           <BrokenIcon size={30} />

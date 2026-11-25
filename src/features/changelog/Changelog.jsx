@@ -36,7 +36,7 @@ export default function Changelog({ onExit, seen }) {
   };
 
   return (
-    <Shell onBack={onExit}>
+    <Shell onBack={onExit} frame>
       <div className="stack tight">
         <h1 className="title">{t('log.title')}</h1>
         <p className="subtitle">{t('log.sub', { version: VERSION })}</p>

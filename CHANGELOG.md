@@ -28,6 +28,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Fixed
 
+- How to play, What's new and the error screen sit in the same frame as the game, and open at their top instead of halfway down where the hub was scrolled.
+- On a phone, the top bar of a screen with Back keeps to one row by showing the mark without the name.
 - The selected emblem's ring no longer overlaps the emblem beside it on wide screens; the picker is two even rows of six.
 - Pack editor warnings named the wrong line once a list had blank lines, notes or skipped lines; they now point at the line you typed.
 

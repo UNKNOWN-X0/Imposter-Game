@@ -17,7 +17,7 @@ export { Step } from './Step.jsx';
 export function Rules({ onExit }) {
   const { t } = useT();
   return (
-    <Shell onBack={onExit}>
+    <Shell onBack={onExit} frame>
       <h1 className="title">{t('rules.title')}</h1>
 
       <div className="card stack">

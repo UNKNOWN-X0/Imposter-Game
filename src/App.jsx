@@ -110,18 +110,27 @@ export default function App() {
 
   // Keep the browser's back button meaningful instead of leaving the site.
   useEffect(() => {
-    const onPop = () => setScreen('home');
+    const onPop = () => {
+      setScreen('home');
+      window.scrollTo(0, 0);
+    };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
   }, []);
 
+  // A new screen starts at its top. Without this, a link at the foot of the
+  // hub opened the rules or the changelog already scrolled halfway down.
+  const toTop = () => window.scrollTo(0, 0);
+
   const open = (next) => {
     window.history.pushState({ screen: next }, '');
     setScreen(next);
+    toTop();
   };
 
   const home = () => {
     setScreen('home');
+    toTop();
     if (window.location.hash) window.history.replaceState(null, '', window.location.pathname);
   };
 
