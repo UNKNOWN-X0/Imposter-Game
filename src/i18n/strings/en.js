@@ -539,6 +539,8 @@ export default {
   'join.title': 'Play from your own phone',
   'join.sub': 'One person starts a room, everyone else joins with the four-character code.',
   'join.yourName': 'Your name',
+  'join.thisIsMe': 'This is me',
+  'join.orName': 'Or type your name',
   'join.namePlaceholder': 'e.g. Fern',
   'join.start': 'Start a new room',
   'join.or': 'Or join one',

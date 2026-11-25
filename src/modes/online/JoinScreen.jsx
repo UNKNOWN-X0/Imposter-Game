@@ -11,6 +11,7 @@ import { useErrorText, useT } from '../../i18n/index.jsx';
 import { createRoom, joinRoom, serverInfo } from './useRoom.js';
 import { Banner, Shell } from '../../ui/primitives/index.js';
 import { EmblemChoice, useParty } from '../../party/index.js';
+import { Avatar } from '../../ui/primitives/Avatar.jsx';
 import { defaultEmblem } from '../../ui/icons/emblems.js';
 
 /* ------------------------------------------------------------------ *
@@ -60,7 +61,7 @@ export function JoinScreen({ onJoined, onExit, initialCode }) {
   };
 
   return (
-    <Shell onBack={onExit}>
+    <Shell onBack={onExit} frame>
       {error && <Banner kind="error">{errorText(error)}</Banner>}
 
       <div className="stack tight">
@@ -76,8 +77,33 @@ export function JoinScreen({ onJoined, onExit, initialCode }) {
       )}
 
       <div className="card stack">
+        {/* A room is one phone per person, so the party on this phone cannot
+            simply move in. But whoever holds it is probably one of them:
+            picking yourself fills in your name and your emblem (#58). */}
+        {party.names.length > 0 && (
+          <div className="stack tight">
+            <span className="eyebrow" id="join-me">{t('join.thisIsMe')}</span>
+            <div className="party-pick" role="group" aria-labelledby="join-me">
+              {party.names.map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  className="party-pick-chip"
+                  aria-pressed={name.trim() === n}
+                  onClick={() => {
+                    setName(n);
+                    setPicked(null);
+                  }}
+                >
+                  <Avatar name={n} size={28} />
+                  <span>{n}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
         <label className="stack tight">
-          <span className="eyebrow">{t('join.yourName')}</span>
+          <span className="eyebrow">{party.names.length > 0 ? t('join.orName') : t('join.yourName')}</span>
           <input
             className="input"
             value={name}
