@@ -189,6 +189,10 @@ Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and *
 
 - **Write it with AI:** a fold-out panel above the word box holds a copyable prompt (topic from the pack name, words in the pack's word language, 30/50/100 entries). It is text only: no network call, no key.
 
+### Game Library
+- **Flow (owner, 2026-11-25, issue #51):** who is playing (the hub's table), then how (**Play on one phone** / **Play in a room**), then which game: each mode opens the library, which lists the games for that mode. Only through a mode, and shown even while Imposter is the only game. In a room, **Have a code? Join a room** sits above the games, because a guest's game was chosen by the host.
+- **Card:** the game's mark, name (Title), player range, one-line pitch, a "needs at least N" note when the party is short (one phone), then **How to play** beside the primary **Play <game>**.
+
 ### Private Card
 - **Style:** a face-down card: a plain back with an inlaid frame inside the edge, no stripes. It opens only when an explicit hold completes.
 - **Peek (issue #22, 2026-11-25):** on one phone the card is open only while it is held; lifting the finger, sliding off, a cancelled pointer, or backgrounding the phone covers it at once. A keyboard opens it with Enter or Space and covers it with the same key, Escape, or moving focus. Holding again looks again.

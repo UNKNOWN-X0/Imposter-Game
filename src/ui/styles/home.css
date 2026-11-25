@@ -83,7 +83,6 @@
 }
 
 .hub-actions h2,
-.hub-section-heading h2,
 .hub-library-panel h2 {
   font-size: 21px;
   letter-spacing: -0.02em;
@@ -137,7 +136,6 @@
 }
 
 .hub-mode:focus-visible,
-.hub-text-action:focus-visible,
 .hub-primary-action:focus-visible,
 .hub-footer-link:focus-visible,
 .hub-brand:focus-visible {
@@ -147,46 +145,20 @@
 
 .hub-sections {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 26px;
   margin-top: 28px;
 }
 
-.hub-section-heading {
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
 
-.hub-game-row {
-  min-height: 88px;
-  display: grid;
-  grid-template-columns: 48px minmax(0, 1fr);
-  align-items: center;
-  gap: 14px;
-  margin-top: 6px;
-  padding: 12px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
 
-.hub-game-row > svg {
-  color: var(--accent-text);
-}
 
-.hub-game-row h3 {
-  font-size: 18px;
-}
 
-.hub-game-row p,
 .hub-library-panel p {
   margin-top: 4px;
   font-size: 14px;
 }
 
-.hub-text-action,
 .hub-primary-action,
 .hub-footer-link {
   min-height: var(--tap);
@@ -198,9 +170,6 @@
   cursor: pointer;
 }
 
-.hub-text-action {
-  padding: 0 8px;
-}
 
 .hub-library-panel {
   min-height: 146px;
@@ -305,3 +274,32 @@
 .hub-page .hub-table-scene.upright {
   max-width: 290px;
 }
+
+/* The game library (features/library/GameLibrary.jsx). */
+.game-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.game-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.game-card h2 {
+  font-size: 23px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.game-card p { margin: 0; }
