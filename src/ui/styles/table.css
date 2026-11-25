@@ -69,6 +69,44 @@
 
 .upright .ts-seat { width: calc(var(--ts-token) * 1.9); }
 
+.ts-seat-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+}
+
+button.ts-seat-body {
+  padding: 2px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+button.ts-seat-body:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 2px;
+}
+
+.ts-seat.picked .avatar {
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px var(--accent-text), 0 6px 10px rgb(0 0 0 / 0.35);
+}
+
+.ts-seat.picked .ts-name {
+  border-color: var(--accent-text);
+}
+
+.ts-you {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--accent-text);
+}
+
 .ts-token {
   position: relative;
   display: grid;
@@ -229,4 +267,30 @@
 .emblem-choice.taken {
   opacity: 0.3;
   cursor: not-allowed;
+}
+
+/* Under the table: what to do with the seat that was tapped. */
+.seat-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--accent-text);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.seat-actions-name {
+  flex: 1 1 8ch;
+  min-width: 0;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* A heading between the seating and the rules. */
+.section-title {
+  margin-top: 8px;
+  font-size: 19px;
+  line-height: 1.3;
 }
