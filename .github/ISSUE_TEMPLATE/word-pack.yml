@@ -1,0 +1,26 @@
+name: Word pack
+description: A word or near miss in a built-in pack that does not play well, or a typo.
+title: "[Words] "
+labels: ["content"]
+body:
+  - type: dropdown
+    id: language
+    attributes:
+      label: Word language
+      options: ["English", "ไทย", "Deutsch"]
+    validations:
+      required: true
+  - type: input
+    id: pack
+    attributes:
+      label: Pack
+      placeholder: "Food & Drink"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: The word and what is wrong
+      description: For example "Pizza / Lasagna is too close, the imposter wins every time", or a better near miss.
+    validations:
+      required: true
