@@ -8,6 +8,7 @@
  */
 
 import * as store from './store.js';
+import { EMBLEM_IDS, firstFree } from '../src/ui/icons/emblems.js';
 import {
   PHASE,
   createGame,
@@ -80,6 +81,7 @@ export function createRoom(config = {}) {
     code,
     state: createGame(config),
     hostId: null,
+    emblems: {}, // playerId -> emblem id; as public as the name beside it
     tokens: new Map(), // token -> playerId
     listeners: new Set(), // { playerId, send }
     createdAt: Date.now(),
@@ -146,11 +148,19 @@ export function _reloadRooms() {
 
 /* ------------------------------------------------------------------ */
 
-export function joinRoom(room, name) {
+export function joinRoom(room, name, emblem) {
   const before = room.state.players.length;
   room.state = reduce(room.state, { type: 'ADD_PLAYER', name });
   const player = room.state.players[room.state.players.length - 1];
   if (before === 0) room.hostId = player.id;
+  room.emblems ??= {};
+  // The emblem the phone asked for, if it is a real one nobody else at the
+  // table has; otherwise the first free one. Never trusted as sent.
+  const taken = room.state.players.filter((p) => p.id !== player.id).map((p) => room.emblems[p.id]);
+  room.emblems[player.id] =
+    typeof emblem === 'string' && EMBLEM_IDS.includes(emblem) && !taken.includes(emblem)
+      ? emblem
+      : firstFree(taken);
   const token = newToken();
   room.tokens.set(token, player.id);
   room.touchedAt = Date.now();
@@ -320,6 +330,19 @@ export function dispatch(room, playerId, action) {
  */
 const isHostPhone = (room, playerId) => playerId != null && playerId === room.hostId;
 
+/**
+ * The seats, as everybody at the table can see them: each player's emblem,
+ * and who has no phone connected right now ("away"). Nothing here is about
+ * the game: no role, word or vote. Only players still in the room appear.
+ */
+export function seatsFor(room) {
+  const emblems = {};
+  for (const p of room.state.players) if (room.emblems?.[p.id]) emblems[p.id] = room.emblems[p.id];
+  const watching = new Set([...room.listeners].map((l) => l.playerId));
+  const away = room.state.players.filter((p) => !watching.has(p.id)).map((p) => p.id);
+  return { emblems, away };
+}
+
 export function payloadFor(room, playerId) {
   const state = room.state;
   const inGame = state.phase !== PHASE.LOBBY && playerById(state, playerId);
@@ -328,6 +351,7 @@ export function payloadFor(room, playerId) {
     hostId: room.hostId,
     you: playerId,
     isHost: isHostPhone(room, playerId),
+    seats: seatsFor(room),
     state: publicState(state),
     private: inGame ? viewFor(state, playerId) : null,
   };
@@ -348,7 +372,7 @@ export function payloadFor(room, playerId) {
  * with `payloadFor` above, because the day those two disagree is the day a
  * phone is told something that is not true.
  */
-function payloadText(room, playerId, sharedStateJson) {
+function payloadText(room, playerId, sharedStateJson, seatsJson = JSON.stringify(seatsFor(room))) {
   const state = room.state;
   const inGame = state.phase !== PHASE.LOBBY && playerById(state, playerId);
   const privateView = inGame ? viewFor(state, playerId) : null;
@@ -357,6 +381,7 @@ function payloadText(room, playerId, sharedStateJson) {
     `"hostId":${JSON.stringify(room.hostId ?? null)},` +
     `"you":${JSON.stringify(playerId ?? null)},` +
     `"isHost":${isHostPhone(room, playerId)},` +
+    `"seats":${seatsJson},` +
     `"state":${sharedStateJson},` +
     `"private":${JSON.stringify(privateView ?? null)}}`
   );
@@ -372,21 +397,23 @@ export function addListener(room, playerId, send, close) {
   // A socket can die between being accepted and being written to, and this
   // first write used to be the one place that was not guarded — so it threw
   // out of the request handler instead of just dropping the listener.
-  try {
-    send(payloadText(room, playerId, sharedJson(room)));
-  } catch {
+  // Everybody, not just this phone: whoever was showing as away is back.
+  broadcast(room);
+  return () => {
     room.listeners.delete(listener);
-  }
-  return () => room.listeners.delete(listener);
+    // And the table sees them go quiet.
+    broadcast(room);
+  };
 }
 
 export function broadcast(room) {
   if (room.listeners.size === 0) return;
   // Once for the room, not once for the phone.
   const shared = sharedJson(room);
+  const seats = JSON.stringify(seatsFor(room));
   for (const l of room.listeners) {
     try {
-      l.send(payloadText(room, l.playerId, shared));
+      l.send(payloadText(room, l.playerId, shared, seats));
     } catch {
       room.listeners.delete(l);
     }

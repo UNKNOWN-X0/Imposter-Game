@@ -7,6 +7,7 @@ import { loadPacks, savePacks } from '../../features/packs/store.js';
 import { PACK_LIMITS } from '../../content/words/custom.js';
 import { leaveRoom, loadSession, useRoom } from './useRoom.js';
 import { Announce, Banner, Shell } from '../../ui/primitives/index.js';
+import { EmblemContext } from '../../ui/primitives/Avatar.jsx';
 import { GameOverCard, StealCard, VerdictCard } from '../../features/round/index.js';
 import { JoinScreen} from './JoinScreen.jsx';
 import { OnlineClues} from './screens/Clues.jsx';
@@ -123,6 +124,21 @@ function Room({ session, onLeave, onExit }) {
     pushed.current = mine;
   }, [isHost, payload, myPacks, act]);
 
+  // The crown moving is news: the person who now runs the room needs to know
+  // the buttons are theirs, and everyone else who to wait for. Shown when it
+  // changes, never on the first payload.
+  const hostSeen = useRef(undefined);
+  const [hostNote, setHostNote] = useState(null);
+  useEffect(() => {
+    if (!payload) return;
+    const hostId = payload.hostId ?? null;
+    if (hostSeen.current !== undefined && hostId && hostId !== hostSeen.current) {
+      const name = payload.state.players.find((p) => p.id === hostId)?.name;
+      setHostNote(hostId === payload.you ? t('room.youHost') : t('room.newHost', { name }));
+    }
+    hostSeen.current = hostId;
+  }, [payload, t]);
+
   const savePack = (pack) => {
     setMyPacks((packs) => {
       const next = [...packs.filter((p) => p.id !== pack.id), pack].slice(0, PACK_LIMITS.packs);
@@ -230,31 +246,42 @@ function Room({ session, onLeave, onExit }) {
     });
   })();
 
+  // The room's own emblems, by name, for every Avatar on these screens. The
+  // server sends them by player id; a name is what an Avatar is given.
+  const roomEmblems = {};
+  for (const p of state.players) {
+    const id = payload.seats?.emblems?.[p.id];
+    if (id) roomEmblems[p.name] = id;
+  }
+
   return (
     // The lobby prints the code in full, so the chip is only useful once play
     // has started and someone asks what the room was.
-    <Shell
-      onBack={onExit}
-      // The lobby prints the code in the middle of the screen, so the topbar
-      // leaves it alone — but the library and the pack editor cover that
-      // card, and somebody at the door is still asking what the code is.
-      code={state.phase === PHASE.LOBBY && !browsing && editing === false ? undefined : payload.code}
-      phase={state.phase}
-    >
-      <Announce>{t(`step.${state.phase === PHASE.CLUES ? 'clues' : 'result'}`)}</Announce>
-      {connection === 'lost' && (
-        <Banner>
-          {t('room.dropped')}{' '}
-          <button className="btn-link" onClick={reconnect}>{t('room.retry')}</button>
-        </Banner>
-      )}
-      {error && <Banner kind="error">{errorText(error)}</Banner>}
-      {body}
-      {state.phase === PHASE.LOBBY && (
-        <button className="btn-link" onClick={onLeave}>
-          {t('room.leave')}
-        </button>
-      )}
-    </Shell>
+    <EmblemContext.Provider value={roomEmblems}>
+      <Shell
+        onBack={onExit}
+        // The lobby prints the code in the middle of the screen, so the topbar
+        // leaves it alone — but the library and the pack editor cover that
+        // card, and somebody at the door is still asking what the code is.
+        code={state.phase === PHASE.LOBBY && !browsing && editing === false ? undefined : payload.code}
+        phase={state.phase}
+      >
+        <Announce>{t(`step.${state.phase === PHASE.CLUES ? 'clues' : 'result'}`)}</Announce>
+        {connection === 'lost' && (
+          <Banner>
+            {t('room.dropped')}{' '}
+            <button className="btn-link" onClick={reconnect}>{t('room.retry')}</button>
+          </Banner>
+        )}
+        {error && <Banner kind="error">{errorText(error)}</Banner>}
+        {hostNote && <Banner>{hostNote}</Banner>}
+        {body}
+        {state.phase === PHASE.LOBBY && (
+          <button className="btn-link" onClick={onLeave}>
+            {t('room.leave')}
+          </button>
+        )}
+      </Shell>
+    </EmblemContext.Provider>
   );
 }

@@ -30,31 +30,7 @@ export function AddPlayerForm({ onAdd, disabled, taken }) {
       }}
     >
       {picking && (
-        <fieldset className="emblem-picker" disabled={disabled}>
-          <legend className="hint">{t('lobby.emblem')}</legend>
-          {EMBLEMS.map((e) => {
-            const gone = taken.includes(e.id);
-            return (
-              <label
-                key={e.id}
-                className={`emblem-choice${gone ? ' taken' : ''}`}
-                style={{ '--emblem': e.colour }}
-                title={t(`emblem.${e.id}`)}
-              >
-                <input
-                  type="radio"
-                  name="emblem"
-                  value={e.id}
-                  checked={emblem === e.id}
-                  disabled={gone}
-                  onChange={() => setChosen(e.id)}
-                />
-                <EmblemIcon id={e.id} />
-                <span className="sr-only">{t(`emblem.${e.id}`)}</span>
-              </label>
-            );
-          })}
-        </fieldset>
+        <EmblemPicker value={emblem} onChange={setChosen} taken={taken} disabled={disabled} />
       )}
       <div className="row">
         <input
@@ -80,4 +56,39 @@ export function LobbyHint({ count }) {
     return <p className="hint center">{t('lobby.needMore', { count: MIN_PLAYERS - count })}</p>;
   if (count >= MAX_PLAYERS) return <p className="hint center">{t('lobby.full')}</p>;
   return <p className="hint center">{t('lobby.count', { count })}</p>;
+}
+
+/**
+ * The twelve emblems as one radio group. `taken` stay visible but cannot be
+ * picked, so no two people at the table share a mark.
+ */
+export function EmblemPicker({ value, onChange, taken = [], disabled }) {
+  const { t } = useT();
+  return (
+    <fieldset className="emblem-picker" disabled={disabled}>
+      <legend className="hint">{t('lobby.emblem')}</legend>
+      {EMBLEMS.map((e) => {
+        const gone = taken.includes(e.id);
+        return (
+          <label
+            key={e.id}
+            className={`emblem-choice${gone ? ' taken' : ''}`}
+            style={{ '--emblem': e.colour }}
+            title={t(`emblem.${e.id}`)}
+          >
+            <input
+              type="radio"
+              name="emblem"
+              value={e.id}
+              checked={value === e.id}
+              disabled={gone}
+              onChange={() => onChange(e.id)}
+            />
+            <EmblemIcon id={e.id} />
+            <span className="sr-only">{t(`emblem.${e.id}`)}</span>
+          </label>
+        );
+      })}
+    </fieldset>
+  );
 }

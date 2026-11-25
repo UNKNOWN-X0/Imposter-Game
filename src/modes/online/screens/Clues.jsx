@@ -75,6 +75,7 @@ export function OnlineClues({ payload, act }) {
           key: p.id,
           name: p.name,
           you: p.id === you,
+          away: payload.seats?.away?.includes(p.id),
           speaking: p.id === turn,
           out: state.eliminated.includes(p.id),
         }))}

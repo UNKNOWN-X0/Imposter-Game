@@ -530,6 +530,8 @@ export default {
   // No full stop: this line is rendered with animated trailing dots.
   'room.waitingHost': 'Warte auf den Start durch den Gastgeber',
   'room.leave': 'Raum verlassen',
+  'room.newHost': '{name} ist jetzt Gastgeber.',
+  'room.youHost': 'Du bist jetzt Gastgeber: Die Knöpfe gehören dir.',
   'room.joining': 'Trete dem Raum bei',
   'room.reconnecting': 'Verbinde neu',
   'room.dropped': 'Verbindung abgerissen — neuer Versuch…',

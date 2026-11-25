@@ -529,6 +529,8 @@ export default {
   'room.howTo': 'Everyone else: connect to the same wifi, open {host} and enter this code.',
   'room.waitingHost': 'Waiting for the host to start',
   'room.leave': 'Leave this room',
+  'room.newHost': '{name} is hosting now.',
+  'room.youHost': 'You are hosting now: the buttons are yours.',
   'room.joining': 'Joining the room',
   'room.reconnecting': 'Reconnecting',
   'room.dropped': 'Connection dropped — trying again…',

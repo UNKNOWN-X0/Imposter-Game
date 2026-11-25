@@ -40,6 +40,7 @@ export function OnlineLobby({ payload, act, myPacks = [], onEditPack, onBrowsePa
           name: p.name,
           host: p.id === payload.hostId,
           you: p.id === you,
+          away: payload.seats?.away?.includes(p.id),
         }))}
         chairs={chairsFor(state.players.length, MAX_PLAYERS)}
         picked={pickedPlayer ? picked : null}
