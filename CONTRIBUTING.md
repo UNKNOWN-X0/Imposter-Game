@@ -1,14 +1,14 @@
 # Contributing
 
-Thanks for helping. Imposter is a party game played on phones around a table, and two things about it matter most: it is **free** (no account, no ads, no tracking, nothing to buy) and it is **highly customisable** (your own word packs, rules, roles and looks). Changes should keep both true.
+Thanks for helping. The Long Table is a set of party games played on phones around one table, starting with Imposter, and two things about it matter most: it is **free** (no account, no ads, no tracking, nothing to buy) and it is **highly customisable** (your own word packs, rules, roles and looks). Changes should keep both true.
 
 The most useful contributions are a bug from a real game night, a better word pack, a fix, or a way to let a group shape the game more to its taste. A change that would put a price, an account, an ad or a tracker between a group and a game will not be accepted.
 
 ## Report a problem
 
-- **Something broken in the game:** open a [bug report](https://github.com/UNKNOWN-X0/Imposter-Game/issues/new?template=bug-report.yml) with how you were playing (one phone or a room), the phone and browser, and what you saw. The error screen's "Copy the report" text helps most; it never contains the word or anyone's role.
-- **A word that does not work** (too easy, too hard, a near miss that gives it away, a typo): open a [word pack](https://github.com/UNKNOWN-X0/Imposter-Game/issues/new?template=word-pack.yml) issue.
-- **An idea:** open a [feature request](https://github.com/UNKNOWN-X0/Imposter-Game/issues/new?template=feature-request.yml).
+- **Something broken in the game:** open a [bug report](https://github.com/UNKNOWN-X0/The-Long-Table/issues/new?template=bug-report.yml) with how you were playing (one phone or a room), the phone and browser, and what you saw. The error screen's "Copy the report" text helps most; it never contains the word or anyone's role.
+- **A word that does not work** (too easy, too hard, a near miss that gives it away, a typo): open a [word pack](https://github.com/UNKNOWN-X0/The-Long-Table/issues/new?template=word-pack.yml) issue.
+- **An idea:** open a [feature request](https://github.com/UNKNOWN-X0/The-Long-Table/issues/new?template=feature-request.yml).
 - **A security problem** (for example a way to see somebody else's card): see [SECURITY.md](SECURITY.md); do not open a public issue.
 
 ## Send a change

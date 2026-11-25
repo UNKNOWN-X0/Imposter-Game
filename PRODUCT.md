@@ -14,7 +14,7 @@ web
 
 ## Product Purpose
 
-A social deduction party game around secret words: everyone but the imposters is dealt the same word, players give one-word clues, and the table votes before the imposters take over. Success is a full game that starts without coaching, stays fair (nobody can learn the word or the roles from their phone), and ends with a clear winner, in any of the three languages, on a shared phone or across a room.
+**The Long Table** (named 2026-11-25; until then "Imposter Game") is a free, highly customisable set of party games for friends around one table, starting with **Imposter**: a social deduction game around secret words: everyone but the imposters is dealt the same word, players give one-word clues, and the table votes before the imposters take over. Success is a full game that starts without coaching, stays fair (nobody can learn the word or the roles from their phone), and ends with a clear winner, in any of the three languages, on a shared phone or across a room.
 
 ## Positioning
 

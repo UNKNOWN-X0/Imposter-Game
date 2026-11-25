@@ -7,7 +7,8 @@
  */
 
 export default {
-  'app.name': 'Falschspieler',
+  'app.name': 'Die lange Tafel',
+  'game.imposter.name': 'Falschspieler',
 
   'common.back': 'Zurück',
   'common.gotIt': 'Verstanden',

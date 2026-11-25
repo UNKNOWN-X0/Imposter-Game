@@ -7,7 +7,8 @@
  */
 
 export default {
-  'app.name': 'ใครโกหก',
+  'app.name': 'โต๊ะยาว',
+  'game.imposter.name': 'ใครโกหก',
 
   'common.back': 'กลับ',
   'common.gotIt': 'เข้าใจแล้ว',

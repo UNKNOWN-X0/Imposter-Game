@@ -1,6 +1,6 @@
 # Project standards
 
-The rules every change to ImposterGame has to meet, and how to check them. Each fact lives in one file:
+The rules every change to The Long Table (and its first game, Imposter) has to meet, and how to check them. Each fact lives in one file:
 
 | File | Owns |
 |---|---|

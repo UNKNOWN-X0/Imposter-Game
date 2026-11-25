@@ -7,7 +7,8 @@
  */
 
 export default {
-  'app.name': 'Imposter',
+  'app.name': 'The Long Table',
+  'game.imposter.name': 'Imposter',
 
   'common.back': 'Back',
   'common.gotIt': 'Got it',

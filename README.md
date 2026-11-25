@@ -1,48 +1,46 @@
-# Imposter Game
+# The Long Table
 
 [![Play](https://img.shields.io/badge/Play-on%20Netlify-00C7B7?logo=netlify&logoColor=white)](https://impostergamebyfocus.netlify.app/)
-[![Checks](https://github.com/UNKNOWN-X0/Imposter-Game/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/UNKNOWN-X0/Imposter-Game/actions/workflows/ci.yml)
-[![Version](https://img.shields.io/github/package-json/v/UNKNOWN-X0/Imposter-Game?label=version)](package.json)
+[![Checks](https://github.com/UNKNOWN-X0/The-Long-Table/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/UNKNOWN-X0/The-Long-Table/actions/workflows/ci.yml)
+[![Version](https://img.shields.io/github/package-json/v/UNKNOWN-X0/The-Long-Table?label=version)](package.json)
 [![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)](package.json)
-[![Languages](https://img.shields.io/badge/languages-English%20%7C%20Thai%20%7C%20German-6750A4)](src/i18n/strings/)
+[![License](https://img.shields.io/badge/license-MIT%20%C2%B7%20CC%20BY--NC--SA-6750A4)](LICENSE)
 
-A social deduction party game built around secret words. Everyone but the imposters is dealt the same word, players give one-word clues, and the table votes before the imposters take over.
+Free, highly customisable party games for friends around one table, on one phone passed around or everyone's own. It starts with Imposter, a game of secret words and bluffing, in English, Thai and German.
 
-**Free, and yours to shape.** Free to play, with no account, no ads, no tracking and nothing to buy, and open source ([MIT](LICENSE)). Almost everything can be changed to suit your group: write your own word packs (or have an AI chat write one), share them as codes, set every rule, add roles, keep score, and pick your language and wood. And if that is not enough, the code is built to be changed: see [Making it yours](#making-it-yours).
+**[Play The Long Table →](https://impostergamebyfocus.netlify.app/)** · [Changelog](CHANGELOG.md) · [Playtest guide](PLAYTEST.md) · [Report a bug](https://github.com/UNKNOWN-X0/The-Long-Table/issues)
 
-**[Play Imposter Game →](https://impostergamebyfocus.netlify.app/)** · [Changelog](CHANGELOG.md) · [Playtest guide](PLAYTEST.md) · [Report a bug](https://github.com/UNKNOWN-X0/Imposter-Game/issues)
-
-![Imposter Game](assets/preview.png)
+![The Long Table](assets/preview.png)
 
 ## Features
 
-- **Free:** no account, no ads, no tracking, no purchases. Pass-and-play runs from any static host; rooms need only a small Node server you can run on your own wifi.
-- **Highly customisable:** your own word packs (typed, pasted, written with any AI chat, or loaded from a friend's share code), presets or every rule by hand, optional roles, scoring, emblems for every player, five wood themes in light or dark.
-- **Three languages:** English, Thai, and German, with separate choices for interface and word language.
-- **Word packs:** ten built-in packs per language, plus as many of your own as you like.
-- **Rules you set:** imposter counts, decoy modes, optional roles, and scoring.
-- **Picks up where you left off:** saved local rounds, room reconnection, and host transfer.
-- **Looks:** light and dark modes, five wood themes, and reduced-motion support.
-- **Fair by design:** one rules engine for both play modes, and a server that never sends a phone a secret it should not hold.
+- **Free:** no account, no ads, no tracking and nothing to buy. Open source: the code is MIT and the built-in word packs are CC BY-NC-SA 4.0.
+- **Highly customisable:** your own word packs (typed, pasted, written with any AI chat, or loaded from a friend's share code), presets or every rule by hand, optional roles, scoring, an emblem for every player, five wood themes in light or dark.
+- **One table for every game:** the group sits down once at the hub, each with a name and an emblem, and every game starts with the people already seated.
+- **Two ways to play:** pass one phone around the table, or everyone on their own phone in a room joined by a code or a link.
+- **Imposter, the first game:** everyone but the imposters gets the same secret word; one-word clues, a vote, and a last guess for the imposter. Ten built-in packs per language.
+- **Three languages:** English, Thai and German, with the interface language and the word language chosen separately.
+- **Fair by design:** your card shows only while you hold it, and a room's server never sends a phone a word or role it should not hold.
+- **Picks up where you left off:** saved one-phone rounds, room reconnection, players shown as away, and the host role handed on when the host leaves.
 
 ## Getting started
 
 ### Use it online
 
-**[Play in your browser](https://impostergamebyfocus.netlify.app/)** for pass-and-play on one phone. Multiplayer rooms need the Node server (below, or [Deploying](#deploying)).
+**[Play in your browser](https://impostergamebyfocus.netlify.app/)** for pass-and-play on one phone. Rooms need the Node server (below, or [Deploying](#deploying)).
 
 ### Run it yourself
 
 Install **Node.js 20 or newer**, then:
 
 ```sh
-git clone https://github.com/UNKNOWN-X0/Imposter-Game.git
-cd Imposter-Game
+git clone https://github.com/UNKNOWN-X0/The-Long-Table.git
+cd The-Long-Table
 npm install
-npm run dev        # http://localhost:5174 — one-phone mode, hot reload
+npm run dev        # http://localhost:5174, one-phone mode, hot reload
 ```
 
-For phone-to-phone play, `npm run party` builds the site and serves it on your Wi-Fi, printing the address everyone else types into their phone. When you are working on the UI *and* want rooms, run `npm run serve` (the party server on 5173) in one terminal and `npm run dev` in another; Vite proxies `/api` to the server, so it behaves as in production.
+For phone-to-phone play, `npm run party` builds the site and serves it on your wifi, printing the address everyone else types into their phone. When you are working on the interface *and* want rooms, run `npm run serve` (the party server on 5173) in one terminal and `npm run dev` in another; Vite proxies `/api` to the server, so it behaves as in production.
 
 **Without a terminal:** double-click `Play Imposter.command` (Mac; right-click and choose Open the first time) or `Play Imposter.bat` (Windows). It installs what is missing, builds, starts the server, and opens the browser.
 
@@ -52,16 +50,33 @@ For phone-to-phone play, `npm run party` builds the site and serves it on your W
 
 | Mode | How it works | What you need |
 | --- | --- | --- |
-| Pass-and-play | Pass one phone around; each player privately reveals their card. | A browser. Use the Netlify link above. |
-| Multiplayer rooms | Each player joins on their own device with a room code. | The Node server, on the same Wi-Fi or publicly hosted ([Deploying](#deploying)). |
+| One phone | Seat everyone at the hub, then pass the phone; each player holds their card to see it, and it covers again when they let go. | A browser. Use the link above. |
+| Room | Each player joins on their own phone with the room code or the link the host shares. | The Node server, on the same wifi or publicly hosted ([Deploying](#deploying)). |
+
+### Making it yours
+
+Everything here is a setting or a pack, with no code:
+
+- **Word packs:** open the pack library from the hub. Write a pack by typing or pasting one entry per line (`word, near miss`), or use **Write it with AI** to copy a ready prompt into any AI chat and paste its answer back. The editor reports every line it could not use, quoting it. **Share** turns a pack into a code a friend can load.
+- **Rules:** start from Quick, Careful or Chaos, then change anything under **Customize rules and roles**: how many imposters, what they see, whether they know, rounds, calling the word, the last guess, roles and scoring.
+- **The table:** each player picks one of twelve emblems; the host can tap a seat to remove someone.
+- **Looks and language:** five woods (Birch, Oak, Teak, Mahogany, Walnut) in light or dark, and English, Thai or German, each chosen per phone.
+
+### The games
+
+| Game | Players | Modes | In one line |
+| --- | --- | --- | --- |
+| Imposter | 3 to 12 | One phone, room | Everyone but the imposters gets the same word; give one-word clues and vote out who is faking it. |
+
+More games are planned ([roadmap](ROADMAP.md)); each joins the same table and pack library.
 
 ## Privacy
 
-Settings, custom packs, scores, and a saved local round stay in the browser's local storage. In multiplayer, the server keeps each room in memory and sends every phone a scrubbed copy plus its own card, so the word never reaches an imposter's device. To survive a restart it writes rooms, including the word in play, to `.rooms.json` (mode `0600`, ignored by Git, `ROOM_STORE=off` to disable). Error reports name the version, mode, phase, player count, and recent actions by name, never the word, the decoy, or who was dealt what.
+Everything a group sets up stays in the browser's local storage on that phone: the party and emblems, settings, custom packs, scores and a saved one-phone round. Nothing is collected: no account, no analytics, no tracking. In a room, the server keeps each room in memory and sends every phone a scrubbed copy plus its own card, so the word never reaches an imposter's device; besides the game it shares only each player's emblem and whether their phone is connected. To survive a restart it writes rooms, including the word in play, to `.rooms.json` (mode `0600`, ignored by Git, `ROOM_STORE=off` to disable). Error reports name the version, mode, phase, player count and recent actions by name, never the word, the near miss, or who was dealt what.
 
 ## Development
 
-### Making it yours
+### Changing the code
 
 Each recipe ends in the test that catches the step people forget.
 
@@ -98,7 +113,7 @@ A build whose rules changed does not resume rooms dealt by the one before it. `R
 ```sh
 npm test          # the rules and the server, in seconds, with no browser
 npm run coverage  # the same tests, per module, against a floor each
-npm run verify    # all of it, including the build and both browser sweeps
+npm run verify    # all of it, including the build and the three browser sweeps
 ```
 
 `npm test` covers the rules engine (including a thousand randomised games that must end with a winner), the server end to end (four simulated phones play a game; a player can only act as themselves; the word never reaches an imposter's device), the word packs, every string in every language, the icons, the stylesheet, and a **fingerprint**: 400 scripted games plus every word and string hashed into one line, committed beside the code. A change that moves the hash is a rules or content change; read the difference before blessing it:
@@ -118,20 +133,23 @@ The rules every change must meet, with the test that guards each one, are in [ST
 
 ```text
 src/core/           the rules: a pure reducer. No DOM, no network, no clock, no React.
-                    engine.js (the reducer and how a round ends) · rules.js (limits and
-                    modes) · select.js (whose turn, who may see what) · deal.js ·
-                    roles/ (one file per optional role) · scoring/ (every way to win)
+                    engine.js (the reducer and how a round ends) · rules.js (limits,
+                    modes, the name rule) · select.js (whose turn, who may see what) ·
+                    deal.js · roles/ (one file per role) · scoring/ (every way to win)
 src/content/        the words and the history, as data: words/builtin/ (ten packs of a
                     hundred per language), words/custom.js, words/sources.js, history/
 src/i18n/           one file per language, and the reader that picks a string
-src/ui/             pieces that know nothing about the game: primitives/, icons/,
-                    theme/ (light/dark and the five wood families), styles/
 src/party/          the people at the table, shared by the hub and every game: roster,
                     emblems, the add-player form and seat actions
-src/features/       pieces that do know: lobby, round, packs, rules, changelog, errors
+src/ui/             pieces that know nothing about a game: primitives/, icons/ (Lucide
+                    drawings and the twelve emblems), table/ (the feast table),
+                    theme/ (light, dark and the five woods), styles/
+src/features/       pieces that do know: hub, lobby, round, packs, rules, changelog, errors
 src/modes/          local (one phone) and online (a room), which wire the rest
-src/testing/        the checks that are about the project, not about the game
+src/testing/        the checks that are about the project, not about a game, and the
+                    three browser sweeps (every screen, every ending, every room)
 server/             static files plus the room API, zero dependencies
+tools/              verify, coverage, fingerprint, icons
 assets/preview.png  Screenshot for this README
 ```
 
@@ -152,6 +170,10 @@ Nothing in `core` imports React; nothing in `ui` imports the engine; both modes 
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | How people treat each other here |
 | [SECURITY.md](SECURITY.md) | How to report a way to see someone else's card, privately |
 | [LICENSE](LICENSE) · [LICENSE-CONTENT.md](LICENSE-CONTENT.md) | Code under MIT; the built-in word packs under CC BY-NC-SA 4.0 |
+
+## Contributing
+
+Report a problem or a word that does not play well with the [issue forms](https://github.com/UNKNOWN-X0/The-Long-Table/issues/new/choose), and a way to see someone else's card privately through [security reporting](SECURITY.md). To send a change, see [CONTRIBUTING.md](CONTRIBUTING.md); every change keeps the game free and customisable.
 
 ## License
 
