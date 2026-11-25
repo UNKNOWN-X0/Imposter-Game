@@ -6,7 +6,7 @@ Third-party work this project ships or loads, with its source and licence.
 
 ## Icons
 
-- **Lucide:** [lucide.dev](https://lucide.dev) (lucide-static 0.460.0), ISC License. The twelve player emblems in `src/ui/icons/emblems.js` (beer, key-round, flame, dice-3, feather, moon, anchor, leaf, star, bell, sun, fish), redrawn as single paths. The licence asks for this notice:
+- **Lucide:** [lucide.dev](https://lucide.dev) (lucide-static 0.460.0), ISC License. The twelve player emblems in `src/ui/icons/emblems.js` (beer, key-round, flame, dice-3, feather, moon, anchor, leaf, star, bell, sun, fish), redrawn as single paths; and most interface icons in `src/ui/icons/actions.jsx` and `roles.jsx` (hand, eye, bell, dice-5, target, shield, scale, hourglass, frown, trophy, check, contrast, plus, pencil, chevron-left, globe, copy, smartphone, wifi, shield-check, venetian-mask, search, users, chart-column, lightbulb), kept on the project's 1.8 stroke with their own animated groups. The licence asks for this notice:
 
   > ISC License
   >

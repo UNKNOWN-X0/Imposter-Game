@@ -15,12 +15,12 @@ div.spacer @ 148,42 84×0
 div.pickerwrap @ 244,16 52×52
 button.iconpicker @ 244,16 52×52
 svg.icon @ 262,34 18×18
-path.shade @ 264,36 6×12
+path.shade @ 270,38 4×8
 span.sr-only @ 270,42 2×2
 div.pickerwrap @ 308,16 66×52
 button.langpicker @ 308,16 66×52
 svg.icon @ 322,34 16×16
-path.meridian @ 326,36 4×12
+path.meridian @ 326,36 6×14
 span.sr-only @ 320,42 2×2
 main.game-column @ 16,98 358×600
 ol.stepper @ 16,98 358×18
@@ -45,7 +45,7 @@ span.avatar @ 162,320 64×64
 svg.emblem-icon @ 176,332 38×38
 span.pass-avatar-icon @ 206,360 28×28
 svg.icon @ 212,364 18×18
-g.hand @ 214,368 12×12
+g.hand @ 214,366 16×16
 div.eyebrow @ 52,398 286×18
 div.title.break-anywhere @ 52,424 286×34
 div.hint @ 52,466 286×22

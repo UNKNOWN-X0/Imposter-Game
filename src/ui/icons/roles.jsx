@@ -23,8 +23,8 @@ import { Icon } from './Icon.jsx';
  */
 export const CrewIcon = (p) => (
   <Icon {...p}>
-    <path d="M12 3.2 4.6 6.1v6c0 4.4 3.1 7.8 7.4 8.8 4.3-1 7.4-4.4 7.4-8.8v-6L12 3.2Z" />
-    <path className="draw-on" d="m8.9 11.9 2.2 2.2 4-4.2" pathLength="1" />
+    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+    <path className="draw-on" d="m9 12 2 2 4-4" pathLength="1" />
   </Icon>
 );
 
@@ -36,11 +36,11 @@ export const CrewIcon = (p) => (
  */
 export const ImposterIcon = (p) => (
   <Icon {...p}>
-    <path d="M3.2 9.6c2.8-1 5.7-1.5 8.8-1.5s6 .5 8.8 1.5c.4 3-.4 5.1-2.3 6.2-2 1.3-3.8-.1-4.7-1.4-.5-.8-1.1-1.2-1.8-1.2s-1.3.4-1.8 1.2c-.9 1.3-2.7 2.7-4.7 1.4-1.9-1.1-2.7-3.2-2.3-6.2Z" />
+    <path d="M2 12a5 5 0 0 0 5 5 8 8 0 0 1 5 2 8 8 0 0 1 5-2 5 5 0 0 0 5-5V7h-5a8 8 0 0 0-5 2 8 8 0 0 0-5-2H2Z" />
     <g className="eyes">
       <g className="pupils">
-        <circle cx="8.1" cy="11.5" r="1.15" fill="currentColor" stroke="none" />
-        <circle cx="15.9" cy="11.5" r="1.15" fill="currentColor" stroke="none" />
+        <path d="M6 11c1.5 0 3 .5 3 2-2 0-3 0-3-2Z" />
+        <path d="M18 11c-1.5 0-3 .5-3 2 2 0 3 0 3-2Z" />
       </g>
     </g>
   </Icon>
@@ -55,10 +55,9 @@ export const ImposterIcon = (p) => (
 export const DetectiveIcon = (p) => (
   <Icon {...p}>
     <g className="lens">
-      <circle cx="10.6" cy="10.6" r="6.4" />
-      <path d="M8.2 8.6a3.4 3.4 0 0 1 2.4-1" opacity="0.5" />
+      <circle cx="11" cy="11" r="8" />
     </g>
-    <path d="m15.3 15.3 5 5" />
+    <path d="m21 21-4.3-4.3" />
   </Icon>
 );
 
@@ -89,11 +88,11 @@ export const JesterIcon = (p) => (
  */
 export const SidekickIcon = (p) => (
   <Icon {...p}>
-    <circle cx="9" cy="7.6" r="3.2" />
-    <path d="M3.6 20.4a5.4 5.4 0 0 1 10.8 0" />
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
     <g className="shadow-figure">
-      <path d="M15.6 5.2a3.2 3.2 0 0 1 0 4.8" opacity="0.65" />
-      <path d="M16.4 15.6a5.4 5.4 0 0 1 4 4.8" opacity="0.65" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" opacity="0.65" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" opacity="0.65" />
     </g>
   </Icon>
 );
@@ -101,11 +100,11 @@ export const SidekickIcon = (p) => (
 /** Keeping score: a column chart, tallest first. */
 export const ScoreIcon = (p) => (
   <Icon {...p}>
-    <path d="M4.6 20.2h14.8" />
+    <path d="M3 3v16a2 2 0 0 0 2 2h16" />
     <g className="bars">
-      <path d="M7.4 20.2v-5.4" />
-      <path d="M12 20.2v-9.4" />
-      <path d="M16.6 20.2v-7" />
+      <path d="M8 17v-3" />
+      <path d="M13 17V5" />
+      <path d="M18 17V9" />
     </g>
   </Icon>
 );
@@ -131,11 +130,11 @@ export const UnknownIcon = (p) => (
 export const HintIcon = (p) => (
   <Icon {...p}>
     <g className="bulb">
-      <path d="M12 3.4a5.7 5.7 0 0 1 3.4 10.3c-.6.4-.9 1-.9 1.7v.4h-5v-.4c0-.7-.3-1.3-.9-1.7A5.7 5.7 0 0 1 12 3.4Z" />
-      <path d="M9.9 18.4h4.2M10.8 20.8h2.4" />
+      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+      <path d="M9 18h6M10 22h4" />
     </g>
     <g className="rays">
-      <path d="M19.6 5.6l-1.1.8M4.4 5.6l1.1.8M18.9 11.4h1.4M3.7 11.4h1.4" />
+      <path d="M20.6 4.6l-1.1.8M3.4 4.6l1.1.8M20.4 9.4h1.4M2.2 9.4h1.4" />
     </g>
   </Icon>
 );

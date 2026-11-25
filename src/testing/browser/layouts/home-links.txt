@@ -15,12 +15,12 @@ div.hub-tools @ 248,12 126×52
 div.pickerwrap @ 248,12 52×52
 button.iconpicker @ 248,12 52×52
 svg.icon @ 266,30 18×18
-path.shade @ 268,32 6×12
+path.shade @ 274,34 4×8
 span.sr-only @ 274,38 2×2
 div.pickerwrap @ 308,12 66×52
 button.langpicker @ 308,12 66×52
 svg.icon @ 322,30 16×16
-path.meridian @ 326,32 4×12
+path.meridian @ 326,32 6×14
 span.sr-only @ 320,38 2×2
 main.hub-content @ 16,64 358×1504
 section.hub-intro @ 16,64 358×130
@@ -138,9 +138,9 @@ span.hub-mode-title @ 70,890 290×24
 span.hub-supporting @ 70,916 290×18
 button.hub-mode @ 16,960 358×90
 svg.icon @ 32,994 22×22
-path.arc-3 @ 34,1000 16×2
-path.arc-2 @ 36,1004 10×2
-path.arc-1 @ 40,1008 4×0
+path.arc-3 @ 32,1000 18×4
+path.arc-2 @ 36,1004 12×2
+path.arc-1 @ 38,1008 6×2
 span.hub-mode-title @ 70,974 290×24
 span.hub-supporting @ 70,1000 290×38
 div.hub-sections @ 16,1074 358×366

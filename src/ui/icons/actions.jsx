@@ -23,9 +23,10 @@ import { Icon } from './Icon.jsx';
 export const PassIcon = (p) => (
   <Icon {...p}>
     <g className="hand">
-      <path d="M11 10.9V5.4a1.4 1.4 0 0 1 2.8 0v4.6" />
-      <path d="M13.8 10.7V6a1.4 1.4 0 0 1 2.8 0v4.2" />
-      <path d="M16.6 10.9V7.8a1.4 1.4 0 0 1 2.8 0v6a6.3 6.3 0 0 1-6.3 6.3h-1.1a6 6 0 0 1-4.24-1.76l-3.5-3.5a1.6 1.6 0 0 1 2.26-2.26L8.2 15.3V6.6a1.4 1.4 0 0 1 2.8 0v3.6" />
+      <path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" />
+      <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" />
+      <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" />
+      <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
     </g>
   </Icon>
 );
@@ -39,10 +40,10 @@ export const PassIcon = (p) => (
 export const EyeIcon = (p) => (
   <Icon {...p}>
     <g className="eyes lid">
-      <path d="M3 12S6.2 6.2 12 6.2 21 12 21 12s-3.2 5.8-9 5.8S3 12 3 12Z" />
-      <circle className="pupils" cx="12" cy="12" r="2.8" />
+      <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+      <circle className="pupils" cx="12" cy="12" r="3" />
     </g>
-    <path className="eye-lash" d="M4.8 12h14.4" opacity="0" />
+    <path className="eye-lash" d="M3 12h18" opacity="0" />
   </Icon>
 );
 
@@ -50,9 +51,9 @@ export const EyeIcon = (p) => (
 export const BellIcon = (p) => (
   <Icon {...p}>
     <g className="bell-body">
-      <path d="M18 9.6a6 6 0 1 0-12 0c0 5.2-1.8 6.6-1.8 6.6h15.6S18 14.8 18 9.6Z" />
+      <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
     </g>
-    <path className="clapper" d="M10.4 19.6a1.9 1.9 0 0 0 3.2 0" />
+    <path className="clapper" d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
   </Icon>
 );
 
@@ -60,9 +61,9 @@ export const BellIcon = (p) => (
 export const DiceIcon = (p) => (
   <Icon {...p}>
     <g className="die">
-      <rect x="3.9" y="3.9" width="16.2" height="16.2" rx="4" />
+      <rect x="3" y="3" width="18" height="18" rx="2" />
       <g className="pips">
-        <path d="M8.6 8.6h.01M15.4 8.6h.01M12 12h.01M8.6 15.4h.01M15.4 15.4h.01" strokeWidth="2.6" />
+        <path d="M16 8h.01M8 8h.01M8 16h.01M16 16h.01M12 12h.01" strokeWidth="2.6" />
       </g>
     </g>
   </Icon>
@@ -71,9 +72,9 @@ export const DiceIcon = (p) => (
 /** Caught: a target. On `anim` the rings close in. */
 export const TargetIcon = (p) => (
   <Icon {...p}>
-    <circle className="ring-out" cx="12" cy="12" r="8.8" />
-    <circle className="ring-in" cx="12" cy="12" r="4.9" />
-    <path d="M12 12h.01" strokeWidth="2.6" />
+    <circle className="ring-out" cx="12" cy="12" r="10" />
+    <circle className="ring-in" cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" />
   </Icon>
 );
 
@@ -86,19 +87,19 @@ export const TargetIcon = (p) => (
  */
 export const BrokenIcon = (p) => (
   <Icon {...p}>
-    <path d="M12 3.2 4.6 6.1v6c0 4.4 3.1 7.8 7.4 8.8 4.3-1 7.4-4.4 7.4-8.8v-6L12 3.2Z" />
-    <path className="crack" d="M12 3.6 10.8 7.6l2.2 2-1.8 3.6 1.6 2.4-1.2 4.2" />
+    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+    <path className="crack" d="M12 3 10.8 7.6l2.2 2-1.8 3.6 1.6 2.4-1.2 4.2" />
   </Icon>
 );
 
 /** A split vote: a balanced scale. On `anim` it rocks and settles level. */
 export const TieIcon = (p) => (
   <Icon {...p}>
-    <path d="M12 4.6v15M6.4 19.6h11.2" />
+    <path d="M12 3v18M7 21h10" />
     <g className="beam">
-      <path d="M4 9.4h16" />
-      <path d="M7 9.4 4.7 14.2a2.4 2.4 0 0 0 4.6 0L7 9.4Z" />
-      <path d="M17 9.4l-2.3 4.8a2.4 2.4 0 0 0 4.6 0L17 9.4Z" />
+      <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
+      <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+      <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
     </g>
   </Icon>
 );
@@ -107,9 +108,9 @@ export const TieIcon = (p) => (
 export const HourglassIcon = (p) => (
   <Icon {...p}>
     <g className="glass">
-      <path d="M5.6 3.4h12.8M5.6 20.6h12.8" />
-      <path d="M6.8 3.4c0 4.2 5.2 5.6 5.2 8.6s-5.2 4.4-5.2 8.6" />
-      <path d="M17.2 3.4c0 4.2-5.2 5.6-5.2 8.6s5.2 4.4 5.2 8.6" />
+      <path d="M5 22h14M5 2h14" />
+      <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" />
+      <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" />
     </g>
   </Icon>
 );
@@ -117,10 +118,10 @@ export const HourglassIcon = (p) => (
 /** Nothing to see here. The eyes blink; on `anim` the face tilts. */
 export const ShrugIcon = (p) => (
   <Icon {...p}>
-    <circle cx="12" cy="12" r="9" />
+    <circle cx="12" cy="12" r="10" />
     <g className="face">
-      <path d="M8.6 14.9c1-.9 2.1-1.3 3.4-1.3s2.4.4 3.4 1.3" />
-      <path className="eyes" d="M8.8 9.4h.01M15.2 9.4h.01" strokeWidth="2.4" />
+      <path d="M16 16s-1.5-2-4-2-4 2-4 2" />
+      <path className="eyes" d="M9 9h.01M15 9h.01" strokeWidth="2.4" />
     </g>
   </Icon>
 );
@@ -133,17 +134,17 @@ export const ShrugIcon = (p) => (
  */
 export function TrophyIcon(p) {
   const clip = `cup-${useId()}`;
+  const cup = 'M18 2H6v7a6 6 0 0 0 12 0V2Z';
   return (
     <Icon {...p}>
       <defs>
         <clipPath id={clip}>
-          <path d="M7.4 3.6h9.2v5.2a4.6 4.6 0 0 1-9.2 0V3.6Z" />
+          <path d={cup} />
         </clipPath>
       </defs>
-      <path d="M7.4 3.6h9.2v5.2a4.6 4.6 0 0 1-9.2 0V3.6Z" />
-      <path d="M7.4 5.2H4.9a2.7 2.7 0 0 0 2.7 4.4" />
-      <path d="M16.6 5.2h2.5a2.7 2.7 0 0 1-2.7 4.4" />
-      <path d="M12 13.4v3.2M8.4 20.4h7.2M9.6 16.6h4.8v3.8H9.6z" />
+      <path d={cup} />
+      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16" />
+      <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
       <g clipPath={`url(#${clip})`}>
         <path className="shine" d="M2 14 10 2" strokeWidth="2.6" opacity="0" />
       </g>
@@ -154,7 +155,7 @@ export function TrophyIcon(p) {
 /** Done. Draws itself on wherever it marks something finished. */
 export const CheckIcon = (p) => (
   <Icon {...p}>
-    <path className="draw-on" d="m4.6 12.6 4.8 4.8L19.4 6.8" pathLength="1" />
+    <path className="draw-on" d="M20 6 9 17l-5-5" pathLength="1" />
   </Icon>
 );
 
@@ -166,63 +167,63 @@ export const CheckIcon = (p) => (
  */
 export const ContrastIcon = (p) => (
   <Icon {...p}>
-    <circle cx="12" cy="12" r="8.8" />
-    <path className="shade" d="M12 3.2a8.8 8.8 0 0 0 0 17.6Z" fill="currentColor" stroke="none" />
+    <circle cx="12" cy="12" r="10" />
+    <path className="shade" d="M12 18a6 6 0 0 0 0-12v12z" fill="currentColor" />
   </Icon>
 );
 
 /** Add something. */
 export const PlusIcon = (p) => (
   <Icon {...p}>
-    <path d="M12 5.2v13.6M5.2 12h13.6" />
+    <path d="M5 12h14M12 5v14" />
   </Icon>
 );
 
 /** Edit what is already there. */
 export const PencilIcon = (p) => (
   <Icon {...p}>
-    <path d="M4.4 19.6h4l10-10a2.83 2.83 0 0 0-4-4l-10 10v4Z" />
-    <path d="m14.8 6.8 2.4 2.4" />
+    <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+    <path d="m15 5 4 4" />
   </Icon>
 );
 
 export const ChevronLeftIcon = (p) => (
   <Icon {...p}>
-    <path d="M14.8 5.2 8 12l6.8 6.8" />
+    <path d="m15 18-6-6 6-6" />
   </Icon>
 );
 
 /** Language. On `anim` the meridian sweeps, so the globe turns. */
 export const GlobeIcon = (p) => (
   <Icon {...p}>
-    <circle cx="12" cy="12" r="8.8" />
-    <path d="M3.4 12h17.2" />
-    <path className="meridian" d="M12 3.2c2.3 2.4 3.5 5.4 3.5 8.8s-1.2 6.4-3.5 8.8c-2.3-2.4-3.5-5.4-3.5-8.8S9.7 5.6 12 3.2Z" />
+    <circle cx="12" cy="12" r="10" />
+    <path d="M2 12h20" />
+    <path className="meridian" d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
   </Icon>
 );
 
 /** Copy. On `anim` the top sheet lifts, which is the whole gesture. */
 export const CopyIcon = (p) => (
   <Icon {...p}>
-    <path d="M15 9V6.6A2.6 2.6 0 0 0 12.4 4H6.6A2.6 2.6 0 0 0 4 6.6v5.8A2.6 2.6 0 0 0 6.6 15H9" />
-    <rect className="sheet" x="9" y="9" width="11" height="11" rx="2.6" />
+    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+    <rect className="sheet" x="8" y="8" width="14" height="14" rx="2" />
   </Icon>
 );
 
 /** One phone, passed around. */
 export const PhoneIcon = (p) => (
   <Icon {...p}>
-    <rect x="6.2" y="3.2" width="11.6" height="17.6" rx="3" />
-    <path d="M10.6 17.8h2.8" />
+    <rect x="5" y="2" width="14" height="20" rx="2" />
+    <path d="M12 18h.01" strokeWidth="2.4" />
   </Icon>
 );
 
 /** A phone each, over the same wifi. On `anim` the arcs go out in turn. */
 export const WifiIcon = (p) => (
   <Icon {...p}>
-    <path className="arc-3" d="M3.2 8.8a13.6 13.6 0 0 1 17.6 0" />
-    <path className="arc-2" d="M6.4 12.1a8.9 8.9 0 0 1 11.2 0" />
-    <path className="arc-1" d="M9.4 15.4a4.4 4.4 0 0 1 5.2 0" />
-    <path d="M12 18.6h.01" strokeWidth="2.4" />
+    <path className="arc-3" d="M2 8.82a15 15 0 0 1 20 0" />
+    <path className="arc-2" d="M5 12.859a10 10 0 0 1 14 0" />
+    <path className="arc-1" d="M8.5 16.429a5 5 0 0 1 7 0" />
+    <path d="M12 20h.01" strokeWidth="2.4" />
   </Icon>
 );
