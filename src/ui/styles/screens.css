@@ -709,8 +709,10 @@
 }
 
 .string-row.flagged {
-  border-left: 2px solid var(--imposter);
-  padding-left: 10px;
+  /* A tinted row rather than a coloured stripe down one side. */
+  background: color-mix(in srgb, var(--imposter) 10%, transparent);
+  border-radius: var(--radius-sm);
+  padding-inline: 10px;
 }
 
 .string-key {

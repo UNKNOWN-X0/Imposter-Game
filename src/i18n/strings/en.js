@@ -96,6 +96,8 @@ export default {
   'table.seats': 'Seats at the table',
   'table.open': 'Open',
   'table.away': 'away',
+  'table.speaking': 'speaking',
+  'table.out': 'out',
   'lobby.emblem': 'Pick an emblem',
   'emblem.mug': 'Mug',
   'emblem.key': 'Key',
@@ -427,8 +429,8 @@ export default {
   'clues.sub':
     "One word each, in this order, out loud. No repeating someone else's clue, and never say the word itself.",
   'clues.order': 'Speaking order',
-  'clues.alreadyOut': 'Already out',
   'clues.everyoneSpoke': 'Everyone has spoken — vote',
+  'clues.next': 'Next: {name}',
   'clues.yours': 'Your clue',
   'clues.thinking': '{name} is thinking',
   'clues.yourWord': 'Your word is {word}. One word back, close but not too close.',

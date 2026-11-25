@@ -96,6 +96,8 @@ export default {
   'table.seats': 'Plätze am Tisch',
   'table.open': 'Frei',
   'table.away': 'weg',
+  'table.speaking': 'spricht',
+  'table.out': 'raus',
   'lobby.emblem': 'Wähle ein Zeichen',
   'emblem.mug': 'Krug',
   'emblem.key': 'Schlüssel',
@@ -427,8 +429,8 @@ export default {
   'clues.sub':
     'Reihum je ein Wort, laut gesagt. Wiederholt keinen Hinweis, und sagt niemals das Wort selbst.',
   'clues.order': 'Reihenfolge',
-  'clues.alreadyOut': 'Schon raus',
   'clues.everyoneSpoke': 'Alle haben geredet — abstimmen',
+  'clues.next': 'Weiter: {name}',
   'clues.yours': 'Dein Hinweis',
   'clues.thinking': '{name} überlegt',
   'clues.yourWord': 'Dein Wort ist {word}. Ein Wort zurück, nah dran, aber nicht zu nah.',

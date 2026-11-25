@@ -7,6 +7,7 @@ import { useMemo, useState } from 'react';
 import { useT } from '../../../i18n/index.jsx';
 import { CallButton, CallPanel, ClueGrid, ClueInput, ClueList, TurnOrder, roundLabel } from '../../../features/round/index.js';
 import { PackChip } from '../../../features/packs/index.js';
+import { TableScene } from '../../../ui/table/TableScene.jsx';
 
 export function OnlineClues({ payload, act }) {
   const { t } = useT();
@@ -68,6 +69,18 @@ export function OnlineClues({ payload, act }) {
           <p className="subtitle">{t('clues.noWord')}</p>
         )}
       </div>
+
+      <TableScene
+        seated={state.players.map((p) => ({
+          key: p.id,
+          name: p.name,
+          you: p.id === you,
+          speaking: p.id === turn,
+          out: state.eliminated.includes(p.id),
+        }))}
+        // A round in play: one chair each, and no open seat to invite anyone to.
+        chairs={state.players.length}
+      />
 
       <div className="card stack tight">
         <div className="eyebrow">{t('clues.order')}</div>

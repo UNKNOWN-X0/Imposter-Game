@@ -94,6 +94,8 @@ export default {
   'table.seats': 'ที่นั่งรอบโต๊ะ',
   'table.open': 'ว่าง',
   'table.away': 'ไม่อยู่',
+  'table.speaking': 'กำลังพูด',
+  'table.out': 'ออกแล้ว',
   'lobby.emblem': 'เลือกสัญลักษณ์',
   'emblem.mug': 'แก้วเบียร์',
   'emblem.key': 'กุญแจ',
@@ -418,8 +420,8 @@ export default {
   'clues.sub':
     'คนละคำ ไล่ตามลำดับนี้ พูดออกมาดังๆ ห้ามพูดซ้ำคำใบ้คนอื่น และห้ามพูดคำลับตรงๆ',
   'clues.order': 'ลำดับการพูด',
-  'clues.alreadyOut': 'ออกไปแล้ว',
   'clues.everyoneSpoke': 'พูดครบทุกคนแล้ว — ไปโหวต',
+  'clues.next': 'คนต่อไป: {name}',
   'clues.yours': 'ตาคุณใบ้',
   'clues.thinking': '{name} กำลังคิด',
   'clues.yourWord': 'คำของคุณคือ {word} ใบ้กลับมาหนึ่งคำ ให้ใกล้ แต่อย่าใกล้เกินไป',

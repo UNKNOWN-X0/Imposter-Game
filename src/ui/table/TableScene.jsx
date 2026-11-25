@@ -92,7 +92,8 @@ function Candle({ x, y, glow }) {
 }
 
 /**
- * @param seated  people in the chairs, in order: `{ key, name, host, away, you }`
+ * @param seated  people in the chairs, in order: `{ key, name, host, away, you,
+ *                speaking, out }` (speaking: whose turn it is; out: voted out)
  * @param chairs  how many chairs to set; at least `seated.length`
  * @param children what sits on the plate in the middle of the table
  * @param className for the screen to size its own table
@@ -204,13 +205,13 @@ export function TableScene({
             : {};
           return (
             <li
-              className={`ts-seat filled${who.away ? ' away' : ''}${picked === who.key ? ' picked' : ''}`}
+              className={`ts-seat filled${who.away ? ' away' : ''}${who.out ? ' out' : ''}${who.speaking ? ' speaking' : ''}${picked === who.key ? ' picked' : ''}`}
               key={who.key}
               style={place(p)}
             >
               <Seat className="ts-seat-body" {...seatProps}>
                 <span className="ts-token">
-                  <Avatar name={who.name} dim={who.away} />
+                  <Avatar name={who.name} dim={who.away || who.out} />
                   {who.host && (
                     <span className="ts-host" title={t('tag.host')}>
                       <Crown />
@@ -222,6 +223,8 @@ export function TableScene({
                   {who.host && <span className="sr-only"> · {t('tag.host')}</span>}
                   {who.you && <span className="ts-you">{t('tag.you')}</span>}
                   {who.away && <span className="ts-away"> · {t('table.away')}</span>}
+                  {who.out && <span className="ts-away"> · {t('table.out')}</span>}
+                  {who.speaking && <span className="ts-you">{t('table.speaking')}</span>}
                 </span>
               </Seat>
             </li>

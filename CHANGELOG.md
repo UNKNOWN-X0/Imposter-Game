@@ -23,6 +23,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Players gather at the hub's table before choosing how to play, and every game starts with that party; adding or removing someone in a game's lobby changes the same list.
 - The pack editor has a "Write it with AI" prompt to copy into any AI chat, in the pack's word language and the editor's format; pasting the answer back works even when the chat wraps it in a code block or numbers the lines.
 - Interface icons are now drawn from the Lucide set, with the same animations; the brand mark, the jester, the blind card and the card back stay the project's own.
+- The clue screen shows the table with whoever is speaking marked and anyone voted out dimmed; on one phone a "Next" button walks the speaking order, with the vote still one tap away.
 
 ### Fixed
 
