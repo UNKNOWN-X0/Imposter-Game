@@ -539,6 +539,8 @@ export default {
   'join.title': 'Auf dem eigenen Handy spielen',
   'join.sub': 'Einer öffnet einen Raum, alle anderen treten mit dem vierstelligen Code bei.',
   'join.yourName': 'Dein Name',
+  'join.thisIsMe': 'Das bin ich',
+  'join.orName': 'Oder gib deinen Namen ein',
   'join.namePlaceholder': 'z. B. Lena',
   'join.start': 'Neuen Raum öffnen',
   'join.or': 'Oder einem beitreten',

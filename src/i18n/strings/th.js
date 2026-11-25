@@ -527,6 +527,8 @@ export default {
   'join.title': 'เล่นจากมือถือของตัวเอง',
   'join.sub': 'คนหนึ่งเปิดห้อง ที่เหลือใส่รหัสสี่ตัวตามเข้ามา',
   'join.yourName': 'ชื่อของคุณ',
+  'join.thisIsMe': 'นี่คือฉัน',
+  'join.orName': 'หรือพิมพ์ชื่อของคุณ',
   'join.namePlaceholder': 'เช่น ฝน',
   'join.start': 'เปิดห้องใหม่',
   'join.or': 'หรือเข้าร่วมห้อง',

@@ -67,12 +67,16 @@ const fail = (m) => {
 };
 const errors = [];
 
-async function phone(hash = '') {
+async function phone(hash = '', party = null) {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
-  await ctx.addInitScript(() => {
+  await ctx.addInitScript((seated) => {
     localStorage.setItem('imposter.seenRules', '1');
     localStorage.setItem('imposter.lang', 'en');
-  });
+    if (seated) {
+      localStorage.setItem('imposter.roster', JSON.stringify(seated.names));
+      localStorage.setItem('imposter.emblems', JSON.stringify(seated.emblems));
+    }
+  }, party);
   const page = await ctx.newPage();
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto(BASE + hash);
@@ -196,16 +200,22 @@ if (!(benHosts || calHosts)) {
   else seen.push('the crown moves when the host leaves, and the new host is told');
   phones.splice(phones.indexOf(host), 1);
   // Two are left; one more joins by code, so the new host can deal again.
-  const eve = await phone();
+  // Her phone has a party on it: she picks herself instead of typing (#58).
+  const eve = await phone('', { names: ['Eve', 'Zed'], emblems: { Eve: 'anchor', Zed: 'leaf' } });
   await eve.page.locator('.hub-mode').nth(1).click();
   await eve.page.getByRole('button', { name: 'Have a code? Join a room' }).click();
   await wait(400);
   await eve.page.getByPlaceholder('CODE').fill(code);
-  await nameBox(eve.page).fill('Eve');
+  await eve.page.locator('.party-pick-chip', { hasText: 'Eve' }).click();
+  if ((await nameBox(eve.page).inputValue()) !== 'Eve') fail('picking yourself did not fill in your name');
   await eve.page.getByRole('button', { name: 'Join room' }).click();
   await wait(900);
   guests.Eve = eve;
   phones.push(eve);
+  // The room seats her with the emblem her own phone had for her.
+  const eveBg = await eve.page.locator('.ts-seat.filled', { hasText: 'Eve' }).locator('.avatar').evaluate((e) => e.style.background);
+  if (!/61, 79, 110/.test(eveBg)) fail(`Eve joined without her emblem (${eveBg})`);
+  else seen.push("a phone with a party joins by picking itself, name and emblem");
   cards = await dealAndLook();
   await noLeak(cards, 'after the crown moved');
   if (!process.exitCode) seen.push('no crew word on an imposter\'s phone, before or after the crown moved');

@@ -387,3 +387,41 @@ button.ts-seat-body:focus-visible {
 }
 
 .party-strip-list li span { overflow-wrap: anywhere; }
+
+/* "This is me": the party on this phone, offered on the room join screen (#58). */
+.party-pick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.party-pick-chip {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px 0 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--bg-soft);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.party-pick-chip[aria-pressed='true'] {
+  border-color: var(--accent-text);
+  box-shadow: 0 0 0 2px var(--accent-text);
+}
+
+.party-pick-chip:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 3px;
+}
+
+/* The line beside the emblem button stays beside it while it fits. */
+.emblem-choice-button + .hint {
+  flex: 1 1 14ch;
+  align-self: center;
+}

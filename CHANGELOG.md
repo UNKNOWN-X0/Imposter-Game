@@ -12,6 +12,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Fixed
 
+- Joining or starting a room from a phone that already has people seated: tap **This is me** to fill in your name and emblem instead of typing. The join screen now sits in the same frame as the other screens.
 - A game's lobby leads with the game and **Deal**. The people seated at the hub show as a strip of emblems with **Edit**; the table and the add form open from there, or by themselves while too few are seated.
 - A first visit no longer opens Imposter's rules over the hub; they show the first time you open Imposter.
 - On a phone the hub shows the way to play on the first screen: the emblem is one button beside the name that opens the picker, the empty table is smaller, and the intro now describes The Long Table rather than one game.
