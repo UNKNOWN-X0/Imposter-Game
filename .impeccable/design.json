@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-21T20:36:00+00:00",
+  "generatedAt": "2026-11-25T15:02:16+00:00",
   "title": "Design System: ImposterGame",
   "extensions": {
     "colorMeta": {
@@ -135,6 +135,10 @@
       "label": {
         "displayName": "Label",
         "purpose": "Compact seat details, status, and utility controls."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Raw text people paste or read: the pack editor word list and the crash report. Never interface copy."
       }
     },
     "shadows": [
@@ -178,12 +182,12 @@
       {
         "name": "motion-enter",
         "value": "320ms",
-        "purpose": "Panel and screen entrance."
+        "purpose": "A panel, banner or seat arriving (a player sitting down at the table)."
       },
       {
         "name": "motion-reveal",
         "value": "450ms",
-        "purpose": "Private-card and content reveal after the privacy gate."
+        "purpose": "The private card turning over, only once the hold completes; it covers at once on release."
       },
       {
         "name": "motion-celebration",
@@ -277,54 +281,40 @@
     }
   ],
   "narrative": {
-    "northStar": "The Neighborhood Noticeboard",
-    "overview": "ImposterGame brings friends to one table, whether they pass one phone around or join a room. The home hub borrows the clarity of a neighborhood noticeboard: paper-like surfaces, sign-ink text, and mustard tabs that mark the next action. Game screens remain a phone-first card table. Both surfaces use semantic theme tokens and support English, Thai, and German.",
+    "northStar": "The Joiner’s Table",
+    "overview": "Friends gather around one rectangular wooden table, whether passing one phone or joining a room. The table itself is the Feast table chosen on 2026-11-25 (`.impeccable/mocks/table-avatars/index.html?v=a`, built as `src/ui/table/TableScene.jsx`), which replaces the earlier Joinery mock's flat plank panel: a lamplit tabletop with a thick rim; players sit along its long sides as emblem avatars; ordinary controls remain easy to read beside or below it. On a shared phone, keep the private card covered until its deliberate handoff. Preserve the mock’s English, Thai, and German layouts and its light and dark modes. The tavern comes from the table, the warm wood palettes, and the party gathered around it. Keep the rest of the page and controls calm, legible surfaces. Do not spread plank stripes across the page or ordinary control panels. Use the exact approved table arrangement and interaction states as the source for the hub rebuild and carry its table language into every Imposter screen.",
     "keyCharacteristics": [
-      "Two dials, data-mode and data-theme; every theme declares the same tokens in both modes, contrast-checked by a test.",
-      "One accent for actions, plus crew green and imposter red reserved for game sides.",
-      "A flat noticeboard hub with persistent navigation, an honest party state, two clear play paths, and a word-pack callout.",
-      "Game controls remain 52px pills; hub navigation is 52px and primary actions are 52px.",
-      "A system sans stack with Thai faces listed first; weight does the hierarchy.",
-      "One 24px icon set, 1.8 stroke, round caps, currentColor, each icon with a single motion behind anim."
+      "Five wood palettes, each with light and dark mode; Oak is the default.",
+      "Each wood carries its own warm-metal accent for actions; green and red identify the two sides.",
+      "Rectangular plank table, long-side seating, covered private card, readable controls.",
+      "System sans typography with Thai-capable faces; 52px minimum primary tap targets."
     ],
     "rules": [
       {
-        "name": "The Two Dials Rule",
-        "body": "Mode and theme are set once on the root; a rule below the tokens never asks which is on.",
+        "name": "The Accent Follows The Wood Rule",
+        "body": "The wood's accent marks something to tap or a current interactive state; it is never blue and never borrowed from another wood. Green and red communicate sides, never generic emphasis.",
         "section": "colors"
       },
       {
-        "name": "The Accent Is An Action Rule",
-        "body": "--accent fills only things you tap; --accent-text is its readable twin for words. Crew and imposter colours mean sides, never emphasis.",
+        "name": "The Table Holds The Texture Rule",
+        "body": "Visible plank construction belongs to the tabletop. Do not texture the page background or ordinary panels.",
         "section": "colors"
       },
       {
-        "name": "The Every Theme Declares Everything Rule",
-        "body": "A new theme declares every token in both modes; theme.test.js fails on a missing token, a contrast failure, or a chip unlike its theme.",
-        "section": "colors"
-      },
-      {
-        "name": "The Weight Does The Work Rule",
-        "body": "800 names, 700 acts, 400 reads; size changes little between roles on a phone.",
+        "name": "The Name Stays Readable Rule",
+        "body": "Player names, room codes, and action labels stay horizontal, wrap safely, and never become texture or ornament.",
         "section": "typography"
-      },
-      {
-        "name": "The Mode Owns The Shadow Rule",
-        "body": "Washes, hairlines, shadows, and glow are declared per mode and shared by every theme.",
-        "section": "elevation"
       }
     ],
     "dos": [
-      "Do declare every token for both modes when adding a theme, and run src/ui/theme/theme.test.js.",
-      "Do use --accent-text, never --accent, for words and hairlines on a plain surface.",
-      "Do keep game controls at 52px, hub navigation at 52px, and the game column at 560px (680px wide).",
-      "Do give a new icon one motion that is what that object does, off by default."
+      "Do use the feast table scene (owner's choice, 2026-11-25) for the table, long-side seats and emblem avatars, with the covered private card and actions beside or below it.",
+      "Do keep the table as the one strongly textured surface; use wood tones without page-wide stripes.",
+      "Do keep controls, player names, status text, and the wood itself distinct at every mode and language.",
+      "Do respect 52px touch targets, visible keyboard focus, and `prefers-reduced-motion`."
     ],
     "donts": [
-      "Don't use crew green or imposter red for emphasis; they mean sides.",
-      "Don't let a rule below tokens.css test for the mode or the theme.",
-      "Don't add a second type family or motion that carries meaning.",
-      "Don't use the mustard hub accent for player teams; crew green and imposter red remain reserved for game roles."
+      "Don't use the superseded Neighborhood Noticeboard hierarchy or its separate hub/game styles.",
+      "Don't add decoration, texture, or motion that lowers contrast or implies a state that is not true."
     ]
   }
 }

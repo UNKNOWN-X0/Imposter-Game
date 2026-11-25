@@ -1,7 +1,7 @@
 # Graph Report - Imposter-Game  (2026-11-25)
 
 ## Corpus Check
-- 192 files · ~185,755 words
+- 192 files · ~186,048 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 20 file(s) not represented in the graph (top: .css 14, (none) 2, .bat 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e0d1067f`
+- Built from commit: `64073762`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
