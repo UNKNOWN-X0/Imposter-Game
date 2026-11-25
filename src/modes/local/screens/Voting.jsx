@@ -6,7 +6,8 @@
 import { useState } from 'react';
 import { alivePlayers } from '../../../core/engine.js';
 import { useT } from '../../../i18n/index.jsx';
-import { PassGate, VoteGrid } from '../../../features/round/index.js';
+import { ConfirmBar, PassGate, VoteGrid } from '../../../features/round/index.js';
+import { TableScene } from '../../../ui/table/TableScene.jsx';
 import { usePrivacyGate } from '../usePrivacyGate.js';
 
 /* ------------------------------------------------------------------ *
@@ -21,6 +22,11 @@ export function Voting({ state, run }) {
   if (mode === 'secret')
     return <SecretVote state={state} run={run} onCancel={() => setMode('hands')} />;
 
+  // What the table chose, waiting for the confirm: a player's id, 'nobody',
+  // or null. One tap never decides anything here.
+  const [picked, setPicked] = useState(null);
+  const pickedPlayer = alive.find((p) => p.id === picked);
+
   return (
     <div className="stack">
       <div className="stack tight">
@@ -28,18 +34,34 @@ export function Voting({ state, run }) {
         <p className="subtitle">{t('vote.handsSub')}</p>
       </div>
 
-      <VoteGrid
-        players={alive}
-        eliminated={state.eliminated}
-        onVote={(id) => run({ type: 'DECLARE_ELIMINATION', playerId: id })}
+      <TableScene
+        seated={state.players.map((p) => ({
+          key: p.id,
+          name: p.name,
+          out: state.eliminated.includes(p.id),
+        }))}
+        chairs={state.players.length}
+        picked={pickedPlayer ? picked : null}
+        onPick={setPicked}
       />
 
-      <button
-        className="btn ghost block"
-        onClick={() => run({ type: 'DECLARE_ELIMINATION', playerId: null })}
-      >
-        {t('vote.nobody')}
-      </button>
+      {pickedPlayer || picked === 'nobody' ? (
+        <ConfirmBar
+          label={pickedPlayer ? t('vote.confirmOut', { name: pickedPlayer.name }) : t('vote.confirmNobody')}
+          onConfirm={() => {
+            setPicked(null);
+            run({ type: 'DECLARE_ELIMINATION', playerId: pickedPlayer ? pickedPlayer.id : null });
+          }}
+          onCancel={() => setPicked(null)}
+        />
+      ) : (
+        <>
+          <p className="hint center">{t('vote.tapSeat')}</p>
+          <button className="btn ghost block" onClick={() => setPicked('nobody')}>
+            {t('vote.nobody')}
+          </button>
+        </>
+      )}
 
       <button className="btn-link" onClick={() => setMode('secret')}>
         {t('vote.secretLink')}
@@ -86,6 +108,7 @@ function SecretVote({ state, run, onCancel }) {
         players={alive}
         eliminated={state.eliminated}
         youId={voter.id}
+        confirmLabel={(name) => t('vote.confirmMine', { name })}
         onVote={(id) => {
           setHolding(false);
           run({ type: 'CAST_VOTE', voterId: voter.id, targetId: id });

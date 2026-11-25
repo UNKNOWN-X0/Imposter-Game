@@ -52,6 +52,7 @@ export function OnlineVote({ payload, act }) {
         youId={you}
         chosenId={chosen}
         disabled={iAmOut}
+        confirmLabel={(name) => t('vote.confirmMine', { name })}
         onVote={(id) => {
           setChosen(id);
           act({ type: 'CAST_VOTE', targetId: id });

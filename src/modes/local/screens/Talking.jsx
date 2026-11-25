@@ -35,7 +35,11 @@ export function Talking({ state, run }) {
           <h1 className="title">{t('call.who')}</h1>
           <p className="subtitle">{t('call.sub')}</p>
         </div>
-        <VoteGrid players={alivePlayers(state)} onVote={(id) => setCalling(id)} />
+        <VoteGrid
+          players={alivePlayers(state)}
+          confirmLabel={(name) => t('call.confirmWho', { name })}
+          onVote={(id) => setCalling(id)}
+        />
         <button className="btn-link" onClick={() => setCalling(null)}>
           {t('call.back')}
         </button>

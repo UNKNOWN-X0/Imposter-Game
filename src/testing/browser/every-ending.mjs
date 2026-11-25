@@ -64,6 +64,12 @@ const browser = await chromium.launch({
   args: ['--no-sandbox'],
 });
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** Pick somebody in a vote or a "who" list, then press the confirm that names them. */
+async function choose(page, name) {
+  await page.locator('.vote-grid button, .ts-seat button.ts-seat-body', { hasText: name }).first().click();
+  await page.locator('.confirm-bar .btn.primary').click();
+}
 const ROSTER = ['Ann', 'Ben', 'Cal', 'Dee', 'Eli', 'Fay', 'Gus'];
 
 let bad = 0;
@@ -194,8 +200,9 @@ async function declare(page, name, guess = 'not the word at all') {
   await toTheVote(page);
   if (name === null) {
     await page.getByRole('button', { name: /Could not agree/ }).click();
+    await page.locator('.confirm-bar .btn.primary').click();
   } else {
-    await page.locator('.vote-grid button', { hasText: name }).first().click();
+    await choose(page, name);
   }
   await wait(450);
 
@@ -291,7 +298,7 @@ const ROUTES = {
   async called(page, who) {
     await page.getByRole('button', { name: /I know the word/ }).click();
     await wait(300);
-    await page.locator('.vote-grid button', { hasText: who.imposters[0] }).first().click();
+    await choose(page, who.imposters[0]);
     await wait(300);
     const gate = page.locator('button', { hasText: /Pass the phone to/i }).first();
     if (await gate.count()) {
@@ -319,7 +326,7 @@ const ROUTES = {
   async calledWrong(page, who) {
     await page.getByRole('button', { name: /I know the word/ }).click();
     await wait(300);
-    await page.locator('.vote-grid button', { hasText: who.imposters[0] }).first().click();
+    await choose(page, who.imposters[0]);
     await wait(300);
     const gate = page.locator('button', { hasText: /Pass the phone to/i }).first();
     if (await gate.count()) {

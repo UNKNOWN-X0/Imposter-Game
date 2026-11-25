@@ -6,6 +6,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Fixed
+
+- A vote never goes through on one tap. Tapping a player only picks them; a bar that names them ("Vote Nok out", "My vote: Nok", "Nobody goes this round") sends it, or Cancel. On one phone the show-of-hands vote is now made at the table.
+
 ## [1.31.0] - 2026-11-25
 
 ### Changed

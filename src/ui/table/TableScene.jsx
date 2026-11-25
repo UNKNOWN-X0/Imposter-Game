@@ -195,8 +195,9 @@ export function TableScene({
               </li>
             );
           }
-          const Seat = onPick ? 'button' : 'span';
-          const seatProps = onPick
+          const pickable = onPick && !who.out && !who.locked;
+          const Seat = pickable ? 'button' : 'span';
+          const seatProps = pickable
             ? {
                 type: 'button',
                 'aria-pressed': picked === who.key,
