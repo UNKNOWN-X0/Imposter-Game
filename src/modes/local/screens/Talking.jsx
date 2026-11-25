@@ -3,10 +3,10 @@
  * whose turn it is, and offers an imposter the chance to call the word.
  */
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { alivePlayers, isImposter, playerById, speakingOrder } from '../../../core/engine.js';
 import { useT } from '../../../i18n/index.jsx';
-import { PlayerList } from '../../../features/lobby/index.js';
+import { TableScene } from '../../../ui/table/TableScene.jsx';
 import { CallButton, CallPanel, NotTheImposter, PassGate, Timer, TurnOrder, VoteGrid, roundLabel } from '../../../features/round/index.js';
 import { PackChip } from '../../../features/packs/index.js';
 import { usePrivacyGate } from '../usePrivacyGate.js';
@@ -20,6 +20,13 @@ export function Talking({ state, run }) {
   const order = speakingOrder(state);
   // null -> playing, 'who' -> picking who is calling, then that player's id
   const [calling, setCalling] = useState(null);
+  // Whose turn it is to speak. Only this screen needs to know, so it is not
+  // in the game state: the rules do not care who has spoken, the table does.
+  const [turn, setTurn] = useState(0);
+  useEffect(() => setTurn(0), [state.round]);
+  const current = order[Math.min(turn, order.length - 1)];
+  const last = turn >= order.length - 1;
+  const nextUp = playerById(state, order[turn + 1]);
 
   if (calling === 'who') {
     return (
@@ -62,24 +69,35 @@ export function Talking({ state, run }) {
         <p className="subtitle">{state.round > 1 ? t('clues.oneMore') : t('clues.sub')}</p>
       </div>
 
+      <TableScene
+        seated={state.players.map((p) => ({
+          key: p.id,
+          name: p.name,
+          speaking: p.id === current,
+          out: state.eliminated.includes(p.id),
+        }))}
+        // A round in play: one chair each, and no open seat to invite anyone to.
+        chairs={state.players.length}
+      />
+
       <div className="card stack tight">
         <div className="eyebrow">{t('clues.order')}</div>
-        <TurnOrder order={order} players={state.players} current={order[0]} />
+        <TurnOrder order={order} players={state.players} current={current} done={order.slice(0, turn)} />
       </div>
 
       <Timer seconds={90} />
 
-      {state.eliminated.length > 0 && (
-        <div className="stack tight">
-          <div className="eyebrow">{t('clues.alreadyOut')}</div>
-          <PlayerList
-            players={state.players.filter((p) => state.eliminated.includes(p.id))}
-            eliminated={state.eliminated}
-          />
-        </div>
+      {/* Until the last clue, the big button moves the turn on; the vote is
+          still one tap away for a table that is done early. */}
+      {!last && nextUp && (
+        <button className="btn primary block lg" onClick={() => setTurn((n) => n + 1)}>
+          {t('clues.next', { name: nextUp.name })}
+        </button>
       )}
-
-      <button className="btn primary block lg" onClick={() => run({ type: 'FORCE_VOTE' })}>
+      <button
+        className={`btn block${last ? ' primary lg' : ''}`}
+        onClick={() => run({ type: 'FORCE_VOTE' })}
+      >
         {t('clues.everyoneSpoke')}
       </button>
 

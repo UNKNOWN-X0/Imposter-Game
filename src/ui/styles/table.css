@@ -100,6 +100,14 @@ button.ts-seat-body:focus-visible {
   border-color: var(--accent-text);
 }
 
+.ts-seat.speaking .avatar {
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px var(--accent), 0 6px 10px rgb(0 0 0 / 0.35);
+}
+
+.ts-seat.speaking .ts-name { border-color: var(--accent-text); }
+
+.ts-seat.out .ts-name-text { text-decoration: line-through; color: var(--text-dim); }
+
 .ts-you {
   display: block;
   font-size: 11px;
