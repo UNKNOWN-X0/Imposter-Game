@@ -220,6 +220,7 @@ export default {
   'packs.warned_one': '{count} worth a look',
   'packs.warned_other': '{count} worth a look',
   'packs.warn.decoyIsTheWord': 'line {at}: the near miss is the word — the imposter would just say it',
+  'packs.warn.decoyTooLong': 'line {at}: the near miss is too long for a card, so the imposter gets another word from your pack',
   'packs.warn.decoyIsTheSameWord': 'line {at}: “{decoy}” is the same word as “{word}”, so no clue can tell them apart',
   'packs.warn.decoyIsAnotherAnswer': 'line {at}: “{decoy}” is also the answer on line {alsoAt}',
   'packs.warn.hintGivesItAway': 'line {at}: the pack name gives “{word}” away in hint mode',

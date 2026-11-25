@@ -214,6 +214,7 @@ export default {
   'packs.warned_one': 'น่าดูอีกที {count} รายการ',
   'packs.warned_other': 'น่าดูอีกที {count} รายการ',
   'packs.warn.decoyIsTheWord': 'บรรทัด {at}: คำใกล้เคียงเหมือนคำเฉลย คนโกหกพูดออกมาตรง ๆ ได้เลย',
+  'packs.warn.decoyTooLong': 'บรรทัด {at}: คำใกล้เคียงยาวเกินไป คนโกหกจะได้คำอื่นจากชุดนี้แทน',
   'packs.warn.decoyIsTheSameWord': 'บรรทัด {at}: “{decoy}” เป็นคำเดียวกับ “{word}” ใบ้ยังไงก็แยกไม่ออก',
   'packs.warn.decoyIsAnotherAnswer': 'บรรทัด {at}: “{decoy}” เป็นคำเฉลยของบรรทัด {alsoAt} ด้วย',
   'packs.warn.hintGivesItAway': 'บรรทัด {at}: ชื่อชุดคำบอกใบ้ “{word}” ตรงเกินไปในโหมดใบ้',

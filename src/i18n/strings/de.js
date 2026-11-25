@@ -220,6 +220,7 @@ export default {
   'packs.warned_one': '{count} zum Nachsehen',
   'packs.warned_other': '{count} zum Nachsehen',
   'packs.warn.decoyIsTheWord': 'Zeile {at}: Das Fastwort ist das Wort — der Imposter würde es einfach sagen',
+  'packs.warn.decoyTooLong': 'Zeile {at}: Das Fastwort ist zu lang für eine Karte, der Imposter bekommt ein anderes Wort aus eurem Paket',
   'packs.warn.decoyIsTheSameWord': 'Zeile {at}: „{decoy}“ ist dasselbe Wort wie „{word}“, kein Hinweis kann sie trennen',
   'packs.warn.decoyIsAnotherAnswer': 'Zeile {at}: „{decoy}“ ist auch die Lösung in Zeile {alsoAt}',
   'packs.warn.hintGivesItAway': 'Zeile {at}: Der Paketname verrät „{word}“ im Hinweismodus',

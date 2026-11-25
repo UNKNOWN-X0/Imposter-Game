@@ -236,3 +236,18 @@ test('emoji and scripts without Latin letters are still words', () => {
   };
   assert.equal(validatePack(digits, 'en')?.pairs.length, 5);
 });
+
+test('a dropped near miss is reported, and every pair knows the line it came from', () => {
+  const long = 'y'.repeat(PACK_LIMITS.word + 1);
+  const { pairs, notes, lines, skipped } = parsePairs(
+    `# heading\n\nSushi, sushi\nRamen\nRamen\nTom yum, ${long}\nKhao soi, Khao man gai`,
+  );
+  assert.deepEqual(pairs.map((p) => p.word), ['Sushi', 'Ramen', 'Tom yum', 'Khao soi']);
+  assert.deepEqual(lines, [3, 4, 6, 7], 'line numbers count blanks, notes and skipped lines');
+  assert.deepEqual(skipped.map((s) => s.at), [5]);
+  assert.deepEqual(
+    notes.map((n) => [n.at, n.why]),
+    [[3, 'decoyIsTheWord'], [6, 'decoyTooLong']],
+  );
+  assert.equal(pairs[2].decoy, null, 'the word stays when its near miss goes');
+});

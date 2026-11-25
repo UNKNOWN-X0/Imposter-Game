@@ -179,6 +179,10 @@ Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and *
 - **Plate:** any text on the table sits on a plate (surface colour, fine border) in the middle, never on the grain.
 - **Avatars:** twelve emblems (mug, key, flame, dice, feather, moon, anchor, leaf, star, bell, sun, fish), one per seat, drawn from Lucide (ISC, credited in `NOTICE.md`) on the shared 24px icon grid. Each owns a muted ink colour of its own; `#fff7e8` on every one meets 4.5:1, and none comes within 25° of hue of crew green or imposter red (`src/ui/icons/emblems.test.js`). On one phone, the lobby's picker offers the emblems nobody has taken; a name without a choice falls back on a stable default. Nothing about an avatar or seat changes with a role, word or vote.
 
+### Pack Library and Editor
+- **Frame:** opened from the hub or from a lobby, the library and editor sit in the game frame (brand beside Back, rule under the top bar, centred column).
+- **Findings:** the editor lists every finding about the pasted words in line order, numbered by the line as typed. Skipped lines sit on the imposter-deep tint and quote what was typed; warnings (a dropped or risky near miss) sit on `--surface-2`. Tinted rows, never a coloured side stripe. The list scrolls inside itself so Save stays in reach.
+
 ### Private Card
 - **Style:** covered until an explicit hold-to-reveal action completes.
 - **State:** handoff and reveal animation never disclose the word or role before the existing privacy gate permits it; reduced motion preserves the same gate.

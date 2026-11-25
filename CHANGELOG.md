@@ -17,6 +17,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Players pick an emblem as they sit down (mug, key, flame and nine more, drawn from the Lucide icon set); it is their avatar at the table and in every list, and it is remembered by name with the roster.
 - The lobby is the table: tap a seat to remove someone, and Deal sits right under the names, before the game settings. Rooms show the same table, with the host's crown and your own seat marked.
 - The hub's play heading now reads "How will you play?" instead of repeating the first button, and rooms are described as "Everyone on their own phone, joined by a code", in English, Thai and German.
+- The word-pack library opened from the hub now sits in the same frame as the game screens.
+- The pack editor lists every problem with a pasted list in line order, quotes each skipped line, and says when a near miss was dropped because it was too long or the same as its word.
+
+### Fixed
+
+- Pack editor warnings named the wrong line once a list had blank lines, notes or skipped lines; they now point at the line you typed.
 
 ## [1.30.0] - 2026-11-20
 

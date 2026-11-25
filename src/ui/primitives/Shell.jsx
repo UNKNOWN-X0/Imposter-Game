@@ -9,9 +9,14 @@ import { PhaseStepper } from '../../features/round/PhaseStepper.jsx';
 import { LanguagePicker } from '../../i18n/LanguagePicker.jsx';
 import { ThemePicker } from '../theme/ThemePicker.jsx';
 
-export function Shell({ children, onBack, code, right, phase }) {
+/**
+ * `frame` asks for the game frame (brand beside Back, a rule under the top
+ * bar, a centred column) on a screen with no phase or room code, such as the
+ * pack library opened from the hub.
+ */
+export function Shell({ children, onBack, code, right, phase, frame }) {
   const { t } = useT();
-  const gameFrame = Boolean(phase || code);
+  const gameFrame = Boolean(phase || code || frame);
   return (
     <div className={`shell${gameFrame ? ' game-shell' : ''}`}>
       <div className={`topbar${gameFrame ? ' game-topbar' : ''}`}>

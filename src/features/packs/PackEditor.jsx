@@ -48,7 +48,7 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
 
   // Re-read on every keystroke: the whole point is watching the list turn
   // into a pack as it is pasted, rather than finding out on save.
-  const { pairs, skipped } = useMemo(() => parsePairs(text), [text]);
+  const { pairs, skipped, notes, lines } = useMemo(() => parsePairs(text), [text]);
   /**
    * Pairs that parse but would not play.
    *
@@ -57,10 +57,17 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
    * These are warnings rather than refusals: it is somebody's pack, and they
    * may know something the rules do not.
    */
-  const warnings = useMemo(
-    () => lintPack({ lang, hint: name, pairs }).slice(0, 6),
-    [lang, name, pairs],
-  );
+  const warnings = useMemo(() => {
+    // The lint counts pairs; somebody reading the box counts lines. Blank
+    // lines, notes and skipped lines make those two numbers drift apart.
+    const line = (n) => lines[n - 1] ?? n;
+    const linted = lintPack({ lang, hint: name, pairs }).map((w) => ({
+      ...w,
+      at: line(w.at),
+      ...(w.alsoAt !== undefined && { alsoAt: line(w.alsoAt) }),
+    }));
+    return [...notes, ...linted].sort((a, b) => a.at - b.at);
+  }, [lang, name, pairs, notes, lines]);
   const withMiss = pairs.filter((p) => p.decoy).length;
   const langName = WORD_LANGUAGES.find((l) => l.id === lang)?.label ?? lang;
 
@@ -171,19 +178,23 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
             <span className="tag">{t('packs.warned', { count: warnings.length })}</span>
           )}
         </div>
-        {skipped.length > 0 && (
-          <ul className="skipped">
-            {skipped.slice(0, 6).map((s) => (
-              <li key={`${s.at}-${s.why}`}>{t(`packs.skipped.${s.why}`, { at: s.at })}</li>
-            ))}
-          </ul>
-        )}
-        {warnings.length > 0 && (
-          <ul className="skipped">
-            {warnings.map((w) => (
-              <li key={`${w.at}-${w.why}`}>{t(`packs.warn.${w.why}`, w)}</li>
-            ))}
-          </ul>
+        {/* Every finding, in line order, so a long paste can be fixed from
+            top to bottom. Skipped lines quote what was typed, because that
+            text is not in the pack any more. */}
+        {skipped.length + warnings.length > 0 && (
+          <ol className="pack-findings">
+            {[
+              ...skipped.map((f) => ({ ...f, kind: 'skipped' })),
+              ...warnings.map((f) => ({ ...f, kind: 'warn' })),
+            ]
+              .sort((a, b) => a.at - b.at)
+              .map((f) => (
+                <li key={`${f.kind}-${f.at}-${f.why}`} className={f.kind}>
+                  {t(`packs.${f.kind}.${f.why}`, f)}
+                  {f.kind === 'skipped' && <q className="pack-finding-line">{f.line}</q>}
+                </li>
+              ))}
+          </ol>
         )}
       </div>
 

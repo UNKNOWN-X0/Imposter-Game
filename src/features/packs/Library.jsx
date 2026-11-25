@@ -54,7 +54,7 @@ export function Library({ onExit }) {
 
   if (editing !== false) {
     return (
-      <Shell onBack={() => setEditing(false)}>
+      <Shell onBack={() => setEditing(false)} frame>
         {error && <Banner kind="error">{errorText(error)}</Banner>}
         <PackEditor
           pack={packs.find((p) => p.id === editing) ?? null}
@@ -68,7 +68,7 @@ export function Library({ onExit }) {
   }
 
   return (
-    <Shell onBack={onExit}>
+    <Shell onBack={onExit} frame>
       <PackLibrary
         lang={lang}
         customPacks={packs}

@@ -73,6 +73,7 @@ function builtAtRuntime() {
     'decoyIsAnotherAnswer',
     'hintGivesItAway',
     'emptyWord',
+    'decoyTooLong',
   ]) {
     keys.add(`packs.warn.${why}`);
   }
