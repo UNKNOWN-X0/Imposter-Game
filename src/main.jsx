@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import App from './App.jsx';
+import { PartyProvider } from './party/index.js';
 import { LanguageProvider, detectLanguage } from './i18n/index.jsx';
 import { loadStrings } from './i18n/strings/index.js';
 import { ThemeProvider } from './ui/theme/index.jsx';
@@ -40,7 +41,10 @@ loadStrings(startIn).then(() => {
           {/* Inside the providers, so the apology is in the reader's own
               language and the reader's own colours. */}
           <ErrorBoundary onRestart={() => window.location.assign(window.location.pathname)}>
-            <App />
+            {/* The party sits above every game, so they all share it. */}
+            <PartyProvider>
+              <App />
+            </PartyProvider>
           </ErrorBoundary>
         </LanguageProvider>
       </ThemeProvider>

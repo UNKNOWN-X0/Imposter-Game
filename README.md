@@ -63,6 +63,7 @@ Each recipe ends in the test that catches the step people forget.
 
 - **Add words.** `src/content/words/builtin/{en,th,de}.js` hold ten packs of a hundred `{ word, decoy }` pairs, each pack with a `hint` line. A good decoy sounds reasonable as a clue and is still catchable: `Pizza`/`Lasagna`, not `Pizza`/`Helicopter`. Packs are written for the people who speak that language, never translated. `npm test` rejects duplicates, a word equal to its decoy, and a missing hint.
 - **Add a language.** A strings table in `src/i18n/strings/` shaped like `en.js`, a pack file shaped like the others, both registered in the `index.js` beside them. Missing strings fall back to English.
+- **Add a game.** The players belong to the party, not to a game: `useParty()` (`src/party/`) gives `names` in seat order and each one's emblem, and `setNames` takes a lobby's changes back. A new game reads `names` when it starts and renders `Avatar` for each player (emblems already come through the app-wide `EmblemContext`); it writes no roster or emblem storage of its own. Names go through `nameProblem` in `src/core/rules.js`, the same rule the hub uses. `src/party/party.test.js` checks that rule and the storage.
 - **Add a role.** One file in `src/core/roles/` (`id`, `side`, `reveals`, optional `deal()`, `endsGameWhenVotedOut`), registered in `roles/index.js`, with a face in `ROLE_FACE` (`src/ui/primitives/RoleGlyph.jsx`) and a name and explanation in each language. The engine reads those fields; a test fails if it ever names a role.
 - **Add a way to win.** One row in `src/core/scoring/index.js`: who won, what it pays, whether being voted out costs your share. A test fails if the engine hard-codes an award anywhere else.
 - **Change the rules.** Everything is in `reduce()`: `resolveOutcome` decides who won, `advanceAfterVerdict` who is owed a final guess, `normaliseConfig` settles settings that cannot both be true, in the lobby, where the table can see them. Optional rules are flags on the config.
@@ -121,6 +122,8 @@ src/content/        the words and the history, as data: words/builtin/ (ten pack
 src/i18n/           one file per language, and the reader that picks a string
 src/ui/             pieces that know nothing about the game: primitives/, icons/,
                     theme/ (light/dark and the five wood families), styles/
+src/party/          the people at the table, shared by the hub and every game: roster,
+                    emblems, the add-player form and seat actions
 src/features/       pieces that do know: lobby, round, packs, rules, changelog, errors
 src/modes/          local (one phone) and online (a room), which wire the rest
 src/testing/        the checks that are about the project, not about the game

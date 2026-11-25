@@ -106,6 +106,8 @@ function errorCodesInSource() {
     for (const [, c] of code.matchAll(/\bApiError\(\s*'(\w+)'/g)) codes.add(c);
     for (const [, c] of code.matchAll(/\berror:\s*'(\w+)'/g)) codes.add(c);
     for (const [, c] of code.matchAll(/setError\(\s*\{\s*code:\s*'(\w+)'/g)) codes.add(c);
+    // A rule that reports rather than throws (core/rules.js nameProblem).
+    for (const [, c] of code.matchAll(/\breturn\s*\{\s*code:\s*'(\w+)'/g)) codes.add(c);
   }
   return codes;
 }
