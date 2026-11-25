@@ -151,3 +151,32 @@ test('a listener that throws is dropped rather than taking the room with it', ()
   assert.equal(good.length > 0, true, 'the working phone still got its frame');
   assert.equal(room.listeners.size, 1, 'the broken one was dropped');
 });
+
+test('a seat carries its emblem, never a duplicate, and nothing a phone sent unchecked', () => {
+  _resetRooms();
+  const room = createRoom();
+  const ann = joinRoom(room, 'Ann', 'moon').player.id;
+  const ben = joinRoom(room, 'Ben', 'moon').player.id; // taken: gets a free one
+  const cal = joinRoom(room, 'Cal', '<script>').player.id; // not an emblem
+  const { seats } = payloadFor(room, ann);
+  assert.equal(seats.emblems[ann], 'moon');
+  assert.notEqual(seats.emblems[ben], 'moon');
+  assert.ok(seats.emblems[cal] && seats.emblems[cal] !== '<script>');
+  assert.equal(new Set(Object.values(seats.emblems)).size, 3);
+});
+
+test('a phone with no open stream shows as away, and coming back is broadcast', () => {
+  _resetRooms();
+  const room = createRoom();
+  const ann = joinRoom(room, 'Ann').player.id;
+  const ben = joinRoom(room, 'Ben').player.id;
+  const seenByAnn = [];
+  addListener(room, ann, (text) => seenByAnn.push(JSON.parse(text)));
+  assert.deepEqual(payloadFor(room, ann).seats.away, [ben]);
+  const stop = addListener(room, ben, () => {});
+  assert.deepEqual(seenByAnn.at(-1).seats.away, [], 'Ann is told Ben is here');
+  stop();
+  assert.deepEqual(seenByAnn.at(-1).seats.away, [ben], 'and that he went quiet');
+  // The text and the object never disagree.
+  assert.deepEqual(JSON.parse(payloadTextFor(room, ann)), payloadFor(room, ann));
+});

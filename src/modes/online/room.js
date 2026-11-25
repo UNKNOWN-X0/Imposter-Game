@@ -106,23 +106,23 @@ export async function serverIsRunning(fetchImpl = globalThis.fetch) {
   return (await serverInfo(fetchImpl)) !== null;
 }
 
-export async function createRoom(name, { fetchImpl, storage, wordLang } = {}) {
+export async function createRoom(name, { fetchImpl, storage, wordLang, emblem } = {}) {
   const session = await api(
     '/api/rooms',
-    { method: 'POST', body: JSON.stringify({ name, wordLang }) },
+    { method: 'POST', body: JSON.stringify({ name, wordLang, emblem }) },
     fetchImpl ?? globalThis.fetch,
   );
   saveSession(session, storage ?? store());
   return session;
 }
 
-export async function joinRoom(code, name, { fetchImpl, storage } = {}) {
+export async function joinRoom(code, name, { fetchImpl, storage, emblem } = {}) {
   // Codes are read off a screen and typed in by somebody at a party, so a
   // stray space or a lowercase letter is not a mistake worth refusing.
   const clean = String(code || '').trim().toUpperCase();
   const session = await api(
     `/api/rooms/${clean}/join`,
-    { method: 'POST', body: JSON.stringify({ name }) },
+    { method: 'POST', body: JSON.stringify({ name, emblem }) },
     fetchImpl ?? globalThis.fetch,
   );
   saveSession(session, storage ?? store());

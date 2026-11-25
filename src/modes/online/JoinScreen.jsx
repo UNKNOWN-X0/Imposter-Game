@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
 import { useErrorText, useT } from '../../i18n/index.jsx';
 import { createRoom, joinRoom, serverInfo } from './useRoom.js';
 import { Banner, Shell } from '../../ui/primitives/index.js';
+import { EmblemPicker, useParty } from '../../party/index.js';
+import { defaultEmblem } from '../../ui/icons/emblems.js';
 
 /* ------------------------------------------------------------------ *
  * Getting in
@@ -19,6 +21,12 @@ export function JoinScreen({ onJoined, onExit, initialCode }) {
   const { t, lang } = useT();
   const errorText = useErrorText();
   const [name, setName] = useState('');
+  // The emblem this phone sits down with: picked here, or the one this name
+  // already has in the party on this phone, or the name's own default. The
+  // server keeps it unless somebody in the room already has it.
+  const party = useParty();
+  const [picked, setPicked] = useState(null);
+  const emblem = picked ?? party.emblems[name.trim()] ?? defaultEmblem(name.trim());
   const [code, setCode] = useState(initialCode);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
@@ -80,13 +88,15 @@ export function JoinScreen({ onJoined, onExit, initialCode }) {
           />
         </label>
 
+        <EmblemPicker value={emblem} onChange={setPicked} disabled={busy} />
+
         <button
           className="btn primary block lg"
           disabled={busy || !name.trim() || server === 'down'}
           // The words come in the language the host is reading the buttons
           // in — the same default the one-phone mode has always used. Anyone
           // can change it in settings; nobody has to notice it first.
-          onClick={() => go(() => createRoom(name.trim(), { wordLang: lang }))}
+          onClick={() => go(() => createRoom(name.trim(), { wordLang: lang, emblem }))}
         >
           {t('join.start')}
         </button>
@@ -107,7 +117,7 @@ export function JoinScreen({ onJoined, onExit, initialCode }) {
         <button
           className="btn block lg"
           disabled={busy || !name.trim() || code.length < 4 || server === 'down'}
-          onClick={() => go(() => joinRoom(code, name.trim()))}
+          onClick={() => go(() => joinRoom(code, name.trim(), { emblem }))}
         >
           {t('join.join')}
         </button>

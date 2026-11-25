@@ -178,12 +178,12 @@ async function handleApi(req, res, url) {
     // The expensive one: every call mints a code and holds memory for hours.
     const wait = LIMITS.createRoom.check(callerOf(req));
     if (wait !== null) return tooMany(res, wait);
-    const { name, wordLang } = await readBody(req);
+    const { name, wordLang, emblem } = await readBody(req);
     // The host's own interface language seeds the word language, which is
     // what the one-phone mode has always done. Validated in the engine, so
     // anything unrecognised simply falls back to the default.
     const room = createRoom(wordLang ? { wordLang } : {});
-    const { player, token } = joinRoom(room, name);
+    const { player, token } = joinRoom(room, name, emblem);
     return json(res, 200, { code: room.code, token, playerId: player.id });
   }
 
@@ -195,8 +195,8 @@ async function handleApi(req, res, url) {
   if (req.method === 'POST' && parts[3] === 'join') {
     const wait = LIMITS.joinRoom.check(callerOf(req));
     if (wait !== null) return tooMany(res, wait);
-    const { name } = await readBody(req);
-    const { player, token } = joinRoom(room, name);
+    const { name, emblem } = await readBody(req);
+    const { player, token } = joinRoom(room, name, emblem);
     return json(res, 200, { code: room.code, token, playerId: player.id });
   }
 
