@@ -25,6 +25,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Interface icons are now drawn from the Lucide set, with the same animations; the brand mark, the jester, the blind card and the card back stay the project's own.
 - The clue screen shows the table with whoever is speaking marked and anyone voted out dimmed; on one phone a "Next" button walks the speaking order, with the vote still one tap away.
 - Rooms: you pick an emblem as you join (the room keeps it unless someone already has it), a phone that drops shows as "away" at the table instead of vanishing, and when the host leaves, everyone is told who is hosting now.
+- A room's host can end a game and bring everyone back to the same table, with the same code and seats.
 
 ### Fixed
 

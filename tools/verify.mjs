@@ -83,6 +83,7 @@ const browserWhy = !built
 for (const [name, script] of [
   ['every screen', 'screens'],
   ['every ending', 'endings'],
+  ['every room', 'rooms'],
 ]) {
   if (built && hasBrowser) run(name, npm, ['run', script]);
   else skip(name, browserWhy);

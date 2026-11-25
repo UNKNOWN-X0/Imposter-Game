@@ -106,7 +106,7 @@ diff before.txt after.txt
 npm run fingerprint -- --write                 # yes, that is what I meant
 ```
 
-`npm run verify` adds the coverage floors (`src/testing/coverage.floors.json`, a ratchet: `-- --bless` raises them, nothing lowers them), the build, and the two browser sweeps. **Before releasing, draw every screen:** `npm run screens` plays a whole game in a real browser and visits every other screen in all three languages; `npm run endings` plays a game once per way of winning. They need Playwright, which the game itself does not; `verify` says out loud when it had to skip them. Every push runs all of it in `.github/workflows/ci.yml`.
+`npm run verify` adds the coverage floors (`src/testing/coverage.floors.json`, a ratchet: `-- --bless` raises them, nothing lowers them), the build, and the three browser sweeps. **Before releasing, draw every screen:** `npm run screens` plays a whole game in a real browser and visits every other screen in all three languages; `npm run endings` plays a game once per way of winning; `npm run rooms` runs four phones through a room: host, join by code and by link, reload, drop off, end a game, and hand the crown on, checking no crew word reaches an imposter's phone. They need Playwright, which the game itself does not; `verify` says out loud when it had to skip them. Every push runs all of it in `.github/workflows/ci.yml`.
 
 The rules every change must meet, with the test that guards each one, are in [STANDARDS.md](STANDARDS.md).
 
