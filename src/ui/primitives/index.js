@@ -10,7 +10,7 @@ export { Rich } from './Rich.jsx';
 export { Info } from './Info.jsx';
 export { Shell } from './Shell.jsx';
 export { Banner, Announce } from './Banner.jsx';
-export { Segmented, OnOff } from './Segmented.jsx';
+export { NumberTiles, OnOff, OptionList } from './Choices.jsx';
 export { Avatar } from './Avatar.jsx';
 export { HoldCard } from './HoldCard.jsx';
 export { RoleGlyph, ROLE_FACE } from './RoleGlyph.jsx';

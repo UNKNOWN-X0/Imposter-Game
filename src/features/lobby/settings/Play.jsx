@@ -5,7 +5,7 @@
 
 import { ROUNDS_UNLIMITED } from '../../../core/engine.js';
 import { Info } from '../../../ui/primitives/Info.jsx';
-import { Segmented } from '../../../ui/primitives/Segmented.jsx';
+import { NumberTiles } from '../../../ui/primitives/Choices.jsx';
 
 export function Rounds({ t, config, onChange, disabled, seats, cap, blind, wordLang, packs, myPacks, packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks }) {
   return (
@@ -20,26 +20,16 @@ export function Rounds({ t, config, onChange, disabled, seats, cap, blind, wordL
             : t('settings.roundsHint')}
         </span>
       </div>
-      <Segmented wide>
-        {[2, 3, 4, 5].map((n) => (
-          <button
-            key={n}
-            aria-pressed={config.maxRounds === n}
-            disabled={disabled}
-            onClick={() => onChange({ maxRounds: n })}
-          >
-            {n}
-          </button>
-        ))}
-        <button
-          aria-pressed={config.maxRounds === ROUNDS_UNLIMITED}
-          disabled={disabled}
-          onClick={() => onChange({ maxRounds: ROUNDS_UNLIMITED })}
-          title={t('settings.roundsUnlimitedHint')}
-        >
-          {t('settings.roundsUnlimited')}
-        </button>
-      </Segmented>
+      <NumberTiles
+        label={t('settings.rounds')}
+        value={config.maxRounds}
+        disabled={disabled}
+        onChange={(n) => onChange({ maxRounds: n })}
+        options={[
+          ...[2, 3, 4, 5].map((n) => ({ value: n, label: String(n) })),
+          { value: ROUNDS_UNLIMITED, label: t('settings.roundsUnlimited'), title: t('settings.roundsUnlimitedHint') },
+        ]}
+      />
     </div>
   );
 }

@@ -17,7 +17,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 
-import { Segmented } from '../../ui/primitives/index.js';
+import { NumberTiles } from '../../ui/primitives/Choices.jsx';
 
 import { LANGUAGES, STRINGS, loadAllStrings } from '../../i18n/strings/index.js';
 import { compareAll, hasTrouble } from '../../i18n/compare.js';
@@ -82,13 +82,12 @@ export default function StringBoard() {
         </p>
       </div>
 
-      <Segmented wide>
-        {FILTERS.map(([id, label]) => (
-          <button key={id} aria-pressed={filter === id} onClick={() => setFilter(id)}>
-            {label} ({counts[id]})
-          </button>
-        ))}
-      </Segmented>
+      <NumberTiles
+        label="Filter"
+        value={filter}
+        onChange={setFilter}
+        options={FILTERS.map(([id, label]) => ({ value: id, label: `${label} (${counts[id]})` }))}
+      />
 
       <input
         className="input"

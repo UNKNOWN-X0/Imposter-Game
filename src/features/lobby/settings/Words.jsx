@@ -8,7 +8,7 @@
 
 import { Info } from '../../../ui/primitives/Info.jsx';
 import { CheckIcon, PencilIcon, PlusIcon } from '../../../ui/icons/index.jsx';
-import { Segmented } from '../../../ui/primitives/Segmented.jsx';
+import { OptionList } from '../../../ui/primitives/Choices.jsx';
 import { WORD_LANGUAGES } from '../../../content/words/index.js';
 
 export function WordLanguage({ t, config, onChange, disabled, seats, cap, blind, wordLang, packs, myPacks, packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks }) {
@@ -20,19 +20,25 @@ export function WordLanguage({ t, config, onChange, disabled, seats, cap, blind,
         </b>
         <span>{t('settings.wordLangHint')}</span>
       </div>
-      <Segmented wide>
-        {WORD_LANGUAGES.map((l) => (
-          <button
-            key={l.id}
-            aria-pressed={wordLang === l.id}
-            disabled={disabled}
-            onClick={() => onChange({ wordLang: l.id })}
-          >
-            <span aria-hidden="true">{l.flag}</span> {l.label}
-          </button>
-        ))}
-      </Segmented>
+      <WordLanguageList t={t} value={wordLang} disabled={disabled} onChange={(id) => onChange({ wordLang: id })} />
     </div>
+  );
+}
+
+/** The word languages as rows: flag, own name, its name in the buttons' language. */
+export function WordLanguageList({ t, value, onChange, disabled }) {
+  return (
+    <OptionList
+      value={value}
+      disabled={disabled}
+      onChange={onChange}
+      options={WORD_LANGUAGES.map((l) => ({
+        value: l.id,
+        icon: <span className="lang-flag" aria-hidden="true">{l.flag}</span>,
+        label: <span lang={l.id}>{l.label}</span>,
+        description: t(`language.${l.id}`),
+      }))}
+    />
   );
 }
 

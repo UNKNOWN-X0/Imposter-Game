@@ -13,7 +13,7 @@ import { useState } from 'react';
 import { PACK_LIMITS } from '../../content/words/custom.js';
 import { useT } from '../../i18n/index.jsx';
 import { CheckIcon, CopyIcon } from '../../ui/icons/index.jsx';
-import { Segmented } from '../../ui/primitives/index.js';
+import { NumberTiles } from '../../ui/primitives/Choices.jsx';
 
 const COUNTS = [30, 50, 100];
 
@@ -47,13 +47,12 @@ export function AiPrompt({ topic, langName }) {
       <p className="hint">{t('packs.ai.help')}</p>
       <div className="stack tight">
         <span className="field-label">{t('packs.ai.count')}</span>
-        <Segmented>
-          {COUNTS.map((n) => (
-            <button key={n} type="button" aria-pressed={count === n} onClick={() => setCount(n)}>
-              {n}
-            </button>
-          ))}
-        </Segmented>
+        <NumberTiles
+          label={t('packs.ai.count')}
+          value={count}
+          onChange={setCount}
+          options={COUNTS.map((n) => ({ value: n, label: String(n) }))}
+        />
       </div>
       <textarea
         className="input words ai-prompt-text"
