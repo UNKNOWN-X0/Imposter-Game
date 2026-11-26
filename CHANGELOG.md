@@ -12,6 +12,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- The word pack screens work like the settings. Every pack is one row; tap it to see its words in a sheet that slides up, with Copy and Edit. Searching shows what matched right in each row. In the editor, the word box stays on the page and the rest (name and icon, writing it with AI, sharing, loading a code, deleting) is a row you tap. The search box's clear button is no longer blue.
 - Imposter's settings are a short list now. Each setting is one row saying what it is set to; tap it and its choices slide up from the bottom, then tap Done. On/off settings switch right on the row. Nothing hides behind "Customize rules and roles" any more, and the scoreboard and the points list have plain titles instead of shouting labels.
 - The word pack screens match the home screen too. The library puts your own packs under their own heading above the built-in ones, and adding a pack is one clear card. The editor reads top to bottom (name and icon, the words, share and import) without boxes or shouting labels.
 - Imposter's settings are laid out like the home screen: grouped under clear headings (Words, The imposters, The round, Roles and score), with room to read each one. On/off settings are switches, word packs sit in a tidy grid with a tick, and roles are easy-to-scan rows.

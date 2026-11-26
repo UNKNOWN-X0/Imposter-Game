@@ -344,6 +344,15 @@ for (const [name, hash] of [['icons', '#icons'], ['crash', '#crash']]) {
   ]) {
     await scope.getByRole('button', { name: label }).click();
     await wait(500);
+    // The pack library: a pack's row opens a sheet of its words.
+    if (String(label).includes('Wortpakete')) {
+      await page.locator('.pack-shelf button.setting-row').first().click();
+      await wait(400);
+      if (!(await page.locator('.sheet .word-list li').count())) fail('a pack row opened no sheet of words');
+      await page.keyboard.press('Escape');
+      await wait(300);
+      if (await page.locator('.sheet').count()) fail('Escape left the pack sheet open');
+    }
     await page.getByRole('button', { name: /Zurück|Alles klar/ }).first().click();
     await wait(400);
   }

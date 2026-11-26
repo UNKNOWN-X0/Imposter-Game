@@ -252,52 +252,6 @@
   margin-top: 4px;
 }
 
-/* "Customize rules and roles" reads like one of the hub's ways to play: an
-   icon, a title and a line saying what is behind it. */
-.setting-more {
-  margin-top: 10px;
-}
-
-.setting-more > summary {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 26px minmax(0, 1fr) auto;
-  align-items: center;
-  column-gap: 12px;
-  row-gap: 2px;
-  min-height: var(--tap);
-  padding: 12px 14px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-  cursor: pointer;
-  transition: background-color var(--motion-state) var(--ease-standard), border-color var(--motion-state) var(--ease-standard);
-}
-
-.setting-more > summary::-webkit-details-marker { display: none; }
-@media (hover: hover) {
-  .setting-more > summary:hover { border-color: var(--accent-text); background: var(--surface-2); }
-}
-.setting-more[open] > summary { border-color: var(--accent-text); }
-.setting-more > summary:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
-.setting-more > summary > svg { grid-row: span 2; color: var(--accent-text); }
-.setting-more-title { font-weight: 800; color: var(--text); }
-.setting-more-hint { grid-column: 2; color: var(--text-dim); font-size: 13px; line-height: 1.45; }
-
-.setting-more > summary::after {
-  content: '';
-  grid-row: 1 / span 2;
-  grid-column: 3;
-  width: 9px;
-  height: 9px;
-  border-right: 2px solid var(--text-dim);
-  border-bottom: 2px solid var(--text-dim);
-  transform: rotate(45deg) translateY(-3px);
-  transition: transform var(--motion-state) var(--ease-standard);
-}
-
-.setting-more[open] > summary::after { transform: rotate(225deg) translateY(-3px); }
-
 /* Roles as the hub's cards: the glyph in its own column, a title and a line
    saying what it does, and the tick on the right, the way packs show theirs. */
 .role-grid {
@@ -337,7 +291,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .switch-track, .switch-thumb, .pack, .role-choice, .setting-more > summary, .setting-more > summary::after { transition: none; }
+  .switch-track, .switch-thumb, .pack, .role-choice { transition: none; }
 }
 
 /* A short control (Told / Blind) keeps its own width instead of a full-width
@@ -429,6 +383,19 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
   transform: rotate(-45deg);
 }
 
+/* A row with an icon (a pack's emoji, the AI sparkle) gives it a column of
+   its own, like the hub's ways to play. */
+.setting-row.has-icon { grid-template-columns: 26px minmax(0, 1fr) auto; }
+.setting-row.has-icon > :first-child { grid-row: 1 / span 2; color: var(--accent-text); }
+.setting-row.has-icon .setting-row-value { grid-column: 2; }
+.setting-row.has-icon .setting-row-end { grid-column: 3; }
+
+/* A row that throws something away says so in the danger colour. */
+.setting-row.danger .setting-row-title { color: var(--imposter); }
+
+/* A name not typed yet shows its placeholder, dimmed. */
+.setting-row-empty { color: var(--text-dim); font-weight: 600; }
+
 /* The sheet is the modal, anchored to the bottom of a phone. */
 .sheet-scrim {
   place-items: end center;
@@ -444,6 +411,14 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
 }
 
 .sheet > .setting { padding-top: 10px; }
+
+.sheet-title {
+  margin: 10px 0 0;
+  font-size: 19px;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
 .sheet > .btn.primary { bottom: calc(-18px - env(safe-area-inset-bottom)); }
 
 /* A wide screen has no thumb to reach with, so the sheet sits in the middle. */

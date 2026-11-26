@@ -6,12 +6,13 @@
  * back is pasted into the word box and goes through the same parser and
  * findings as anything typed. The topic is the pack's name; the words are
  * asked for in the pack's word language, whatever language the buttons are in.
+ * The editor shows it in a sheet behind its "Write it with AI" row.
  */
 
 import { useState } from 'react';
 import { PACK_LIMITS } from '../../content/words/custom.js';
 import { useT } from '../../i18n/index.jsx';
-import { CheckIcon, CopyIcon, SparklesIcon } from '../../ui/icons/index.jsx';
+import { CheckIcon, CopyIcon } from '../../ui/icons/index.jsx';
 import { Segmented } from '../../ui/primitives/index.js';
 
 const COUNTS = [30, 50, 100];
@@ -42,37 +43,30 @@ export function AiPrompt({ topic, langName }) {
   };
 
   return (
-    <details className="ai-prompt setting-more">
-      <summary>
-        <SparklesIcon size={22} />
-        <span className="setting-more-title">{t('packs.ai.title')}</span>
-        <span className="setting-more-hint">{t('packs.ai.summary')}</span>
-      </summary>
-      <div className="stack tight ai-prompt-body">
-        <p className="hint">{t('packs.ai.help')}</p>
-        <div className="stack tight">
-          <span className="field-label">{t('packs.ai.count')}</span>
-          <Segmented>
-            {COUNTS.map((n) => (
-              <button key={n} type="button" aria-pressed={count === n} onClick={() => setCount(n)}>
-                {n}
-              </button>
-            ))}
-          </Segmented>
-        </div>
-        <textarea
-          className="input words ai-prompt-text"
-          value={prompt}
-          rows={9}
-          readOnly
-          aria-label={t('packs.ai.title')}
-          onFocus={(e) => e.target.select()}
-        />
-        <button type="button" className="btn block" onClick={copy}>
-          {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}{' '}
-          {copied ? t('common.copied') : t('packs.ai.copy')}
-        </button>
+    <div className="stack tight">
+      <p className="hint">{t('packs.ai.help')}</p>
+      <div className="stack tight">
+        <span className="field-label">{t('packs.ai.count')}</span>
+        <Segmented>
+          {COUNTS.map((n) => (
+            <button key={n} type="button" aria-pressed={count === n} onClick={() => setCount(n)}>
+              {n}
+            </button>
+          ))}
+        </Segmented>
       </div>
-    </details>
+      <textarea
+        className="input words ai-prompt-text"
+        value={prompt}
+        rows={9}
+        readOnly
+        aria-label={t('packs.ai.title')}
+        onFocus={(e) => e.target.select()}
+      />
+      <button type="button" className="btn block" onClick={copy}>
+        {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}{' '}
+        {copied ? t('common.copied') : t('packs.ai.copy')}
+      </button>
+    </div>
   );
 }
