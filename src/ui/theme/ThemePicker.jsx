@@ -2,47 +2,36 @@
  * Choosing how the game looks.
  */
 
-import { useEffect, useRef, useState } from 'react';
-import { ContrastIcon } from '../icons/index.jsx';
+import { useState } from 'react';
+import { CheckIcon, ContrastIcon } from '../icons/index.jsx';
 import { MODES, THEMES, useTheme } from './index.jsx';
 import { useT } from '../../i18n/index.jsx';
-import { Segmented } from '../primitives/Segmented.jsx';
+import { Sheet } from '../primitives/Sheet.jsx';
 
 /**
- * Light, dark or whatever the phone says — and which wood.
+ * Light, dark or whatever the phone says, and which wood (#84).
  *
  * Both live on this device and are remembered here. They are deliberately not
  * game settings: the host does not get to decide what everyone else's screen
  * looks like, and a phone that goes dark at sunset should take its owner's
  * game with it without asking anybody.
+ *
+ * The previews are drawn with the real tokens: a preview box carries its own
+ * data-theme and data-mode, and tokens.css scopes the palettes to those
+ * attributes, so every swatch is the wood it names, nothing copied by hand.
  */
 export function ThemePicker() {
   const { t } = useT();
   const { mode, resolved, theme, setMode, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
-  const wrap = useRef(null);
-
-  useEffect(() => {
-    if (!open) return undefined;
-    const onKey = (e) => e.key === 'Escape' && setOpen(false);
-    const onDown = (e) => {
-      if (wrap.current && !wrap.current.contains(e.target)) setOpen(false);
-    };
-    document.addEventListener('keydown', onKey);
-    document.addEventListener('pointerdown', onDown);
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.removeEventListener('pointerdown', onDown);
-    };
-  }, [open]);
 
   return (
-    <div className="pickerwrap" ref={wrap}>
+    <div className="pickerwrap">
       <button
         className="iconpicker"
         aria-haspopup="dialog"
         aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => setOpen(true)}
         title={t('display.title')}
       >
         <ContrastIcon size={17} anim={open} />
@@ -50,50 +39,47 @@ export function ThemePicker() {
       </button>
 
       {open && (
-        <div className="sheet" role="dialog" aria-label={t('display.title')}>
-          <div className="eyebrow">{t('display.appearance')}</div>
-          <Segmented wide>
+        <Sheet label={t('display.title')} title={t('display.title')} doneLabel={t('lobby.done')} onClose={() => setOpen(false)}>
+          <h3 className="display-heading">{t('display.appearance')}</h3>
+          <div className="mode-grid">
             {MODES.map((id) => (
-              <button
-                key={id}
-                aria-pressed={mode === id}
-                onClick={() => setMode(id)}
-              >
-                {t(`display.mode.${id}`)}
+              <button key={id} type="button" className="mode-card" aria-pressed={mode === id} onClick={() => setMode(id)}>
+                <span className={`mode-preview ${id}`} aria-hidden="true">
+                  {(id === 'system' ? ['light', 'dark'] : [id]).map((m) => (
+                    <span key={m} className="mode-half" data-theme={theme} data-mode={m}>
+                      <span className="mode-line" />
+                      <span className="mode-line short" />
+                      <span className="mode-dot" />
+                    </span>
+                  ))}
+                </span>
+                <span className="mode-name">{t(`display.mode.${id}`)}</span>
+                <span className="choice-check" aria-hidden="true">{mode === id && <CheckIcon size={14} />}</span>
               </button>
             ))}
-          </Segmented>
-          <p className="hint">
-            {mode === 'system' ? t('display.followsPhone') : t('display.fixedHere')}
-          </p>
+          </div>
+          <p className="hint">{mode === 'system' ? t('display.followsPhone') : t('display.fixedHere')}</p>
 
-          <div className="eyebrow" style={{ marginTop: 6 }}>
-            {t('display.theme')}
+          <h3 className="display-heading">{t('display.theme')}</h3>
+          <div className="wood-grid">
+            {THEMES.map((option) => (
+              <button
+                key={option.id}
+                type="button"
+                className="wood-card"
+                aria-pressed={theme === option.id}
+                onClick={() => setTheme(option.id)}
+              >
+                <span className="wood-preview" data-theme={option.id} data-mode={resolved} aria-hidden="true">
+                  <span className="wood-plank" />
+                  <span className="wood-accent" />
+                </span>
+                <span className="wood-name">{t(`theme.${option.id}`)}</span>
+                <span className="choice-check" aria-hidden="true">{theme === option.id && <CheckIcon size={14} />}</span>
+              </button>
+            ))}
           </div>
-          <div className="swatches">
-            {THEMES.map((option) => {
-              const [surface, accent] = option[resolved];
-              return (
-                <button
-                  key={option.id}
-                  className="swatch"
-                  aria-pressed={theme === option.id}
-                  onClick={() => setTheme(option.id)}
-                  title={t(`theme.${option.id}`)}
-                >
-                  <span
-                    className="swatch-chip"
-                    aria-hidden="true"
-                    style={{ background: surface, borderColor: accent }}
-                  >
-                    <span style={{ background: accent }} />
-                  </span>
-                  {t(`theme.${option.id}`)}
-                </button>
-              );
-            })}
-          </div>
-        </div>
+        </Sheet>
       )}
     </div>
   );

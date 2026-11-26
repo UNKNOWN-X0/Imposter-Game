@@ -51,8 +51,10 @@ export function Sheet({ label, title, doneLabel, onClose, quietDone, children })
  * when tapping it opens a sheet. `control` puts a switch on the row instead,
  * for an on/off setting that one tap should change. `icon` goes in a column
  * of its own on the left; `danger` is for a row that throws something away.
+ * `end` replaces the chevron (a tick, for a row that is a choice, with
+ * `pressed` saying whether it is the one chosen).
  */
-export function SettingRow({ title, value, onOpen, control, disabled, icon, danger }) {
+export function SettingRow({ title, value, onOpen, control, disabled, icon, danger, end, pressed }) {
   const cls = `setting-row${icon ? ' has-icon' : ''}${danger ? ' danger' : ''}`;
   if (control) {
     return (
@@ -65,11 +67,22 @@ export function SettingRow({ title, value, onOpen, control, disabled, icon, dang
     );
   }
   return (
-    <button type="button" className={cls} onClick={onOpen} disabled={disabled} aria-haspopup="dialog">
+    <button
+      type="button"
+      className={cls}
+      onClick={onOpen}
+      disabled={disabled}
+      aria-haspopup={end ? undefined : 'dialog'}
+      aria-pressed={pressed}
+    >
       {icon}
       <span className="setting-row-title">{title}</span>
       <span className="setting-row-value">{value}</span>
-      <span className="setting-row-end setting-row-chevron" aria-hidden="true" />
+      {end ? (
+        <span className="setting-row-end">{end}</span>
+      ) : (
+        <span className="setting-row-end setting-row-chevron" aria-hidden="true" />
+      )}
     </button>
   );
 }

@@ -89,6 +89,8 @@ function builtAtRuntime() {
     keys.add(`settings.preset.${preset.id}Hint`);
     keys.add(`settings.preset.${preset.id}Short`);
   }
+  // Each language's name, in the language picker.
+  for (const l of LANGUAGES) keys.add(`language.${l.id}`);
   return keys;
 }
 
