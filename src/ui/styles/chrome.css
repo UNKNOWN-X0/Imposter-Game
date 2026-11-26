@@ -31,10 +31,6 @@
   border-color: var(--imposter-line);
 }
 
-.setting.block {
-  display: block;
-}
-
 .timer.out {
   color: var(--imposter);
 }

@@ -12,6 +12,7 @@
 import { MIN_PLAYERS, maxImpostersFor } from '../../core/engine.js';
 import { packsFor, pairCount } from '../../content/words/index.js';
 import { useT } from '../../i18n/index.jsx';
+import { SlidersIcon } from '../../ui/icons/index.jsx';
 import { Presets } from './settings/Presets.jsx';
 import { Packs, WordLanguage } from './settings/Words.jsx';
 import { HowMany, WhatTheySee, WhetherTheyKnow } from './settings/Imposters.jsx';
@@ -64,22 +65,43 @@ export function Settings({
     packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks,
   };
 
+  // Open sections with a heading each, the way the hub lays itself out,
+  // rather than one long card: the eye finds "Words" or "The round" by its
+  // heading instead of reading every row to get there.
   return (
-    <div className="card">
-      <Presets {...ctx} />
-      <WordLanguage {...ctx} />
-      <Packs {...ctx} />
+    <div className="settings">
+      <section className="settings-group">
+        <Presets {...ctx} />
+      </section>
+      <section className="settings-group">
+        <h3 className="settings-group-title">{t('settings.groupWords')}</h3>
+        <WordLanguage {...ctx} />
+        <Packs {...ctx} />
+      </section>
       <details className="setting-more">
-        <summary>{t('settings.customize')}</summary>
+        <summary>
+          <SlidersIcon size={22} />
+          <span className="setting-more-title">{t('settings.customize')}</span>
+          <span className="setting-more-hint">{t('settings.customizeHint')}</span>
+        </summary>
         <div className="setting-more-body">
-          <HowMany {...ctx} />
-          <WhatTheySee {...ctx} />
-          <WhetherTheyKnow {...ctx} />
-          <Calling {...ctx} />
-          <Stealing {...ctx} />
-          <Rounds {...ctx} />
-          <Roles {...ctx} />
-          <Scoring {...ctx} />
+          <section className="settings-group">
+            <h3 className="settings-group-title">{t('settings.groupImposters')}</h3>
+            <HowMany {...ctx} />
+            <WhatTheySee {...ctx} />
+            <WhetherTheyKnow {...ctx} />
+          </section>
+          <section className="settings-group">
+            <h3 className="settings-group-title">{t('settings.groupRound')}</h3>
+            <Rounds {...ctx} />
+            <Calling {...ctx} />
+            <Stealing {...ctx} />
+          </section>
+          <section className="settings-group">
+            <h3 className="settings-group-title">{t('settings.groupExtras')}</h3>
+            <Roles {...ctx} />
+            <Scoring {...ctx} />
+          </section>
         </div>
       </details>
     </div>

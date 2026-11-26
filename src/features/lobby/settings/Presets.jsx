@@ -16,9 +16,7 @@ export function Presets({ t, config, onChange, disabled }) {
 
   return (
     <div className="setting">
-      <div className="setting-head">
-        <span>{t('settings.preset')}</span>
-      </div>
+      <h3 className="settings-group-title">{t('settings.preset')}</h3>
       <Segmented wide>
         {PRESETS.map((preset) => (
           <button

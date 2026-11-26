@@ -80,17 +80,25 @@ export function Segmented({ wide, children }) {
   );
 }
 
-/** A plain on/off pair, used by several settings. */
-export function OnOff({ value, onChange, disabled }) {
+/**
+ * An on/off setting, as a switch beside its label. It was an On/Off pair of
+ * buttons, which took a third of the row on a phone and squeezed the line
+ * explaining the setting into a narrow column beside it.
+ */
+export function OnOff({ value, onChange, disabled, label }) {
   const { t } = useT();
   return (
-    <Segmented>
-      <button aria-pressed={value} disabled={disabled} onClick={() => onChange(true)}>
-        {t('settings.on')}
-      </button>
-      <button aria-pressed={!value} disabled={disabled} onClick={() => onChange(false)}>
-        {t('settings.off')}
-      </button>
-    </Segmented>
+    <button
+      type="button"
+      role="switch"
+      className="switch"
+      aria-checked={!!value}
+      aria-label={label}
+      disabled={disabled}
+      onClick={() => onChange(!value)}
+    >
+      <span className="switch-track" aria-hidden="true"><span className="switch-thumb" /></span>
+      <span className="switch-state">{value ? t('settings.on') : t('settings.off')}</span>
+    </button>
   );
 }
