@@ -12,7 +12,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import '../../testing/ready.js';
 
-import { PRESETS, PRESET_KEYS, presetFor } from './presets.js';
+import { PRESETS, closestPreset, PRESET_KEYS, presetFor } from './presets.js';
 import { DEFAULT_CONFIG, createGame, normaliseConfig, reduce } from '../../core/engine.js';
 import { STRINGS } from '../../i18n/strings/index.js';
 
@@ -103,4 +103,14 @@ test('every preset has a name and a line under it, in every language', () => {
 test('a table that has changed nothing is on a named preset: Standard', async () => {
   const { createGame } = await import('../../core/engine.js');
   assert.equal(presetFor(createGame({ wordLang: 'en' }).config), 'standard');
+});
+
+test('"Your own rules" names the preset it is closest to and how much changed', () => {
+  const quick = PRESETS.find((p) => p.id === 'quick').config;
+  assert.deepEqual(closestPreset({ ...quick }), { id: 'quick', changed: 0 });
+  assert.deepEqual(closestPreset({ ...quick, scoring: true }), { id: 'quick', changed: 1 });
+  // Quick is Standard with two rounds, so three rounds is one change from each; a tie goes to Standard.
+  assert.deepEqual(closestPreset({ ...quick, maxRounds: 3 }), { id: 'standard', changed: 1 });
+  const standard = PRESETS.find((p) => p.id === 'standard').config;
+  assert.equal(closestPreset({ ...standard, scoring: !standard.scoring }).id, 'standard');
 });

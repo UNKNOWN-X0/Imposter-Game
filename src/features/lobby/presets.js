@@ -106,3 +106,17 @@ export function presetFor(config) {
   );
   return match ? match.id : null;
 }
+
+/**
+ * The preset these settings are nearest to, and how many of its settings
+ * they change: "Your own rules" names where the table started from.
+ * Ties go to the earlier preset, so Standard wins them.
+ */
+export function closestPreset(config) {
+  let best = null;
+  for (const preset of PRESETS) {
+    const changed = PRESET_KEYS.filter((key) => !same(preset.config[key], config?.[key])).length;
+    if (!best || changed < best.changed) best = { id: preset.id, changed };
+  }
+  return best;
+}

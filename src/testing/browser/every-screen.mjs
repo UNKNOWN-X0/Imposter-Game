@@ -269,6 +269,9 @@ for (const lang of ['en', 'th', 'de']) {
     await wait(300);
     if (await sheet.count()) fail(`${lang}: Escape left the sheet open`);
     else if ((await rounds.innerText()) === before) fail(`${lang}: the rounds row did not follow the sheet`);
+    // Standard with two rounds is exactly Quick, so that card is now chosen (#83).
+    else if ((await page.locator('.preset-card[aria-pressed="true"]').count()) !== 1 || (await page.locator('.preset-card.yours').count()))
+      fail(`${lang}: two rounds did not show as the Quick preset`);
   }
   // Every ⓘ opens its explanation in place, whole, inside its card or sheet
   // and on screen (#82): on the rows, then in each row's sheet.

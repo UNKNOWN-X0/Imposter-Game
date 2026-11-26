@@ -432,3 +432,70 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
 @media (prefers-reduced-motion: reduce) {
   button.setting-row { transition: none; }
 }
+
+/* ------------------------------------------------------------------ *
+ * How do you want to play? (#83)
+ *
+ * Four cards in the hub's card colours, two by two: icon, name, one line of
+ * what that evening is like, and the tick. "Your own rules" takes a full row
+ * under them when the settings match no preset.
+ * ------------------------------------------------------------------ */
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.preset-card {
+  position: relative;
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 4px;
+  min-height: 112px;
+  padding: 14px 14px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--motion-state) var(--ease-standard), border-color var(--motion-state) var(--ease-standard);
+}
+
+.preset-card > svg { color: var(--accent-text); margin-bottom: 4px; }
+.preset-name { font-size: 16px; font-weight: 800; }
+.preset-line { color: var(--text-dim); font-size: 13px; line-height: 1.4; }
+.preset-card > .choice-check { position: absolute; top: 12px; right: 12px; }
+.preset-card[aria-pressed='true'],
+.preset-card.yours { border-color: var(--accent-text); box-shadow: inset 0 0 0 1px var(--accent-text); }
+.preset-card:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
+.preset-card:disabled { opacity: 0.5; cursor: not-allowed; }
+.preset-card:not(:disabled):active { transform: translateY(1px); }
+
+@media (hover: hover) {
+  .preset-card:hover:not(:disabled) { border-color: var(--accent-text); background: var(--surface-2); }
+}
+
+/* "Your own rules" is not a choice to make, it is where the table is: a
+   full-width row, icon beside the words. */
+.preset-card.yours {
+  grid-column: 1 / -1;
+  grid-template-columns: 26px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 12px;
+  min-height: 0;
+  cursor: default;
+}
+
+.preset-card.yours > svg { grid-row: span 2; margin: 0; }
+.preset-card.yours .preset-line { grid-column: 2; }
+.choice-check.on { background: var(--accent); border-color: var(--accent); }
+
+.presets > .hint:empty { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .preset-card { transition: none; }
+}
