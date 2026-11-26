@@ -13,7 +13,7 @@ import {
   BrandMark, ImposterMark, CrewIcon, ImposterIcon, UnknownIcon, HintIcon, CardBackIcon,
   PassIcon, EyeIcon, BellIcon, DiceIcon, TargetIcon, BrokenIcon, TieIcon,
   HourglassIcon, ShrugIcon, TrophyIcon, CheckIcon, ChevronLeftIcon, GlobeIcon,
-  CopyIcon, PhoneIcon, WifiIcon, ContrastIcon, SlidersIcon, SparklesIcon, InfoIcon, ArmchairIcon, ZapIcon, BrainIcon, TornadoIcon,
+  CopyIcon, PhoneIcon, WifiIcon, ContrastIcon, SlidersIcon, SparklesIcon, InfoIcon, ArmchairIcon, ZapIcon, BrainIcon, TornadoIcon, UserPlusIcon, MessageIcon, VoteIcon, GamesIcon, BookIcon, ServerIcon,
   DetectiveIcon, JesterIcon, SidekickIcon, ScoreIcon,
 } from '../../ui/icons/index.jsx';
 
@@ -51,6 +51,12 @@ const ICONS = [
   [ZapIcon, 'Zap', 'Preset: Quick', 'Still'],
   [BrainIcon, 'Brain', 'Preset: Careful', 'Still'],
   [TornadoIcon, 'Tornado', 'Preset: Chaos', 'Still'],
+  [UserPlusIcon, 'User plus', 'How it works: seat everyone', 'Still'],
+  [MessageIcon, 'Message', 'How to play: the clues', 'Still'],
+  [VoteIcon, 'Vote', 'How to play: the vote', 'Still'],
+  [GamesIcon, 'Games', 'How it works: pick a game', 'Still'],
+  [BookIcon, 'Book', 'How it works: word packs', 'Still'],
+  [ServerIcon, 'Server', 'How it works: what a room needs', 'Still'],
 ];
 
 export default function IconBoard() {

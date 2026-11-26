@@ -239,6 +239,60 @@ export const TornadoIcon = (p) => (
   </Icon>
 );
 
+/** A new seat at the table. Lucide user-plus. Still. */
+export const UserPlusIcon = (p) => (
+  <Icon {...p}>
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <line x1="19" x2="19" y1="8" y2="14" />
+    <line x1="22" x2="16" y1="11" y2="11" />
+  </Icon>
+);
+
+/** A clue said out loud. Lucide message-circle. Still. */
+export const MessageIcon = (p) => (
+  <Icon {...p}>
+    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+  </Icon>
+);
+
+/** The vote. Lucide vote. Still. */
+export const VoteIcon = (p) => (
+  <Icon {...p}>
+    <path d="m9 12 2 2 4-4" />
+    <path d="M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7Z" />
+    <path d="M22 19H2" />
+  </Icon>
+);
+
+/** The games on the table. Lucide layout-grid. Still. */
+export const GamesIcon = (p) => (
+  <Icon {...p}>
+    <rect width="7" height="7" x="3" y="3" rx="1" />
+    <rect width="7" height="7" x="14" y="3" rx="1" />
+    <rect width="7" height="7" x="14" y="14" rx="1" />
+    <rect width="7" height="7" x="3" y="14" rx="1" />
+  </Icon>
+);
+
+/** Word packs. Lucide book-open. Still. */
+export const BookIcon = (p) => (
+  <Icon {...p}>
+    <path d="M12 7v14" />
+    <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+  </Icon>
+);
+
+/** The party server a room needs. Lucide server. Still. */
+export const ServerIcon = (p) => (
+  <Icon {...p}>
+    <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+    <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+    <line x1="6" x2="6.01" y1="6" y2="6" />
+    <line x1="6" x2="6.01" y1="18" y2="18" />
+  </Icon>
+);
+
 /** Add something. */
 export const PlusIcon = (p) => (
   <Icon {...p}>

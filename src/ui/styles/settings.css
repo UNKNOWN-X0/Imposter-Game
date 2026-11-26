@@ -611,3 +611,37 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
   .mode-card:hover,
   .wood-card:hover { border-color: var(--accent-text); }
 }
+
+/* ------------------------------------------------------------------ *
+ * How to play and How it works (#85)
+ *
+ * Steps as a card each, in the hub's colours: the icon in its own column,
+ * a numbered title, and what happens.
+ * ------------------------------------------------------------------ */
+
+.step-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  counter-reset: step;
+}
+
+.step-card {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  column-gap: 12px;
+  row-gap: 4px;
+  align-items: start;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  counter-increment: step;
+}
+
+.step-card > svg { grid-row: span 2; color: var(--accent-text); margin-top: 1px; }
+.step-title { font-size: 16px; font-weight: 800; color: var(--text); }
+.step-list .step-title::before { content: counter(step) '. '; color: var(--accent-text); }
+.step-body { grid-column: 2; color: var(--text-dim); font-size: 14.5px; line-height: 1.5; }

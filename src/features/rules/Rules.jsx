@@ -1,37 +1,60 @@
 /**
- * The rules screen.
+ * A game's How to play (#85). Today that is Imposter's: its four steps as
+ * cards, the optional roles, and how to play it well.
  *
- * The step and the credit line live beside it in their own files, because
- * both are needed on screens that load before this one does — and this one
- * is now fetched only when somebody taps "How do you play?".
+ * The screen is keyed by game (`rules:<id>` in App), so a second game adds
+ * its own entry to RULES below rather than a branch through this one.
  */
 
 import { Shell } from '../../ui/primitives/index.js';
 import { useT } from '../../i18n/index.jsx';
+import { SPECIAL_ROLES } from '../../core/engine.js';
+import { RoleGlyph } from '../../ui/primitives/RoleGlyph.jsx';
 import { Credit } from './Credit.jsx';
-import { Step } from './Step.jsx';
+import { RuleSteps, imposterSteps } from './RuleSteps.jsx';
 
 export { Credit } from './Credit.jsx';
-export { Step } from './Step.jsx';
 
-export function Rules({ onExit }) {
+function ImposterRules({ t }) {
+  return (
+    <>
+      <RuleSteps steps={imposterSteps(t)} />
+
+      <section className="settings-group stack tight">
+        <h2 className="settings-group-title">{t('rules.roles.title')}</h2>
+        <p className="hint">{t('rules.roles.lead')}</p>
+        <div className="setting-list">
+          {SPECIAL_ROLES.map((role) => (
+            <div className="setting-row has-icon" key={role}>
+              <RoleGlyph role={role} size={22} />
+              <span className="setting-row-title">{t(`role.${role}`)}</span>
+              <span className="setting-row-value">{t(`role.${role}Tip`)}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="settings-group stack tight">
+        <h2 className="settings-group-title">{t('rules.tips.title')}</h2>
+        <p className="subtitle">{t('rules.tips.body')}</p>
+      </section>
+    </>
+  );
+}
+
+const RULES = { imposter: { name: 'game.imposter.name', Body: ImposterRules } };
+
+export function Rules({ game = 'imposter', onExit }) {
   const { t } = useT();
+  const { name, Body } = RULES[game] ?? RULES.imposter;
   return (
     <Shell onBack={onExit} frame>
-      <h1 className="title">{t('rules.title')}</h1>
-
-      <div className="card stack">
-        {[1, 2, 3, 4].map((n) => (
-          <Step key={n} n={n} title={t(`rules.${n}.title`)}>
-            {t(`rules.${n}.body`)}
-          </Step>
-        ))}
+      <div className="stack tight">
+        <h1 className="title">{t('rules.title')}</h1>
+        <p className="subtitle">{t(name)}</p>
       </div>
 
-      <div className="card stack tight">
-        <div className="eyebrow">{t('rules.tips.title')}</div>
-        <p className="subtitle">{t('rules.tips.body')}</p>
-      </div>
+      <Body t={t} />
 
       <button className="btn primary block lg" onClick={onExit}>
         {t('common.gotIt')}
@@ -41,4 +64,3 @@ export function Rules({ onExit }) {
     </Shell>
   );
 }
-

@@ -417,7 +417,7 @@ for (const [name, hash] of [['icons', '#icons'], ['crash', '#crash']]) {
     await wait(400);
   }
   for (const [scope, label] of [
-    [page.locator('footer'), /Wie geht das/],
+    [page.locator('footer'), /So funktioniert/],
     [page.getByRole('navigation'), /Wortpakete/],
     [page.locator('footer'), /Was ist neu/],
   ]) {
