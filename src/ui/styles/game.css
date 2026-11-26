@@ -163,22 +163,6 @@
   }
 }
 
-.card-emoji {
-  font-size: 46px;
-  animation: bob 3.2s ease-in-out infinite;
-}
-
-.card-emoji.big {
-  font-size: 52px;
-  animation: none;
-}
-
-@keyframes bob {
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
 /* Lists arrive one after another instead of all at once. */
 .stagger > * {
   animation: rise var(--motion-enter) var(--ease-standard) both;
@@ -247,7 +231,6 @@
   }
 }
 
-.celebrate .card-emoji,
 .celebrate > [aria-hidden='true']:first-child {
   animation: cheer var(--motion-celebration) var(--ease-celebration) both 0.15s;
 }
@@ -259,7 +242,9 @@
 }
 
 .pulse {
-  animation: pulse 2.2s ease-in-out infinite;
+  /* Three pulses to draw the eye, then still: a calm screen does not loop
+     (#108). */
+  animation: pulse 2.2s ease-in-out 3;
 }
 
 @keyframes pulse {
@@ -429,12 +414,8 @@
   gap: 10px;
   padding: 0 14px;
   text-align: left;
-  transition: transform 0.08s ease, border-color 0.15s ease;
 }
 
-.vote-btn:active:not(:disabled) {
-  transform: scale(0.98);
-}
 
 .vote-btn.chosen {
   border-color: var(--accent-text);
@@ -472,7 +453,7 @@
   height: 100%;
   background: var(--accent);
   border-radius: 999px;
-  transition: width 0.4s ease;
+  transition: width var(--motion-enter) var(--ease-standard);
 }
 
 /* The emblem inside an avatar scales with the circle, whatever its size. */

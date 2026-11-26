@@ -121,10 +121,6 @@
   background: var(--surface-2);
 }
 
-.hub-mode:active {
-  transform: translateY(1px);
-}
-
 .hub-mode > svg {
   grid-row: span 2;
   color: var(--accent-text);

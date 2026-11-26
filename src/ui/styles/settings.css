@@ -372,7 +372,6 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
 .preset-card.yours { border-color: var(--accent-text); box-shadow: inset 0 0 0 1px var(--accent-text); }
 .preset-card:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
 .preset-card:disabled { opacity: 0.5; cursor: not-allowed; }
-.preset-card:not(:disabled):active { transform: translateY(1px); }
 
 @media (hover: hover) {
   .preset-card:hover:not(:disabled) { border-color: var(--accent-text); background: var(--surface-2); }
@@ -582,7 +581,6 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
 .number-tile[aria-pressed='true'] > .choice-check { background: var(--accent); }
 .number-tile:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
 .number-tile:disabled { opacity: 0.5; cursor: not-allowed; }
-.number-tile:not(:disabled):active { transform: translateY(1px); }
 
 @media (hover: hover) {
   .number-tile:hover:not(:disabled) { border-color: var(--accent-text); background: var(--surface-2); }
