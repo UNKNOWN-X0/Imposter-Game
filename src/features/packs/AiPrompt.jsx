@@ -11,7 +11,7 @@
 import { useState } from 'react';
 import { PACK_LIMITS } from '../../content/words/custom.js';
 import { useT } from '../../i18n/index.jsx';
-import { CheckIcon, CopyIcon } from '../../ui/icons/index.jsx';
+import { CheckIcon, CopyIcon, SparklesIcon } from '../../ui/icons/index.jsx';
 import { Segmented } from '../../ui/primitives/index.js';
 
 const COUNTS = [30, 50, 100];
@@ -42,12 +42,16 @@ export function AiPrompt({ topic, langName }) {
   };
 
   return (
-    <details className="ai-prompt">
-      <summary>{t('packs.ai.title')}</summary>
+    <details className="ai-prompt setting-more">
+      <summary>
+        <SparklesIcon size={22} />
+        <span className="setting-more-title">{t('packs.ai.title')}</span>
+        <span className="setting-more-hint">{t('packs.ai.summary')}</span>
+      </summary>
       <div className="stack tight ai-prompt-body">
         <p className="hint">{t('packs.ai.help')}</p>
         <div className="stack tight">
-          <span className="eyebrow">{t('packs.ai.count')}</span>
+          <span className="field-label">{t('packs.ai.count')}</span>
           <Segmented>
             {COUNTS.map((n) => (
               <button key={n} type="button" aria-pressed={count === n} onClick={() => setCount(n)}>

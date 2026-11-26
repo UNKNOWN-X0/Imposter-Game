@@ -8,6 +8,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- The word pack screens match the home screen too. The library puts your own packs under their own heading above the built-in ones, and adding a pack is one clear card. The editor reads top to bottom (name and icon, the words, share and import) without boxes or shouting labels.
 - Imposter's settings are laid out like the home screen: grouped under clear headings (Words, The imposters, The round, Roles and score), with room to read each one. On/off settings are switches, word packs sit in a tidy grid with a tick, and roles are easy-to-scan rows.
 - The Long Table has its own mark: a long table seen from its head, with chairs down both sides, in walnut on oak. It is the new app icon, so a phone that saved the game to its home screen shows it the next time it updates. Imposter keeps its hat and spectacles in the game library.
 - The game now lives at **https://unknown-x0.github.io/The-Long-Table/** on GitHub Pages and updates every time a change lands. The old Netlify address stops getting updates; a phone that saved it to the home screen should save the new one.
