@@ -212,6 +212,38 @@ const seen = [];
   await ctx.close();
 }
 
+/* --- the lobby settings: a row opens its sheet, and says what was chosen -- */
+for (const lang of ['en', 'th', 'de']) {
+  const { ctx, page, errors } = await openPage(lang);
+  await page.locator('.hub-mode').first().click();
+  await page.locator('.game-card .btn.primary').first().click();
+  await wait(300);
+  for (const name of ['Ann', 'Ben', 'Cal', 'Dee']) {
+    await page.locator('input:not([type=radio])').first().fill(name);
+    await page.keyboard.press('Enter');
+  }
+  const rounds = page.locator('button.setting-row').nth(5);
+  const before = await rounds.innerText();
+  await rounds.click();
+  await wait(400);
+  const sheet = page.locator('.sheet');
+  if (!(await sheet.count())) fail(`${lang}: the rounds row opened no sheet`);
+  else {
+    await look(page, `${lang} settings sheet`);
+    await sheet.getByRole('button', { name: '2', exact: true }).click();
+    await page.keyboard.press('Escape');
+    await wait(300);
+    if (await sheet.count()) fail(`${lang}: Escape left the sheet open`);
+    else if ((await rounds.innerText()) === before) fail(`${lang}: the rounds row did not follow the sheet`);
+  }
+  if (errors.length) fail(`${lang} settings: ${errors[0]}`);
+  else {
+    seen.push(`${lang}: settings rows open their sheets and follow them`);
+    await look(page, `${lang} settings rows`);
+  }
+  await ctx.close();
+}
+
 /* --- 1. an imposter calls the word: the road to the game-over screen ---- */
 {
   const { ctx, page, errors } = await openPage('th');
