@@ -2,8 +2,9 @@
  * The dot beside a setting, and what it says.
  */
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { useT } from '../../i18n/index.jsx';
+import { InfoIcon } from '../icons/index.jsx';
 
 /**
  * The ⓘ beside a setting.
@@ -13,61 +14,40 @@ import { useT } from '../../i18n/index.jsx';
  * paragraph they used to be. `text` is the lead above them, or the whole
  * thing for a setting with nothing to compare.
  *
- * The bubble opens downwards unless there is no room, in which case it opens
- * up — the last settings on a long lobby are near the bottom of the screen,
- * and a tooltip that opens off the edge is worse than none.
+ * The explanation opens in place, on its own line under the setting's name,
+ * and pushes what follows down. It used to float as a bubble, which a card's
+ * edge or the top of a sheet cut off, and which covered the very line it was
+ * explaining (#82). Nothing can clip a block that is part of the page.
  */
 export function Info({ text, lines, label }) {
   const { t } = useT();
   const [open, setOpen] = useState(false);
-  const [above, setAbove] = useState(false);
   const id = useId();
-  const wrap = useRef(null);
-  const bubble = useRef(null);
 
-  useEffect(() => {
-    if (!open) return;
-    const anchor = wrap.current?.closest('.setting') ?? wrap.current;
-    const box = anchor?.getBoundingClientRect();
-    const height = bubble.current?.offsetHeight ?? 160;
-    if (box) setAbove(box.bottom + height + 24 > window.innerHeight && box.top > height + 24);
-  }, [open]);
-
+  // A second tap or Escape closes it. Not a tap elsewhere: the page moves
+  // when it closes, and a tap on the switch below would land on whatever
+  // slid under the finger.
   useEffect(() => {
     if (!open) return undefined;
-    const onDown = (e) => {
-      if (!wrap.current?.contains(e.target)) setOpen(false);
-    };
-    const onKey = (e) => {
-      if (e.key === 'Escape') setOpen(false);
-    };
-    document.addEventListener('pointerdown', onDown);
+    const onKey = (e) => e.key === 'Escape' && setOpen(false);
     document.addEventListener('keydown', onKey);
-    return () => {
-      document.removeEventListener('pointerdown', onDown);
-      document.removeEventListener('keydown', onKey);
-    };
+    return () => document.removeEventListener('keydown', onKey);
   }, [open]);
 
   return (
-    <span className="info" ref={wrap}>
+    <span className="info">
       <button
         type="button"
         className="info-dot"
         aria-expanded={open}
-        aria-describedby={open ? id : undefined}
+        aria-controls={open ? id : undefined}
         aria-label={label || t('common.whatsThis')}
         onClick={() => setOpen((o) => !o)}
       >
-        i
+        <InfoIcon size={18} />
       </button>
       {open && (
-        <span
-          className={`tip pop-in${above ? ' above' : ''}`}
-          id={id}
-          role="tooltip"
-          ref={bubble}
-        >
+        <span className="tip pop-in" id={id}>
           {text && <span className="tip-lead">{text}</span>}
           {lines?.length > 0 && (
             <span className="tip-lines">

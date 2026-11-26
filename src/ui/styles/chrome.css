@@ -180,32 +180,30 @@
  * ------------------------------------------------------------------ */
 
 .info {
-  position: relative;
-  display: inline-flex;
-  vertical-align: middle;
+  /* The dot sits at the end of the name's line; the explanation, when open,
+     is a block, so it starts on a line of its own under the name. */
+  display: contents;
 }
 
 .info-dot {
-  /* 24 is the smallest a control is allowed to be. It was 22. */
+  /* Lucide's info ring, in the dim ink like the row's own explanation; it
+     takes the accent while its explanation is open. No chip around it: the
+     ring is the button. */
   width: 24px;
   height: 24px;
-  /* So the ::after below, which is the real touch target, has something to
-     position against. */
   position: relative;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: var(--surface-2);
-  color: var(--text-faint);
-  font-size: 12px;
-  font-weight: 800;
-  font-style: italic;
-  line-height: 1;
-  display: grid;
+  display: inline-grid;
   place-items: center;
-  cursor: pointer;
+  vertical-align: middle;
+  margin: -3px 0 0 4px;
   padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--text-dim);
+  cursor: pointer;
   flex: none;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 /* The dot stays 24px, because that is the size that looks right next to a
@@ -222,58 +220,20 @@
 .info-dot:hover,
 .info-dot[aria-expanded='true'] {
   color: var(--accent-text);
-  border-color: var(--accent-text);
 }
 
 .tip {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
-  translate: -50% 0;
-  width: min(280px, 78vw);
-  z-index: 30;
+  margin-top: 6px;
   background: var(--bg-soft);
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  padding: 12px 14px;
+  padding: 10px 12px;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.55;
   color: var(--text-dim);
-  box-shadow: var(--shadow);
   text-transform: none;
   letter-spacing: normal;
-}
-
-/*
- * Inside a settings row the bubble anchors to the row rather than to the dot,
- * so it spans the card and can never hang off the edge of a narrow phone —
- * the dot itself sits mid-sentence, which is a terrible thing to measure from.
- */
-.setting {
-  position: relative;
-}
-
-.setting .info {
-  position: static;
-}
-
-.setting .tip {
-  left: 0;
-  right: 0;
-  width: auto;
-  translate: none;
-  top: calc(100% - 4px);
-}
-
-/*
- * Each row is positioned, so a later row would otherwise paint over an open
- * bubble no matter what z-index the bubble itself carries. Lifting the whole
- * row while it holds one is the fix. Browsers without :has() simply show the
- * bubble behind the next row — degraded, not broken.
- */
-.setting:has(.tip) {
-  z-index: 10;
 }
 
 /* ------------------------------------------------------------------ *
