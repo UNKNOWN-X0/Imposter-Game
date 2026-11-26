@@ -57,9 +57,11 @@ export function BrandMark({ size = 34 }) {
 }
 
 /**
- * Imposter's mark: a pair of spectacles under a hat brim, with a glint that sweeps
- * across the lenses. The eyes blink on a long, irregular cycle so it reads as
- * alive rather than as a loading spinner.
+ * Imposter's mark (owner's pick B, issue #98): a disguise of a fedora over
+ * square spectacles, drawn as solid shapes in the table mark's weight. The
+ * hat band and a glint on each lens are cut out by a mask, so it works in
+ * currentColor on any surface. On `animated` the eyes behind the lenses
+ * blink now and then; `animated={false}` keeps it still.
  */
 export function ImposterMark({ size = 34, animated = true }) {
   return (
@@ -72,47 +74,25 @@ export function ImposterMark({ size = 34, animated = true }) {
       focusable="false"
     >
       <defs>
-        <linearGradient id="bm-glint" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#fff" stopOpacity="0" />
-          <stop offset="50%" stopColor="#fff" stopOpacity="0.55" />
-          <stop offset="100%" stopColor="#fff" stopOpacity="0" />
-        </linearGradient>
-        <clipPath id="bm-lenses">
-          <circle cx="16" cy="28" r="8" />
-          <circle cx="32" cy="28" r="8" />
-        </clipPath>
+        <mask id="imp-mark-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48">
+          <rect width="48" height="48" fill="#fff" />
+          <path d="M14 18.6h20" stroke="#000" strokeWidth="2.2" />
+          <path d="M11.2 30.8v-2h3M27.6 30.8v-2h3" stroke="#000" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        </mask>
       </defs>
-
-      {/* crown, band and brim — a fedora, read at a glance */}
-      <path
-        d="M13 16.5V11c0-3.4 4.4-5.4 11-5.4s11 2 11 5.4v5.5"
-        stroke="currentColor"
-        strokeWidth="3"
-        fill="none"
-        strokeLinejoin="round"
-      />
-      <path d="M13 16.4h22" stroke="currentColor" strokeWidth="2.6" opacity="0.45" />
-      <path
-        d="M5 18.4h38"
-        stroke="currentColor"
-        strokeWidth="3.4"
-        strokeLinecap="round"
-      />
-
-      {/* lenses */}
-      <circle cx="16" cy="28" r="8" fill="currentColor" />
-      <circle cx="32" cy="28" r="8" fill="currentColor" />
-      <path d="M24 26h0" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-
-      {/* pupils — these blink */}
-      <g className="bm-eyes">
-        <circle cx="16" cy="28" r="3" className="bm-pupil" />
-        <circle cx="32" cy="28" r="3" className="bm-pupil" />
+      <g mask="url(#imp-mark-cut)" fill="currentColor">
+        {/* the fedora's crown and brim */}
+        <path d="M14 20.6 15.6 11c.2-1.3 1.3-2.2 2.6-2.2h11.6c1.3 0 2.4.9 2.6 2.2L34 20.6Z" />
+        <rect x="5" y="20" width="38" height="3.6" rx="1.8" />
+        {/* square spectacles */}
+        <rect x="9.4" y="27.2" width="12.8" height="10.2" rx="3.4" />
+        <rect x="25.8" y="27.2" width="12.8" height="10.2" rx="3.4" />
       </g>
-
-      {/* glint sweeping across both lenses */}
-      <g clipPath="url(#bm-lenses)">
-        <rect className="bm-glint" x="-24" y="18" width="14" height="20" fill="url(#bm-glint)" />
+      <path d="M22 30.4h4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+      {/* the eyes behind the lenses: these blink */}
+      <g className="bm-eyes">
+        <circle cx="16.4" cy="32.6" r="2.2" className="bm-pupil" />
+        <circle cx="31.6" cy="32.6" r="2.2" className="bm-pupil" />
       </g>
     </svg>
   );
