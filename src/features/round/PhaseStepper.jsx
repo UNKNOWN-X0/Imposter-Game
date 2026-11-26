@@ -5,6 +5,11 @@
 import { PHASE } from '../../core/engine.js';
 import { useT } from '../../i18n/index.jsx';
 
+const STEP_PHASES = [[PHASE.REVEAL], [PHASE.CLUES], [PHASE.VOTE], [PHASE.VERDICT, PHASE.STEAL, PHASE.GAME_OVER]];
+
+/** Whether this phase shows the stepper: a round is under way. */
+export const inRound = (phase) => STEP_PHASES.some((phases) => phases.includes(phase));
+
 /** Where we are in the round — four steps, no surprises. */
 export function PhaseStepper({ phase }) {
   const { t } = useT();

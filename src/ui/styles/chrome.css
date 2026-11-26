@@ -70,6 +70,34 @@
  * Phase stepper
  * ------------------------------------------------------------------ */
 
+/* The progress line with a room's code beside it (#106): the code is the
+   compact chip, its "copy" word dropped, the icon and the tick kept. */
+.phase-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.phase-row .stepper {
+  flex: 1;
+  min-width: 0;
+}
+
+.phase-row .roomcode {
+  flex: none;
+  padding: 3px 4px 3px 10px;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+}
+
+.phase-row .roomcode-action {
+  padding: 3px 7px;
+}
+
+.phase-row .roomcode-label {
+  display: none;
+}
+
 .stepper {
   display: flex;
   align-items: center;
