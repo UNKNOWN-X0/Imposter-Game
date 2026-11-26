@@ -292,6 +292,16 @@ for (const [name, hash] of [['icons', '#icons'], ['crash', '#crash']]) {
     await page.locator('.hub-mode').nth(nth).click();
     await wait(400);
     if (!(await page.locator('.game-card').count())) fail(`mode ${nth} did not open the game library`);
+    // A game's rules close back onto the library that opened them, both by
+    // "Got it" and by the browser's back button, not onto the hub.
+    for (const leave of ['got it', 'browser back']) {
+      await page.locator('.game-card .btn:not(.primary)').first().click();
+      await wait(400);
+      if (leave === 'got it') await page.getByRole('button', { name: /Verstanden/ }).click();
+      else await page.goBack();
+      await wait(400);
+      if (!(await page.locator('.game-card').count())) fail(`mode ${nth}: leaving the rules by ${leave} did not return to the game library`);
+    }
     await page.getByRole('button', { name: /Zurück/ }).first().click();
     await wait(400);
   }

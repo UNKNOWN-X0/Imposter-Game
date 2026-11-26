@@ -111,10 +111,12 @@ export default function App() {
     open('changelog');
   };
 
-  // Keep the browser's back button meaningful instead of leaving the site.
+  // Keep the browser's back button meaningful instead of leaving the site:
+  // it returns to the screen that opened this one, such as the game library
+  // that opened the rules, or the hub when nothing was saved.
   useEffect(() => {
-    const onPop = () => {
-      setScreen('home');
+    const onPop = (e) => {
+      setScreen(e.state?.screen ?? 'home');
       window.scrollTo(0, 0);
     };
     window.addEventListener('popstate', onPop);
@@ -134,7 +136,17 @@ export default function App() {
   const home = () => {
     setScreen('home');
     toTop();
-    if (window.location.hash) window.history.replaceState(null, '', window.location.pathname);
+    // Mark this entry as the hub, so a later screen's back lands here rather
+    // than on whatever this entry was before (and drop any join link).
+    window.history.replaceState({ screen: 'home' }, '', window.location.pathname);
+  };
+
+  // Back to whatever opened this screen. The rules open from the hub and
+  // from a game's card in the library; "Got it" must land where they came
+  // from, not always on the hub.
+  const back = () => {
+    if (window.history.state?.screen === screen) window.history.back();
+    else home();
   };
 
   // One shell for every screen that has to be fetched first. The wait is a
@@ -153,7 +165,7 @@ export default function App() {
   if (screen === 'online') return <><OnlineGame onExit={home} initialCode={joinCode} />{firstRules}</>;
   if (screen === 'icons') return fetched(<IconBoard />);
   if (screen === 'strings') return fetched(<StringBoard />);
-  if (screen === 'rules') return <Rules onExit={home} />;
+  if (screen === 'rules') return <Rules onExit={back} />;
   if (screen === 'packs') return <Library onExit={home} />;
   // Who is playing, then how, then which game (#51).
   if (screen === 'library-local' || screen === 'library-room') {
