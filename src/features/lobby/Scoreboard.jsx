@@ -2,7 +2,6 @@
  * The night so far, and what each way of winning pays.
  */
 
-import { ScoreIcon } from '../../ui/icons/index.jsx';
 import { WIN_POINTS } from '../../core/engine.js';
 import { useT } from '../../i18n/index.jsx';
 import { Avatar } from '../../ui/primitives/Avatar.jsx';
@@ -25,9 +24,7 @@ export function Scoreboard({ players, scores = {}, gained = [], award = 1, onCle
   return (
     <div className="card stack tight">
       <div className="row" style={{ alignItems: 'center' }}>
-        <span className="eyebrow grow">
-          <ScoreIcon size={15} /> {t('score.title')}
-        </span>
+        <h2 className="settings-group-title grow">{t('score.title')}</h2>
         {onClear && top > 0 && (
           <button className="btn-link" onClick={onClear}>
             {t('score.clear')}
@@ -67,7 +64,7 @@ export function WinValues() {
   const rows = Object.entries(WIN_POINTS).sort((a, b) => b[1] - a[1]);
   return (
     <div className="card stack tight">
-      <div className="eyebrow">{t('score.worth')}</div>
+      <h2 className="settings-group-title">{t('score.worth')}</h2>
       <div className="worth">
         {rows.map(([reason, points]) => (
           <div className="worth-row" key={reason}>

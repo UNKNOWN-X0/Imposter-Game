@@ -296,11 +296,13 @@ button.ts-seat-body:focus-visible {
   overflow-wrap: anywhere;
 }
 
-/* A heading between the seating and the rules. */
+/* A heading between the seating and the rules: the size of the hub's own
+   section headings, a step above the 19px group titles under it. */
 .section-title {
-  margin-top: 8px;
-  font-size: 19px;
+  margin-top: 12px;
+  font-size: 21px;
   line-height: 1.3;
+  letter-spacing: -0.02em;
 }
 
 /* The second step of a vote or any choice that cannot be undone. */

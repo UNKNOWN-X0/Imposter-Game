@@ -34,8 +34,10 @@
   padding: 14px 0;
 }
 
+/* Settings in a group are parted by space alone, the way the hub parts its
+   rows; the hairline is kept for between groups. */
 .setting + .setting {
-  border-top: 1px dashed color-mix(in oklab, var(--line) 70%, transparent);
+  padding-top: 18px;
 }
 
 .setting .label b {
@@ -274,7 +276,10 @@
 }
 
 .setting-more > summary::-webkit-details-marker { display: none; }
-.setting-more > summary:hover { border-color: var(--accent-text); background: var(--surface-2); }
+@media (hover: hover) {
+  .setting-more > summary:hover { border-color: var(--accent-text); background: var(--surface-2); }
+}
+.setting-more[open] > summary { border-color: var(--accent-text); }
 .setting-more > summary:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
 .setting-more > summary > svg { grid-row: span 2; color: var(--accent-text); }
 .setting-more-title { font-weight: 800; color: var(--text); }
@@ -298,32 +303,46 @@
   padding-top: 8px;
 }
 
-/* Roles as rows: glyph, name and what it does, and the tick. */
+/* Roles as the hub's cards: the glyph in its own column, a title and a line
+   saying what it does, and the tick on the right, the way packs show theirs. */
 .role-grid {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
-.role-grid .pack {
-  align-items: flex-start;
+.role-choice {
+  min-height: var(--tap);
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 3px;
+  width: 100%;
   padding: 12px 14px;
-  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--motion-state) var(--ease-standard), border-color var(--motion-state) var(--ease-standard);
 }
 
-.role-grid .pack > svg { flex: none; margin-top: 1px; }
-.role-choice-text { flex: 1; min-width: 0; display: grid; gap: 3px; }
-.role-choice-title { color: var(--text); font-weight: 750; font-size: 15px; }
-.role-grid .pack[aria-pressed='false'] .role-choice-title { color: var(--text-dim); }
+.role-choice > svg { grid-row: span 2; color: var(--accent-text); }
+.role-choice > .choice-check { grid-column: 3; grid-row: 1 / span 2; }
+.role-choice-title { font-size: 16px; font-weight: 800; }
+.role-choice-description { grid-column: 2; color: var(--text-dim); font-size: 13px; line-height: 1.45; }
+.role-choice[aria-pressed='true'] { border-color: var(--accent-text); }
+.role-choice:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
+.role-choice:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.role-choice-description {
-  color: var(--text-dim);
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.45;
+@media (hover: hover) {
+  .role-choice:hover:not(:disabled) { border-color: var(--accent-text); background: var(--surface-2); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .switch-track, .switch-thumb, .pack, .setting-more > summary, .setting-more > summary::after { transition: none; }
+  .switch-track, .switch-thumb, .pack, .role-choice, .setting-more > summary, .setting-more > summary::after { transition: none; }
 }
 
 /* A short control (Told / Blind) keeps its own width instead of a full-width
