@@ -2,7 +2,9 @@
  * How a round ends, and how a game does.
  */
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Avatar } from '../../ui/primitives/Avatar.jsx';
+import { motionMs } from '../../ui/motionMs.js';
 import { SPECIAL_ROLES } from '../../core/engine.js';
 import { BellIcon, BrokenIcon, Confetti, DiceIcon, HourglassIcon, ImposterIcon, JesterIcon, TargetIcon, TieIcon, TrophyIcon } from '../../ui/icons/index.jsx';
 import { useT } from '../../i18n/index.jsx';
@@ -22,6 +24,29 @@ export function VerdictCard({ state, onContinue, canContinue = true }) {
   // do not arrive the same way: one locks on, the other knocks the card.
   const miss = Boolean(who) && !lastVote?.tied && !lastVote?.wasImposter;
   const hit = Boolean(who) && !lastVote?.tied && lastVote?.wasImposter;
+
+  // The beat (#109): when the table has voted somebody out, the answer waits
+  // one --motion-beat while their seat is held up, then the card stamps in.
+  // A tap skips it; under reduced motion there is none. Not for a tie or a
+  // called word, which have no one to wait on.
+  const [beat, setBeat] = useState(() => Boolean(who) && !lastVote?.tied && !lastVote?.called && motionMs('--motion-beat') > 0);
+  useEffect(() => {
+    if (!beat) return undefined;
+    const id = setTimeout(() => setBeat(false), motionMs('--motion-beat'));
+    return () => clearTimeout(id);
+  }, [beat]);
+
+  if (beat) {
+    return (
+      <div className="stack">
+        <button type="button" className="card pad-lg center stack verdict-beat" onClick={() => setBeat(false)}>
+          <Avatar name={who.name} size={72} />
+          <h2 className="title">{t('verdict.chose', { name: who.name })}</h2>
+          <p className="subtitle">{t('verdict.wasThey')}</p>
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="stack">

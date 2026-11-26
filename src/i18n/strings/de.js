@@ -543,6 +543,8 @@ export default {
 
   'verdict.nobody': 'Niemand fliegt raus',
   'verdict.split': 'Die Abstimmung war unentschieden, alle bleiben drin.',
+  'verdict.chose': 'Die Runde hat {name} gewählt',
+  'verdict.wasThey': 'War es der Falschspieler?',
   'verdict.isOut': '{name} ist raus',
   'verdict.wasImposter': '<b>War</b> ein Falschspieler.',
   'verdict.wasCrew': 'War <b>Crew</b>.',

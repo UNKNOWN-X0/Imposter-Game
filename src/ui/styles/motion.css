@@ -455,6 +455,18 @@
  * ------------------------------------------------------------------ */
 
 @media (prefers-reduced-motion: no-preference) {
+  /* The verdict's beat (#109): the chosen seat is held up and breathes
+     once while the table waits for the answer. */
+  .verdict-beat .avatar {
+    animation: beat-lift var(--motion-beat) var(--ease-emphasis) both;
+  }
+
+  @keyframes beat-lift {
+    0% { transform: translateY(6px) scale(0.92); opacity: 0.6; }
+    60% { transform: translateY(-4px) scale(1.06); opacity: 1; }
+    100% { transform: translateY(-2px) scale(1.03); }
+  }
+
   /* Leaving (#108): a sheet slides back down, its dim fades, and an ⓘ
      explanation folds away, over --motion-exit, instead of vanishing. */
   .bottom-sheet.leaving {
