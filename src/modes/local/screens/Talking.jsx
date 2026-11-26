@@ -8,7 +8,7 @@ import { alivePlayers, isImposter, playerById, speakingOrder } from '../../../co
 import { useT } from '../../../i18n/index.jsx';
 import { TableScene } from '../../../ui/table/TableScene.jsx';
 import { CallButton, CallPanel, NotTheImposter, PassGate, Timer, VoteGrid, roundLabel } from '../../../features/round/index.js';
-import { Segmented } from '../../../ui/primitives/index.js';
+import { NumberTiles } from '../../../ui/primitives/Choices.jsx';
 import { CLUE_TIMER_CHOICES, loadClueTimer, saveClueTimer } from '../storage.js';
 import { PackChip } from '../../../features/packs/index.js';
 import { usePrivacyGate } from '../usePrivacyGate.js';
@@ -92,22 +92,19 @@ export function Talking({ state, run }) {
       {/* The table marks who is speaking and the button names who is next,
           so the order is not spelled out a second time (#57). */}
       <div className="stack tight">
-        <span className="eyebrow" id="clue-timer-label">{t('clues.timer')}</span>
-        <Segmented>
-          {CLUE_TIMER_CHOICES.map((n) => (
-            <button
-              key={n}
-              aria-pressed={perSpeaker === n}
-              aria-describedby="clue-timer-label"
-              onClick={() => {
-                setPerSpeaker(n);
-                saveClueTimer(n);
-              }}
-            >
-              {n ? t('clues.timerSeconds', { count: n }) : t('clues.timerOff')}
-            </button>
-          ))}
-        </Segmented>
+        <span className="field-label" id="clue-timer-label">{t('clues.timer')}</span>
+        <NumberTiles
+          label={t('clues.timer')}
+          value={perSpeaker}
+          onChange={(n) => {
+            setPerSpeaker(n);
+            saveClueTimer(n);
+          }}
+          options={CLUE_TIMER_CHOICES.map((n) => ({
+            value: n,
+            label: n ? t('clues.timerSeconds', { count: n }) : t('clues.timerOff'),
+          }))}
+        />
       </div>
       {perSpeaker > 0 && speaker && (
         <Timer

@@ -110,91 +110,6 @@
 .switch:focus-visible .switch-track { outline: 3px solid var(--accent-text); outline-offset: 2px; }
 .switch-state { min-width: 2.6em; text-align: left; }
 
-.segmented {
-  position: relative;
-  display: inline-flex;
-  background: var(--bg-soft);
-  border: 1px solid var(--line);
-  /* Not 999px. A single row is 46px tall, so 24 clamps to a capsule and
-     looks exactly as it always did — but these controls wrap on a narrow
-     phone (the word-language picker takes two rows in every language at
-     320px, the German preset row three), and on a tall track a 999px radius
-     resolves to a corner far rounder than the moving thumb inside it. The
-     thumb then visibly poked out past the grey outline in any corner row. */
-  border-radius: 24px;
-  padding: 3px;
-  flex: none;
-}
-
-.segmented button {
-  position: relative;
-  z-index: 1;
-  border: 0;
-  background: none;
-  padding: 8px 14px;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--text-dim);
-  min-height: var(--tap);
-  transition:
-    color var(--motion-state) var(--ease-standard),
-    transform var(--motion-press) var(--ease-standard);
-}
-
-.segmented button[aria-pressed='true'] {
-  background: var(--accent);
-  color: var(--on-accent);
-}
-
-.segmented button:not(:disabled):active {
-  transform: scale(0.95);
-}
-
-/* Once the moving block is in place it carries the highlight, so the pressed
-   button drops its own — but the rule above stays as the no-JS fallback. */
-.segmented.has-thumb button[aria-pressed='true'] {
-  background: none;
-}
-
-.seg-thumb {
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-radius: var(--radius-pill);
-  background: var(--accent);
-  box-shadow: var(--shadow-thumb);
-  pointer-events: none;
-}
-
-/* .live is added a frame after the first measurement: the block appears where
-   it belongs, and only later moves are animated. */
-.seg-thumb.live {
-  transition:
-    transform var(--motion-enter) var(--ease-emphasis),
-    width var(--motion-enter) var(--ease-emphasis),
-    height var(--motion-state) var(--ease-standard);
-}
-
-/* Three language names do not fit beside a label on a phone, so that row
-   puts its control on its own line, full width. */
-.segmented.wide {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.segmented.wide button {
-  flex: 1 1 auto;
-  /* Low enough that five short options (2 3 4 5 ∞) stay on one line, while a
-     row of long labels still wraps rather than overflowing. */
-  min-width: 44px;
-  padding: 8px 8px;
-  white-space: nowrap;
-}
-
 /* Packs as a tidy two-column list of tiles, not a ragged wrap of pills. */
 .pack-grid {
   display: grid;
@@ -292,25 +207,9 @@
   .switch-track, .switch-thumb, .pack, .role-choice { transition: none; }
 }
 
-/* A short control (Told / Blind) keeps its own width instead of a full-width
-   track with two buttons huddled at one end. */
-.setting > .segmented:not(.wide) {
-  justify-self: start;
-}
-
-/* The setting's own gap spaces its control; the old margin would double it. */
-.setting > .segmented.wide {
-  margin-top: 0;
-}
-
 /* The first group sits right under the "Game settings" heading. */
 .settings > .settings-group:first-child {
   padding-top: 4px;
-}
-
-/* Anywhere in a column, a short control keeps its own width. */
-.stack > .segmented:not(.wide) {
-  align-self: flex-start;
 }
 
 /* ------------------------------------------------------------------ *
@@ -645,3 +544,50 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
 .step-title { font-size: 16px; font-weight: 800; color: var(--text); }
 .step-list .step-title::before { content: counter(step) '. '; color: var(--accent-text); }
 .step-body { grid-column: 2; color: var(--text-dim); font-size: 14.5px; line-height: 1.5; }
+
+/* ------------------------------------------------------------------ *
+ * Choices (#97): rows for choices that mean something, tiles for numbers.
+ * They replaced the sliding pill. Rows are .setting-list rows with a tick
+ * (OptionList); tiles are below.
+ * ------------------------------------------------------------------ */
+
+.number-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 8px;
+}
+
+.number-tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 56px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color var(--motion-state) var(--ease-standard), border-color var(--motion-state) var(--ease-standard);
+}
+
+.number-tile-label { overflow-wrap: anywhere; text-align: center; line-height: 1.2; }
+.number-tile > .choice-check { position: absolute; top: 5px; right: 5px; width: 16px; height: 16px; border: 0; }
+.number-tile > .choice-check svg { width: 11px; height: 11px; }
+.number-tile[aria-pressed='false'] > .choice-check { display: none; }
+.number-tile[aria-pressed='true'] { border-color: var(--accent-text); box-shadow: inset 0 0 0 1px var(--accent-text); color: var(--accent-text); }
+.number-tile[aria-pressed='true'] > .choice-check { background: var(--accent); }
+.number-tile:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
+.number-tile:disabled { opacity: 0.5; cursor: not-allowed; }
+.number-tile:not(:disabled):active { transform: translateY(1px); }
+
+@media (hover: hover) {
+  .number-tile:hover:not(:disabled) { border-color: var(--accent-text); background: var(--surface-2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .number-tile { transition: none; }
+}

@@ -15,7 +15,7 @@ import { DECOY, IMPOSTERS_AUTO, IMPOSTERS_RANDOM, MIN_PLAYERS, ROUNDS_UNLIMITED,
 import { WORD_LANGUAGES, packsFor, pairCount } from '../../content/words/index.js';
 import { useT } from '../../i18n/index.jsx';
 import { Info } from '../../ui/primitives/Info.jsx';
-import { OnOff } from '../../ui/primitives/Segmented.jsx';
+import { OnOff } from '../../ui/primitives/Choices.jsx';
 import { Sheet, SettingRow } from '../../ui/primitives/Sheet.jsx';
 import { Presets } from './settings/Presets.jsx';
 import { Packs, WordLanguage } from './settings/Words.jsx';

@@ -431,10 +431,9 @@
 }
 
 /* A bright fill on a pale page has too little edge of its own, so in light
-   mode the buttons and chips that are filled with the accent draw their own
+   mode the buttons that are filled with the accent draw their own
    boundary — 3:1 against the page, which a fill alone would not give. */
-[data-mode='light'] .btn.primary,
-[data-mode='light'] .seg-thumb {
+[data-mode='light'] .btn.primary {
   border: 1px solid var(--accent-text);
 }
 

@@ -26,7 +26,7 @@ import { GameMark } from '../../games/marks.jsx';
 import { useWords } from './useWords.js';
 import { useT } from '../../i18n/index.jsx';
 import { CopyIcon, CheckIcon, GlobeIcon, PencilIcon, PlusIcon } from '../../ui/icons/index.jsx';
-import { Segmented } from '../../ui/primitives/index.js';
+import { WordLanguageList } from '../lobby/settings/Words.jsx';
 import { Sheet, SettingRow } from '../../ui/primitives/Sheet.jsx';
 import { matchAt, shelfFor } from './search.js';
 
@@ -103,21 +103,15 @@ export default function PackLibrary({
       </div>
       {picking && (
         <Sheet label={t('settings.wordLang')} title={t('settings.wordLang')} doneLabel={t('lobby.done')} onClose={() => setPicking(false)}>
-          <Segmented wide>
-            {WORD_LANGUAGES.map((l) => (
-              <button
-                key={l.id}
-                aria-pressed={lang === l.id}
-                onClick={() => {
-                  setLang(l.id);
-                  setOpen(null);
-                  onLang?.(l.id);
-                }}
-              >
-                <span aria-hidden="true">{l.flag}</span> {l.label}
-              </button>
-            ))}
-          </Segmented>
+          <WordLanguageList
+            t={t}
+            value={lang}
+            onChange={(id) => {
+              setLang(id);
+              setOpen(null);
+              onLang?.(id);
+            }}
+          />
         </Sheet>
       )}
 
