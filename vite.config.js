@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  // GitHub Pages serves the game from /The-Long-Table/, so its build sets
+  // BASE_PATH; the Node server and dev serve from the root.
+  base: process.env.BASE_PATH || '/',
   server: {
     // 0.0.0.0 so phones on the same wifi can reach the dev server too
     host: true,

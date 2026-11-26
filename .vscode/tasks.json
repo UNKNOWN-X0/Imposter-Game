@@ -14,7 +14,7 @@
       "problemMatcher": []
     },
     {
-      "label": "Game: Build for Netlify",
+      "label": "Game: Build",
       "type": "npm",
       "script": "build",
       "problemMatcher": []
