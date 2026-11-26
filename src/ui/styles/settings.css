@@ -343,3 +343,8 @@
   border-top: 0;
   padding-top: 4px;
 }
+
+/* Anywhere in a column, a short control keeps its own width. */
+.stack > .segmented:not(.wide) {
+  align-self: flex-start;
+}

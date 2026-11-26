@@ -86,28 +86,40 @@ export default function PackLibrary({
         spellCheck="false"
       />
 
+      {/* The same card as the hub's ways to play: writing a pack is a thing
+          to do, not one more grey button. */}
       {onEdit && (
-        <button className="btn block" onClick={() => onEdit(null)}>
-          <PlusIcon size={16} /> {t('packs.add')}
+        <button type="button" className="hub-mode" onClick={() => onEdit(null)}>
+          <PlusIcon size={22} />
+          <span className="hub-mode-title">{t('packs.add')}</span>
+          <span className="hub-supporting">{t('library.addHint')}</span>
         </button>
       )}
 
       {shelf.length === 0 ? (
         <p className="hint center">{t('library.nothing', { query: query.trim() })}</p>
       ) : (
-        <div className="stack tight">
-          {shelf.map(({ pack, pairs }) => (
-            <PackRow
-              key={pack.id}
-              pack={pack}
-              pairs={pairs}
-              query={q}
-              open={open === pack.id || Boolean(q)}
-              onToggle={() => setOpen(open === pack.id ? null : pack.id)}
-              onEdit={onEdit && pack.custom ? () => onEdit(pack.id) : null}
-            />
-          ))}
-        </div>
+        // While searching it is one list of matches; otherwise the table's
+        // own packs get their own heading above the built-in ones.
+        (q ? [[null, shelf]] : [
+          [t('library.yourPacks'), shelf.filter(({ pack }) => pack.custom)],
+          [t('library.builtIn'), shelf.filter(({ pack }) => !pack.custom)],
+        ]).filter(([, rows]) => rows.length > 0).map(([heading, rows]) => (
+          <section className="stack tight pack-shelf" key={heading ?? 'found'}>
+            {heading && <h2 className="settings-group-title">{heading}</h2>}
+            {rows.map(({ pack, pairs }) => (
+              <PackRow
+                key={pack.id}
+                pack={pack}
+                pairs={pairs}
+                query={q}
+                open={open === pack.id || Boolean(q)}
+                onToggle={() => setOpen(open === pack.id ? null : pack.id)}
+                onEdit={onEdit && pack.custom ? () => onEdit(pack.id) : null}
+              />
+            ))}
+          </section>
+        ))
       )}
 
       <p className="hint center">{t('library.note')}</p>

@@ -124,9 +124,9 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
       {error && <div className="banner error">{errorText(error)}</div>}
       {note && <div className="banner">{note}</div>}
 
-      <div className="card stack">
+      <section className="settings-group">
         <label className="stack tight">
-          <span className="eyebrow">{t('packs.name')}</span>
+          <h2 className="settings-group-title">{t('packs.name')}</h2>
           <input
             className="input"
             value={name}
@@ -138,7 +138,7 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
         </label>
 
         <div className="stack tight">
-          <span className="eyebrow">{t('packs.emoji')}</span>
+          <span className="field-label">{t('packs.emoji')}</span>
           <div className="emoji-grid">
             {EMOJI.map((option) => (
               <button
@@ -153,10 +153,10 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="card stack tight">
-        <span className="eyebrow">{t('packs.words')}</span>
+      <section className="settings-group stack tight">
+        <h2 className="settings-group-title">{t('packs.words')}</h2>
         <p className="hint">{t('packs.wordsHelp')}</p>
         <AiPrompt topic={name} langName={langName} />
         <textarea
@@ -198,47 +198,49 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
               ))}
           </ol>
         )}
-      </div>
+      </section>
 
       <button className="btn primary block lg" onClick={save}>
         {t('packs.save')}
       </button>
 
-      <div className="card stack tight">
-        <span className="eyebrow">{t('packs.load')}</span>
-        <div className="row">
-          <input
-            className="input grow"
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            placeholder={t('packs.loadPlaceholder')}
-            autoComplete="off"
-            autoCapitalize="none"
-            spellCheck="false"
-          />
-          <button className="btn" disabled={!code.trim()} onClick={load}>
-            {t('packs.loadButton')}
-          </button>
-        </div>
-      </div>
-
-      <div className="card stack tight">
-        <span className="eyebrow">{t('packs.shareTitle')}</span>
-        <p className="hint">{t('packs.shareBody')}</p>
-        {shareCode ? (
-          <>
-            <textarea className="input words code-out" value={shareCode} rows={3} readOnly />
+      <section className="settings-group stack">
+        <h2 className="settings-group-title">{t('packs.shareSection')}</h2>
+        <div className="stack tight">
+          <span className="field-label">{t('packs.shareTitle')}</span>
+          <p className="hint">{t('packs.shareBody')}</p>
+          {shareCode ? (
+            <>
+              <textarea className="input words code-out" value={shareCode} rows={3} readOnly />
+              <button className="btn block" onClick={share}>
+                {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}{' '}
+                {copied ? t('common.copied') : t('common.copy')}
+              </button>
+            </>
+          ) : (
             <button className="btn block" onClick={share}>
-              {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}{' '}
-              {copied ? t('common.copied') : t('common.copy')}
+              {t('packs.share')}
             </button>
-          </>
-        ) : (
-          <button className="btn block" onClick={share}>
-            {t('packs.share')}
-          </button>
-        )}
-      </div>
+          )}
+        </div>
+        <div className="stack tight">
+          <span className="field-label">{t('packs.load')}</span>
+          <div className="row">
+            <input
+              className="input grow"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              placeholder={t('packs.loadPlaceholder')}
+              autoComplete="off"
+              autoCapitalize="none"
+              spellCheck="false"
+            />
+            <button className="btn" disabled={!code.trim()} onClick={load}>
+              {t('packs.loadButton')}
+            </button>
+          </div>
+        </div>
+      </section>
 
       {pack && onDelete && (
         <div className="center stack tight">

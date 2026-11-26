@@ -255,25 +255,10 @@
   width: calc(100% - 28px);
 }
 
-/* The prompt for writing a pack with an AI chat (features/packs/AiPrompt.jsx). */
-.ai-prompt {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: var(--surface-2);
-}
-
-.ai-prompt summary {
-  min-height: 52px;
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  font-weight: 700;
-  color: var(--accent-text);
-  cursor: pointer;
-}
-
+/* The prompt for writing a pack with an AI chat (features/packs/AiPrompt.jsx).
+   Its summary is the shared hub-style row (.setting-more, settings.css). */
 .ai-prompt-body {
-  padding: 0 12px 12px;
+  padding: 14px 2px 4px;
 }
 
 .ai-prompt-text {
@@ -282,3 +267,22 @@
   line-height: 1.5;
   background: var(--surface);
 }
+
+/* A field's name inside a section: sentence case, bold, like the settings'
+   names. It replaced the small uppercase eyebrows the pack screens used. */
+.field-label {
+  font-size: 15px;
+  font-weight: 750;
+  color: var(--text);
+}
+
+/* The pack editor's and library's sections, the hub's way: a heading and a
+   hairline, no box. The first one sits under the page title. */
+.pack-shelf + .pack-shelf {
+  margin-top: 10px;
+}
+
+/* A section that stacks its fields keeps the stack's spacing, not the
+   group's tighter heading gap. */
+.settings-group.stack { gap: 14px; }
+.settings-group.stack.tight { gap: 10px; }

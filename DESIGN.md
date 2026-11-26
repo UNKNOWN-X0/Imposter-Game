@@ -193,6 +193,8 @@ Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and *
 
 - **Write it with AI:** a fold-out panel above the word box holds a copyable prompt (topic from the pack name, words in the pack's word language, 30/50/100 entries). It is text only: no network call, no key.
 
+- **Layout (2026-11-26):** both screens follow the hub. The library's "Add a pack" is a hub-style card (plus icon, title, what it does), and when nobody is searching, the shelf is split under "Your packs" and "Built in" headings. The editor has no boxes: open sections headed "What is it called?", "The words" and "Share and import", sentence-case field labels (`.field-label`) instead of uppercase eyebrows, and "Write it with AI" as the same hub-style row as "Customize rules and roles".
+
 ### Game Library
 - **Flow (owner, 2026-11-25, issue #51):** who is playing (the hub's table), then how (**Play on one phone** / **Play in a room**), then which game: each mode opens the library, which lists the games for that mode. Only through a mode, and shown even while Imposter is the only game. In a room, **Have a code? Join a room** sits above the games, because a guest's game was chosen by the host.
 - **First rules (issue #53):** nothing covers the hub on a first visit. A game's rules show once, as a dialog over its lobby, the first time that game is opened (keyed per game, e.g. `imposter.seenRules`), and stay reachable from **How to play**.
