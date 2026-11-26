@@ -8,7 +8,7 @@ import { OnOff, Segmented } from '../../../ui/primitives/Segmented.jsx';
 
 export function Calling({ t, config, onChange, disabled, seats, cap, blind, wordLang, packs, myPacks, packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks }) {
   return (
-    <div className="setting">
+    <div className="setting toggle">
       <div className="label">
         <b>
           {t('settings.call')} <Info text={t('tip.call')} />
@@ -17,6 +17,7 @@ export function Calling({ t, config, onChange, disabled, seats, cap, blind, word
       </div>
       <OnOff
         value={config.allowCall}
+        label={t('settings.call')}
         disabled={disabled || blind}
         onChange={(v) => onChange({ allowCall: v })}
       />
@@ -26,7 +27,7 @@ export function Calling({ t, config, onChange, disabled, seats, cap, blind, word
 
 export function Stealing({ t, config, onChange, disabled, seats, cap, blind, wordLang, packs, myPacks, packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks }) {
   return (
-    <div className="setting">
+    <div className="setting toggle">
       <div className="label">
         <b>
           {t('settings.steal')} <Info text={t('tip.steal')} />
@@ -35,6 +36,7 @@ export function Stealing({ t, config, onChange, disabled, seats, cap, blind, wor
       </div>
       <OnOff
         value={config.allowSteal}
+        label={t('settings.steal')}
         disabled={disabled}
         onChange={(v) => onChange({ allowSteal: v })}
       />

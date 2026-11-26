@@ -46,7 +46,7 @@ export function Lobby({ state, run, emblems = {}, onSeat, onEditPack, onBrowsePa
 
       <section className="card party-strip" aria-labelledby="party-strip-title">
         <div className="party-strip-head">
-          <h2 className="eyebrow" id="party-strip-title">{t('lobby.title')}</h2>
+          <h2 className="settings-group-title" id="party-strip-title">{t('lobby.title')}</h2>
           {state.players.length >= MIN_PLAYERS && (
             <button
               type="button"

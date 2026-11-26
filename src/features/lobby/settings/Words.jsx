@@ -7,7 +7,7 @@
  */
 
 import { Info } from '../../../ui/primitives/Info.jsx';
-import { PencilIcon, PlusIcon } from '../../../ui/icons/index.jsx';
+import { CheckIcon, PencilIcon, PlusIcon } from '../../../ui/icons/index.jsx';
 import { Segmented } from '../../../ui/primitives/Segmented.jsx';
 import { WORD_LANGUAGES } from '../../../content/words/index.js';
 
@@ -39,7 +39,7 @@ export function WordLanguage({ t, config, onChange, disabled, seats, cap, blind,
 export function Packs({ t, config, onChange, disabled, seats, cap, blind, wordLang, packs, myPacks, packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks }) {
   return (
     <div className="setting block">
-      <div className="label" style={{ marginBottom: 10 }}>
+      <div className="label">
         <b>
           {t('settings.packs')} <Info text={t('tip.packs')} />
         </b>
@@ -62,7 +62,9 @@ export function Packs({ t, config, onChange, disabled, seats, cap, blind, wordLa
                 disabled={disabled}
                 onClick={() => togglePack(pack.id)}
               >
-                <span aria-hidden="true">{pack.emoji}</span> {pack.name}
+                <span className="pack-emoji" aria-hidden="true">{pack.emoji}</span>
+                <span className="pack-name">{pack.name}</span>
+                <span className="choice-check" aria-hidden="true">{(allPacks || packIds.includes(pack.id)) && <CheckIcon size={14} />}</span>
               </button>
               {onEditPack && (
                 <button
@@ -83,14 +85,16 @@ export function Packs({ t, config, onChange, disabled, seats, cap, blind, wordLa
               disabled={disabled}
               onClick={() => togglePack(pack.id)}
             >
-              <span aria-hidden="true">{pack.emoji}</span> {pack.name}
+              <span className="pack-emoji" aria-hidden="true">{pack.emoji}</span>
+              <span className="pack-name">{pack.name}</span>
+              <span className="choice-check" aria-hidden="true">{(allPacks || packIds.includes(pack.id)) && <CheckIcon size={14} />}</span>
             </button>
           ),
         )}
       </div>
 
       {onEditPack && (
-        <div className="row wrap" style={{ marginTop: 12 }}>
+        <div className="row wrap pack-actions">
           <button className="btn sm grow" disabled={disabled} onClick={() => onEditPack(null)}>
             <PlusIcon size={16} /> {t('packs.add')}
           </button>

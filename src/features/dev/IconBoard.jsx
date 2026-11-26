@@ -13,7 +13,7 @@ import {
   BrandMark, ImposterMark, CrewIcon, ImposterIcon, UnknownIcon, HintIcon, CardBackIcon,
   PassIcon, EyeIcon, BellIcon, DiceIcon, TargetIcon, BrokenIcon, TieIcon,
   HourglassIcon, ShrugIcon, TrophyIcon, CheckIcon, ChevronLeftIcon, GlobeIcon,
-  CopyIcon, PhoneIcon, WifiIcon, ContrastIcon,
+  CopyIcon, PhoneIcon, WifiIcon, ContrastIcon, SlidersIcon,
   DetectiveIcon, JesterIcon, SidekickIcon, ScoreIcon,
 } from '../../ui/icons/index.jsx';
 
@@ -44,6 +44,7 @@ const ICONS = [
   [CopyIcon, 'Copy', 'Copying the room code', 'The top sheet lifts off the one underneath'],
   [PhoneIcon, 'Phone', 'Pass-and-play on one phone', 'Still — it is a label'],
   [WifiIcon, 'Wifi', 'A phone each over the same wifi', 'The arcs go out from the dot in turn'],
+  [SlidersIcon, 'Sliders', 'The settings behind Customize', 'Still — it is a label'],
 ];
 
 export default function IconBoard() {

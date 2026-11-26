@@ -213,6 +213,9 @@ Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and *
 ### Banners and Dialogs
 - **Style:** theme-surface background, complete border, concise status or action, and a visible keyboard focus path. Do not use colour as the only success or error signal.
 
+### Settings
+- **Layout (2026-11-26):** game settings are open sections in the hub's style, not one long card: a sentence-case heading per group (How do you want to play?, Words, then behind "Customize rules and roles" The imposters, The round, Roles and score), a hairline between groups and a dashed one between settings. Each setting puts its name and explanation on top and its control underneath at full width; an on/off setting is a switch beside its label instead. Word packs are a two-column grid of tiles with a tick, roles are rows with glyph, name, what it does and a tick, and the "Customize" disclosure is a row like the hub's ways to play (icon, title, what is behind it, chevron).
+
 ### Segmented Control
 - **Style:** one compact, fully rounded track; the active option uses the wood accent. Preserve text labels and visible focus.
 
