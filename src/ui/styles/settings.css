@@ -499,3 +499,115 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
 @media (prefers-reduced-motion: reduce) {
   .preset-card { transition: none; }
 }
+
+/* ------------------------------------------------------------------ *
+ * Display and language sheets (#84)
+ *
+ * Every preview carries its own data-theme and data-mode, so tokens.css
+ * paints it in the real palette it names.
+ * ------------------------------------------------------------------ */
+
+.display-heading {
+  margin: 8px 0 0;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.mode-grid,
+.wood-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.mode-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.wood-grid { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+
+.mode-card,
+.wood-card {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  padding: 8px 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mode-card[aria-pressed='true'],
+.wood-card[aria-pressed='true'] { border-color: var(--accent-text); box-shadow: inset 0 0 0 1px var(--accent-text); }
+.mode-card:focus-visible,
+.wood-card:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
+.mode-card > .choice-check,
+.wood-card > .choice-check { position: absolute; top: 12px; right: 12px; background: var(--surface); }
+.mode-card[aria-pressed='true'] > .choice-check,
+.wood-card[aria-pressed='true'] > .choice-check { background: var(--accent); }
+
+.mode-name,
+.wood-name { font-size: 14px; font-weight: 750; padding: 0 2px; }
+
+/* A page in small: two lines of text and the accent, on that mode's
+   background. The phone's choice is drawn half light, half dark. */
+.mode-preview {
+  display: flex;
+  height: 64px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.mode-half {
+  flex: 1;
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  padding: 0 8px;
+  background: var(--bg);
+}
+
+.mode-line { height: 5px; border-radius: 3px; background: var(--text); opacity: 0.7; }
+.mode-line.short { width: 60%; opacity: 0.4; }
+.mode-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+
+/* The wood itself: a plank of the table with its grain, and the accent. */
+.wood-preview {
+  position: relative;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.wood-plank {
+  position: absolute;
+  inset: 8px 8px 8px 8px;
+  border-radius: 6px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 18px, color-mix(in srgb, var(--table-grain) 45%, transparent) 18px 19px),
+    var(--table-wood);
+  border: 2px solid var(--table-edge);
+}
+
+.wood-accent {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 2px var(--bg);
+}
+
+.lang-flag { font-size: 22px; line-height: 1; text-align: center; }
+.setting-row[aria-pressed='true'] .setting-row-title { color: var(--accent-text); }
+.setting-row[aria-pressed='true'] .choice-check { background: var(--accent); border-color: var(--accent); }
+
+@media (hover: hover) {
+  .mode-card:hover,
+  .wood-card:hover { border-color: var(--accent-text); }
+}

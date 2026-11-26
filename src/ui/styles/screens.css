@@ -103,30 +103,7 @@
  * ------------------------------------------------------------------ */
 
 .pickerwrap {
-  position: relative;
   display: inline-flex;
-  /* over the cards below, or the menu would open behind them */
-  z-index: 40;
-}
-
-/*
- * On a small phone the menu hangs off the left of the screen.
- *
- * The sheet is `right: 0` against its own button and 288px wide at 320px of
- * viewport — but the display button is not the rightmost thing in the bar,
- * the language picker is, so the sheet started about 36px to the left of the
- * screen and the page clips rather than scrolls. "APPEARANCE" read "EARANCE",
- * and three of the five theme chips lost their colour swatch off the edge.
- *
- * Dropping `position: relative` here hands the sheet to `.topbar`, which is
- * already a positioned ancestor, so `right: 0` becomes the right edge of the
- * bar instead of the right edge of one button — on screen by construction,
- * whatever the language does to the widths around it.
- */
-@media (max-width: 440px) {
-  .pickerwrap {
-    position: static;
-  }
 }
 
 .iconpicker {
@@ -153,110 +130,6 @@
 
 .iconpicker:active {
   transform: scale(0.94);
-}
-
-.sheet {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  width: min(272px, calc(100vw - 32px));
-  max-height: min(420px, calc(100dvh - 76px));
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 14px;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: var(--surface);
-  box-shadow: var(--shadow);
-  animation: sheet-in 0.18s ease both;
-}
-
-@keyframes sheet-in {
-  from {
-    opacity: 0;
-    transform: translateY(-6px) scale(0.98);
-  }
-}
-
-.sheet .hint {
-  margin: 0;
-  font-size: 12.5px;
-}
-
-.sheet .segmented.wide {
-  margin-top: 0;
-}
-
-.swatches {
-  display: grid;
-  /* One column in the menu, two wherever there is room for them. At two
-     columns a chip is about 119px, too narrow for Mahogany in every language.
-     A 124px minimum means the menu takes one column; a wider container still
-     gets its two. */
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 124px), 1fr));
-  gap: 6px;
-}
-
-.swatch {
-  display: flex;
-  align-items: center;
-  /* and if a name is longer still, say so rather than cutting it mid-word */
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  gap: 8px;
-  padding: 7px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--bg-soft);
-  color: var(--text-dim);
-  font-size: 13.5px;
-  font-weight: 700;
-  cursor: pointer;
-  min-height: var(--tap);
-  text-align: left;
-  transition:
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.12s ease;
-}
-
-.swatch:active {
-  transform: scale(0.97);
-}
-
-.swatch[aria-pressed='true'] {
-  border-color: var(--accent-text);
-  color: var(--text);
-}
-
-/* The chip is the theme in two colours: its wood surface and action accent. */
-.swatch-chip {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 2px solid;
-  display: grid;
-  place-items: center;
-  flex: none;
-  background-image: linear-gradient(
-    to bottom,
-    transparent 0 7px,
-    var(--stripe) 7px 8px,
-    transparent 8px 15px,
-    var(--stripe) 15px 16px,
-    transparent 16px
-  );
-}
-
-.swatch-chip > span {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
 }
 
 /* The disc in the appearance button fills as the menu opens. */
@@ -588,46 +461,6 @@
 
 .langpicker:active {
   transform: scale(0.96);
-}
-
-.choices {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.choice {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  min-height: var(--tap);
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid transparent;
-  background: var(--bg-soft);
-  color: var(--text-dim);
-  font-size: 15px;
-  font-weight: 700;
-  text-align: left;
-  cursor: pointer;
-  transition:
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.12s ease;
-}
-
-.choice:active {
-  transform: scale(0.98);
-}
-
-.choice[aria-pressed='true'] {
-  border-color: var(--accent-text);
-  color: var(--text);
-}
-
-.choice .icon {
-  color: var(--accent-text);
 }
 
 /* ------------------------------------------------------------------ *

@@ -33,6 +33,6 @@ p.hint @ 36,558 320×42
 div.row.wrap @ 36,608 320×52
 button.btn.sm.grow @ 36,608 230×52
 svg.icon @ 84,626 16×16
-rect.sheet @ 90,632 170×8
+rect.sheet @ 90,632 8×8
 button.btn.sm.ghost @ 274,608 80×52
 p.hint @ 36,668 320×42

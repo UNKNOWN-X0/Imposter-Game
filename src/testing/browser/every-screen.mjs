@@ -212,12 +212,12 @@ const seen = [];
   await ctx.close();
 }
 
-/* --- the top bar's display and language menus open on screen (#81) ----- */
+/* --- the top bar's display and language sheets open on screen (#81, #84) - */
 {
   const { ctx, page, errors } = await openPage('en');
   const inView = async () =>
     page.evaluate(() => {
-      const menu = document.querySelector('.pickerwrap [role="dialog"]');
+      const menu = document.querySelector('.bottom-sheet[role="dialog"]');
       if (!menu) return 'no menu';
       const r = menu.getBoundingClientRect();
       return r.top >= 0 && r.bottom <= innerHeight && r.left >= 0 && r.right <= innerWidth ? 'ok' : `off screen at ${Math.round(r.top)},${Math.round(r.left)}`;
@@ -230,6 +230,15 @@ const seen = [];
     await page.keyboard.press('Escape');
     await wait(200);
   }
+  // Choosing a wood in the display sheet repaints the page at once (#84).
+  await page.locator('.iconpicker').click();
+  await wait(300);
+  const before = await page.evaluate(() => document.documentElement.dataset.theme);
+  await page.locator('.wood-card[aria-pressed="false"]').first().click();
+  await wait(200);
+  if ((await page.evaluate(() => document.documentElement.dataset.theme)) === before) fail('choosing a wood did not change the theme');
+  await page.keyboard.press('Escape');
+  await wait(200);
   // And the same menus from a game's own top bar.
   await page.locator('.hub-mode').first().click();
   await wait(400);
