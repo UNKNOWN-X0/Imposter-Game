@@ -11,11 +11,11 @@
 import { gamesFor } from '../../games/index.js';
 import { useT } from '../../i18n/index.jsx';
 import { useParty } from '../../party/index.js';
-import { BrandMark } from '../../ui/icons/index.jsx';
+import { ImposterMark } from '../../ui/icons/index.jsx';
 import { Shell } from '../../ui/primitives/index.js';
 
 // Each game's mark. A catalog entry is plain data; its picture lives here.
-const MARKS = { imposter: () => <BrandMark size={44} animated={false} /> };
+const MARKS = { imposter: () => <ImposterMark size={44} animated={false} /> };
 
 export function GameLibrary({ mode, onPick, onJoin, onRules, onBack }) {
   const { t } = useT();

@@ -1,20 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Imposter">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="The Long Table">
   <!--
-    The app's own brand mark, as a standalone icon: a fedora brim with a pair
-    of spectacles under it. Same geometry as BrandMark in src/ui/icons, with
-    the colours written out instead of inherited, and no animation — a home
-    screen icon that blinks is a home screen icon that drains a battery.
+    The Long Table's mark as a standalone icon: the table seen from its head,
+    front edge and legs showing, chairs down both sides getting smaller
+    toward the far end. Same geometry as BrandMark in src/ui/icons/brand.jsx,
+    with the colours written out: walnut on oak (owner's pick, issue #62).
   -->
-  <rect width="48" height="48" rx="11" fill="#120f17" />
-  <g transform="translate(0 1.5)">
-    <path d="M13 16.5V11c0-3.4 4.4-5.4 11-5.4s11 2 11 5.4v5.5"
-          stroke="#f5bc42" stroke-width="3" fill="none" stroke-linejoin="round" />
-    <path d="M13 16.4h22" stroke="#f5bc42" stroke-width="2.6" opacity="0.45" />
-    <path d="M5 18.4h38" stroke="#f5bc42" stroke-width="3.4" stroke-linecap="round" />
-    <circle cx="16" cy="28" r="8" fill="#f5bc42" />
-    <circle cx="32" cy="28" r="8" fill="#f5bc42" />
-    <path d="M24 26h0" stroke="#f5bc42" stroke-width="3" stroke-linecap="round" />
-    <circle cx="16" cy="28" r="3" fill="#120f17" />
-    <circle cx="32" cy="28" r="3" fill="#120f17" />
+  <rect width="48" height="48" rx="11" fill="#e0b580" />
+  <g>
+    <path d="M20.50 5L27.50 5L36.50 32.50L11.50 32.50Z" fill="#422617" />
+    <path d="M11.50 33.40H36.50V36.00H11.50Z" fill="#422617" />
+    <path d="M13.70 36.00V43.20M34.30 36.00V43.20" stroke="#422617" stroke-width="2.6" stroke-linecap="round" />
+    <g fill="#422617" stroke="#422617" stroke-linejoin="round">
+      <path stroke-width="0.97" d="M2.89 31.81L9.02 31.81L11.11 26.59L5.83 26.59ZM2.89 24.14L5.83 18.91L5.83 22.60L2.89 27.82Z" />
+      <path stroke-width="0.97" d="M45.11 31.81L38.98 31.81L36.89 26.59L42.17 26.59ZM45.11 24.14L42.17 18.91L42.17 22.60L45.11 27.82Z" />
+      <path stroke-width="0.75" d="M8.15 22.46L12.76 22.46L14.84 17.24L11.09 17.24ZM8.15 16.84L11.09 11.62L11.09 14.32L8.15 19.54Z" />
+      <path stroke-width="0.75" d="M39.85 22.46L35.24 22.46L33.16 17.24L36.91 17.24ZM39.85 16.84L36.91 11.62L36.91 14.32L39.85 19.54Z" />
+      <path stroke-width="0.55" d="M13.10 13.66L16.27 13.66L18.36 8.44L16.05 8.44ZM13.10 9.98L16.05 4.75L16.05 6.52L13.10 11.75Z" />
+      <path stroke-width="0.55" d="M34.90 13.66L31.73 13.66L29.64 8.44L31.95 8.44ZM34.90 9.98L31.95 4.75L31.95 6.52L34.90 11.75Z" />
+    </g>
+    <g fill="none" stroke="#422617" stroke-linecap="round">
+      <path stroke-width="1.62" d="M2.89 35.65V24.14M5.83 30.42V18.91M9.02 31.81v3.84M11.11 26.59v3.84" />
+      <path stroke-width="1.62" d="M45.11 35.65V24.14M42.17 30.42V18.91M38.98 31.81v3.84M36.89 26.59v3.84" />
+      <path stroke-width="1.25" d="M8.15 25.27V16.84M11.09 20.05V11.62M12.76 22.46v2.81M14.84 17.24v2.81" />
+      <path stroke-width="1.25" d="M39.85 25.27V16.84M36.91 20.05V11.62M35.24 22.46v2.81M33.16 17.24v2.81" />
+      <path stroke-width="0.91" d="M13.10 15.50V9.98M16.05 10.28V4.75M16.27 13.66v1.84M18.36 8.44v1.84" />
+      <path stroke-width="0.91" d="M34.90 15.50V9.98M31.95 10.28V4.75M31.73 13.66v1.84M29.64 8.44v1.84" />
+    </g>
   </g>
 </svg>

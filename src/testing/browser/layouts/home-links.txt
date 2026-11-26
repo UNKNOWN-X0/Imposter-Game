@@ -7,10 +7,6 @@ div.hub-main @ 0,0 390×1212
 header.hub-topbar @ 16,12 358×52
 a.hub-brand @ 16,12 192×52
 svg.brandmark @ 16,18 40×40
-g.bm-eyes @ 26,38 18×6
-circle.bm-pupil @ 26,38 6×6
-circle.bm-pupil @ 40,38 6×6
-rect.bm-glint @ -4,34 12×16
 div.hub-tools @ 248,12 126×52
 div.pickerwrap @ 248,12 52×52
 button.iconpicker @ 248,12 52×52

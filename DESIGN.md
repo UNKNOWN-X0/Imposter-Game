@@ -218,6 +218,7 @@ Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and *
 
 ### Icons
 - **Set (owner, 2026-11-25, issue #39):** interface icons are Lucide drawings (ISC, `NOTICE.md`) on a 24px grid at a 1.8 stroke with round caps, painted in `currentColor`; single-point dots are drawn at 2.4 to 2.6 so they read. Each keeps one motion behind `anim`, and reduced motion stops it. The brand mark, the jester, the blind card and the card back are the project's own; a new icon starts from the nearest Lucide drawing.
+- **Marks (owner, 2026-11-26, issue #62):** The Long Table's mark (`BrandMark`) is the table seen from its head, running away from you, with its front edge and legs showing and solid chairs down both sides drawn in the same perspective, shrinking toward the far end; it is still, and it is the app icon, the browser tab and the top-bar home link. The app icon is walnut `#422617` on oak `#e0b580` (OKLCH 30% 0.05 48 on 80% 0.085 72, contrast 7.3:1), the owner's pick from three wood pairs; in the app the mark takes the wood's accent like any other icon. Imposter keeps its fedora and spectacles (`ImposterMark`, which blinks) in the game library, on its first-run rules and on its resume screen. A new game brings its own mark to the library; the hub mark never changes per game.
 
 ### Navigation
 - **Style:** utility actions stay secondary to the table and primary party actions. On phones they wrap or stack without clipping; do not reinstate the permanent noticeboard rail.

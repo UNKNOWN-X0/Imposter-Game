@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useT } from '../../../i18n/index.jsx';
-import { BrandMark } from '../../../ui/icons/index.jsx';
+import { ImposterMark } from '../../../ui/icons/index.jsx';
 
 /**
  * "You were in the middle of a game."
@@ -36,7 +36,7 @@ export function Resume({ game, onResume, onFresh }) {
         ref={card}
       >
         <div className="center stack tight">
-          <BrandMark size={52} />
+          <ImposterMark size={52} />
           <h2 className="title" id="resume-title">
             {t('resume.title')}
           </h2>
