@@ -109,7 +109,7 @@ async function openGame(seats, settings = {}) {
   }
   // Each setting is a row that opens a sheet with its controls; the sheet
   // is closed with Done before the next one, as a player would.
-  const sheet = page.locator('.sheet');
+  const sheet = page.locator('.bottom-sheet');
   const openRow = async (title) => {
     await page.locator('button.setting-row', { hasText: title }).first().click();
     await wait(200);

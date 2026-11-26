@@ -212,6 +212,40 @@ const seen = [];
   await ctx.close();
 }
 
+/* --- the top bar's display and language menus open on screen (#81) ----- */
+{
+  const { ctx, page, errors } = await openPage('en');
+  const inView = async () =>
+    page.evaluate(() => {
+      const menu = document.querySelector('.pickerwrap [role="dialog"]');
+      if (!menu) return 'no menu';
+      const r = menu.getBoundingClientRect();
+      return r.top >= 0 && r.bottom <= innerHeight && r.left >= 0 && r.right <= innerWidth ? 'ok' : `off screen at ${Math.round(r.top)},${Math.round(r.left)}`;
+    });
+  for (const [name, button] of [['display', '.iconpicker'], ['language', '.langpicker']]) {
+    await page.locator(button).click();
+    await wait(300);
+    const where = await inView();
+    if (where !== 'ok') fail(`the ${name} menu: ${where}`);
+    await page.keyboard.press('Escape');
+    await wait(200);
+  }
+  // And the same menus from a game's own top bar.
+  await page.locator('.hub-mode').first().click();
+  await wait(400);
+  for (const [name, button] of [['display', '.iconpicker'], ['language', '.langpicker']]) {
+    await page.locator(button).click();
+    await wait(300);
+    const where = await inView();
+    if (where !== 'ok') fail(`the ${name} menu in a game: ${where}`);
+    await page.keyboard.press('Escape');
+    await wait(200);
+  }
+  if (errors.length) fail(`top-bar menus: ${errors[0]}`);
+  else seen.push('the display and language menus open on screen');
+  await ctx.close();
+}
+
 /* --- the lobby settings: a row opens its sheet, and says what was chosen -- */
 for (const lang of ['en', 'th', 'de']) {
   const { ctx, page, errors } = await openPage(lang);
@@ -226,7 +260,7 @@ for (const lang of ['en', 'th', 'de']) {
   const before = await rounds.innerText();
   await rounds.click();
   await wait(400);
-  const sheet = page.locator('.sheet');
+  const sheet = page.locator('.bottom-sheet');
   if (!(await sheet.count())) fail(`${lang}: the rounds row opened no sheet`);
   else {
     await look(page, `${lang} settings sheet`);
@@ -348,10 +382,10 @@ for (const [name, hash] of [['icons', '#icons'], ['crash', '#crash']]) {
     if (String(label).includes('Wortpakete')) {
       await page.locator('.pack-shelf button.setting-row').first().click();
       await wait(400);
-      if (!(await page.locator('.sheet .word-list li').count())) fail('a pack row opened no sheet of words');
+      if (!(await page.locator('.bottom-sheet .word-list li').count())) fail('a pack row opened no sheet of words');
       await page.keyboard.press('Escape');
       await wait(300);
-      if (await page.locator('.sheet').count()) fail('Escape left the pack sheet open');
+      if (await page.locator('.bottom-sheet').count()) fail('Escape left the pack sheet open');
     }
     await page.getByRole('button', { name: /Zurück|Alles klar/ }).first().click();
     await wait(400);

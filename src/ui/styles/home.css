@@ -15,6 +15,11 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  /* The display and language menus hang from here on a phone, where their
+     wrapper drops its own positioning (screens.css, .pickerwrap); without
+     this they fell through to the page and opened below the screen (#81). */
+  position: relative;
+  z-index: 2;
 }
 
 .hub-brand {

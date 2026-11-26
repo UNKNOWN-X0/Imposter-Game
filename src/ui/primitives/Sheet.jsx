@@ -31,8 +31,8 @@ export function Sheet({ label, title, doneLabel, onClose, quietDone, children })
   }, []);
 
   return createPortal(
-    <div className="scrim sheet-scrim" onPointerDown={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="modal sheet stack" role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} ref={card}>
+    <div className="scrim bottom-sheet-scrim" onPointerDown={(e) => e.target === e.currentTarget && onClose()}>
+      <div className="modal bottom-sheet stack" role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} ref={card}>
         {title && <h2 className="sheet-title">{title}</h2>}
         {children}
         {/* A sheet with its own main action (Add, Delete) keeps Done quiet,

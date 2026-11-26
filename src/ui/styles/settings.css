@@ -397,12 +397,12 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
 .setting-row-empty { color: var(--text-dim); font-weight: 600; }
 
 /* The sheet is the modal, anchored to the bottom of a phone. */
-.sheet-scrim {
+.bottom-sheet-scrim {
   place-items: end center;
   padding: 0;
 }
 
-.sheet {
+.bottom-sheet {
   width: min(560px, 100%);
   max-height: min(86dvh, 760px);
   padding: 8px 20px calc(18px + env(safe-area-inset-bottom));
@@ -410,7 +410,7 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
   border-bottom: 0;
 }
 
-.sheet > .setting { padding-top: 10px; }
+.bottom-sheet > .setting { padding-top: 10px; }
 
 .sheet-title {
   margin: 10px 0 0;
@@ -420,17 +420,17 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
   letter-spacing: -0.01em;
 }
 /* Done stays in reach at the foot of a long sheet, filled or quiet. */
-.sheet > .btn:last-child {
+.bottom-sheet > .btn:last-child {
   position: sticky;
   bottom: calc(-18px - env(safe-area-inset-bottom));
   margin-bottom: -6px;
 }
-.sheet > .btn:not(.primary):last-child { box-shadow: 0 -14px 20px -6px var(--surface); }
+.bottom-sheet > .btn:not(.primary):last-child { box-shadow: 0 -14px 20px -6px var(--surface); }
 
 /* A wide screen has no thumb to reach with, so the sheet sits in the middle. */
 @media (min-width: 720px) {
-  .sheet-scrim { place-items: center; padding: 20px 16px; }
-  .sheet { border-radius: var(--radius); border-bottom: 1px solid var(--line); }
+  .bottom-sheet-scrim { place-items: center; padding: 20px 16px; }
+  .bottom-sheet { border-radius: var(--radius); border-bottom: 1px solid var(--line); }
 }
 
 @media (prefers-reduced-motion: reduce) {
