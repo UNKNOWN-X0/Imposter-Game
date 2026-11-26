@@ -19,6 +19,7 @@ export { CONFIG_KEY, GAME_KEY, RECENT_WORDS_KEY, ROSTER_KEY, SCORES_KEY } from '
 import { clearGame, loadConfig, loadGame, loadRecentWords, loadScores, saveConfig, saveGame, saveRecentWords, saveScores} from './storage.js';
 import { describe, keepQuiet, note } from '../../features/errors/index.js';
 import { isPlaying, renderPhase } from '../screens.js';
+import { usePhaseStart } from '../usePhaseStart.js';
 import { usePrivacyGate } from './usePrivacyGate.js';
 
 /**
@@ -54,6 +55,7 @@ export default function LocalGame({ onExit }) {
     // The roster has to exist before the points can be matched back to it.
     return { ...s, scores: loadScores(s.players), customPacks: loadPacks() };
   });
+  usePhaseStart(state.phase);
   const [error, setError] = useState(null);
   const [holding, setHolding] = useState(false); // has the next player taken the phone?
   usePrivacyGate(setHolding);

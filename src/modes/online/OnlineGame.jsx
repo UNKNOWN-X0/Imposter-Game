@@ -16,6 +16,7 @@ import { OnlineReveal} from './screens/Reveal.jsx';
 import { OnlineVote} from './screens/Vote.jsx';
 import { describe, keepQuiet, note } from '../../features/errors/index.js';
 import { isPlaying, renderPhase } from '../screens.js';
+import { usePhaseStart } from '../usePhaseStart.js';
 import { EndGameButton } from '../../features/lobby/index.js';
 
 /**
@@ -77,6 +78,7 @@ function Room({ session, onLeave, onExit }) {
   const [editing, setEditing] = useState(false);
   const [browsing, setBrowsing] = useState(false);
   const isHost = payload?.isHost ?? false;
+  usePhaseStart(payload?.state?.phase);
 
   /**
    * What a crash report from this phone may say, and what it must not.

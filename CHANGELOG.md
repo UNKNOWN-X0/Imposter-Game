@@ -12,6 +12,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Fixed
 
+- Every step of a round now opens at its top. The vote used to open halfway down the page, with its title and instructions out of sight. Screen readers start at the new step's title.
 - The ⓘ explanations in Imposter's settings open in place under the setting's name, so nothing cuts them off or covers them, and the ⓘ itself is a clean ring icon like the rest.
 - The display and language menus open again on a phone. On the home screen they had been opening below the bottom of the screen.
 - "Got it" on a game's rules, opened from the game list, goes back to that list instead of the home screen. The phone's back button does the same.

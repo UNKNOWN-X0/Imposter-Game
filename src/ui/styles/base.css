@@ -252,3 +252,10 @@ p {
   line-height: 1.1;
   word-break: break-word;
 }
+
+/* A heading that is given focus when its screen opens (#104) is a place to
+   start reading, not a control: no ring on it. */
+h1[tabindex='-1']:focus,
+h2[tabindex='-1']:focus {
+  outline: none;
+}
