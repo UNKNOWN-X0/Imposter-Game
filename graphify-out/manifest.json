@@ -504,10 +504,10 @@
     "semantic_hash": ""
   },
   "src/features/round/PhaseStepper.jsx": {
-    "mtime": 1790610246.0,
-    "seen": 1792796290.41964,
-    "ast_hash": "0e31b81e6c45a0a2f96cab65f7e278a9",
-    "semantic_hash": "0e31b81e6c45a0a2f96cab65f7e278a9"
+    "mtime": 1795726565.1972046,
+    "seen": 1795726819.5191848,
+    "ast_hash": "4c0249eed6a8b7e8907a8686f263e1b6",
+    "semantic_hash": ""
   },
   "src/features/round/RoleCard.jsx": {
     "mtime": 1795601957.103039,
@@ -654,14 +654,14 @@
     "semantic_hash": "032e860edba763dff5dec80a9f526ba9"
   },
   "src/modes/local/screens/Talking.jsx": {
-    "mtime": 1795725635.7372081,
-    "seen": 1795726072.857037,
+    "mtime": 1795726331.0424352,
+    "seen": 1795726819.519212,
     "ast_hash": "fbd445f966455b798d96e3760dc2e5b6",
     "semantic_hash": ""
   },
   "src/modes/local/screens/Voting.jsx": {
-    "mtime": 1795725635.7380426,
-    "seen": 1795726072.857038,
+    "mtime": 1795726331.043179,
+    "seen": 1795726819.519213,
     "ast_hash": "b320cafca4b79c75b672a4f647047ccf",
     "semantic_hash": ""
   },
@@ -702,14 +702,14 @@
     "semantic_hash": "ca510c494c0b980de284a0895279ad5a"
   },
   "src/modes/online/screens/Clues.jsx": {
-    "mtime": 1795725635.747839,
-    "seen": 1795726072.857045,
+    "mtime": 1795726331.0444095,
+    "seen": 1795726819.519219,
     "ast_hash": "d7aae2edcf2415c84fd77d059beb1382",
     "semantic_hash": ""
   },
   "src/modes/online/screens/Lobby.jsx": {
-    "mtime": 1795725635.7389073,
-    "seen": 1795726072.8570461,
+    "mtime": 1795726331.045138,
+    "seen": 1795726819.5192199,
     "ast_hash": "0a3d14fcb73a3e199cda6ce276df546c",
     "semantic_hash": ""
   },
@@ -750,8 +750,8 @@
     "semantic_hash": ""
   },
   "src/testing/browser/every-screen.mjs": {
-    "mtime": 1795725730.3135562,
-    "seen": 1795726072.8570602,
+    "mtime": 1795726331.0456915,
+    "seen": 1795726819.519234,
     "ast_hash": "916414ad715554accb738f5f7fa3b789",
     "semantic_hash": ""
   },
@@ -900,14 +900,14 @@
     "semantic_hash": "8301bd118cb088384a30fe4263873b8e"
   },
   "src/ui/primitives/Shell.jsx": {
-    "mtime": 1795601125.8775494,
-    "seen": 1795601754.7507992,
-    "ast_hash": "1a8acb42289c76af7566829db872db99",
+    "mtime": 1795726565.1974854,
+    "seen": 1795726819.51926,
+    "ast_hash": "83ea9438ada170957000aa5cffc593c4",
     "semantic_hash": ""
   },
   "src/ui/primitives/index.js": {
-    "mtime": 1795725635.7364755,
-    "seen": 1795726072.857089,
+    "mtime": 1795726331.046291,
+    "seen": 1795726819.519261,
     "ast_hash": "ab58cacc40ee82c8d111b5c6609b07a6",
     "semantic_hash": ""
   },
@@ -972,9 +972,9 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1795726070.626074,
-    "seen": 1795726072.857111,
-    "ast_hash": "5bac6683852190da1b60a78c100514a0",
+    "mtime": 1795726817.3085692,
+    "seen": 1795726819.519284,
+    "ast_hash": "a0db81bd0bdba878544b67fac21ea3db",
     "semantic_hash": ""
   },
   "PLAYTEST.md": {
@@ -1098,9 +1098,9 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1795726070.6248004,
-    "seen": 1795726072.857114,
-    "ast_hash": "97ccad72bfcba49ae4579a5839bcce88",
+    "mtime": 1795726817.3069825,
+    "seen": 1795726819.519286,
+    "ast_hash": "0fb9234cf89ff1f534fc046d849295ba",
     "semantic_hash": ""
   },
   "PRODUCT.md": {
@@ -1266,9 +1266,9 @@
     "semantic_hash": ""
   },
   "src/testing/browser/every-room.mjs": {
-    "mtime": 1795644347.4070473,
-    "seen": 1795644684.5056489,
-    "ast_hash": "7e3317a342779be64050c0063db79649",
+    "mtime": 1795726539.5655627,
+    "seen": 1795726819.519233,
+    "ast_hash": "b29f01d58371600fd27f08f1bd49acea",
     "semantic_hash": ""
   },
   ".github/ISSUE_TEMPLATE/bug-report.yml": {
@@ -1458,8 +1458,8 @@
     "semantic_hash": ""
   },
   "src/ui/primitives/ActionBar.jsx": {
-    "mtime": 1795725635.691796,
-    "seen": 1795726072.85708,
+    "mtime": 1795726331.0460334,
+    "seen": 1795726819.519253,
     "ast_hash": "341e01fd7ad01d3a46b0928970d4630e",
     "semantic_hash": ""
   },
