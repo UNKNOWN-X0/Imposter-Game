@@ -13,7 +13,7 @@ import {
   BrandMark, ImposterMark, CrewIcon, ImposterIcon, UnknownIcon, HintIcon, CardBackIcon,
   PassIcon, EyeIcon, BellIcon, DiceIcon, TargetIcon, BrokenIcon, TieIcon,
   HourglassIcon, ShrugIcon, TrophyIcon, CheckIcon, ChevronLeftIcon, GlobeIcon,
-  CopyIcon, PhoneIcon, WifiIcon, ContrastIcon, SlidersIcon, SparklesIcon, InfoIcon,
+  CopyIcon, PhoneIcon, WifiIcon, ContrastIcon, SlidersIcon, SparklesIcon, InfoIcon, ArmchairIcon, ZapIcon, BrainIcon, TornadoIcon,
   DetectiveIcon, JesterIcon, SidekickIcon, ScoreIcon,
 } from '../../ui/icons/index.jsx';
 
@@ -47,6 +47,10 @@ const ICONS = [
   [SlidersIcon, 'Sliders', 'The settings behind Customize', 'Still — it is a label'],
   [SparklesIcon, 'Sparkles', 'Write a pack with AI', 'Still — it is a label'],
   [InfoIcon, 'Info', 'What a setting does', 'Still'],
+  [ArmchairIcon, 'Armchair', 'Preset: Standard', 'Still'],
+  [ZapIcon, 'Zap', 'Preset: Quick', 'Still'],
+  [BrainIcon, 'Brain', 'Preset: Careful', 'Still'],
+  [TornadoIcon, 'Tornado', 'Preset: Chaos', 'Still'],
 ];
 
 export default function IconBoard() {

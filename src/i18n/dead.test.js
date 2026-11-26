@@ -87,9 +87,8 @@ function builtAtRuntime() {
   for (const preset of PRESETS) {
     keys.add(`settings.preset.${preset.id}`);
     keys.add(`settings.preset.${preset.id}Hint`);
+    keys.add(`settings.preset.${preset.id}Short`);
   }
-  keys.add('settings.preset.custom');
-  keys.add('settings.preset.customHint');
   return keys;
 }
 
