@@ -47,8 +47,9 @@ if (newest(path.join(root, 'src')) > statSync(dist).mtimeMs) {
 }
 
 let chromium;
+let webkit;
 try {
-  ({ chromium } = await import('playwright'));
+  ({ chromium, webkit } = await import('playwright'));
 } catch {
   console.error(
     'This one needs a real browser, which is not part of the game:\n' +
@@ -329,6 +330,52 @@ for (const lang of ['en', 'th', 'de']) {
     await look(page, `${lang} settings rows`);
   }
   await ctx.close();
+}
+
+/* --- holding with a mouse turns the card, near its edge too (#117) ------ */
+for (const [engineName, engine] of [['chromium', chromium], ['webkit', webkit]]) {
+  let other;
+  try {
+    other = await engine.launch();
+  } catch {
+    seen.push(`holding with a mouse in ${engineName}: skipped, browser not installed`);
+    continue;
+  }
+  const ctx = await other.newContext({ viewport: { width: 1280, height: 900 } });
+  await ctx.addInitScript(() => {
+    localStorage.setItem('imposter.seenRules', '1');
+    localStorage.setItem('imposter.lang', 'en');
+  });
+  const page = await ctx.newPage();
+  await page.goto(BASE);
+  await wait(600);
+  for (const n of ['Ann', 'Ben', 'Cal', 'Dee']) {
+    await page.locator('input:not([type=radio])').first().fill(n);
+    await page.keyboard.press('Enter');
+  }
+  await page.locator('.hub-mode').first().click();
+  await page.locator('.game-card .btn.primary').first().click();
+  await wait(300);
+  await page.getByRole('button', { name: 'Deal the cards' }).click();
+  await wait(300);
+  await page.locator('.reveal.shield').click();
+  await wait(200);
+  const box = await page.locator('.reveal.shield').boundingBox();
+  // Near the left edge, then off the card while still held: the turn pulls
+  // the edge away from a still cursor, which used to cover the card at once.
+  await page.mouse.move(box.x + box.width * 0.06, box.y + box.height / 2);
+  await page.mouse.down();
+  await wait(300);
+  await page.mouse.move(box.x - 30, box.y + box.height / 2, { steps: 4 });
+  await wait(700);
+  const shown = await page.locator('.reveal:not(.shield)').count();
+  await page.mouse.up();
+  await wait(120);
+  const coveredAfter = !(await page.locator('.reveal:not(.shield)').count());
+  if (!shown) fail(`holding with a mouse in ${engineName}: the ring filled but the card did not turn`);
+  else if (!coveredAfter) fail(`holding with a mouse in ${engineName}: letting go left the card visible`);
+  else seen.push(`holding with a mouse turns the card in ${engineName}, and letting go covers it`);
+  await other.close();
 }
 
 /* --- 1. an imposter calls the word: the road to the game-over screen ---- */
