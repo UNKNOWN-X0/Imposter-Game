@@ -20,7 +20,7 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
-        value: 20
+        value: 22
       # Four characters is plenty when everyone is in the same room and the
       # code is read out loud. On the open internet the address is public, so
       # a longer code keeps strangers from stumbling into a game.
