@@ -14,6 +14,7 @@ export function PlayerList({
   imposterIds = [],
   roles = {},
   onRemove,
+  won,
 }) {
   const { t } = useT();
   const rolesKnown = imposterIds.length > 0;
@@ -22,7 +23,10 @@ export function PlayerList({
       {players.map((p) => {
         const out = eliminated.includes(p.id);
         return (
-          <div className={`player${out ? ' out' : ''}`} key={p.id}>
+          <div
+            className={`player${out ? ' out' : ''}${won ? (won(p.id) ? ' won' : ' lost') : ''}`}
+            key={p.id}
+          >
             <Avatar name={p.name} dim={out} />
             <span className="player-name">{p.name}</span>
             {p.id === hostId && <span className="tag">{t('tag.host')}</span>}

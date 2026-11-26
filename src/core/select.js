@@ -34,6 +34,20 @@ export const roleOf = (state, id) =>
  */
 export const isImposterSide = (state, id) =>
   isImposter(state, id) || winsWithImposters(roleOf(state, id));
+/**
+ * Whether this player is on the side that won the finished game: what the
+ * end screen lifts (#111). Unlike who gets points, being voted out earlier
+ * does not matter here; the jester alone wins when the jester wins.
+ */
+export const onWinningSide = (state, id) => {
+  const winner = state.result?.winner;
+  if (!winner) return false;
+  const ending = roleSpec(roleOf(state, id))?.endsGameWhenVotedOut;
+  if (ending) return winner === ending.winner;
+  if (winner === 'imposters') return isImposterSide(state, id);
+  if (winner === 'crew') return !isImposterSide(state, id);
+  return false;
+};
 export const playerById = (state, id) => state.players.find((p) => p.id === id) || null;
 
 /** Alive players in speaking order, rotated so a different player opens each round. */

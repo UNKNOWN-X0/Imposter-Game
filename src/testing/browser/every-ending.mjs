@@ -409,6 +409,9 @@ for (const { ending, seats, settings, expect } of PLANS) {
   }
   else if (!(expect ?? [ending]).includes(reached)) {
     fail(`${ending}: ended as "${reached}" instead`);
+  } else if (!(await page.locator('.player.won').count())) {
+    // The winning side stands out on the end screen (#111).
+    fail(`${ending}: the end screen marks nobody as a winner`);
   } else {
     const how = expect ? ` → ${reached}` : '';
     console.log(`  ✓ ${ending.padEnd(12)} ${seats} players · ${icons} icons drawn${how}`);
