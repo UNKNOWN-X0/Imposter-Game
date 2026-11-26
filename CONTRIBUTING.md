@@ -8,6 +8,7 @@ The most useful contributions are a bug from a real game night, a better word pa
 
 - **Something broken in the game:** open a [bug report](https://github.com/UNKNOWN-X0/The-Long-Table/issues/new?template=bug-report.yml) with how you were playing (one phone or a room), the phone and browser, and what you saw. The error screen's "Copy the report" text helps most; it never contains the word or anyone's role.
 - **A word that does not work** (too easy, too hard, a near miss that gives it away, a typo): open a [word pack](https://github.com/UNKNOWN-X0/The-Long-Table/issues/new?template=word-pack.yml) issue.
+- **A pack of your own, for everybody:** in the game, open your pack, tap **Send this to anybody**, then **Share it with everyone**. That opens a [Share a pack](https://github.com/UNKNOWN-X0/The-Long-Table/issues/new?template=share-a-pack.yml) issue with the code filled in. Somebody reads every pack; once it is merged it appears under **From the community** in the pack library for every table. Or open a pull request adding a file to [`src/content/words/community/`](src/content/words/community/README.md) yourself.
 - **An idea:** open a [feature request](https://github.com/UNKNOWN-X0/The-Long-Table/issues/new?template=feature-request.yml).
 - **A security problem** (for example a way to see somebody else's card): see [SECURITY.md](SECURITY.md); do not open a public issue.
 

@@ -77,6 +77,7 @@ export function Library({ onExit }) {
           write(LIB_LANG_KEY, next);
         }}
         onEdit={setEditing}
+        onAdd={savePack}
         onClose={onExit}
       />
     </Shell>

@@ -185,6 +185,7 @@ export default function LocalGame({ onExit }) {
             setBrowsing(false);
             setEditing(id);
           }}
+          onAdd={savePack}
           onClose={() => setBrowsing(false)}
         />
       );

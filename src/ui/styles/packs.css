@@ -235,3 +235,7 @@ input[type='search']::-webkit-search-cancel-button {
    group's tighter heading gap. */
 .settings-group.stack { gap: 14px; }
 .settings-group.stack.tight { gap: 10px; }
+
+/* The share card on the library is a link to GitHub dressed as the hub's
+   card, so it drops a link's underline. */
+a.hub-mode { text-decoration: none; }

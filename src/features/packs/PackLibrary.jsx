@@ -16,12 +16,14 @@
  * with the other settings, next to the count of how many words that leaves.
  */
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { packsFor, WORD_LANGUAGES } from '../../content/words/index.js';
+import { PACK_LIMITS, buildPack } from '../../content/words/custom.js';
+import { SHARE_URL, loadCommunity } from '../../content/words/community.js';
 import { useWords } from './useWords.js';
 import { useT } from '../../i18n/index.jsx';
-import { CopyIcon, CheckIcon, PencilIcon, PlusIcon } from '../../ui/icons/index.jsx';
+import { CopyIcon, CheckIcon, GlobeIcon, PencilIcon, PlusIcon } from '../../ui/icons/index.jsx';
 import { Segmented } from '../../ui/primitives/index.js';
 import { Sheet, SettingRow } from '../../ui/primitives/Sheet.jsx';
 import { matchAt, shelfFor } from './search.js';
@@ -30,6 +32,7 @@ export default function PackLibrary({
   lang: initialLang,
   customPacks = [],
   onEdit,
+  onAdd,
   onLang,
   onClose,
 }) {
@@ -45,9 +48,20 @@ export default function PackLibrary({
   // so the shelf redraws itself once they land.
   const haveWords = useWords(lang);
   const packs = useMemo(() => packsFor(lang, customPacks), [lang, customPacks, haveWords]);
+  // The packs players shared for everybody, shipped with the site and read
+  // the first time this language is opened.
+  const [community, setCommunity] = useState([]);
+  useEffect(() => {
+    let live = true;
+    setCommunity([]);
+    loadCommunity(lang).then((list) => live && setCommunity(list));
+    return () => {
+      live = false;
+    };
+  }, [lang]);
 
   // A pack the table wrote comes first: it is the one somebody is here for.
-  const shelf = useMemo(() => shelfFor(packs, q), [packs, q]);
+  const shelf = useMemo(() => shelfFor([...packs, ...community], q), [packs, community, q]);
 
   const total = packs.reduce((n, pack) => n + pack.pairs.length, 0);
   const found = shelf.reduce((n, { pairs }) => n + pairs.length, 0);
@@ -123,7 +137,8 @@ export default function PackLibrary({
         // own packs get their own heading above the built-in ones.
         (q ? [[null, shelf]] : [
           [t('library.yourPacks'), shelf.filter(({ pack }) => pack.custom)],
-          [t('library.builtIn'), shelf.filter(({ pack }) => !pack.custom)],
+          [t('library.builtIn'), shelf.filter(({ pack }) => !pack.custom && !pack.community)],
+          [t('library.community'), shelf.filter(({ pack }) => pack.community)],
         ]).filter(([, rows]) => rows.length > 0).map(([heading, rows]) => (
           <section className="settings-group pack-shelf" key={heading ?? 'found'}>
             {heading && <h2 className="settings-group-title">{heading}</h2>}
@@ -142,6 +157,20 @@ export default function PackLibrary({
         ))
       )}
 
+      {/* Anybody can put a pack on the community shelf: it goes through a
+          GitHub issue, and somebody reads it before it ships. */}
+      {!q && (
+        <section className="settings-group pack-shelf">
+          {community.length === 0 && <h2 className="settings-group-title">{t('library.community')}</h2>}
+          {community.length === 0 && <p className="hint">{t('library.communityEmpty')}</p>}
+          <a className="hub-mode" href={SHARE_URL} target="_blank" rel="noopener noreferrer">
+            <GlobeIcon size={22} />
+            <span className="hub-mode-title">{t('library.communityShare')}</span>
+            <span className="hub-supporting">{t('library.communityShareHint')}</span>
+          </a>
+        </section>
+      )}
+
       {openRow && (
         <PackSheet
           pack={openRow.pack}
@@ -149,6 +178,8 @@ export default function PackLibrary({
           query={q}
           onClose={() => setOpen(null)}
           onEdit={onEdit && openRow.pack.custom ? () => onEdit(openRow.pack.id) : null}
+          customPacks={customPacks}
+          onAdd={onAdd && openRow.pack.community ? onAdd : null}
         />
       )}
 
@@ -163,7 +194,11 @@ export default function PackLibrary({
 
 /** A pack's second line: how many words, or, while searching, what matched. */
 function rowLine(t, pack, pairs, query) {
-  const yours = pack.custom ? ` · ${t('library.yours')}` : '';
+  const yours = pack.custom
+    ? ` · ${t('library.yours')}`
+    : pack.by
+      ? ` · ${t('library.by', { name: pack.by })}`
+      : '';
   if (!query) return `${t('packs.count', { count: pack.pairs.length })}${yours}`;
   const first = pairs.slice(0, 3).map((p) => p.word).join(', ');
   const more = pairs.length > 3 ? ', …' : '';
@@ -171,7 +206,7 @@ function rowLine(t, pack, pairs, query) {
 }
 
 /** Everything in one pack, with Copy, and Edit for one the table wrote. */
-function PackSheet({ pack, pairs, query, onClose, onEdit }) {
+function PackSheet({ pack, pairs, query, onClose, onEdit, onAdd, customPacks = [] }) {
   const { t } = useT();
   const [copied, setCopied] = useState(false);
   const [fallback, setFallback] = useState(null);
@@ -189,15 +224,34 @@ function PackSheet({ pack, pairs, query, onClose, onEdit }) {
     }
   };
 
+  // A community pack is added as a copy the table owns and can change. One
+  // already on this phone under the same name counts as added.
+  const added = customPacks.some((p) => p.lang === pack.lang && p.name.toLowerCase() === pack.name.toLowerCase());
+  const full = customPacks.length >= PACK_LIMITS.packs;
+  const add = () => {
+    const built = buildPack({ name: pack.name, emoji: pack.emoji, lang: pack.lang, pairs: pack.pairs });
+    if (built.pack) onAdd(built.pack);
+  };
+
   return (
-    <Sheet label={pack.name} title={`${pack.emoji} ${pack.name}`} doneLabel={t('lobby.done')} onClose={onClose}>
+    <Sheet label={pack.name} title={`${pack.emoji} ${pack.name}`} doneLabel={t('lobby.done')} onClose={onClose} quietDone={Boolean(onAdd)}>
       <p className="hint">
         {query
           ? t('library.matches', { count: pairs.length, total: pack.pairs.length })
           : t('packs.count', { count: pack.pairs.length })}
         {' · '}
         {t('library.hintLine', { hint: pack.hint })}
+        {pack.by && ` · ${t('library.by', { name: pack.by })}`}
       </p>
+      {onAdd && (
+        <>
+          <button className="btn primary block" disabled={added || full} onClick={add}>
+            {added ? <CheckIcon size={16} /> : <PlusIcon size={16} />}{' '}
+            {added ? t('library.added') : t('library.add')}
+          </button>
+          {full && !added && <p className="hint">{t('errors.packTooMany')}</p>}
+        </>
+      )}
       <ul className="word-list">
         {pairs.map((pair) => (
           <li key={pair.word}>
