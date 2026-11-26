@@ -11,7 +11,7 @@
  */
 
 import { useEffect, useRef } from 'react';
-import { BrandMark } from '../../ui/icons/index.jsx';
+import { ImposterMark } from '../../ui/icons/index.jsx';
 import { useT } from '../../i18n/index.jsx';
 import { Step } from './Step.jsx';
 
@@ -49,7 +49,7 @@ export function FirstRun({ onClose }) {
         ref={card}
       >
         <div className="center stack tight">
-          <BrandMark size={52} />
+          <ImposterMark size={52} />
           <h2 className="title" id="firstrun-title">
             {t('rules.title')}
           </h2>

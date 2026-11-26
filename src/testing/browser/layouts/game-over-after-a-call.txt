@@ -5,11 +5,7 @@ circle.bd-two @ 48,274 718×718
 div.shell.game-shell @ 0,0 390×1458
 div.topbar.game-topbar @ 16,16 358×66
 div.brand @ 16,28 30×30
-svg.brandmark.alive @ 16,28 30×30
-g.bm-eyes @ 24,42 14×4
-circle.bm-pupil @ 24,42 4×4
-circle.bm-pupil @ 34,42 4×4
-rect.bm-glint @ 2,38 8×12
+svg.brandmark @ 16,28 30×30
 button.btn.ghost.sm @ 58,16 78×52
 svg.icon @ 74,34 18×18
 div.spacer @ 148,42 78×0

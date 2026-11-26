@@ -8,6 +8,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- The Long Table has its own mark: a long table seen from its head, with chairs down both sides, in walnut on oak. It is the new app icon, so a phone that saved the game to its home screen shows it the next time it updates. Imposter keeps its hat and spectacles in the game library.
 - The game now lives at **https://unknown-x0.github.io/The-Long-Table/** on GitHub Pages and updates every time a change lands. The old Netlify address stops getting updates; a phone that saved it to the home screen should save the new one.
 - Choosing how to play (**Play on one phone** or **Play in a room**) now opens a game library where you pick the game, with its player range and rules; a guest with a room code goes straight in. The hub's separate "First game" section is gone.
 

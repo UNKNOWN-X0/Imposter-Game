@@ -10,7 +10,7 @@
  * English only, deliberately: it is a workbench, not a screen players see.
  */
 import {
-  BrandMark, CrewIcon, ImposterIcon, UnknownIcon, HintIcon, CardBackIcon,
+  BrandMark, ImposterMark, CrewIcon, ImposterIcon, UnknownIcon, HintIcon, CardBackIcon,
   PassIcon, EyeIcon, BellIcon, DiceIcon, TargetIcon, BrokenIcon, TieIcon,
   HourglassIcon, ShrugIcon, TrophyIcon, CheckIcon, ChevronLeftIcon, GlobeIcon,
   CopyIcon, PhoneIcon, WifiIcon, ContrastIcon,
@@ -51,6 +51,7 @@ export default function IconBoard() {
     <div className="shell board">
       <div className="row" style={{ alignItems: 'center', gap: 12 }}>
         <BrandMark size={40} />
+        <ImposterMark size={40} />
         <div>
           <h1 className="title" style={{ margin: 0 }}>Icon set</h1>
           <p className="hint" style={{ margin: 0 }}>
