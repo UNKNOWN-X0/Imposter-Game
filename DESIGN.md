@@ -255,6 +255,15 @@ Motion explains a change; it never carries meaning on its own. Every animation s
 - **Round:** the verdict and the game-over card enter; the winners' confetti plays once.
 - Transform and opacity only, so nothing shifts the layout; focus stays where it was while anything moves.
 
+#### The plan (owner, 2026-11-26, issue #103)
+Agreed after a measured walk-through of a whole evening on one phone and in a room. The owner chose: these rules, fixes before motion, and keeping three steps to see a card (tap "I'm holding it", hold to look, tap "Covered").
+
+- **Rules.** Motion explains and never makes a tap wait. Calm screens are still: nothing loops on a screen people read, and loops are kept for waiting on someone. Big moments (the reveal, the verdict, a win) get one beat; settings, sheets and lists get only the standard enter and press. One family: every tappable thing presses the same way, every sheet and panel enters and leaves the same way, every selection changes the same way. Reduced motion means none, and anything shown only by motion is also announced. Only `transform` and `opacity` move; nothing flashes more than three times a second.
+- **Tokens to add.** `--motion-exit` 200ms (a sheet, tip or card leaving, `--ease-standard`) and `--motion-beat` 600ms (the pause before the verdict lands). No hard-coded times.
+- **Moments.** The deal: cards slide to each seat in turn (Enter, 40ms stagger). Passing the phone: the next player's seat lights (State). A clue turn: the speaking ring moves to the next seat (Enter). The vote: the chosen seat lifts, the others dim (State). The verdict: the seat lights, a Beat, the card turns and stamps the side (Reveal), skippable by a tap. A win: the winning seats rise, confetti once (Celebration).
+- **Layout this rests on.** Every phase opens at the top with focus on its heading; the round's main action is pinned within reach while the table is drawn smaller; a room's top bar stays on one row; the clue timer lives in the round's settings, not the clues screen.
+- **Follow-ups, in order:** #104 phases open at the top, #105 the main action in reach, #106 a room's top bar on one row, #107 the clue timer into settings, #108 one motion family, #109 the verdict's beat, #110 the deal and the turn, #111 the win.
+
 ## Do's and Don'ts
 
 - **Do** use the feast table scene (owner's choice, 2026-11-25) for the table, long-side seats and emblem avatars, with the covered private card and actions beside or below it.
