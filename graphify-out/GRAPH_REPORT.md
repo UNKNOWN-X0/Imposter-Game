@@ -1,17 +1,17 @@
 # Graph Report - Imposter-Game  (2026-11-26)
 
 ## Corpus Check
-- 214 files · ~205,545 words
+- 214 files · ~205,618 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 21 file(s) not represented in the graph (top: .css 14, (none) 3, .bat 1)
 
 ## Summary
-- 1365 nodes · 3791 edges · 76 communities (61 shown, 15 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 92 edges (avg confidence: 0.86)
+- 1365 nodes · 3793 edges · 76 communities (61 shown, 15 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 94 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0466e8b3`
+- Built from commit: `18e0d280`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -110,12 +110,12 @@
   DESIGN.md → src/ui/table/TableScene.jsx
 - `Lessons` --references--> `publicState()`  [INFERRED]
   STANDARDS.md → src/core/select.js
+- `Icons` --references--> `BrandMark()`  [INFERRED]
+  DESIGN.md → src/ui/icons/brand.jsx
 - `Invariants` --references--> `validatePack()`  [INFERRED]
   STANDARDS.md → src/content/words/custom.js
-- `Invariants` --references--> `normaliseConfig()`  [INFERRED]
-  STANDARDS.md → src/core/rules.js
-- `Invariants` --references--> `publicState()`  [INFERRED]
-  STANDARDS.md → src/core/select.js
+- `Icons` --references--> `ImposterMark()`  [INFERRED]
+  DESIGN.md → src/ui/icons/brand.jsx
 
 ## Import Cycles
 - 2-file cycle: `src/App.jsx -> src/features/packs/Library.jsx -> src/App.jsx`
@@ -153,7 +153,7 @@ Nodes (6): detectLanguage(), LanguageProvider(), supported(), loadStrings(), sta
 
 ### Community 7 - "useT"
 Cohesion: 0.06
-Nodes (92): #17 shared game frame (in progress), react, packById(), PartyHub(), EndGameButton(), PlayerList(), Scoreboard(), WinValues() (+84 more)
+Nodes (89): #17 shared game frame (in progress), react, packById(), PartyHub(), EndGameButton(), PlayerList(), Scoreboard(), WinValues() (+81 more)
 
 ### Community 8 - "Build Dependencies"
 Cohesion: 0.06
@@ -289,7 +289,7 @@ Nodes (4): Local workflow, Project data, Project instructions, Redesign issues
 
 ### Community 54 - "Components"
 Cohesion: 0.06
-Nodes (32): Banners and Dialogs, Buttons, Colors, Components, Design System: The Long Table, Do's and Don'ts, Elevation & Depth, Game Library (+24 more)
+Nodes (35): Banners and Dialogs, Buttons, Colors, Components, Design System: The Long Table, Do's and Don'ts, Elevation & Depth, Game Library (+27 more)
 
 ### Community 55 - "layout.mjs"
 Cohesion: 0.38
@@ -369,23 +369,23 @@ Nodes (6): channels(), contrast(), hue(), hueGap(), luminance(), SIDES
 
 ## Knowledge Gaps
 - **22 isolated node(s):** `Central scoring table`, `Data-described optional roles`, `Separate interface and word languages`, `Server-Sent Events for room updates`, `Shared deterministic rules engine` (+17 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 504 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 503 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Project standards` connect `Project standards` to `engine.test.js`, `Project Guide`?**
-  _High betweenness centrality (0.108) - this node is a cross-community bridge._
+  _High betweenness centrality (0.105) - this node is a cross-community bridge._
 - **What connects `Central scoring table`, `Data-described optional roles`, `Separate interface and word languages` to the rest of the system?**
   _22 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Settings.jsx` be split into smaller, more focused modules?**
   _Cohesion score 0.07163561076604555 - nodes in this community are weakly interconnected._
 - **Why does `Invariants` connect `engine.test.js` to `Settings.jsx`, `Project standards`?**
-  _High betweenness centrality (0.093) - this node is a cross-community bridge._
+  _High betweenness centrality (0.091) - this node is a cross-community bridge._
 - **Should `Room Server and Tests` be split into smaller, more focused modules?**
   _Cohesion score 0.06479081821547575 - nodes in this community are weakly interconnected._
 - **Why does `react` connect `useT` to `Settings.jsx`, `App.jsx`, `errors/index.js`, `main.jsx`, `Build Dependencies`, `changelog.test.js`, `Icon`, `theme.test.js`, `StringBoard.jsx`, `Settings.jsx`, `primitives/index.js`, `room.test.js`, `LocalGame.jsx`?**
-  _High betweenness centrality (0.056) - this node is a cross-community bridge._
+  _High betweenness centrality (0.070) - this node is a cross-community bridge._
 - **Should `ref_node_fs` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
