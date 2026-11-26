@@ -41,18 +41,21 @@ export function Presets({ t, config, onChange, disabled }) {
             </button>
           );
         })}
-        {near && (
-          <div className="preset-card yours" aria-current="true">
-            <SlidersIcon size={22} />
-            <span className="preset-name">{t('settings.preset.yours')}</span>
-            <span className="preset-line">
-              {t('settings.preset.yoursLine', { name: t(`settings.preset.${near.id}`), count: near.changed })}
-            </span>
-            <span className="choice-check on" aria-hidden="true">
-              <CheckIcon size={14} />
-            </span>
-          </div>
-        )}
+        {/* Always there, so switching a setting off a preset never adds a
+            card above the settings and moves them (#124): quiet while a
+            preset is chosen, ticked once the rules are the table's own. */}
+        <div className={`preset-card yours${near ? ' active' : ''}`} aria-current={near ? 'true' : undefined}>
+          <SlidersIcon size={22} />
+          <span className="preset-name">{t('settings.preset.yours')}</span>
+          <span className="preset-line">
+            {near
+              ? t('settings.preset.yoursLine', { name: t(`settings.preset.${near.id}`), count: near.changed })
+              : t('settings.preset.yoursHint')}
+          </span>
+          <span className={`choice-check${near ? ' on' : ''}`} aria-hidden="true">
+            {near && <CheckIcon size={14} />}
+          </span>
+        </div>
       </div>
       {/* The whole of what the chosen preset sets, said once under the cards. */}
       <p className="hint" aria-live="polite">

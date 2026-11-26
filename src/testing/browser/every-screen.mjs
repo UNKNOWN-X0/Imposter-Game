@@ -288,7 +288,7 @@ for (const lang of ['en', 'th', 'de']) {
     if (await sheet.count()) fail(`${lang}: Escape left the sheet open`);
     else if ((await rounds.innerText()) === before) fail(`${lang}: the rounds row did not follow the sheet`);
     // Standard with two rounds is exactly Quick, so that card is now chosen (#83).
-    else if ((await page.locator('.preset-card[aria-pressed="true"]').count()) !== 1 || (await page.locator('.preset-card.yours').count()))
+    else if ((await page.locator('.preset-card[aria-pressed="true"]').count()) !== 1 || (await page.locator('.preset-card.yours.active').count()))
       fail(`${lang}: two rounds did not show as the Quick preset`);
   }
   // Every ⓘ opens its explanation in place, whole, inside its card or sheet
@@ -375,6 +375,49 @@ for (const [engineName, engine] of [['chromium', chromium], ['webkit', webkit]])
   if (!shown) fail(`holding with a mouse in ${engineName}: the ring filled but the card did not turn`);
   else if (!coveredAfter) fail(`holding with a mouse in ${engineName}: letting go left the card visible`);
   else seen.push(`holding with a mouse turns the card in ${engineName}, and letting go covers it`);
+  await other.close();
+}
+
+/* --- switching a setting on or off moves no text (#124) ------------------ */
+for (const [engineName, engine] of [['chromium', chromium], ['webkit', webkit]]) {
+  let other;
+  try {
+    other = await engine.launch();
+  } catch {
+    seen.push(`switches stay still in ${engineName}: skipped, browser not installed`);
+    continue;
+  }
+  const page = await (await other.newContext({ viewport: { width: 390, height: 844 } })).newPage();
+  await page.addInitScript(() => {
+    localStorage.setItem('imposter.seenRules', '1');
+    localStorage.setItem('imposter.lang', 'en');
+  });
+  await page.goto(BASE);
+  await wait(600);
+  for (const n of ['Ann', 'Ben', 'Cal', 'Dee']) {
+    await page.locator('input:not([type=radio])').first().fill(n);
+    await page.keyboard.press('Enter');
+  }
+  await page.locator('.hub-mode').first().click();
+  await page.locator('.game-card .btn.primary').first().click();
+  await wait(300);
+  const titles = () =>
+    page.evaluate(() => [...document.querySelectorAll('.setting-row-title')].map((t) => Math.round(t.getBoundingClientRect().top)));
+  const switches = page.locator('.setting-row .switch');
+  let moved = null;
+  for (let i = 0; i < (await switches.count()) && !moved; i++) {
+    await switches.nth(i).scrollIntoViewIfNeeded();
+    const before = await titles();
+    await switches.nth(i).click();
+    await wait(250);
+    const after = await titles();
+    const shift = before.findIndex((y, k) => Math.abs(y - after[k]) > 1);
+    if (shift >= 0) moved = `switch ${i + 1} moved row ${shift + 1} by ${after[shift] - before[shift]}px`;
+    await switches.nth(i).click();
+    await wait(250);
+  }
+  if (moved) fail(`switches in ${engineName}: ${moved}`);
+  else seen.push(`switching settings on and off moves no text in ${engineName}`);
   await other.close();
 }
 

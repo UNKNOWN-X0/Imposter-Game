@@ -78,16 +78,6 @@ export function OnlineLobby({ payload, act, myPacks = [], onEditPack, onBrowsePa
         <p className="hint center dots">{t('room.waitingHost')}</p>
       )}
 
-      {/* Everybody watches the scoreboard; only the host can wipe it. */}
-      {state.config.scoring && (
-        <Scoreboard
-          players={state.players}
-          scores={state.scores}
-          onClear={isHost ? () => act({ type: 'CLEAR_SCORES' }) : undefined}
-        />
-      )}
-
-      {state.config.scoring && <WinValues />}
 
       {isHost && (
         <>
@@ -102,6 +92,19 @@ export function OnlineLobby({ payload, act, myPacks = [], onEditPack, onBrowsePa
           />
         </>
       )}
+
+      {/* Everybody watches the scoreboard; only the host can wipe it. It
+          comes after the settings, so switching scoring on never pushes the
+          settings away under the host's finger (#124). */}
+      {state.config.scoring && (
+        <Scoreboard
+          players={state.players}
+          scores={state.scores}
+          onClear={isHost ? () => act({ type: 'CLEAR_SCORES' }) : undefined}
+        />
+      )}
+
+      {state.config.scoring && <WinValues />}
     </div>
   );
 }
