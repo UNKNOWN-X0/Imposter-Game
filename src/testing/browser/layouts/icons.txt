@@ -6,10 +6,9 @@ div.shell.board @ 0,0 390×5296
 div.row @ 16,16 358×118
 svg.brandmark @ 16,56 40×40
 svg.brandmark.alive @ 68,56 40×40
-g.bm-eyes @ 78,76 18×6
-circle.bm-pupil @ 78,76 6×6
-circle.bm-pupil @ 92,76 6×6
-rect.bm-glint @ 48,70 12×16
+g.bm-eyes @ 80,80 16×4
+circle.bm-pupil @ 80,80 4×4
+circle.bm-pupil @ 92,80 4×4
 h1.title @ 120,16 254×34
 p.hint @ 120,50 254×84
 div.board-grid @ 16,152 358×5118

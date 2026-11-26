@@ -93,13 +93,20 @@
   flex: none;
 }
 
+/* In a centred heading (the first-run dialog, Resume) the mark is centred
+   too, not left at the start of the column. */
+.center > .brandmark {
+  align-self: center;
+  margin-inline: auto;
+}
+
 .brandmark .bm-pupil {
   fill: var(--bg);
 }
 
 /* A long, uneven blink: a steady one would read as a spinner. */
 .brandmark.alive .bm-eyes {
-  transform-origin: center 28px;
+  transform-origin: center 32.6px;
 }
 
 .credit {
@@ -482,11 +489,6 @@
     99% { transform: scaleY(1); }
   }
   
-  @keyframes glint {
-    0%, 55% { transform: translateX(0); }
-    75%, 100% { transform: translateX(72px); }
-  }
-  
   @keyframes confetti-fall {
     0% { opacity: 0; transform: translateY(-10px) rotate(0deg); }
     12% { opacity: 1; }
@@ -689,10 +691,6 @@
   
   .brandmark.alive .bm-eyes {
     animation: blink 7s infinite;
-  }
-  
-  .brandmark.alive .bm-glint {
-    animation: glint 6.5s ease-in-out infinite;
   }
   
   .confetti span {
