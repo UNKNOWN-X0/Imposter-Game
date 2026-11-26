@@ -5,6 +5,7 @@
 import { playerById, viewFor } from '../../../core/engine.js';
 import { useT } from '../../../i18n/index.jsx';
 import { PassGate, RoleCard } from '../../../features/round/index.js';
+import { DealStrip } from '../../../features/round/DealStrip.jsx';
 
 /* ------------------------------------------------------------------ *
  * Reveal — one player at a time
@@ -27,6 +28,11 @@ export function Reveal({ state, run, holding, setHolding }) {
           <div className="eyebrow">{t('reveal.cardsLeft', { count: left })}</div>
           <h1 className="title">{t('reveal.dealt')}</h1>
         </div>
+        <DealStrip
+          players={state.order.map((id) => playerById(state, id)).filter(Boolean)}
+          revealed={state.revealed}
+          current={player.id}
+        />
         <PassGate name={player.name} onReady={() => setHolding(true)} />
         <p className="hint center">{t('reveal.privacy')}</p>
       </div>

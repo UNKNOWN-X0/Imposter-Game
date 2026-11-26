@@ -114,13 +114,17 @@ async function dealAndReveal(page, seats) {
   }
   await page.getByRole('button', { name: /Deal the cards|แจกไพ่|Karten austeilen/ }).click();
   await wait(400);
+  // Whose card is next shows above the pass card, the next emblem marked (#110).
+  if ((await page.locator('.deal-strip .deal-seat').count()) !== seats || (await page.locator('.deal-strip .deal-seat.now').count()) !== 1)
+    fail('the pass screen does not show whose card is next');
   let word = null;
   const imposters = [];
   const roster = ['Ann', 'Ben', 'Cal', 'Dee', 'Eli', 'Fay'].slice(0, seats);
   for (let i = 0; i < seats; i++) {
     // Who is holding the phone now — the reveal order is shuffled, so the
     // position in this loop says nothing about the position in a vote grid.
-    const onScreen = await page.locator('.shell').innerText();
+    // The name on the pass card itself: the strip above it names everybody (#110).
+    const onScreen = await page.locator('.reveal.shield').innerText();
     const whose = roster.find((n) => new RegExp(`\\b${n}\\b`).test(onScreen));
     await page.locator('.reveal.shield').click();
     const b = await page.locator('.reveal.shield').boundingBox();
@@ -371,6 +375,15 @@ for (const lang of ['en', 'th', 'de']) {
     return b ? Math.round(b.bottom) - innerHeight : 'no action bar';
   });
   if (reach === 'no action bar' || reach > 0) fail(`${lang}: the clues' main button is ${reach === 'no action bar' ? 'missing its bar' : `${reach}px below the screen`}`);
+  // The speaking ring glides to the next speaker and lands on their emblem (#110).
+  await page.locator('.action-bar .btn.primary').click();
+  await wait(600);
+  const onSpeaker = await page.evaluate(() => {
+    const r = document.querySelector('.ts-ring')?.getBoundingClientRect();
+    const a = document.querySelector('.ts-seat.speaking .avatar')?.getBoundingClientRect();
+    return r && a ? Math.abs(r.left - a.left) + Math.abs(r.top - a.top) : 'missing';
+  });
+  if (onSpeaker === 'missing' || onSpeaker > 2) fail(`${lang}: the speaking ring is ${onSpeaker === 'missing' ? 'missing' : `${Math.round(onSpeaker)}px off the speaker`}`);
   await page.getByRole('button', { name: /Everyone has spoken|พูดครบ|abgestimmt|abstimmen|โหวต/i }).first().click();
   await wait(300);
   // A new phase opens at its top, with focus on its heading (#104).

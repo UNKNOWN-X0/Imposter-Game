@@ -455,6 +455,17 @@
  * ------------------------------------------------------------------ */
 
 @media (prefers-reduced-motion: no-preference) {
+  /* The deal (#110): on the first hand-over, the emblems arrive one after
+     another, as if dealt round the table. */
+  .deal-strip.dealing .deal-seat {
+    animation: deal-in var(--motion-enter) var(--ease-emphasis) both;
+    animation-delay: calc(var(--i) * 40ms);
+  }
+
+  @keyframes deal-in {
+    from { opacity: 0; transform: translateY(-14px) scale(0.8); }
+  }
+
   /* The verdict's beat (#109): the chosen seat is held up and breathes
      once while the table waits for the answer. */
   .verdict-beat .avatar {

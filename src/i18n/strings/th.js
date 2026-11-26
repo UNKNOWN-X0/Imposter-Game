@@ -465,6 +465,7 @@ export default {
 
   'reveal.dealt': 'แจกไพ่เรียบร้อย',
   'reveal.cardsLeft_other': 'เหลืออีก {count} ใบ',
+  'reveal.order': 'ใครดูไพ่แล้วบ้าง',
   'reveal.passTo': 'ส่งมือถือให้',
   'reveal.tapWhenHolding': 'ถือไว้แล้วค่อยแตะ',
   'reveal.privacy': 'ถือให้มิดชิด อย่าให้คนอื่นเห็น',

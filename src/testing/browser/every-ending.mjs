@@ -163,7 +163,8 @@ async function dealAndReveal(page, seats) {
   await wait(350);
   const who = { word: null, imposters: [], roles: {} };
   for (let i = 0; i < seats; i += 1) {
-    const before = await page.locator('.shell').innerText();
+    // The name on the pass card itself: the strip above it names everybody (#110).
+    const before = await page.locator('.reveal.shield').innerText();
     const name = ROSTER.find((n) => new RegExp(`\\b${n}\\b`).test(before));
     await page.locator('.reveal.shield').click();
     const box = await page.locator('.reveal.shield').boundingBox();

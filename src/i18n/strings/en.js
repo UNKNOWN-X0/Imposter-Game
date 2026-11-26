@@ -473,6 +473,7 @@ export default {
   'reveal.dealt': 'Cards are dealt',
   'reveal.cardsLeft_one': '{count} card to go',
   'reveal.cardsLeft_other': '{count} cards to go',
+  'reveal.order': 'Who has seen their card',
   'reveal.passTo': 'Pass the phone to',
   'reveal.tapWhenHolding': 'Tap when you are holding it.',
   'reveal.privacy': 'Hold the phone so only you can see it.',
