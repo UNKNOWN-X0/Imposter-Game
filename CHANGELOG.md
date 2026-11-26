@@ -18,6 +18,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- The last hand-drawn icons now match the rest: the jester is two theatre masks, blind mode is a card with a question mark, and a face-down card sits on top of its deck.
 - The pack library and the home screen say what word packs are for: the games played with words, Imposter for now. Its game card says it uses word packs, so a future game without words will not be confusing.
 - How it works and How to play are two different screens now. The home screen's link explains The Long Table itself: seat everyone, choose how to play, pick a game, make the words yours, and what a room needs. A game's How to play explains that game, with a card per step, its optional roles, and how to play it well.
 - The display and language buttons open a sheet from the bottom. Light, dark or following your phone are three cards with a little preview of each, and every wood shows its own table plank and colour. Languages are listed with their flag and their name in your language. The Thai heading "โหมดสี" lost a stray vowel mark.

@@ -808,10 +808,6 @@
     animation-delay: 0.16s;
   }
   
-  .icon.anim .lines > path:nth-child(3) {
-    animation-delay: 0.32s;
-  }
-  
   .icon.anim .hand {
     animation: wave 3.4s ease-in-out infinite;
   }
