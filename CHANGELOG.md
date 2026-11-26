@@ -19,6 +19,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- In a room, the top of the screen no longer takes two rows during a round: the room code sits beside the round's progress line, still a tap away from copying.
 - During a round the next button stays at the bottom of the screen, so whoever holds the phone no longer scrolls on every turn. The table is drawn a little smaller while you play.
 - The round's labels no longer shout. "Pass the phone to", "The word was", the speaking order, the tags and the rest are in ordinary sentence case like the other screens, and the role on your card is in large type instead of spaced capitals.
 - Imposter has a redrawn mark: a fedora over square spectacles, in the same solid style as The Long Table's own. The eyes behind the glasses still blink.

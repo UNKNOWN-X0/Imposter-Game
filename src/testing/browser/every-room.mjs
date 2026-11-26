@@ -146,6 +146,14 @@ async function dealAndLook() {
   const hostNow = phones.find((p) => p.isHost) ?? host;
   await hostNow.page.getByRole('button', { name: 'Deal the cards' }).click();
   await wait(900);
+  // During a round the room code rides on the progress line, so the top bar
+  // keeps to one row (#106); two rows measured about 125px.
+  for (const p of phones) {
+    if (p.gone) continue;
+    const bar = await p.page.evaluate(() => Math.round(document.querySelector('.topbar')?.getBoundingClientRect().height ?? 0));
+    if (bar > 80) fail(`a room's top bar took ${bar}px during a round (two rows)`);
+    if (!(await p.page.locator('.phase-row .roomcode').count())) fail('the room code is not on the progress line during a round');
+  }
   const cards = {};
   for (const p of phones) {
     if (p.gone) continue;

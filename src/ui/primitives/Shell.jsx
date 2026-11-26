@@ -5,7 +5,7 @@
 import { useState } from 'react';
 import { BrandMark, CheckIcon, ChevronLeftIcon, CopyIcon } from '../icons/index.jsx';
 import { useT } from '../../i18n/index.jsx';
-import { PhaseStepper } from '../../features/round/PhaseStepper.jsx';
+import { PhaseStepper, inRound } from '../../features/round/PhaseStepper.jsx';
 import { LanguagePicker } from '../../i18n/LanguagePicker.jsx';
 import { ThemePicker } from '../theme/ThemePicker.jsx';
 
@@ -17,6 +17,9 @@ import { ThemePicker } from '../theme/ThemePicker.jsx';
 export function Shell({ children, onBack, code, right, phase, frame }) {
   const { t } = useT();
   const gameFrame = Boolean(phase || code || frame);
+  // During a round a room's code rides on the progress line, so the top bar
+  // keeps to one row on a phone (#106); elsewhere it stays in the bar.
+  const codeOnStepper = Boolean(code && phase && inRound(phase));
   return (
     <div className={`shell${gameFrame ? ' game-shell' : ''}`}>
       <div className={`topbar${gameFrame ? ' game-topbar' : ''}`}>
@@ -34,7 +37,7 @@ export function Shell({ children, onBack, code, right, phase, frame }) {
           </button>
         )}
         <div className="spacer" />
-        {code ? <RoomCode code={code} /> : null}
+        {code && !codeOnStepper ? <RoomCode code={code} /> : null}
         {right ?? (
           <>
             <ThemePicker />
@@ -44,7 +47,14 @@ export function Shell({ children, onBack, code, right, phase, frame }) {
       </div>
       {gameFrame ? (
         <main className="game-column">
-          {phase ? <PhaseStepper phase={phase} /> : null}
+          {codeOnStepper ? (
+            <div className="phase-row">
+              <PhaseStepper phase={phase} />
+              <RoomCode code={code} />
+            </div>
+          ) : phase ? (
+            <PhaseStepper phase={phase} />
+          ) : null}
           {children}
         </main>
       ) : children}
