@@ -9,13 +9,12 @@
   gap: 8px;
 }
 
-/* A group is an open section with a heading, like the hub's: a hairline
-   above, room to breathe, and no box around it (#settings overhaul). */
+/* A group is a heading and, under it, one card of rows. The card already
+   parts one group from the next, so there is no hairline above it. */
 .settings-group {
   display: grid;
   gap: 4px;
-  padding: 18px 0 6px;
-  border-top: 1px solid var(--line);
+  padding: 14px 0 6px;
 }
 
 .settings-group-title {
@@ -299,10 +298,6 @@
 
 .setting-more[open] > summary::after { transform: rotate(225deg) translateY(-3px); }
 
-.setting-more-body {
-  padding-top: 8px;
-}
-
 /* Roles as the hub's cards: the glyph in its own column, a title and a line
    saying what it does, and the tick on the right, the way packs show theirs. */
 .role-grid {
@@ -356,14 +351,107 @@
   margin-top: 0;
 }
 
-/* The first group sits right under the "Game settings" heading, which is
-   divider enough. */
+/* The first group sits right under the "Game settings" heading. */
 .settings > .settings-group:first-child {
-  border-top: 0;
   padding-top: 4px;
 }
 
 /* Anywhere in a column, a short control keeps its own width. */
 .stack > .segmented:not(.wide) {
   align-self: flex-start;
+}
+
+/* ------------------------------------------------------------------ *
+ * Rows and sheets (#settings rows)
+ *
+ * Under each group heading, one card of rows in the hub's card colours: the
+ * name, what it is set to underneath, and a chevron. Tapping opens a sheet
+ * with the setting's own controls; an on/off setting has its switch on the
+ * row instead.
+ * ------------------------------------------------------------------ */
+
+.setting-list {
+  display: grid;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.setting-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 14px;
+  row-gap: 2px;
+  min-height: var(--tap);
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+}
+
+.setting-row + .setting-row { border-top: 1px solid var(--line); }
+button.setting-row { cursor: pointer; transition: background-color var(--motion-state) var(--ease-standard); }
+button.setting-row:disabled { opacity: 0.5; cursor: not-allowed; }
+button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outline-offset: -3px; }
+
+@media (hover: hover) {
+  button.setting-row:hover:not(:disabled) { background: var(--surface-2); }
+}
+
+.setting-row-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.setting-row-value {
+  grid-column: 1;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.setting-row-end { grid-column: 2; grid-row: 1 / span 2; }
+
+.setting-row-chevron {
+  width: 9px;
+  height: 9px;
+  margin-right: 4px;
+  border-right: 2px solid var(--text-dim);
+  border-bottom: 2px solid var(--text-dim);
+  transform: rotate(-45deg);
+}
+
+/* The sheet is the modal, anchored to the bottom of a phone. */
+.sheet-scrim {
+  place-items: end center;
+  padding: 0;
+}
+
+.sheet {
+  width: min(560px, 100%);
+  max-height: min(86dvh, 760px);
+  padding: 8px 20px calc(18px + env(safe-area-inset-bottom));
+  border-radius: var(--radius) var(--radius) 0 0;
+  border-bottom: 0;
+}
+
+.sheet > .setting { padding-top: 10px; }
+.sheet > .btn.primary { bottom: calc(-18px - env(safe-area-inset-bottom)); }
+
+/* A wide screen has no thumb to reach with, so the sheet sits in the middle. */
+@media (min-width: 720px) {
+  .sheet-scrim { place-items: center; padding: 20px 16px; }
+  .sheet { border-radius: var(--radius); border-bottom: 1px solid var(--line); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button.setting-row { transition: none; }
 }

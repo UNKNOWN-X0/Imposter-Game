@@ -1,48 +1,11 @@
 /**
- * The two ways an imposter can take it outright, and how long the crew have.
+ * How long the crew have. Calling the word and the final guess are switches
+ * on their rows in ../Settings.jsx.
  */
 
 import { ROUNDS_UNLIMITED } from '../../../core/engine.js';
 import { Info } from '../../../ui/primitives/Info.jsx';
-import { OnOff, Segmented } from '../../../ui/primitives/Segmented.jsx';
-
-export function Calling({ t, config, onChange, disabled, seats, cap, blind, wordLang, packs, myPacks, packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks }) {
-  return (
-    <div className="setting toggle">
-      <div className="label">
-        <b>
-          {t('settings.call')} <Info text={t('tip.call')} />
-        </b>
-        <span>{blind ? t('settings.lockedByBlind') : t('settings.callHint')}</span>
-      </div>
-      <OnOff
-        value={config.allowCall}
-        label={t('settings.call')}
-        disabled={disabled || blind}
-        onChange={(v) => onChange({ allowCall: v })}
-      />
-    </div>
-  );
-}
-
-export function Stealing({ t, config, onChange, disabled, seats, cap, blind, wordLang, packs, myPacks, packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks }) {
-  return (
-    <div className="setting toggle">
-      <div className="label">
-        <b>
-          {t('settings.steal')} <Info text={t('tip.steal')} />
-        </b>
-        <span>{t('settings.stealHint')}</span>
-      </div>
-      <OnOff
-        value={config.allowSteal}
-        label={t('settings.steal')}
-        disabled={disabled}
-        onChange={(v) => onChange({ allowSteal: v })}
-      />
-    </div>
-  );
-}
+import { Segmented } from '../../../ui/primitives/Segmented.jsx';
 
 export function Rounds({ t, config, onChange, disabled, seats, cap, blind, wordLang, packs, myPacks, packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks }) {
   return (

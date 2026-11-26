@@ -6,7 +6,6 @@
 import { SPECIAL_ROLES } from '../../../core/engine.js';
 import { Info } from '../../../ui/primitives/Info.jsx';
 import { RoleGlyph } from '../../../ui/primitives/RoleGlyph.jsx';
-import { OnOff } from '../../../ui/primitives/Segmented.jsx';
 import { CheckIcon } from '../../../ui/icons/index.jsx';
 
 export function Roles({ t, config, onChange, disabled, seats, cap, blind, wordLang, packs, myPacks, packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks }) {
@@ -53,25 +52,6 @@ export function Roles({ t, config, onChange, disabled, seats, cap, blind, wordLa
           </button>
         ))}
       </div>
-    </div>
-  );
-}
-
-export function Scoring({ t, config, onChange, disabled, seats, cap, blind, wordLang, packs, myPacks, packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks }) {
-  return (
-    <div className="setting toggle">
-      <div className="label">
-        <b>
-          {t('settings.scoring')} <Info text={t('tip.scoringLead')} />
-        </b>
-        <span>{config.scoring ? t('settings.scoringOn') : t('settings.scoringOff')}</span>
-      </div>
-      <OnOff
-        value={config.scoring}
-        label={t('settings.scoring')}
-        disabled={disabled}
-        onChange={(v) => onChange({ scoring: v })}
-      />
     </div>
   );
 }

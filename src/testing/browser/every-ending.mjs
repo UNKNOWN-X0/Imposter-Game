@@ -107,35 +107,46 @@ async function openGame(seats, settings = {}) {
     await page.locator('input:not([type=radio])').first().fill(name);
     await page.keyboard.press('Enter');
   }
-  // Detailed controls are progressively disclosed to keep first-time setup
-  // short; ending sweeps open them before choosing specialized rule settings.
-  await page.locator('details.setting-more > summary').click();
-  if (settings.rounds) {
-    await page
-      .locator('.setting', { hasText: 'Rounds' })
-      .getByRole('button', { name: String(settings.rounds), exact: true })
-      .click();
-    await wait(150);
-  }
-  for (const role of settings.roles ?? []) {
-    // A setting that silently does not take is a harness that silently tests
-    // the default, so each one is read back after it is clicked.
-    const button = page.locator('.setting button.pack', { hasText: role }).first();
-    await button.click();
+  // Each setting is a row that opens a sheet with its controls; the sheet
+  // is closed with Done before the next one, as a player would.
+  const sheet = page.locator('.sheet');
+  const openRow = async (title) => {
+    await page.locator('button.setting-row', { hasText: title }).first().click();
     await wait(200);
-    if ((await button.getAttribute('aria-pressed')) !== 'true') {
-      throw new Error(`could not switch on the ${role} role`);
+  };
+  const done = async () => {
+    await sheet.getByRole('button', { name: 'Done' }).click();
+    await wait(150);
+  };
+  if (settings.rounds) {
+    await openRow('Rounds');
+    await sheet.getByRole('button', { name: String(settings.rounds), exact: true }).click();
+    await wait(150);
+    await done();
+  }
+  if (settings.roles?.length) {
+    await openRow('Special roles');
+    for (const role of settings.roles) {
+      // A setting that silently does not take is a harness that silently
+      // tests the default, so each one is read back after it is clicked.
+      const button = sheet.locator('button.role-choice', { hasText: role }).first();
+      await button.click();
+      await wait(200);
+      if ((await button.getAttribute('aria-pressed')) !== 'true') {
+        throw new Error(`could not switch on the ${role} role`);
+      }
     }
+    await done();
   }
   if (settings.imposters) {
-    const one = page
-      .locator('.setting', { hasText: 'Imposters' })
-      .getByRole('button', { name: String(settings.imposters), exact: true });
+    await openRow('Imposters');
+    const one = sheet.getByRole('button', { name: String(settings.imposters), exact: true });
     await one.click();
     await wait(200);
     if ((await one.getAttribute('aria-pressed')) !== 'true') {
       throw new Error('could not set the number of imposters');
     }
+    await done();
   }
   return { ctx, page, errors };
 }

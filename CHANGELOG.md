@@ -12,6 +12,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- Imposter's settings are a short list now. Each setting is one row saying what it is set to; tap it and its choices slide up from the bottom, then tap Done. On/off settings switch right on the row. Nothing hides behind "Customize rules and roles" any more, and the scoreboard and the points list have plain titles instead of shouting labels.
 - The word pack screens match the home screen too. The library puts your own packs under their own heading above the built-in ones, and adding a pack is one clear card. The editor reads top to bottom (name and icon, the words, share and import) without boxes or shouting labels.
 - Imposter's settings are laid out like the home screen: grouped under clear headings (Words, The imposters, The round, Roles and score), with room to read each one. On/off settings are switches, word packs sit in a tidy grid with a tick, and roles are easy-to-scan rows.
 - The Long Table has its own mark: a long table seen from its head, with chairs down both sides, in walnut on oak. It is the new app icon, so a phone that saved the game to its home screen shows it the next time it updates. Imposter keeps its hat and spectacles in the game library.
