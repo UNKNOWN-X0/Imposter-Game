@@ -15,8 +15,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
  * key is not a gesture assistive tech reliably produces.
  *
  * With `onRelease` it is a peek: the card is open only while it is held, and
- * lifting the finger (or sliding off, or the pointer being cancelled) calls
- * `onRelease` straight away. A keyboard opens it with Enter or Space and
+ * lifting the finger or mouse button (or the pointer being cancelled) calls
+ * `onRelease` straight away. The pointer is captured while held, so sliding
+ * off the card does not cover it (#117). A keyboard opens it with Enter or Space and
  * covers it again with the same key, Escape, or moving focus away. Without
  * `onRelease` it opens once and stays open, as rooms use it on a phone of
  * your own. `className` replaces the face-down look (`shield`) when given.
@@ -56,6 +57,16 @@ export function HoldCard({ onOpen, onRelease, children, duration = 550, classNam
 
   const begin = (e) => {
     if (e.button && e.button !== 0) return;
+    // Keep the pointer while it is held (#117). A finger on a touch screen is
+    // captured anyway; a mouse is not, so when the card turned its moving
+    // edge slid out from under a still cursor, pointerleave fired, and the
+    // card covered itself the moment it opened. Releasing is now letting go
+    // (pointerup), a cancelled pointer, or losing the capture.
+    try {
+      e.currentTarget.setPointerCapture?.(e.pointerId);
+    } catch {
+      /* a pointer that cannot be captured still works as before */
+    }
     startedAt.current = performance.now();
     const tick = (now) => {
       const p = Math.min(1, (now - startedAt.current) / duration);
@@ -76,8 +87,8 @@ export function HoldCard({ onOpen, onRelease, children, duration = 550, classNam
       className={`reveal ${className || 'shield'}`}
       onPointerDown={begin}
       onPointerUp={release}
-      onPointerLeave={release}
       onPointerCancel={release}
+      onLostPointerCapture={release}
       onBlur={release}
       onContextMenu={(e) => e.preventDefault()}
       onKeyDown={(e) => {
