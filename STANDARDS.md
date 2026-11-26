@@ -56,5 +56,9 @@ In this order, for the parts a change touches:
 
 - The invariants hold and the change meets the workspace [Code change standard](../../STANDARDS.md#code-change-standard); an interface change also meets the [Interface change standard](../../STANDARDS.md#interface-change-standard) and `DESIGN.md`.
 - `npm run verify` passes with nothing skipped, or the report says which sweep did not run and why.
-- The fingerprint either did not move or was blessed after reading the diff, and the CHANGELOG's Unreleased section says what a player will notice. Versions follow semver: a major means somebody has to do something.
+- The fingerprint either did not move or was blessed after reading the diff, and the CHANGELOG's Unreleased section says what a player will notice. Versions follow semver, judged by what a player notices (owner, 2026-11-26, #88):
+  - **MAJOR** when something saved by the last version (a round, packs, settings, a room) stops working, or a feature players use is taken away: somebody has to do something.
+  - **MINOR** when players get something new: a feature, a screen, a setting, a language, a pack, a new way to play.
+  - **PATCH** when there are only fixes, or changes players do not see (tests, tooling, docs, internal clean-ups).
+  - A release takes the largest bump any of its notes needs. Published numbers are never changed, even one that should have been different (1.13.1 is the known case).
 - README, PRODUCT, DESIGN, and PLAYTEST still describe the shipped behavior; the README's recipes still end in the test that guards them.
