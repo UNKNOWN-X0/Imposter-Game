@@ -6,6 +6,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Fixed
+
+- "Got it" on a game's rules, opened from the game list, goes back to that list instead of the home screen. The phone's back button does the same.
+
 ### Changed
 
 - The word pack screens match the home screen too. The library puts your own packs under their own heading above the built-in ones, and adding a pack is one clear card. The editor reads top to bottom (name and icon, the words, share and import) without boxes or shouting labels.
