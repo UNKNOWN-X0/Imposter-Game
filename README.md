@@ -31,7 +31,7 @@ Free, highly customisable party games for friends around one table, on one phone
 
 ### Run it yourself
 
-Install **Node.js 20 or newer**, then:
+Install **Node.js 22 or newer**, then:
 
 ```sh
 git clone https://github.com/UNKNOWN-X0/The-Long-Table.git
