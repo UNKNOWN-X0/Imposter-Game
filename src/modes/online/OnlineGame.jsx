@@ -190,6 +190,7 @@ function Room({ session, onLeave, onExit }) {
                 }
               : null
           }
+          onAdd={isHost ? savePack : null}
           onClose={() => setBrowsing(false)}
         />
       );

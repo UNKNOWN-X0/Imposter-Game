@@ -1,0 +1,32 @@
+name: Share a pack
+description: Put a word pack you wrote on the community shelf, for every table.
+title: "[Pack] "
+labels: ["community pack"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        In the game, open your pack, tap **Send this to anybody**, and paste the code below (**Share it with everyone** fills it in for you).
+        Somebody reads every pack before it goes in. Once it is merged, it shows up under **From the community** in the pack library.
+  - type: textarea
+    id: code
+    attributes:
+      label: Share code
+      description: The long code from "Send this to anybody". It holds the name, the icon, the language and every word.
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: credit
+    attributes:
+      label: Name to credit (optional)
+      description: Shown as "by …" beside the pack. Leave it empty to share without a name. Up to 40 characters.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before you share
+      options:
+        - label: I wrote these words or may share them, and they can be used under CC BY-NC-SA 4.0 (LICENSE-CONTENT.md).
+          required: true
+        - label: Nothing in it names a real private person, and nothing in it is cruel about anyone.
+          required: true

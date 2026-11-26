@@ -12,7 +12,7 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-export function Sheet({ label, title, doneLabel, onClose, children }) {
+export function Sheet({ label, title, doneLabel, onClose, quietDone, children }) {
   const card = useRef(null);
   // Held in a ref so that changing a setting inside the sheet, which hands
   // down a new onClose, does not rerun the effect and bounce focus about.
@@ -35,7 +35,9 @@ export function Sheet({ label, title, doneLabel, onClose, children }) {
       <div className="modal sheet stack" role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} ref={card}>
         {title && <h2 className="sheet-title">{title}</h2>}
         {children}
-        <button className="btn primary block" onClick={onClose}>
+        {/* A sheet with its own main action (Add, Delete) keeps Done quiet,
+            so only one button on it is filled. */}
+        <button className={quietDone ? 'btn block' : 'btn primary block'} onClick={onClose}>
           {doneLabel}
         </button>
       </div>

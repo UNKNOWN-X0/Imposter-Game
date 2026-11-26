@@ -26,8 +26,9 @@ import {
   PACK_LIMITS,
 } from '../../content/words/custom.js';
 import { WORD_LANGUAGES } from '../../content/words/index.js';
+import { SHARE_URL, shareLink } from '../../content/words/community.js';
 import { useT, useErrorText } from '../../i18n/index.jsx';
-import { CheckIcon, CopyIcon, SparklesIcon } from '../../ui/icons/index.jsx';
+import { CheckIcon, CopyIcon, GlobeIcon, SparklesIcon } from '../../ui/icons/index.jsx';
 import { Banner } from '../../ui/primitives/index.js';
 import { Sheet, SettingRow } from '../../ui/primitives/Sheet.jsx';
 import { AiPrompt } from './AiPrompt.jsx';
@@ -273,6 +274,18 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
                 {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}{' '}
                 {copied ? t('common.copied') : t('common.copy')}
               </button>
+              {/* The same code, into the community library. A very long code
+                  does not fit in a link; the form then opens empty and the
+                  code is already on the clipboard to paste. */}
+              <p className="hint">{t('packs.shareEveryoneHint')}</p>
+              <a
+                className="btn block"
+                href={shareLink(shareCode, name).length < 7500 ? shareLink(shareCode, name) : SHARE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GlobeIcon size={16} /> {t('packs.shareEveryone')}
+              </a>
             </>
           )}
         </Sheet>
@@ -300,7 +313,7 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
       )}
 
       {sheet === 'delete' && (
-        <Sheet label={t('packs.deleteSure')} title={t('packs.deleteSure')} doneLabel={t('common.cancel')} onClose={closeSheet}>
+        <Sheet label={t('packs.deleteSure')} title={t('packs.deleteSure')} doneLabel={t('common.cancel')} onClose={closeSheet} quietDone>
           <button className="btn danger block" onClick={() => onDelete(pack.id)}>
             {t('packs.delete')}
           </button>
