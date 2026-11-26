@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import { MAX_PLAYERS, MIN_PLAYERS } from '../../../core/engine.js';
 import { TableScene, chairsFor } from '../../../ui/table/TableScene.jsx';
+import { ActionBar } from '../../../ui/primitives/ActionBar.jsx';
 import { useWords } from '../../../features/packs/useWords.js';
 import { useT } from '../../../i18n/index.jsx';
 import { LobbyHint, Scoreboard, SeatActions, Settings, WinValues } from '../../../features/lobby/index.js';
@@ -64,13 +65,15 @@ export function OnlineLobby({ payload, act, myPacks = [], onEditPack, onBrowsePa
       )}
 
       {isHost ? (
-        <button
-          className="btn primary block lg"
-          disabled={!ready || !haveWords}
-          onClick={() => act({ type: 'START_GAME' })}
-        >
-          {haveWords ? t('lobby.deal') : t('lobby.fetchingWords')}
-        </button>
+        <ActionBar>
+          <button
+            className="btn primary block lg"
+            disabled={!ready || !haveWords}
+            onClick={() => act({ type: 'START_GAME' })}
+          >
+            {haveWords ? t('lobby.deal') : t('lobby.fetchingWords')}
+          </button>
+        </ActionBar>
       ) : (
         <p className="hint center dots">{t('room.waitingHost')}</p>
       )}
