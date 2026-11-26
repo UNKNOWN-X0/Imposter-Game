@@ -537,6 +537,8 @@ The fuzz now deals roles and keeps score: two thousand games across every combin
 
 ## [1.13.1] - 2026-09-27
 
+> By the versioning rule written down in #88 this should have been a minor release (1.14.0), because it gave players something new: the double-click launchers. Published numbers are kept as they shipped.
+
 ### Added
 
 - **`Play Imposter.command` and `Play Imposter.bat`** — double-click to play. They install what is missing on the first run, build, start the server and open the browser, so a party night needs no terminal and no typing. If Node.js is not installed they say so and where to get it, rather than failing with a message about a command not found.
