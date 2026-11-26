@@ -8,6 +8,7 @@ import { useT } from '../../../i18n/index.jsx';
 import { CallButton, CallPanel, ClueGrid, ClueInput, ClueList, TurnOrder, roundLabel } from '../../../features/round/index.js';
 import { PackChip } from '../../../features/packs/index.js';
 import { TableScene } from '../../../ui/table/TableScene.jsx';
+import { ActionBar } from '../../../ui/primitives/ActionBar.jsx';
 
 export function OnlineClues({ payload, act }) {
   const { t } = useT();
@@ -81,6 +82,7 @@ export function OnlineClues({ payload, act }) {
         }))}
         // A round in play: one chair each, and no open seat to invite anyone to.
         chairs={state.players.length}
+        className="ts-round"
       />
 
       <div className="card stack tight">
@@ -89,7 +91,9 @@ export function OnlineClues({ payload, act }) {
       </div>
 
       {myTurn ? (
-        <ClueInput onSubmit={(text) => act({ type: 'SUBMIT_CLUE', text })} />
+        <ActionBar>
+          <ClueInput onSubmit={(text) => act({ type: 'SUBMIT_CLUE', text })} />
+        </ActionBar>
       ) : (
         <p className="hint center dots">{t('clues.waitingFor', { name: turnName })}</p>
       )}

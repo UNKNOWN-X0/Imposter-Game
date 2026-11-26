@@ -9,6 +9,7 @@ import { useT } from '../../../i18n/index.jsx';
 import { TableScene } from '../../../ui/table/TableScene.jsx';
 import { CallButton, CallPanel, NotTheImposter, PassGate, Timer, VoteGrid, roundLabel } from '../../../features/round/index.js';
 import { NumberTiles } from '../../../ui/primitives/Choices.jsx';
+import { ActionBar } from '../../../ui/primitives/ActionBar.jsx';
 import { CLUE_TIMER_CHOICES, loadClueTimer, saveClueTimer } from '../storage.js';
 import { PackChip } from '../../../features/packs/index.js';
 import { usePrivacyGate } from '../usePrivacyGate.js';
@@ -87,6 +88,7 @@ export function Talking({ state, run }) {
         }))}
         // A round in play: one chair each, and no open seat to invite anyone to.
         chairs={state.players.length}
+        className="ts-round"
       />
 
       {/* The table marks who is speaking and the button names who is next,
@@ -117,17 +119,19 @@ export function Talking({ state, run }) {
 
       {/* Until the last clue, the big button moves the turn on; the vote is
           still one tap away for a table that is done early. */}
-      {!last && nextUp && (
-        <button className="btn primary block lg" onClick={() => setTurn((n) => n + 1)}>
-          {t('clues.next', { name: nextUp.name })}
+      <ActionBar>
+        {!last && nextUp && (
+          <button className="btn primary block lg" onClick={() => setTurn((n) => n + 1)}>
+            {t('clues.next', { name: nextUp.name })}
+          </button>
+        )}
+        <button
+          className={`btn block${last ? ' primary lg' : ''}`}
+          onClick={() => run({ type: 'FORCE_VOTE' })}
+        >
+          {t('clues.everyoneSpoke')}
         </button>
-      )}
-      <button
-        className={`btn block${last ? ' primary lg' : ''}`}
-        onClick={() => run({ type: 'FORCE_VOTE' })}
-      >
-        {t('clues.everyoneSpoke')}
-      </button>
+      </ActionBar>
 
       {state.config.allowCall && <CallButton onClick={() => setCalling('who')} />}
     </div>

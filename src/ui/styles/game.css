@@ -506,3 +506,21 @@
   border: 1px solid var(--line);
   color: var(--text-dim);
 }
+
+/* ------------------------------------------------------------------ *
+ * The round's main action, kept under the thumb (#105)
+ *
+ * Sticky, not fixed: it stays in the page's flow, so it never covers what
+ * it follows, and on a short screen it simply sits at the end.
+ * ------------------------------------------------------------------ */
+
+.action-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: grid;
+  gap: 10px;
+  margin: 0 -4px;
+  padding: 14px 4px calc(12px + env(safe-area-inset-bottom));
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 0%, transparent), var(--bg) 22px);
+}

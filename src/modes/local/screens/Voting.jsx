@@ -8,6 +8,7 @@ import { alivePlayers } from '../../../core/engine.js';
 import { useT } from '../../../i18n/index.jsx';
 import { ConfirmBar, PassGate, VoteGrid } from '../../../features/round/index.js';
 import { TableScene } from '../../../ui/table/TableScene.jsx';
+import { ActionBar } from '../../../ui/primitives/ActionBar.jsx';
 import { usePrivacyGate } from '../usePrivacyGate.js';
 
 /* ------------------------------------------------------------------ *
@@ -43,8 +44,10 @@ export function Voting({ state, run }) {
         chairs={state.players.length}
         picked={pickedPlayer ? picked : null}
         onPick={setPicked}
+        className="ts-round"
       />
 
+      <ActionBar>
       {pickedPlayer || picked === 'nobody' ? (
         <ConfirmBar
           label={pickedPlayer ? t('vote.confirmOut', { name: pickedPlayer.name }) : t('vote.confirmNobody')}
@@ -62,6 +65,7 @@ export function Voting({ state, run }) {
           </button>
         </>
       )}
+      </ActionBar>
 
       <button className="btn-link" onClick={() => setMode('secret')}>
         {t('vote.secretLink')}

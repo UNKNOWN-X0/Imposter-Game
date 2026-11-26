@@ -361,6 +361,12 @@ for (const lang of ['en', 'th', 'de']) {
 for (const lang of ['en', 'th', 'de']) {
   const { ctx, page, errors } = await openPage(lang);
   const { imposters } = await dealAndReveal(page, 4);
+  // The round's main action starts on screen, not below the fold (#105).
+  const reach = await page.evaluate(() => {
+    const b = document.querySelector('.action-bar .btn.primary')?.getBoundingClientRect();
+    return b ? Math.round(b.bottom) - innerHeight : 'no action bar';
+  });
+  if (reach === 'no action bar' || reach > 0) fail(`${lang}: the clues' main button is ${reach === 'no action bar' ? 'missing its bar' : `${reach}px below the screen`}`);
   await page.getByRole('button', { name: /Everyone has spoken|พูดครบ|abgestimmt|abstimmen|โหวต/i }).first().click();
   await wait(300);
   // A new phase opens at its top, with focus on its heading (#104).
