@@ -19,6 +19,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- At the end of a game the winners' names rise and stand out, and everyone else steps back.
 - Passing the phone shows everyone's emblem in order, with whose turn it is lifted and who has looked ticked off, so the table can see it from across the room. During the clues the speaking ring now glides from one player to the next.
 - The verdict has a moment of suspense: the table sees who they chose and "Were they the imposter?" before the answer lands. Tap to skip it.
 - Everything you tap now presses the same way, choices change at the same pace, and sheets slide back down when you close them instead of vanishing. The hint under the card pulses three times and then stays still.

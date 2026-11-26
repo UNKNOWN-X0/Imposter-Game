@@ -5,7 +5,7 @@
 import { useEffect, useState } from 'react';
 import { Avatar } from '../../ui/primitives/Avatar.jsx';
 import { motionMs } from '../../ui/motionMs.js';
-import { SPECIAL_ROLES } from '../../core/engine.js';
+import { SPECIAL_ROLES, onWinningSide } from '../../core/engine.js';
 import { BellIcon, BrokenIcon, Confetti, DiceIcon, HourglassIcon, ImposterIcon, JesterIcon, TargetIcon, TieIcon, TrophyIcon } from '../../ui/icons/index.jsx';
 import { useT } from '../../i18n/index.jsx';
 import { PlayerList } from '../lobby/PlayerList.jsx';
@@ -241,6 +241,7 @@ export function GameOverCard({ state, onPlayAgain, canRestart = true }) {
           imposterIds={imposterIds}
           roles={state.roles}
           eliminated={state.eliminated}
+          won={(id) => onWinningSide(state, id)}
         />
       </div>
 

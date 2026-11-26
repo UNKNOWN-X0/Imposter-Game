@@ -561,3 +561,13 @@
   color: var(--on-accent);
   box-shadow: 0 0 0 2px var(--bg);
 }
+
+/* The win (#111): on the end screen the winning side stands out and the
+   rest steps back, without motion for those who asked for none. */
+.player.lost {
+  opacity: 0.55;
+}
+
+.player.won .player-name {
+  font-weight: 800;
+}

@@ -455,6 +455,26 @@
  * ------------------------------------------------------------------ */
 
 @media (prefers-reduced-motion: no-preference) {
+  /* The win (#111): the winners' rows rise once, one after another, as the
+     confetti falls; the losing rows settle back. Nothing loops after. */
+  .player.won {
+    animation: win-rise var(--motion-celebration) var(--ease-celebration) both;
+  }
+
+  .player.won:nth-child(2) { animation-delay: 60ms; }
+  .player.won:nth-child(3) { animation-delay: 120ms; }
+  .player.won:nth-child(n + 4) { animation-delay: 180ms; }
+
+  .player.lost {
+    transition: opacity var(--motion-celebration) var(--ease-standard);
+  }
+
+  @keyframes win-rise {
+    0% { transform: translateY(8px); }
+    55% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+  }
+
   /* The deal (#110): on the first hand-over, the emblems arrive one after
      another, as if dealt round the table. */
   .deal-strip.dealing .deal-seat {
