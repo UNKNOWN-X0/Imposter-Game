@@ -156,7 +156,6 @@ p {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0;
-  text-transform: uppercase;
   color: var(--text-faint);
   background: var(--surface-2);
   border-radius: var(--radius-pill);
@@ -215,12 +214,13 @@ p {
   color: var(--text-dim);
 }
 
+/* A label over something: sentence case and quiet, like the settings' field
+   names (#101). It was small spaced capitals, which read as shouting beside
+   the redesigned screens. */
 .eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
-  color: var(--text-faint);
+  color: var(--text-dim);
 }
 
 .hint {

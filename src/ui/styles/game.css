@@ -55,8 +55,6 @@
   border-radius: 999px;
   background: var(--surface-2);
   color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   flex: none;
 }
 
@@ -110,10 +108,11 @@
 }
 
 .reveal .role-name {
-  font-size: 13px;
+  /* Still the loudest line on the card, but in large sentence case rather
+     than small spaced capitals (#101). */
+  font-size: 20px;
   font-weight: 800;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
 .reveal.crew .role-name {
@@ -302,10 +301,8 @@
 
 .clue .who {
   color: var(--text-faint);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .clue .what {
@@ -340,10 +337,8 @@
 }
 
 .cluegrid thead th {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--text-faint);
   padding-top: 12px;
   padding-bottom: 8px;

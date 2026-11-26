@@ -1,7 +1,7 @@
 # Graph Report - Imposter-Game  (2026-11-26)
 
 ## Corpus Check
-- 214 files · ~205,833 words
+- 214 files · ~205,896 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 21 file(s) not represented in the graph (top: .css 14, (none) 3, .bat 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `76db002f`
+- Built from commit: `66bd2cb9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -347,16 +347,16 @@ Nodes (11): tally(), PHASE, publicImposterCount(), buildPublicState(), publicSta
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Project standards` connect `Project standards` to `Project Guide`, `rules.js`?**
-  _High betweenness centrality (0.092) - this node is a cross-community bridge._
+  _High betweenness centrality (0.096) - this node is a cross-community bridge._
 - **What connects `Central scoring table`, `Data-described optional roles`, `Separate interface and word languages` to the rest of the system?**
   _22 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Settings.jsx` be split into smaller, more focused modules?**
   _Cohesion score 0.06769936890418818 - nodes in this community are weakly interconnected._
 - **Why does `Invariants` connect `rules.js` to `Settings.jsx`, `select.js`, `Project standards`?**
-  _High betweenness centrality (0.079) - this node is a cross-community bridge._
+  _High betweenness centrality (0.083) - this node is a cross-community bridge._
 - **Should `Room Server and Tests` be split into smaller, more focused modules?**
   _Cohesion score 0.06862745098039216 - nodes in this community are weakly interconnected._
 - **Why does `react` connect `useT` to `Settings.jsx`, `App.jsx`, `errors/index.js`, `Verdict.jsx`, `i18n/index.jsx`, `Build Dependencies`, `Icon`, `theme.test.js`, `Settings.jsx`, `primitives/index.js`, `room.test.js`, `LocalGame.jsx`?**
-  _High betweenness centrality (0.071) - this node is a cross-community bridge._
+  _High betweenness centrality (0.068) - this node is a cross-community bridge._
 - **Should `ref_node_fs` be split into smaller, more focused modules?**
   _Cohesion score 0.08547008547008547 - nodes in this community are weakly interconnected._

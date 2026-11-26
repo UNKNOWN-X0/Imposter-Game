@@ -582,15 +582,15 @@
     "semantic_hash": "b30997083c1e0282003e501ec0b6e9a0"
   },
   "src/i18n/strings/de.js": {
-    "mtime": 1795709009.0006268,
-    "seen": 1795709395.239084,
-    "ast_hash": "8c1437f688fe5fc2975c952dda62eb02",
+    "mtime": 1795715515.880375,
+    "seen": 1795715966.289784,
+    "ast_hash": "5d2e9e403f7f280fc8784a6889524aa2",
     "semantic_hash": ""
   },
   "src/i18n/strings/en.js": {
-    "mtime": 1795709009.0013337,
-    "seen": 1795709395.239085,
-    "ast_hash": "3203794a3cff884cde93e65bbcf982b0",
+    "mtime": 1795715515.8807318,
+    "seen": 1795715966.2897851,
+    "ast_hash": "f00ccc5f21cd4fb68e82ea2e085a630c",
     "semantic_hash": ""
   },
   "src/i18n/strings/index.js": {
@@ -840,8 +840,8 @@
     "semantic_hash": ""
   },
   "src/ui/icons/brand.jsx": {
-    "mtime": 1795711482.924114,
-    "seen": 1795714642.782569,
+    "mtime": 1795715042.063812,
+    "seen": 1795715966.289831,
     "ast_hash": "f811c36577bf6da6f47635029ba1ff9f",
     "semantic_hash": ""
   },
@@ -972,9 +972,9 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1795714639.5113425,
-    "seen": 1795714642.782628,
-    "ast_hash": "d7018997d86005696b6232ffd8585746",
+    "mtime": 1795715964.176676,
+    "seen": 1795715966.289866,
+    "ast_hash": "6e176db1e42e1d7ad223dbfd6fea23e5",
     "semantic_hash": ""
   },
   "PLAYTEST.md": {
@@ -996,44 +996,44 @@
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/crash.txt": {
-    "mtime": 1795711627.9987073,
-    "seen": 1795714642.78265,
-    "ast_hash": "7637cb04b2488e167c61d682461eaec0",
+    "mtime": 1795715731.9078636,
+    "seen": 1795715966.289879,
+    "ast_hash": "5fa8f448c011049460dd0b6eebe8cc20",
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/de-game-over.txt": {
-    "mtime": 1795711625.138289,
-    "seen": 1795714642.782651,
+    "mtime": 1795715729.0435424,
+    "seen": 1795715966.28988,
     "ast_hash": "abd46671df28a131f724cdb00adb1e06",
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/en-game-over.txt": {
-    "mtime": 1795711606.73764,
-    "seen": 1795714642.782655,
-    "ast_hash": "0c7293b9014f3fc10184f1bdf5cd6542",
+    "mtime": 1795715710.6371608,
+    "seen": 1795715966.289883,
+    "ast_hash": "98a5a140f3fe3a28d4f11003948ca7dd",
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/game-over-after-a-call.txt": {
-    "mtime": 1795711598.9855945,
-    "seen": 1795714642.782659,
+    "mtime": 1795715702.8946328,
+    "seen": 1795715966.289885,
     "ast_hash": "7ccf1d26d6d471adef0ddf2c505b7928",
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/home-links.txt": {
-    "mtime": 1795711637.6541355,
-    "seen": 1795714642.78266,
+    "mtime": 1795715741.5651577,
+    "seen": 1795715966.289886,
     "ast_hash": "2f9f9fe7a6819ee9d62341fd1b9cd006",
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/icons.txt": {
-    "mtime": 1795711626.5849211,
-    "seen": 1795714642.7826612,
+    "mtime": 1795715730.492085,
+    "seen": 1795715966.289886,
     "ast_hash": "4e1f14c0ab82d65018b2d0c5273d3928",
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/th-game-over.txt": {
-    "mtime": 1795711615.9393141,
-    "seen": 1795714642.7826629,
+    "mtime": 1795715719.8583152,
+    "seen": 1795715966.289887,
     "ast_hash": "7ccf1d26d6d471adef0ddf2c505b7928",
     "semantic_hash": ""
   },
@@ -1098,9 +1098,9 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1795714639.5101495,
-    "seen": 1795714642.7826319,
-    "ast_hash": "ed5b057f7217103a578bdbc5656c793f",
+    "mtime": 1795715964.1757767,
+    "seen": 1795715966.289869,
+    "ast_hash": "e8ebfd05aac9dc3d70500f0e1ddbdcf3",
     "semantic_hash": ""
   },
   "PRODUCT.md": {
@@ -1356,38 +1356,38 @@
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/de-settings-rows.txt": {
-    "mtime": 1795711590.3528306,
-    "seen": 1795714642.7826529,
+    "mtime": 1795715694.2396994,
+    "seen": 1795715966.289881,
     "ast_hash": "abaebb1a3236f096d3af18c48dc525af",
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/de-settings-sheet.txt": {
-    "mtime": 1795711582.4651413,
-    "seen": 1795714642.782654,
+    "mtime": 1795715686.358519,
+    "seen": 1795715966.2898822,
     "ast_hash": "fe3ef63c6c86ea8d4c937cd46b8f71a0",
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/en-settings-rows.txt": {
-    "mtime": 1795711570.1779718,
-    "seen": 1795714642.782656,
+    "mtime": 1795715674.2383075,
+    "seen": 1795715966.289883,
     "ast_hash": "6e36cf8ba6d275032037e04a8201cf16",
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/en-settings-sheet.txt": {
-    "mtime": 1795711562.2807624,
-    "seen": 1795714642.782658,
+    "mtime": 1795715666.3395936,
+    "seen": 1795715966.2898839,
     "ast_hash": "2e7980683172013b6559bbc6b7709e30",
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/th-settings-rows.txt": {
-    "mtime": 1795711580.3734133,
-    "seen": 1795714642.7826638,
+    "mtime": 1795715684.2526026,
+    "seen": 1795715966.289888,
     "ast_hash": "b16488a12b1872e9a7e2f322f48a619c",
     "semantic_hash": ""
   },
   "src/testing/browser/layouts/th-settings-sheet.txt": {
-    "mtime": 1795711572.435881,
-    "seen": 1795714642.782665,
+    "mtime": 1795715676.3836255,
+    "seen": 1795715966.289889,
     "ast_hash": "bcdf074eeafb9df44e987218fba983d8",
     "semantic_hash": ""
   },

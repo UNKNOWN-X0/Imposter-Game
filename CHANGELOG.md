@@ -18,6 +18,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- The round's labels no longer shout. "Pass the phone to", "The word was", the speaking order, the tags and the rest are in ordinary sentence case like the other screens, and the role on your card is in large type instead of spaced capitals.
 - Imposter has a redrawn mark: a fedora over square spectacles, in the same solid style as The Long Table's own. The eyes behind the glasses still blink.
 - No more sliding pills. Choices like what the imposter sees are a list where each option says what it does, and numbers like rounds or the clue timer are tiles you tap.
 - The last hand-drawn icons now match the rest: the jester is two theatre masks, blind mode is a card with a question mark, and a face-down card sits on top of its deck.
