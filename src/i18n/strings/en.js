@@ -47,8 +47,8 @@ export default {
   'common.whatsThis': 'What is this?',
   'credit.madeBy': 'Made by',
 
-  'tag.host': 'host',
-  'tag.you': 'you',
+  'tag.host': 'Host',
+  'tag.you': 'You',
   'role.detective': 'Detective',
   'role.jester': 'Jester',
   'role.sidekick': 'Sidekick',
@@ -96,9 +96,9 @@ export default {
   'score.worth.jester': 'Jester, voted out',
   'over.cleanSweep': 'Clean sweep',
   'over.reason.cleanSweep': 'Every imposter found, and not one of you lost.',
-  'tag.imposter': 'imposter',
-  'tag.crew': 'crew',
-  'tag.out': 'out',
+  'tag.imposter': 'Imposter',
+  'tag.crew': 'Crew',
+  'tag.out': 'Out',
 
   'hub.brand': 'Friends, one table.',
   'hub.navigation': 'Party navigation',

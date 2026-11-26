@@ -82,8 +82,7 @@
   margin-top: -2px;
 }
 
-/* In the round eyebrow it sits beside the label, and must not inherit the
-   uppercase letter-spacing that line uses. */
+/* In the round's label line the pack chip sits beside the label. */
 .row-eyebrow {
   display: flex;
   align-items: center;
@@ -92,8 +91,6 @@
 }
 
 .row-eyebrow .pack-chip {
-  text-transform: none;
-  letter-spacing: 0.01em;
   font-size: 12.5px;
   padding: 3px 10px;
 }

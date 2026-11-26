@@ -27,11 +27,8 @@
   gap: 6px;
 }
 
-/* The counts read as plain words, like the rest of the editor, not as
-   shouting badges. */
+/* The counts read a little larger than a tag elsewhere. */
 .counts .tag {
-  text-transform: none;
-  letter-spacing: 0;
   font-size: 13px;
 }
 
@@ -269,6 +266,4 @@ a.hub-mode { text-decoration: none; }
 .game-uses-words {
   margin-left: 8px;
   vertical-align: middle;
-  text-transform: none;
-  letter-spacing: 0;
 }

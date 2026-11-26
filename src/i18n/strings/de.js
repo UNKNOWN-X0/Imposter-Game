@@ -48,7 +48,7 @@ export default {
   'credit.madeBy': 'Gemacht von',
 
   'tag.host': 'Gastgeber',
-  'tag.you': 'du',
+  'tag.you': 'Du',
   'role.detective': 'Detektiv',
   'role.jester': 'Narr',
   'role.sidekick': 'Komplize',
@@ -98,7 +98,7 @@ export default {
   'over.reason.cleanSweep': 'Jeden Falschspieler gefunden — und niemanden verloren.',
   'tag.imposter': 'Falschspieler',
   'tag.crew': 'Crew',
-  'tag.out': 'raus',
+  'tag.out': 'Raus',
 
   'hub.brand': 'Freunde an einem Tisch.',
   'hub.navigation': 'Party-Navigation',
