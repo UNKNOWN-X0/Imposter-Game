@@ -237,6 +237,8 @@ export default {
   'settings.on': 'On',
   'settings.off': 'Off',
   'settings.rounds': 'Rounds',
+  'settings.clueTimerOn': '{count} seconds a speaker',
+  'settings.clueTimerHint': 'A clock for each clue on this phone, so nobody thinks for ever.',
   'settings.roundsHint': 'Each round, everyone still in gives one more clue',
   'settings.roundsUnlimitedHint': 'Play until the imposters are caught or take over',
   'settings.roundsUnlimited': '∞',

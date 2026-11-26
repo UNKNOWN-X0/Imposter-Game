@@ -233,6 +233,8 @@ export default {
   'settings.on': 'เปิด',
   'settings.off': 'ปิด',
   'settings.rounds': 'จำนวนรอบ',
+  'settings.clueTimerOn': 'คนละ {count} วินาที',
+  'settings.clueTimerHint': 'นาฬิกาจับเวลาให้แต่ละคนบนโทรศัพท์เครื่องนี้ จะได้ไม่มีใครคิดนานเกินไป',
   'settings.roundsHint': 'แต่ละรอบ คนที่ยังอยู่ใบ้เพิ่มคนละคำ',
   'settings.roundsUnlimitedHint': 'เล่นยาวจนกว่าจะจับสายลับได้ หรือสายลับยึดเกมได้',
   'settings.roundsUnlimited': '∞',

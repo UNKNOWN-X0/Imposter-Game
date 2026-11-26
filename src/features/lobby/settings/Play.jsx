@@ -33,3 +33,28 @@ export function Rounds({ t, config, onChange, disabled, seats, cap, blind, wordL
     </div>
   );
 }
+
+/**
+ * Time per speaker on one phone (#107): a setting for the night, so it lives
+ * here rather than between the table and Next on every clue turn. Only the
+ * one-phone lobby passes `clueTimer`; a room has no shared clock.
+ */
+export function ClueTimer({ t, clueTimer }) {
+  return (
+    <div className="setting block">
+      <div className="label">
+        <b>{t('clues.timer')}</b>
+        <span>{t('settings.clueTimerHint')}</span>
+      </div>
+      <NumberTiles
+        label={t('clues.timer')}
+        value={clueTimer.value}
+        onChange={clueTimer.onChange}
+        options={clueTimer.choices.map((n) => ({
+          value: n,
+          label: n ? t('clues.timerSeconds', { count: n }) : t('clues.timerOff'),
+        }))}
+      />
+    </div>
+  );
+}

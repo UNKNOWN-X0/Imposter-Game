@@ -20,7 +20,7 @@ import { Sheet, SettingRow } from '../../ui/primitives/Sheet.jsx';
 import { Presets } from './settings/Presets.jsx';
 import { Packs, WordLanguage } from './settings/Words.jsx';
 import { HowMany, WhatTheySee, WhetherTheyKnow } from './settings/Imposters.jsx';
-import { Rounds } from './settings/Play.jsx';
+import { ClueTimer, Rounds } from './settings/Play.jsx';
 import { Roles } from './settings/Extras.jsx';
 import { imposterHint } from './settings/helpers.js';
 
@@ -34,6 +34,7 @@ const SECTIONS = {
   sees: WhatTheySee,
   knows: WhetherTheyKnow,
   rounds: Rounds,
+  clueTimer: ClueTimer,
   roles: Roles,
 };
 
@@ -51,6 +52,7 @@ export function Settings({
   customPacks = [],
   onEditPack,
   onBrowsePacks,
+  clueTimer,
 }) {
   const { t } = useT();
   const [open, setOpen] = useState(null);
@@ -85,7 +87,7 @@ export function Settings({
   // should be reaching back into this file for the rest.
   const ctx = {
     t, config, onChange, disabled, seats, cap, blind, wordLang, packs, myPacks,
-    packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks,
+    packIds, allPacks, roles, words, togglePack, onEditPack, onBrowsePacks, customPacks, clueTimer,
   };
 
   // What each row says it is set to: the same lines the sections show, so
@@ -108,6 +110,10 @@ export function Settings({
       config.maxRounds === ROUNDS_UNLIMITED
         ? t('settings.roundsUnlimitedHint')
         : t('settings.roundsCount', { count: config.maxRounds }),
+    ],
+    clueTimer: [
+      t('clues.timer'),
+      clueTimer?.value ? t('settings.clueTimerOn', { count: clueTimer.value }) : t('clues.timerOff'),
     ],
     roles: [
       t('settings.roles'),
@@ -158,6 +164,7 @@ export function Settings({
         <h3 className="settings-group-title">{t('settings.groupRound')}</h3>
         <div className="setting-list">
           {row('rounds')}
+          {clueTimer && row('clueTimer')}
           {toggle(t('settings.call'), t('tip.call'), blind ? t('settings.lockedByBlind') : t('settings.callHint'), config.allowCall, 'allowCall', blind)}
           {toggle(t('settings.steal'), t('tip.steal'), t('settings.stealHint'), config.allowSteal, 'allowSteal')}
         </div>

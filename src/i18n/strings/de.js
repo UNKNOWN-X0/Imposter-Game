@@ -237,6 +237,8 @@ export default {
   'settings.on': 'An',
   'settings.off': 'Aus',
   'settings.rounds': 'Runden',
+  'settings.clueTimerOn': '{count} Sekunden pro Person',
+  'settings.clueTimerHint': 'Eine Uhr für jeden Hinweis auf diesem Handy, damit niemand ewig überlegt.',
   'settings.roundsHint': 'Jede Runde gibt jeder, der noch dabei ist, einen Hinweis mehr',
   'settings.roundsUnlimitedHint': 'Gespielt wird, bis die Falschspieler enttarnt sind oder übernehmen',
   'settings.roundsUnlimited': '∞',
