@@ -543,6 +543,8 @@ export default {
 
   'verdict.nobody': 'Nobody goes',
   'verdict.split': 'The vote was split, so everyone stays in.',
+  'verdict.chose': 'The table chose {name}',
+  'verdict.wasThey': 'Were they the imposter?',
   'verdict.isOut': '{name} is out',
   'verdict.wasImposter': 'They <b>were</b> an imposter.',
   'verdict.wasCrew': 'They were <b>crew</b>.',

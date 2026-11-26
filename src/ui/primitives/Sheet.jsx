@@ -11,13 +11,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { motionMs } from '../motionMs.js';
 
-/** How long a leaving sheet or tip plays, from the token; none under reduced motion. */
-export function exitMs() {
-  if (typeof window === 'undefined' || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return 0;
-  const v = getComputedStyle(document.documentElement).getPropertyValue('--motion-exit').trim();
-  return Number.parseFloat(v) || 0;
-}
+/** How long a leaving sheet or tip plays (#108); none under reduced motion. */
+export const exitMs = () => motionMs('--motion-exit');
 
 export function Sheet({ label, title, doneLabel, onClose, quietDone, children }) {
   const card = useRef(null);

@@ -220,6 +220,14 @@ async function declare(page, name, guess = 'not the word at all') {
   await wait(450);
 
   for (let step = 0; step < 4; step += 1) {
+    // The verdict's beat (#109) holds the answer back for a moment; tap it
+    // through, as a table in a hurry would.
+    const beat = page.locator('.verdict-beat');
+    if (await beat.count()) {
+      await beat.click();
+      await wait(250);
+      continue;
+    }
     // Handing the phone over is one big button with the whole invitation
     // written on it, not a small one labelled "tap".
     const gate = page.locator('button', { hasText: /Pass the phone to/i }).first();

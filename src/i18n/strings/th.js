@@ -531,6 +531,8 @@ export default {
 
   'verdict.nobody': 'ไม่มีใครออก',
   'verdict.split': 'คะแนนเสมอกัน ทุกคนอยู่ต่อ',
+  'verdict.chose': 'โต๊ะเลือก {name}',
+  'verdict.wasThey': 'เขาคือสายลับหรือเปล่า?',
   'verdict.isOut': '{name} ออกแล้ว',
   'verdict.wasImposter': 'เขา<b>เป็น</b>สายลับจริงๆ',
   'verdict.wasCrew': 'เขาเป็น<b>ชาวบ้าน</b>',

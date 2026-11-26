@@ -275,6 +275,10 @@ for (const lang of ['en', 'th', 'de']) {
     await look(page, `${lang} settings sheet`);
     await sheet.getByRole('button', { name: '2', exact: true }).click();
     await page.keyboard.press('Escape');
+    // It slides away over --motion-exit (#108), in the built app too, where
+    // the minifier writes the token as seconds.
+    await wait(60);
+    if (!(await page.locator('.bottom-sheet.leaving').count())) fail(`${lang}: the sheet vanished instead of leaving`);
     await wait(300);
     if (await sheet.count()) fail(`${lang}: Escape left the sheet open`);
     else if ((await rounds.innerText()) === before) fail(`${lang}: the rounds row did not follow the sheet`);
@@ -378,7 +382,16 @@ for (const lang of ['en', 'th', 'de']) {
   if (!(await page.locator('.confirm-bar').count()) || (await page.locator('.reveal.crew, .reveal.imposter, .verdict').count()))
     fail(`${lang}: one tap on a seat decided the vote`);
   await page.locator('.confirm-bar .btn.primary').click();
-  await wait(600);
+  // The verdict's beat (#109): the chosen seat first, then a tap skips to
+  // the answer.
+  await wait(120);
+  if (!(await page.locator('.verdict-beat').count())) fail(`${lang}: no beat before the verdict`);
+  else {
+    await page.locator('.verdict-beat').click();
+    await wait(150);
+    if (!(await page.locator('.stamp').count())) fail(`${lang}: tapping the beat did not show the verdict`);
+  }
+  await wait(450);
   // verdict → steal or game over → play again
   for (let i = 0; i < 4; i++) {
     const guess = page.locator('input:not([type=radio])').first();
