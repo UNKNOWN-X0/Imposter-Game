@@ -9,6 +9,7 @@ import { Banner } from '../../ui/primitives/index.js';
 import { TableScene, chairsFor } from '../../ui/table/TableScene.jsx';
 import { MAX_PLAYERS } from '../../core/rules.js';
 import { defaultEmblem } from '../../ui/icons/emblems.js';
+import { wordGames } from '../../games/index.js';
 
 export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews, news, version }) {
   const { t } = useT();
@@ -19,6 +20,7 @@ export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews
   const [problem, setProblem] = useState(null);
   const pickedName = party.names.includes(picked) ? picked : null;
   const taken = party.names.map((n) => party.emblems[n] ?? defaultEmblem(n));
+  const wordNames = wordGames().map((g) => t(g.name)).join(', ');
 
   return (
     <div className="hub-page" id="hub-top">
@@ -97,19 +99,23 @@ export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews
             </section>
           </div>
 
-          <div className="hub-sections">
-            <section className="hub-library-panel" aria-labelledby="hub-packs-title">
-              <div>
-                <h2 id="hub-packs-title">{t('hub.packsTitle')}</h2>
-                <p>{t('hub.packsDescription')}</p>
-              </div>
-              <button className="hub-primary-action" onClick={onPacks}>{t('home.packs')}</button>
-            </section>
-          </div>
+          {/* Word packs are for the games played with words (#86): the
+              section names them, and goes if none of the games uses words. */}
+          {wordNames && (
+            <div className="hub-sections">
+              <section className="hub-library-panel" aria-labelledby="hub-packs-title">
+                <div>
+                  <h2 id="hub-packs-title">{t('hub.packsTitle')}</h2>
+                  <p>{t('hub.packsDescription', { games: wordNames })}</p>
+                </div>
+                <button className="hub-primary-action" onClick={onPacks}>{t('home.packs')}</button>
+              </section>
+            </div>
+          )}
 
           <footer className="hub-footer">
             <nav className="hub-footer-nav" aria-label={t('hub.navigation')}>
-              <button className="hub-footer-link" onClick={onPacks}>{t('hub.nav.packs')}</button>
+              {wordNames && <button className="hub-footer-link" onClick={onPacks}>{t('hub.nav.packs')}</button>}
               <button className="hub-footer-link" onClick={onRules}>{t('home.rules')}</button>
               <button className="hub-footer-link" onClick={onNews}>
                 {t('home.whatsNew', { version })}

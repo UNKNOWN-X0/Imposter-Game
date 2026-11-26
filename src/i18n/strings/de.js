@@ -16,6 +16,7 @@ export default {
   'games.players': '{min} bis {max} Spieler',
   'games.needs': 'Braucht mindestens {min}; bisher {count} am Tisch. Weitere kannst du im Spiel hinzufügen.',
   'games.rules': 'So wird gespielt',
+  'games.usesWords': 'Nutzt Wortpakete',
   'games.play': '{name} spielen',
   'game.imposter.pitch': 'Alle außer dem Falschspieler bekommen dasselbe geheime Wort. Ein Wort als Hinweis, dann wählt ihr raus, wer blufft.',
 
@@ -129,7 +130,7 @@ export default {
   'emblem.sun': 'Sonne',
   'emblem.fish': 'Fisch',
   'hub.packsTitle': 'Wählt eure eigenen Wörter.',
-  'hub.packsDescription': 'Erstellt, bearbeitet, importiert oder teilt eigene Wortpakete.',
+  'hub.packsDescription': 'Wortpakete für die Spiele mit Wörtern ({games}). Schreibt eigene, ladet die von Freunden oder holt euch eines aus der Community.',
   'home.headline': 'Ein Platz für alle.',
   'hub.intro': 'Kostenlose Partyspiele für Freunde an einem Tisch. Alle eintragen, wählen, wie ihr spielt, dann ein Spiel aussuchen.',
   'home.local.title': 'Mit einem Handy spielen',
@@ -313,6 +314,7 @@ export default {
   'crash.noWord': 'Das Wort steht nicht im Bericht. Und auch nicht, wer was bekommen hat.',
 
   'library.title': 'Wortpakete',
+  'library.forGames': 'Für Spiele mit Wörtern:',
   'library.total_one': '{count} Wort in {packs} Paketen',
   'library.total_other': '{count} Wörter in {packs} Paketen',
   'library.found_one': '{count} Wort gefunden',
