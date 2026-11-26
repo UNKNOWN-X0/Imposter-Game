@@ -5,6 +5,7 @@
 import { useEffect, useId, useState } from 'react';
 import { useT } from '../../i18n/index.jsx';
 import { InfoIcon } from '../icons/index.jsx';
+import { exitMs } from './Sheet.jsx';
 
 /**
  * The ⓘ beside a setting.
@@ -22,14 +23,25 @@ import { InfoIcon } from '../icons/index.jsx';
 export function Info({ text, lines, label }) {
   const { t } = useT();
   const [open, setOpen] = useState(false);
+  const [leaving, setLeaving] = useState(false);
   const id = useId();
+  // Closing folds the explanation away over --motion-exit (#108).
+  const close = () => {
+    const ms = exitMs();
+    if (!ms) return setOpen(false);
+    setLeaving(true);
+    setTimeout(() => {
+      setLeaving(false);
+      setOpen(false);
+    }, ms);
+  };
 
   // A second tap or Escape closes it. Not a tap elsewhere: the page moves
   // when it closes, and a tap on the switch below would land on whatever
   // slid under the finger.
   useEffect(() => {
     if (!open) return undefined;
-    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    const onKey = (e) => e.key === 'Escape' && close();
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
@@ -42,12 +54,12 @@ export function Info({ text, lines, label }) {
         aria-expanded={open}
         aria-controls={open ? id : undefined}
         aria-label={label || t('common.whatsThis')}
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => (open ? !leaving && close() : setOpen(true))}
       >
         <InfoIcon size={18} />
       </button>
       {open && (
-        <span className="tip pop-in" id={id}>
+        <span className={`tip pop-in${leaving ? ' leaving' : ''}`} id={id}>
           {text && <span className="tip-lead">{text}</span>}
           {lines?.length > 0 && (
             <span className="tip-lines">

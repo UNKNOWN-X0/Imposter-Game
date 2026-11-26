@@ -31,7 +31,9 @@
   --motion-press: 80ms;
   --motion-state: 150ms;
   --motion-enter: 320ms;
+  --motion-exit: 200ms;
   --motion-reveal: 450ms;
+  --motion-beat: 600ms;
   --motion-celebration: 700ms;
   --motion-confetti: 1500ms;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);

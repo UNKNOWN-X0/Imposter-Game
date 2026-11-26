@@ -242,10 +242,12 @@ Owner's choice, 2026-11-25 (issue #28): **A · Feast table** for the look, and *
 Motion explains a change; it never carries meaning on its own. Every animation sits inside one `@media (prefers-reduced-motion: no-preference)` block, and `src/ui/styles/styles.test.js` fails the build if one does not, or if anything drawn on by an animation would be left invisible without it. With reduced motion the game is completely still and every state still reads.
 
 #### Vocabulary (tokens in `tokens.css`)
-- **Press** `--motion-press` 80ms, `--ease-standard`: buttons, chips, seats.
-- **State** `--motion-state` 150ms, `--ease-standard`: selection rings, toggles, focus, picker choices.
+- **Press** `--motion-press` 80ms, `--ease-standard`: everything you tap sinks 1px (buttons, rows, cards, tiles, chips, pickers), one rule in `styles/interaction.css`, loaded last (#108).
+- **State** `--motion-state` 150ms, `--ease-standard`: selection rings, toggles, focus, picker choices, and the tick filling (#108).
 - **Enter** `--motion-enter` 320ms, `--ease-emphasis`: a panel, banner or seat arriving (a player sitting down at the table).
 - **Reveal** `--motion-reveal` 450ms: the private card turning over, only after the hold completes.
+- **Exit** `--motion-exit` 200ms, `--ease-standard`: a sheet sliding back down, its dim fading, an ⓘ explanation folding away (#108).
+- **Beat** `--motion-beat` 600ms: the pause before the verdict lands (#109).
 - **Celebration** `--motion-celebration` 700ms and **Confetti** `--motion-confetti` 1500ms, `--ease-celebration`: the game-over screen only.
 
 #### Where it is used

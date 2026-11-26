@@ -113,20 +113,12 @@
   background: var(--surface);
   color: var(--text-dim);
   cursor: pointer;
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.12s ease;
 }
 
 .iconpicker:hover,
 .iconpicker[aria-expanded='true'] {
   color: var(--accent-text);
   border-color: var(--accent-text);
-}
-
-.iconpicker:active {
-  transform: scale(0.94);
 }
 
 /* The disc in the appearance button fills as the menu opens. */
@@ -444,20 +436,12 @@
   font-weight: 700;
   color: var(--text-dim);
   cursor: pointer;
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.12s ease;
 }
 
 .langpicker:hover,
 .langpicker[aria-expanded='true'] {
   color: var(--accent-text);
   border-color: var(--accent-text);
-}
-
-.langpicker:active {
-  transform: scale(0.96);
 }
 
 /* ------------------------------------------------------------------ *

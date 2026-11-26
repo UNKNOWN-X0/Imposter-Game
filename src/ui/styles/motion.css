@@ -318,10 +318,6 @@
   align-items: center;
 }
 
-.vote-btn:not(:disabled):active {
-  transform: scale(0.97);
-}
-
 /* The count fills in rather than appearing at full length. Width stays the
    real figure; only the scale is animated, so a bar cannot land wrong. */
 .bar > span.grow-in {
@@ -459,6 +455,32 @@
  * ------------------------------------------------------------------ */
 
 @media (prefers-reduced-motion: no-preference) {
+  /* Leaving (#108): a sheet slides back down, its dim fades, and an ⓘ
+     explanation folds away, over --motion-exit, instead of vanishing. */
+  .bottom-sheet.leaving {
+    animation: sheet-out var(--motion-exit) var(--ease-standard) both;
+  }
+
+  .bottom-sheet-scrim.leaving {
+    animation: fade-out var(--motion-exit) var(--ease-standard) both;
+  }
+
+  .tip.leaving {
+    animation: tip-out var(--motion-exit) var(--ease-standard) both;
+  }
+
+  @keyframes sheet-out {
+    to { opacity: 0; transform: translateY(32px); }
+  }
+
+  @keyframes fade-out {
+    to { opacity: 0; }
+  }
+
+  @keyframes tip-out {
+    to { opacity: 0; transform: translateY(-4px); }
+  }
+
   @keyframes drift-a {
     from { transform: translate(-6%, -4%) scale(1); }
     to   { transform: translate(10%, 12%) scale(1.18); }

@@ -116,7 +116,8 @@ async function openGame(seats, settings = {}) {
   };
   const done = async () => {
     await sheet.getByRole('button', { name: 'Done' }).click();
-    await wait(150);
+    // It slides away over --motion-exit (#108); wait until it has gone.
+    await sheet.waitFor({ state: 'detached' });
   };
   if (settings.rounds) {
     await openRow('Rounds');

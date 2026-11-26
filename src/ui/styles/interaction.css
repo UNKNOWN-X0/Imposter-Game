@@ -1,0 +1,65 @@
+/*
+ * One motion family for everything you tap (#108, the plan in #103).
+ *
+ * Loaded last so it is the word on these: every tappable thing sinks a
+ * pixel on press for --motion-press, and its selection (accent border, tint,
+ * tick) changes over --motion-state. Before this, buttons scaled, cards and
+ * tiles sank, rows did nothing, and seven controls kept their own timings.
+ * Reduced motion turns every transition off globally (game.css).
+ */
+
+:is(
+  .btn,
+  .vote-btn,
+  button.setting-row,
+  .preset-card,
+  .number-tile,
+  .role-choice,
+  .pack,
+  .pack-edit,
+  .hub-mode,
+  .mode-card,
+  .wood-card,
+  .emoji-pick,
+  .iconpicker,
+  .langpicker,
+  .party-pick-chip,
+  .emblem-choice-button
+) {
+  transition:
+    transform var(--motion-press) var(--ease-standard),
+    background-color var(--motion-state) var(--ease-standard),
+    border-color var(--motion-state) var(--ease-standard),
+    box-shadow var(--motion-state) var(--ease-standard),
+    color var(--motion-state) var(--ease-standard),
+    filter var(--motion-state) var(--ease-standard),
+    opacity var(--motion-state) var(--ease-standard);
+}
+
+:is(
+  .btn,
+  .vote-btn,
+  button.setting-row,
+  .preset-card,
+  .number-tile,
+  .role-choice,
+  .pack,
+  .pack-edit,
+  .hub-mode,
+  .mode-card,
+  .wood-card,
+  .emoji-pick,
+  .iconpicker,
+  .langpicker,
+  .party-pick-chip,
+  .emblem-choice-button
+):not(:disabled):active {
+  transform: translateY(1px);
+}
+
+/* The tick that marks a choice fills over the same time. */
+.choice-check {
+  transition:
+    background-color var(--motion-state) var(--ease-standard),
+    border-color var(--motion-state) var(--ease-standard);
+}

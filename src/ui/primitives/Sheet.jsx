@@ -9,8 +9,15 @@
  * <body>, because the screen it opens from can hold a fixed layer to itself.
  */
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+
+/** How long a leaving sheet or tip plays, from the token; none under reduced motion. */
+export function exitMs() {
+  if (typeof window === 'undefined' || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return 0;
+  const v = getComputedStyle(document.documentElement).getPropertyValue('--motion-exit').trim();
+  return Number.parseFloat(v) || 0;
+}
 
 export function Sheet({ label, title, doneLabel, onClose, quietDone, children }) {
   const card = useRef(null);
@@ -18,11 +25,23 @@ export function Sheet({ label, title, doneLabel, onClose, quietDone, children })
   // down a new onClose, does not rerun the effect and bounce focus about.
   const close = useRef(onClose);
   close.current = onClose;
+  // Leaving slides the sheet back down over --motion-exit before it goes
+  // (#108); it used to vanish on the spot. A second close while it leaves
+  // does nothing.
+  const [leaving, setLeaving] = useState(false);
+  const leave = useRef(() => {});
+  leave.current = () => {
+    if (leaving) return;
+    const ms = exitMs();
+    if (!ms) return close.current();
+    setLeaving(true);
+    setTimeout(() => close.current(), ms);
+  };
 
   useEffect(() => {
     const opener = document.activeElement;
     card.current?.focus();
-    const onKey = (e) => e.key === 'Escape' && close.current();
+    const onKey = (e) => e.key === 'Escape' && leave.current();
     document.addEventListener('keydown', onKey);
     return () => {
       document.removeEventListener('keydown', onKey);
@@ -31,13 +50,16 @@ export function Sheet({ label, title, doneLabel, onClose, quietDone, children })
   }, []);
 
   return createPortal(
-    <div className="scrim bottom-sheet-scrim" onPointerDown={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="modal bottom-sheet stack" role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} ref={card}>
+    <div
+      className={`scrim bottom-sheet-scrim${leaving ? ' leaving' : ''}`}
+      onPointerDown={(e) => e.target === e.currentTarget && leave.current()}
+    >
+      <div className={`modal bottom-sheet stack${leaving ? ' leaving' : ''}`} role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} ref={card}>
         {title && <h2 className="sheet-title">{title}</h2>}
         {children}
         {/* A sheet with its own main action (Add, Delete) keeps Done quiet,
             so only one button on it is filled. */}
-        <button className={quietDone ? 'btn block' : 'btn primary block'} onClick={onClose}>
+        <button className={quietDone ? 'btn block' : 'btn primary block'} onClick={() => leave.current()}>
           {doneLabel}
         </button>
       </div>

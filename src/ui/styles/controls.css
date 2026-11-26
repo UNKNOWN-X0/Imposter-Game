@@ -36,13 +36,9 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: transform 0.08s ease, filter 0.15s ease, opacity 0.15s ease;
   touch-action: manipulation;
 }
 
-.btn:active:not(:disabled) {
-  transform: scale(0.975);
-}
 
 .btn:disabled {
   opacity: 0.4;

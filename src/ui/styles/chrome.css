@@ -146,7 +146,7 @@
   border-radius: 999px;
   background: var(--surface-2);
   flex: 1;
-  transition: background 0.3s ease;
+  transition: background-color var(--motion-state) var(--ease-standard);
 }
 
 .step.done .step-dot {
@@ -251,7 +251,7 @@
   color: var(--text-dim);
   cursor: pointer;
   flex: none;
-  transition: color 0.15s ease;
+  transition: color var(--motion-state) var(--ease-standard);
 }
 
 /* The dot stays 24px, because that is the size that looks right next to a
