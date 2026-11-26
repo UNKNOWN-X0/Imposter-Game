@@ -187,6 +187,15 @@ export const SparklesIcon = (p) => (
   </Icon>
 );
 
+/** What is this? Lucide's info: a ring with an i in it. Still. */
+export const InfoIcon = (p) => (
+  <Icon {...p}>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 16v-4" />
+    <path d="M12 8h.01" strokeWidth="2.6" />
+  </Icon>
+);
+
 /** Add something. */
 export const PlusIcon = (p) => (
   <Icon {...p}>

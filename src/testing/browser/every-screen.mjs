@@ -270,9 +270,42 @@ for (const lang of ['en', 'th', 'de']) {
     if (await sheet.count()) fail(`${lang}: Escape left the sheet open`);
     else if ((await rounds.innerText()) === before) fail(`${lang}: the rounds row did not follow the sheet`);
   }
+  // Every ⓘ opens its explanation in place, whole, inside its card or sheet
+  // and on screen (#82): on the rows, then in each row's sheet.
+  const tipFits = () =>
+    page.evaluate(() => {
+      const tip = document.querySelector('.tip');
+      if (!tip) return 'nothing opened';
+      tip.scrollIntoView({ block: 'nearest' });
+      const box = tip.closest('.setting-list, .bottom-sheet') ?? document.body;
+      const [t, b] = [tip.getBoundingClientRect(), box.getBoundingClientRect()];
+      const inside = t.left >= b.left && t.right <= b.right && t.top >= b.top && t.bottom <= b.bottom;
+      const onScreen = t.left >= 0 && t.right <= innerWidth && t.height <= innerHeight;
+      return inside && onScreen ? 'ok' : `cut off (${Math.round(t.top)}–${Math.round(t.bottom)} in ${Math.round(b.top)}–${Math.round(b.bottom)})`;
+    });
+  const checkTips = async (where, scope) => {
+    const dots = page.locator(`${scope} .info-dot`);
+    for (let i = 0; i < (await dots.count()); i++) {
+      await dots.nth(i).click();
+      await wait(150);
+      const fits = await tipFits();
+      if (fits !== 'ok') fail(`${lang}: tip ${i + 1} ${where}: ${fits}`);
+      await dots.nth(i).click();
+      await wait(100);
+    }
+  };
+  await checkTips('on the rows', '.settings');
+  const sheetRows = page.locator('button.setting-row');
+  for (let i = 0; i < (await sheetRows.count()); i++) {
+    await sheetRows.nth(i).click();
+    await wait(300);
+    await checkTips(`in sheet ${i + 1}`, '.bottom-sheet');
+    await page.keyboard.press('Escape');
+    await wait(200);
+  }
   if (errors.length) fail(`${lang} settings: ${errors[0]}`);
   else {
-    seen.push(`${lang}: settings rows open their sheets and follow them`);
+    seen.push(`${lang}: settings rows open their sheets and follow them; every tip reads whole`);
     await look(page, `${lang} settings rows`);
   }
   await ctx.close();

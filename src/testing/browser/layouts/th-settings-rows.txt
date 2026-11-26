@@ -160,8 +160,8 @@ span.setting-row-value @ 32,1794 302×18
 span.setting-row-end.setting-row-chevron @ 344,1782 12×12
 div.setting-row @ 18,1826 356×92
 span.setting-row-title @ 32,1838 222×28
-span.info @ 136,1840 24×24
-button.info-dot @ 136,1840 24×24
+button.info-dot @ 140,1840 24×24
+svg.icon @ 142,1844 18×18
 span.setting-row-value @ 32,1868 222×38
 span.setting-row-end @ 268,1846 92×52
 button.switch @ 268,1846 92×52
@@ -170,8 +170,8 @@ span.switch-thumb @ 292,1862 22×22
 span.switch-state @ 326,1862 34×22
 div.setting-row @ 18,1918 356×92
 span.setting-row-title @ 32,1932 222×28
-span.info @ 140,1934 24×24
-button.info-dot @ 140,1934 24×24
+button.info-dot @ 144,1934 24×24
+svg.icon @ 148,1936 18×18
 span.setting-row-value @ 32,1962 222×38
 span.setting-row-end @ 268,1940 92×52
 button.switch @ 268,1940 92×52
@@ -187,8 +187,8 @@ span.setting-row-value @ 32,2116 302×18
 span.setting-row-end.setting-row-chevron @ 344,2104 12×12
 div.setting-row @ 18,2146 356×78
 span.setting-row-title @ 32,2160 222×28
-span.info @ 108,2162 24×24
-button.info-dot @ 108,2162 24×24
+button.info-dot @ 112,2162 24×24
+svg.icon @ 114,2166 18×18
 span.setting-row-value @ 32,2192 222×18
 span.setting-row-end @ 268,2160 92×52
 button.switch @ 268,2160 92×52

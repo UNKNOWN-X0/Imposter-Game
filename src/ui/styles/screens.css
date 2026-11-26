@@ -517,30 +517,23 @@
   gap: 10px;
 }
 
-/* Near the bottom of a long lobby there is no room below the row, so the
-   bubble opens upwards instead of off the edge of the screen. */
-.setting .tip.above {
-  top: auto;
-  bottom: calc(100% - 4px);
-}
-
 .tip-lead {
   display: block;
 }
 
 .tip-lines {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
+  /* One grid for every line, so the sentences start at the same edge
+     whatever the longest option's name is. */
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 7px 12px;
+  align-items: baseline;
   padding-top: 10px;
   border-top: 1px solid var(--line);
 }
 
 .tip-line {
-  display: grid;
-  grid-template-columns: minmax(64px, auto) 1fr;
-  gap: 4px 10px;
-  align-items: baseline;
+  display: contents;
 }
 
 .tip-line > b {
@@ -551,9 +544,13 @@
 /* Below about 340px the two columns leave nothing for the sentence, so the
    name sits on its own line above it. */
 @media (max-width: 340px) {
-  .tip-line {
+  .tip-lines {
     grid-template-columns: 1fr;
-    gap: 1px;
+    row-gap: 1px;
+  }
+
+  .tip-line > span {
+    margin-bottom: 6px;
   }
 }
 

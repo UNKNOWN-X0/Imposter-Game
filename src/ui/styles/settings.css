@@ -40,14 +40,12 @@
 }
 
 .setting .label b {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  display: block;
   font-size: 16px;
   font-weight: 750;
 }
 
-.setting .label span {
+.setting .label > span {
   display: block;
   margin-top: 3px;
   color: var(--text-dim);
@@ -358,9 +356,7 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
 }
 
 .setting-row-title {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  display: block;
   font-size: 16px;
   font-weight: 750;
 }
