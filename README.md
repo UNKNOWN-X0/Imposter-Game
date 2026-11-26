@@ -1,6 +1,6 @@
 # The Long Table
 
-[![Play](https://img.shields.io/badge/Play-on%20Netlify-00C7B7?logo=netlify&logoColor=white)](https://impostergamebyfocus.netlify.app/)
+[![Play](https://img.shields.io/badge/Play-on%20GitHub%20Pages-222222?logo=github&logoColor=white)](https://unknown-x0.github.io/The-Long-Table/)
 [![Checks](https://github.com/UNKNOWN-X0/The-Long-Table/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/UNKNOWN-X0/The-Long-Table/actions/workflows/ci.yml)
 [![Version](https://img.shields.io/github/package-json/v/UNKNOWN-X0/The-Long-Table?label=version)](package.json)
 [![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)](package.json)
@@ -8,7 +8,7 @@
 
 Free, highly customisable party games for friends around one table, on one phone passed around or everyone's own. It starts with Imposter, a game of secret words and bluffing, in English, Thai and German.
 
-**[Play The Long Table →](https://impostergamebyfocus.netlify.app/)** · [Changelog](CHANGELOG.md) · [Playtest guide](PLAYTEST.md) · [Report a bug](https://github.com/UNKNOWN-X0/The-Long-Table/issues)
+**[Play The Long Table →](https://unknown-x0.github.io/The-Long-Table/)** · [Changelog](CHANGELOG.md) · [Playtest guide](PLAYTEST.md) · [Report a bug](https://github.com/UNKNOWN-X0/The-Long-Table/issues)
 
 ![The Long Table](assets/preview.png)
 
@@ -27,7 +27,7 @@ Free, highly customisable party games for friends around one table, on one phone
 
 ### Use it online
 
-**[Play in your browser](https://impostergamebyfocus.netlify.app/)** for pass-and-play on one phone. Rooms need the Node server (below, or [Deploying](#deploying)).
+**[Play in your browser](https://unknown-x0.github.io/The-Long-Table/)** for pass-and-play on one phone. Rooms need the Node server (below, or [Deploying](#deploying)).
 
 ### Run it yourself
 
@@ -95,7 +95,7 @@ Each recipe ends in the test that catches the step people forget.
 
 ### Deploying
 
-**Pass-and-play anywhere.** `npm run build`, then put `dist/` on Netlify, GitHub Pages, or any static host. Rooms cannot work there, and the join screen says so.
+**Pass-and-play anywhere.** `npm run build`, then put `dist/` on any static host. The live copy is GitHub Pages, published by `.github/workflows/pages.yml` on every push to `main` (built with `BASE_PATH=/The-Long-Table/`). Rooms cannot work there, and the join screen says so.
 
 **Rooms need a host that runs Node** (Render, Railway, Fly, or your own machine). `render.yaml` describes the setup for Render; elsewhere: build with `npm install && npm run build`, start with `npm start`, and read the port from `PORT`. Rooms live in memory, are swept after six idle hours, and are recovered after a restart from a retained JSON file:
 

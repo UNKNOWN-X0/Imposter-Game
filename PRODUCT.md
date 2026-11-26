@@ -27,7 +27,7 @@ Three claims a neighbouring game could not truthfully make together (owner, 2026
 ## Operating Context
 
 - Played in person, loud rooms, phones held close; a phone may lock mid-round and must come back into the game. Light and dark modes, five wood themes, reduced motion, and `prefers-color-scheme` are followed because the phone's state changes during an evening.
-- Pass-and-play is served as static files (Netlify); rooms need the Node server on a host that runs Node (Render, or a machine on the same Wi-Fi via `npm run party` or the desktop launchers).
+- Pass-and-play is served as static files (GitHub Pages); rooms need the Node server on a host that runs Node (Render, or a machine on the same Wi-Fi via `npm run party` or the desktop launchers).
 - A round is remembered on the device and offered back after a reload, never restored silently; rooms are recovered from a retained file for an hour.
 
 ## Capabilities and Constraints
@@ -47,7 +47,7 @@ Three claims a neighbouring game could not truthfully make together (owner, 2026
 
 ## Evidence on Hand
 
-- Real content: 3,000 word pairs in three languages (`src/content/words/builtin/`), a changelog written for players (`CHANGELOG.md`), a playtest guide. The live site at impostergamebyfocus.netlify.app serves pass-and-play.
+- Real content: 3,000 word pairs in three languages (`src/content/words/builtin/`), a changelog written for players (`CHANGELOG.md`), a playtest guide. The live site at https://unknown-x0.github.io/The-Long-Table/ serves pass-and-play and updates on every push to `main`.
 - Tests: a fingerprint of 400 scripted games, a thousand randomised games that must terminate, server end-to-end tests with four simulated phones, browser sweeps of every screen and every ending.
 - No testimonials, usage statistics, or endorsements exist. Do not invent any.
 

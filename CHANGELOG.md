@@ -8,6 +8,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- The game now lives at **https://unknown-x0.github.io/The-Long-Table/** on GitHub Pages and updates every time a change lands. The old Netlify address stops getting updates; a phone that saved it to the home screen should save the new one.
 - Choosing how to play (**Play on one phone** or **Play in a room**) now opens a game library where you pick the game, with its player range and rules; a guest with a room code goes straight in. The hub's separate "First game" section is gone.
 
 ### Fixed

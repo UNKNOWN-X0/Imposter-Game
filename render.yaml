@@ -1,6 +1,6 @@
 # Deploying somewhere rooms work.
 #
-# Netlify and GitHub Pages serve files and nothing else, which is enough for
+# GitHub Pages (where pass-and-play lives) and Netlify serve files and nothing else, which is enough for
 # passing one phone around but not for rooms: those need a program that stays
 # running, holding who is in which room and pushing every change to every
 # phone. This file tells Render how to run that program, so the only thing
