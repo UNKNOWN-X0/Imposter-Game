@@ -16,6 +16,7 @@ export default {
   'games.players': 'ผู้เล่น {min} ถึง {max} คน',
   'games.needs': 'ต้องมีอย่างน้อย {min} คน ตอนนี้ที่โต๊ะมี {count} คน เพิ่มได้ในเกม',
   'games.rules': 'วิธีเล่น',
+  'games.usesWords': 'ใช้ชุดคำ',
   'games.play': 'เล่น {name}',
   'game.imposter.pitch': 'ทุกคนยกเว้นคนโกหกได้คำลับเดียวกัน ให้คำใบ้คนละคำ แล้วโหวตหาคนที่แกล้งทำเป็นรู้',
 
@@ -127,7 +128,7 @@ export default {
   'emblem.sun': 'พระอาทิตย์',
   'emblem.fish': 'ปลา',
   'hub.packsTitle': 'เลือกคำในแบบของคุณ',
-  'hub.packsDescription': 'สร้าง แก้ไข นำเข้า หรือแชร์ชุดคำของคุณ',
+  'hub.packsDescription': 'ชุดคำสำหรับเกมที่เล่นด้วยคำ ({games}) เขียนเอง โหลดจากเพื่อน หรือเพิ่มชุดที่ชุมชนแชร์ไว้',
   'home.headline': 'มีที่ให้เพื่อนทุกคน',
   'hub.intro': 'เกมปาร์ตี้ฟรีสำหรับเพื่อน ๆ รอบโต๊ะเดียวกัน เพิ่มชื่อทุกคน เลือกวิธีเล่น แล้วเลือกเกม',
   'home.local.title': 'เล่นด้วยมือถือเครื่องเดียว',
@@ -306,6 +307,7 @@ export default {
   'crash.noWord': 'ในรายงานไม่มีคำลับ และไม่มีว่าใครได้บทอะไร',
 
   'library.title': 'ชุดคำ',
+  'library.forGames': 'สำหรับเกมที่เล่นด้วยคำ:',
   'library.total_one': '{count} คำ จาก {packs} ชุด',
   'library.total_other': '{count} คำ จาก {packs} ชุด',
   'library.found_one': 'เจอ {count} คำ',

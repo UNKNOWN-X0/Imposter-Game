@@ -7,12 +7,12 @@
 
 import { Shell } from '../../ui/primitives/index.js';
 import { useT } from '../../i18n/index.jsx';
-import { BookIcon, GamesIcon, ImposterMark, PhoneIcon, ServerIcon, UserPlusIcon } from '../../ui/icons/index.jsx';
+import { BookIcon, GamesIcon, PhoneIcon, ServerIcon, UserPlusIcon } from '../../ui/icons/index.jsx';
+import { GameMark } from '../../games/marks.jsx';
 import { GAMES } from '../../games/index.js';
 import { RuleSteps } from './RuleSteps.jsx';
 
 const STEPS = [UserPlusIcon, PhoneIcon, GamesIcon, BookIcon];
-const MARKS = { imposter: ImposterMark };
 
 export function HowItWorks({ onExit, onGame }) {
   const { t } = useT();
@@ -29,16 +29,13 @@ export function HowItWorks({ onExit, onGame }) {
 
       <section className="settings-group stack tight">
         <h2 className="settings-group-title">{t('howto.games')}</h2>
-        {GAMES.map((game) => {
-          const Mark = MARKS[game.id] ?? GamesIcon;
-          return (
-            <button type="button" className="hub-mode" key={game.id} onClick={() => onGame(game.id)}>
-              <Mark size={24} animated={false} />
-              <span className="hub-mode-title">{t(game.name)}</span>
-              <span className="hub-supporting">{t('games.rules')}</span>
-            </button>
-          );
-        })}
+        {GAMES.map((game) => (
+          <button type="button" className="hub-mode" key={game.id} onClick={() => onGame(game.id)}>
+            <GameMark id={game.id} />
+            <span className="hub-mode-title">{t(game.name)}</span>
+            <span className="hub-supporting">{t('games.rules')}</span>
+          </button>
+        ))}
       </section>
 
       <section className="settings-group stack tight">

@@ -7,7 +7,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { GAMES, MODES, gameById, gamesFor } from './index.js';
+import { GAMES, MODES, gameById, gamesFor, wordGames } from './index.js';
 import en from '../i18n/strings/en.js';
 import th from '../i18n/strings/th.js';
 import de from '../i18n/strings/de.js';
@@ -32,4 +32,10 @@ test('the library lists a game only in the modes it supports', () => {
   for (const m of MODES) for (const g of gamesFor(m)) assert.ok(g.modes.includes(m));
   assert.equal(gameById('imposter')?.id, 'imposter');
   assert.equal(gameById('nope'), null);
+});
+
+test('the games that use word packs come from the catalog', () => {
+  assert.deepEqual(wordGames().map((g) => g.id), GAMES.filter((g) => g.words === true).map((g) => g.id));
+  assert.ok(wordGames().some((g) => g.id === 'imposter'), 'Imposter is played with words');
+  for (const g of GAMES) assert.ok(g.words === undefined || typeof g.words === 'boolean', `${g.id}: words`);
 });

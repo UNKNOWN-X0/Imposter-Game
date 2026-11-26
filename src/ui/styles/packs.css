@@ -239,3 +239,34 @@ input[type='search']::-webkit-search-cancel-button {
 /* The share card on the library is a link to GitHub dressed as the hub's
    card, so it drops a link's underline. */
 a.hub-mode { text-decoration: none; }
+
+/* What the packs are for: "For games played with words:" and a chip per
+   game, its mark and name (#86). */
+.word-games {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin: 2px 0 0;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+.word-game {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.word-game svg { color: var(--accent-text); }
+
+.game-uses-words {
+  margin-left: 8px;
+  vertical-align: middle;
+}

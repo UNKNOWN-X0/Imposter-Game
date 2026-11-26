@@ -11,11 +11,8 @@
 import { gamesFor } from '../../games/index.js';
 import { useT } from '../../i18n/index.jsx';
 import { useParty } from '../../party/index.js';
-import { ImposterMark } from '../../ui/icons/index.jsx';
+import { GameMark } from '../../games/marks.jsx';
 import { Shell } from '../../ui/primitives/index.js';
-
-// Each game's mark. A catalog entry is plain data; its picture lives here.
-const MARKS = { imposter: () => <ImposterMark size={44} animated={false} /> };
 
 export function GameLibrary({ mode, onPick, onJoin, onRules, onBack }) {
   const { t } = useT();
@@ -38,15 +35,17 @@ export function GameLibrary({ mode, onPick, onJoin, onRules, onBack }) {
 
       <ul className="game-list">
         {games.map((g) => {
-          const Mark = MARKS[g.id];
           const short = mode === 'local' && seated < g.minPlayers;
           return (
             <li key={g.id} className="game-card card">
               <div className="game-card-head">
-                {Mark && <Mark />}
+                <GameMark id={g.id} size={44} />
                 <div className="stack tight">
                   <h2>{t(g.name)}</h2>
-                  <p className="hint">{t('games.players', { min: g.minPlayers, max: g.maxPlayers })}</p>
+                  <p className="hint">
+                    {t('games.players', { min: g.minPlayers, max: g.maxPlayers })}
+                    {g.words && <span className="tag game-uses-words">{t('games.usesWords')}</span>}
+                  </p>
                 </div>
               </div>
               <p>{t(g.pitch)}</p>

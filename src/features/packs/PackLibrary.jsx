@@ -21,6 +21,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { packsFor, WORD_LANGUAGES } from '../../content/words/index.js';
 import { PACK_LIMITS, buildPack } from '../../content/words/custom.js';
 import { SHARE_URL, loadCommunity } from '../../content/words/community.js';
+import { wordGames } from '../../games/index.js';
+import { GameMark } from '../../games/marks.jsx';
 import { useWords } from './useWords.js';
 import { useT } from '../../i18n/index.jsx';
 import { CopyIcon, CheckIcon, GlobeIcon, PencilIcon, PlusIcon } from '../../ui/icons/index.jsx';
@@ -75,6 +77,16 @@ export default function PackLibrary({
           {q
             ? t('library.found', { count: found })
             : t('library.total', { count: total, packs: packs.length })}
+        </p>
+        {/* What the packs are for: the games played with words (#86). */}
+        <p className="word-games">
+          <span>{t('library.forGames')}</span>
+          {wordGames().map((g) => (
+            <span className="word-game" key={g.id}>
+              <GameMark id={g.id} size={18} />
+              {t(g.name)}
+            </span>
+          ))}
         </p>
       </div>
 

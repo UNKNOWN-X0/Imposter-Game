@@ -16,6 +16,7 @@ export default {
   'games.players': '{min} to {max} players',
   'games.needs': 'Needs at least {min}; {count} at the table so far. You can add more in the game.',
   'games.rules': 'How to play',
+  'games.usesWords': 'Uses word packs',
   'games.play': 'Play {name}',
   'game.imposter.pitch': 'Everyone but the imposter gets the same secret word. Give one-word clues, then vote out who is faking it.',
 
@@ -129,7 +130,7 @@ export default {
   'emblem.sun': 'Sun',
   'emblem.fish': 'Fish',
   'hub.packsTitle': 'Make the words yours.',
-  'hub.packsDescription': 'Create, edit, import, or share custom word packs.',
+  'hub.packsDescription': 'Word packs for the games played with words ({games}). Write your own, load a friend’s, or add one the community shared.',
   'home.headline': 'Make room for everyone.',
   'hub.intro': 'Free party games for friends around one table. Seat everyone, choose how to play, then pick a game.',
   'home.local.title': 'Play on one phone',
@@ -313,6 +314,7 @@ export default {
   'crash.noWord': 'The word is not in the report. Nor is who was dealt what.',
 
   'library.title': 'Word packs',
+  'library.forGames': 'For games played with words:',
   'library.total_one': '{count} word in {packs} packs',
   'library.total_other': '{count} words across {packs} packs',
   'library.found_one': '{count} word found',
