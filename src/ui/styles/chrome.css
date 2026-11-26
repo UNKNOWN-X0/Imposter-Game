@@ -49,9 +49,31 @@
 
 .timer {
   font-variant-numeric: tabular-nums;
-  font-size: 46px;
+  font-size: 28px;
   font-weight: 800;
   letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* The clue clock as one row in the action bar (#107): who is speaking, the
+   time, and its two buttons. */
+.timer-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 8px 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.timer-label {
+  min-width: 0;
+  color: var(--text-dim);
+  font-size: 14px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .dots::after {

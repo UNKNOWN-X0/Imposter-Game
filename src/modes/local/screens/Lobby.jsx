@@ -11,6 +11,7 @@ import { AddPlayerForm, LobbyHint, Scoreboard, SeatActions, Settings, WinValues 
 import { useWords } from '../../../features/packs/useWords.js';
 import { TableScene, chairsFor } from '../../../ui/table/TableScene.jsx';
 import { defaultEmblem } from '../../../ui/icons/emblems.js';
+import { CLUE_TIMER_CHOICES, loadClueTimer, saveClueTimer } from '../storage.js';
 
 /* ------------------------------------------------------------------ *
  * Lobby
@@ -24,6 +25,7 @@ export function Lobby({ state, run, emblems = {}, onSeat, onEditPack, onBrowsePa
   const haveWords = useWords(state.config.wordLang);
   const ready = state.players.length >= MIN_PLAYERS && haveWords;
   const [picked, setPicked] = useState(null);
+  const [perSpeaker, setPerSpeaker] = useState(loadClueTimer);
   // The party was usually seated at the hub already, so seating is folded
   // away behind Edit; it opens by itself while the table is short (#54).
   const [editing, setEditing] = useState(() => state.players.length < MIN_PLAYERS);
@@ -122,6 +124,14 @@ export function Lobby({ state, run, emblems = {}, onSeat, onEditPack, onBrowsePa
         onEditPack={onEditPack}
         onBrowsePacks={onBrowsePacks}
         onChange={(config) => run({ type: 'SET_CONFIG', config })}
+        clueTimer={{
+          value: perSpeaker,
+          choices: CLUE_TIMER_CHOICES,
+          onChange: (n) => {
+            setPerSpeaker(n);
+            saveClueTimer(n);
+          },
+        }}
       />
     </div>
   );

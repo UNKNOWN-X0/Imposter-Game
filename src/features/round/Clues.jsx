@@ -155,9 +155,11 @@ export function Timer({ seconds = 90, autoStart = false, label }) {
   const mm = String(Math.floor(left / 60)).padStart(2, '0');
   const ss = String(left % 60).padStart(2, '0');
 
+  // One row (#107): it rides in the round's action bar above Next, so it
+  // has to stay short enough to leave the table in sight.
   return (
-    <div className="card center stack tight">
-      {label && <div className="eyebrow">{label}</div>}
+    <div className="timer-row">
+      {label && <span className="timer-label">{label}</span>}
       <div className={`timer${left === 0 ? ' out' : left <= 10 && running ? ' low' : ''}`}>
         {mm}
         {/* A clock that is running should look like it. The colon blinks on
@@ -165,20 +167,18 @@ export function Timer({ seconds = 90, autoStart = false, label }) {
         <span className={`colon${running && left > 0 ? ' ticking' : ''}`}>:</span>
         {ss}
       </div>
-      <div className="row" style={{ justifyContent: 'center' }}>
-        <button className="btn sm ghost" onClick={() => setRunning((r) => !r)}>
-          {running ? t('timer.pause') : t('timer.start')}
-        </button>
-        <button
-          className="btn sm ghost"
-          onClick={() => {
-            setRunning(false);
-            setLeft(seconds);
-          }}
-        >
-          {t('timer.reset')}
-        </button>
-      </div>
+      <button className="btn sm ghost" onClick={() => setRunning((r) => !r)}>
+        {running ? t('timer.pause') : t('timer.start')}
+      </button>
+      <button
+        className="btn sm ghost"
+        onClick={() => {
+          setRunning(false);
+          setLeft(seconds);
+        }}
+      >
+        {t('timer.reset')}
+      </button>
     </div>
   );
 }

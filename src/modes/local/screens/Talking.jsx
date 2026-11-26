@@ -8,9 +8,8 @@ import { alivePlayers, isImposter, playerById, speakingOrder } from '../../../co
 import { useT } from '../../../i18n/index.jsx';
 import { TableScene } from '../../../ui/table/TableScene.jsx';
 import { CallButton, CallPanel, NotTheImposter, PassGate, Timer, VoteGrid, roundLabel } from '../../../features/round/index.js';
-import { NumberTiles } from '../../../ui/primitives/Choices.jsx';
 import { ActionBar } from '../../../ui/primitives/ActionBar.jsx';
-import { CLUE_TIMER_CHOICES, loadClueTimer, saveClueTimer } from '../storage.js';
+import { loadClueTimer } from '../storage.js';
 import { PackChip } from '../../../features/packs/index.js';
 import { usePrivacyGate } from '../usePrivacyGate.js';
 
@@ -32,7 +31,7 @@ export function Talking({ state, run }) {
   const nextUp = playerById(state, order[turn + 1]);
   const speaker = playerById(state, current);
   // Seconds per speaker on this phone; "Next" restarts the clock (#57).
-  const [perSpeaker, setPerSpeaker] = useState(loadClueTimer);
+  const [perSpeaker] = useState(loadClueTimer);
 
   if (calling === 'who') {
     return (
@@ -92,34 +91,20 @@ export function Talking({ state, run }) {
       />
 
       {/* The table marks who is speaking and the button names who is next,
-          so the order is not spelled out a second time (#57). */}
-      <div className="stack tight">
-        <span className="field-label" id="clue-timer-label">{t('clues.timer')}</span>
-        <NumberTiles
-          label={t('clues.timer')}
-          value={perSpeaker}
-          onChange={(n) => {
-            setPerSpeaker(n);
-            saveClueTimer(n);
-          }}
-          options={CLUE_TIMER_CHOICES.map((n) => ({
-            value: n,
-            label: n ? t('clues.timerSeconds', { count: n }) : t('clues.timerOff'),
-          }))}
-        />
-      </div>
-      {perSpeaker > 0 && speaker && (
-        <Timer
-          key={`${state.round}-${turn}-${perSpeaker}`}
-          seconds={perSpeaker}
-          autoStart
-          label={t('clues.timerFor', { name: speaker.name })}
-        />
-      )}
-
-      {/* Until the last clue, the big button moves the turn on; the vote is
-          still one tap away for a table that is done early. */}
+          so the order is not spelled out a second time (#57). The time per
+          speaker is set in the lobby's settings (#107); its clock rides in
+          the action bar with Next, so it is in sight on every turn. Until
+          the last clue, the big button moves the turn on; the vote is still
+          one tap away for a table that is done early. */}
       <ActionBar>
+        {perSpeaker > 0 && speaker && (
+          <Timer
+            key={`${state.round}-${turn}-${perSpeaker}`}
+            seconds={perSpeaker}
+            autoStart
+            label={t('clues.timerFor', { name: speaker.name })}
+          />
+        )}
         {!last && nextUp && (
           <button className="btn primary block lg" onClick={() => setTurn((n) => n + 1)}>
             {t('clues.next', { name: nextUp.name })}
