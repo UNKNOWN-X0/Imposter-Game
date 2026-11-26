@@ -19,6 +19,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- Passing the phone shows everyone's emblem in order, with whose turn it is lifted and who has looked ticked off, so the table can see it from across the room. During the clues the speaking ring now glides from one player to the next.
 - The verdict has a moment of suspense: the table sees who they chose and "Were they the imposter?" before the answer lands. Tap to skip it.
 - Everything you tap now presses the same way, choices change at the same pace, and sheets slide back down when you close them instead of vanishing. The hint under the card pulses three times and then stays still.
 - Time per speaker moved into the settings under The round, so it no longer sits between the table and Next on every turn. When it is on, the clock is one slim row just above Next.

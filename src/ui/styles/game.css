@@ -520,3 +520,44 @@
   align-self: center;
   box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px var(--accent-text);
 }
+
+/* Whose card is next (#110): everyone's emblem in the order the phone goes
+   round, the next one lifted and ringed, those done dimmed with a tick. */
+.deal-strip {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.deal-seat {
+  position: relative;
+  display: grid;
+  place-items: center;
+  transition: transform var(--motion-state) var(--ease-standard);
+}
+
+.deal-seat.now {
+  transform: translateY(-4px);
+}
+
+.deal-seat.now .avatar {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent-text);
+}
+
+.deal-tick {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 0 0 2px var(--bg);
+}

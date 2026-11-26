@@ -473,6 +473,7 @@ export default {
   'reveal.dealt': 'Karten sind verteilt',
   'reveal.cardsLeft_one': 'Noch {count} Karte',
   'reveal.cardsLeft_other': 'Noch {count} Karten',
+  'reveal.order': 'Wer seine Karte schon gesehen hat',
   'reveal.passTo': 'Gib das Handy weiter an',
   'reveal.tapWhenHolding': 'Tippe, wenn du es in der Hand hast.',
   'reveal.privacy': 'Halte das Handy so, dass nur du es sehen kannst.',

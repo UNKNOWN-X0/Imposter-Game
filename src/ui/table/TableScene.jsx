@@ -13,7 +13,7 @@
  * reads aloud. Nothing here changes with a player's role, word or vote.
  */
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { useT } from '../../i18n/index.jsx';
 import { Avatar } from '../primitives/Avatar.jsx';
 
@@ -119,6 +119,31 @@ export function TableScene({
   const firstSeated = useRef(null);
   if (firstSeated.current === null) firstSeated.current = new Set(seated.map((w) => w.key));
   const { x, y, w, h, r } = TABLE;
+
+  // One speaking ring that glides from seat to seat (#110), measured from
+  // the speaking seat's emblem, instead of a ring that jumps. It moves by
+  // transform only; the first placement does not animate.
+  const scene = useRef(null);
+  const speakingKey = seated.find((s) => s.speaking)?.key ?? null;
+  const [ring, setRing] = useState(null);
+  useLayoutEffect(() => {
+    const root = scene.current;
+    if (!root || speakingKey === null) {
+      setRing(null);
+      return undefined;
+    }
+    const measure = () => {
+      const token = root.querySelector('.ts-seat.speaking .avatar');
+      if (!token) return;
+      const a = root.getBoundingClientRect();
+      const b = token.getBoundingClientRect();
+      setRing((prev) => ({ x: b.left - a.left, y: b.top - a.top, size: b.width, live: Boolean(prev) }));
+    };
+    measure();
+    const ro = typeof ResizeObserver === 'function' ? new ResizeObserver(measure) : null;
+    ro?.observe(root);
+    return () => ro?.disconnect();
+  }, [speakingKey, narrow, seated.length]);
   const ph = h / PLANKS;
 
   // Upright, the drawing turns a quarter: the table's long sides run down the
@@ -130,7 +155,8 @@ export function TableScene({
 
   return (
     <div
-      className={`ts-scene${narrow ? ' upright' : ''} ${className}`.trim()}
+      ref={scene}
+      className={`ts-scene${narrow ? ' upright' : ''}${ring ? ' has-ring' : ''} ${className}`.trim()}
       style={{ '--ts-slot': `${(w / W / Math.ceil(points.length / 2)) * 100}cqi` }}
     >
       <svg className="ts-drawing" viewBox={narrow ? `0 0 ${H} ${W}` : `0 0 ${W} ${H}`} aria-hidden="true">
@@ -236,6 +262,14 @@ export function TableScene({
           );
         })}
       </ol>
+
+      {ring && (
+        <span
+          className={`ts-ring${ring.live ? ' live' : ''}`}
+          aria-hidden="true"
+          style={{ width: ring.size, height: ring.size, transform: `translate(${ring.x}px, ${ring.y}px)` }}
+        />
+      )}
 
       {children && <div className="ts-plate">{children}</div>}
     </div>
