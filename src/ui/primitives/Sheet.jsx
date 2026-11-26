@@ -12,7 +12,7 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-export function Sheet({ label, doneLabel, onClose, children }) {
+export function Sheet({ label, title, doneLabel, onClose, children }) {
   const card = useRef(null);
   // Held in a ref so that changing a setting inside the sheet, which hands
   // down a new onClose, does not rerun the effect and bounce focus about.
@@ -33,6 +33,7 @@ export function Sheet({ label, doneLabel, onClose, children }) {
   return createPortal(
     <div className="scrim sheet-scrim" onPointerDown={(e) => e.target === e.currentTarget && onClose()}>
       <div className="modal sheet stack" role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} ref={card}>
+        {title && <h2 className="sheet-title">{title}</h2>}
         {children}
         <button className="btn primary block" onClick={onClose}>
           {doneLabel}
@@ -46,12 +47,14 @@ export function Sheet({ label, doneLabel, onClose, children }) {
 /**
  * One setting as a row: its name, what it is set to underneath, and a chevron
  * when tapping it opens a sheet. `control` puts a switch on the row instead,
- * for an on/off setting that one tap should change.
+ * for an on/off setting that one tap should change. `icon` goes in a column
+ * of its own on the left; `danger` is for a row that throws something away.
  */
-export function SettingRow({ title, value, onOpen, control, disabled, icon }) {
+export function SettingRow({ title, value, onOpen, control, disabled, icon, danger }) {
+  const cls = `setting-row${icon ? ' has-icon' : ''}${danger ? ' danger' : ''}`;
   if (control) {
     return (
-      <div className="setting-row">
+      <div className={cls}>
         {icon}
         <span className="setting-row-title">{title}</span>
         <span className="setting-row-value">{value}</span>
@@ -60,7 +63,7 @@ export function SettingRow({ title, value, onOpen, control, disabled, icon }) {
     );
   }
   return (
-    <button type="button" className="setting-row" onClick={onOpen} disabled={disabled} aria-haspopup="dialog">
+    <button type="button" className={cls} onClick={onOpen} disabled={disabled} aria-haspopup="dialog">
       {icon}
       <span className="setting-row-title">{title}</span>
       <span className="setting-row-value">{value}</span>

@@ -8,6 +8,10 @@
  * Paste a list, watch it be understood line by line, save it. A pack is kept
  * on the device that wrote it, and travels to anybody else as one long code
  * they paste into the same box.
+ *
+ * Laid out like the game settings: the word box is on the page, because that
+ * is the work, and everything else (name and icon, the AI prompt, sharing,
+ * loading a code, deleting) is a row that opens a sheet.
  */
 
 import { useMemo, useState } from 'react';
@@ -23,7 +27,9 @@ import {
 } from '../../content/words/custom.js';
 import { WORD_LANGUAGES } from '../../content/words/index.js';
 import { useT, useErrorText } from '../../i18n/index.jsx';
-import { CheckIcon, CopyIcon } from '../../ui/icons/index.jsx';
+import { CheckIcon, CopyIcon, SparklesIcon } from '../../ui/icons/index.jsx';
+import { Banner } from '../../ui/primitives/index.js';
+import { Sheet, SettingRow } from '../../ui/primitives/Sheet.jsx';
 import { AiPrompt } from './AiPrompt.jsx';
 
 const EMOJI = ['✏️', '🏠', '💼', '🎬', '🎵', '🍜', '⚽️', '🐈', '🌏', '🎉', '💀', '🧠'];
@@ -45,7 +51,14 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
   const [note, setNote] = useState(null);
   const [shareCode, setShareCode] = useState(null);
   const [copied, setCopied] = useState(false);
-  const [confirmDelete, setConfirmDelete] = useState(false);
+  // Which sheet is up: 'name', 'ai', 'share', 'load' or 'delete'.
+  const [sheet, setSheet] = useState(null);
+  // While a sheet is up its error shows inside it, where the eye is; the
+  // page's banner is behind the sheet.
+  const closeSheet = () => {
+    setSheet(null);
+    setError(null);
+  };
 
   // Re-read on every keystroke: the whole point is watching the list turn
   // into a pack as it is pasted, rather than finding out on save.
@@ -94,6 +107,7 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
     setText(toText(loaded.pairs));
     setCode('');
     setError(null);
+    closeSheet();
     setNote(t('packs.loaded', { name: loaded.name, count: loaded.pairs.length }));
   };
 
@@ -121,44 +135,32 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
         <p className="hint">{t('packs.langNote', { lang: langName })}</p>
       </div>
 
-      {error && <div className="banner error">{errorText(error)}</div>}
+      {error && !sheet && <div className="banner error">{errorText(error)}</div>}
       {note && <div className="banner">{note}</div>}
 
       <section className="settings-group">
-        <label className="stack tight">
-          <h2 className="settings-group-title">{t('packs.name')}</h2>
-          <input
-            className="input"
-            value={name}
-            maxLength={PACK_LIMITS.name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder={t('packs.namePlaceholder')}
-            autoComplete="off"
+        <h2 className="settings-group-title">{t('packs.name')}</h2>
+        <div className="setting-list">
+          <SettingRow
+            icon={<span className="pack-row-emoji" aria-hidden="true">{emoji}</span>}
+            title={name.trim() || <span className="setting-row-empty">{t('packs.namePlaceholder')}</span>}
+            value={t('packs.nameRow')}
+            onOpen={() => setSheet('name')}
           />
-        </label>
-
-        <div className="stack tight">
-          <span className="field-label">{t('packs.emoji')}</span>
-          <div className="emoji-grid">
-            {EMOJI.map((option) => (
-              <button
-                key={option}
-                className="emoji-pick"
-                aria-pressed={emoji === option}
-                aria-label={option}
-                onClick={() => setEmoji(option)}
-              >
-                {option}
-              </button>
-            ))}
-          </div>
         </div>
       </section>
 
       <section className="settings-group stack tight">
         <h2 className="settings-group-title">{t('packs.words')}</h2>
         <p className="hint">{t('packs.wordsHelp')}</p>
-        <AiPrompt topic={name} langName={langName} />
+        <div className="setting-list">
+          <SettingRow
+            icon={<SparklesIcon size={22} />}
+            title={t('packs.ai.title')}
+            value={t('packs.ai.summary')}
+            onOpen={() => setSheet('ai')}
+          />
+        </div>
         <textarea
           className="input words"
           value={text}
@@ -204,12 +206,67 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
         {t('packs.save')}
       </button>
 
-      <section className="settings-group stack">
+      <section className="settings-group">
         <h2 className="settings-group-title">{t('packs.shareSection')}</h2>
-        <div className="stack tight">
-          <span className="field-label">{t('packs.shareTitle')}</span>
+        <div className="setting-list">
+          <SettingRow
+            title={t('packs.shareTitle')}
+            value={t('packs.shareBody')}
+            onOpen={() => {
+              setShareCode(null);
+              setSheet('share');
+              share();
+            }}
+          />
+          <SettingRow title={t('packs.load')} value={t('packs.loadPlaceholder')} onOpen={() => setSheet('load')} />
+        </div>
+      </section>
+
+      {pack && onDelete && (
+        <div className="setting-list">
+          <SettingRow danger title={t('packs.delete')} onOpen={() => setSheet('delete')} />
+        </div>
+      )}
+
+      {sheet === 'name' && (
+        <Sheet label={t('packs.name')} title={t('packs.name')} doneLabel={t('lobby.done')} onClose={closeSheet}>
+          <input
+            className="input"
+            value={name}
+            maxLength={PACK_LIMITS.name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder={t('packs.namePlaceholder')}
+            aria-label={t('packs.name')}
+            autoComplete="off"
+          />
+          <span className="field-label">{t('packs.emoji')}</span>
+          <div className="emoji-grid">
+            {EMOJI.map((option) => (
+              <button
+                key={option}
+                className="emoji-pick"
+                aria-pressed={emoji === option}
+                aria-label={option}
+                onClick={() => setEmoji(option)}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
+        </Sheet>
+      )}
+
+      {sheet === 'ai' && (
+        <Sheet label={t('packs.ai.title')} title={t('packs.ai.title')} doneLabel={t('lobby.done')} onClose={closeSheet}>
+          <AiPrompt topic={name} langName={langName} />
+        </Sheet>
+      )}
+
+      {sheet === 'share' && (
+        <Sheet label={t('packs.shareTitle')} title={t('packs.shareTitle')} doneLabel={t('lobby.done')} onClose={closeSheet}>
           <p className="hint">{t('packs.shareBody')}</p>
-          {shareCode ? (
+          {error && <Banner kind="error">{errorText(error)}</Banner>}
+          {shareCode && (
             <>
               <textarea className="input words code-out" value={shareCode} rows={3} readOnly />
               <button className="btn block" onClick={share}>
@@ -217,20 +274,20 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
                 {copied ? t('common.copied') : t('common.copy')}
               </button>
             </>
-          ) : (
-            <button className="btn block" onClick={share}>
-              {t('packs.share')}
-            </button>
           )}
-        </div>
-        <div className="stack tight">
-          <span className="field-label">{t('packs.load')}</span>
+        </Sheet>
+      )}
+
+      {sheet === 'load' && (
+        <Sheet label={t('packs.load')} title={t('packs.load')} doneLabel={t('common.cancel')} onClose={closeSheet}>
+          {error && <Banner kind="error">{errorText(error)}</Banner>}
           <div className="row">
             <input
               className="input grow"
               value={code}
               onChange={(e) => setCode(e.target.value)}
               placeholder={t('packs.loadPlaceholder')}
+              aria-label={t('packs.load')}
               autoComplete="off"
               autoCapitalize="none"
               spellCheck="false"
@@ -239,29 +296,15 @@ export default function PackEditor({ pack, lang, onSave, onDelete, onClose }) {
               {t('packs.loadButton')}
             </button>
           </div>
-        </div>
-      </section>
+        </Sheet>
+      )}
 
-      {pack && onDelete && (
-        <div className="center stack tight">
-          {confirmDelete ? (
-            <>
-              <p className="hint">{t('packs.deleteSure')}</p>
-              <div className="row" style={{ justifyContent: 'center' }}>
-                <button className="btn danger sm" onClick={() => onDelete(pack.id)}>
-                  {t('packs.delete')}
-                </button>
-                <button className="btn sm ghost" onClick={() => setConfirmDelete(false)}>
-                  {t('common.cancel')}
-                </button>
-              </div>
-            </>
-          ) : (
-            <button className="btn-link" onClick={() => setConfirmDelete(true)}>
-              {t('packs.delete')}
-            </button>
-          )}
-        </div>
+      {sheet === 'delete' && (
+        <Sheet label={t('packs.deleteSure')} title={t('packs.deleteSure')} doneLabel={t('common.cancel')} onClose={closeSheet}>
+          <button className="btn danger block" onClick={() => onDelete(pack.id)}>
+            {t('packs.delete')}
+          </button>
+        </Sheet>
       )}
 
       <button className="btn-link" onClick={onClose}>
