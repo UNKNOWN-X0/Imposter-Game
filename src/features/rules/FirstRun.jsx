@@ -13,7 +13,7 @@
 import { useEffect, useRef } from 'react';
 import { ImposterMark } from '../../ui/icons/index.jsx';
 import { useT } from '../../i18n/index.jsx';
-import { Step } from './Step.jsx';
+import { RuleSteps, imposterSteps } from './RuleSteps.jsx';
 
 /**
  * The rules, the first time somebody opens the game.
@@ -56,13 +56,7 @@ export function FirstRun({ onClose }) {
           <p className="subtitle">{t('rules.firstSub')}</p>
         </div>
 
-        <div className="stack">
-          {[1, 2, 3, 4].map((n) => (
-            <Step key={n} n={n} title={t(`rules.${n}.title`)}>
-              {t(`rules.${n}.body`)}
-            </Step>
-          ))}
-        </div>
+        <RuleSteps steps={imposterSteps(t)} />
 
         <button className="btn primary block lg" onClick={onClose}>
           {t('rules.start')}

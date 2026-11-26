@@ -5,5 +5,5 @@
 # re-bless it with:  node tools/fingerprint.mjs --write
 #
 # blessed at v1.30.0, 2026-11-20 (party-hub and release-note strings only; no word or outcome changed)
-lines  24603
-sha256 810da7d54f77597fdfaddcf8b911068b18993541d1d2a253315e5c6feeea6c2a
+lines  24648
+sha256 9e46a04db67d05e35048521811a8763a3ad59038fe7059341508e6758e327089

@@ -12,6 +12,7 @@ import { GameLibrary } from './features/library/GameLibrary.jsx';
 import { gameById } from './games/index.js';
 
 import { Rules } from './features/rules/Rules.jsx';
+import { HowItWorks } from './features/rules/HowItWorks.jsx';
 import { Library } from './features/packs/Library.jsx';
 import Changelog from './features/changelog/Changelog.jsx';
 
@@ -165,7 +166,9 @@ export default function App() {
   if (screen === 'online') return <><OnlineGame onExit={home} initialCode={joinCode} />{firstRules}</>;
   if (screen === 'icons') return fetched(<IconBoard />);
   if (screen === 'strings') return fetched(<StringBoard />);
-  if (screen === 'rules') return <Rules onExit={back} />;
+  // A game's own How to play is `rules:<game>`; the hub's is `howto` (#85).
+  if (screen.startsWith('rules')) return <Rules game={screen.split(':')[1]} onExit={back} />;
+  if (screen === 'howto') return <HowItWorks onExit={back} onGame={(id) => open(`rules:${id}`)} />;
   if (screen === 'packs') return <Library onExit={home} />;
   // Who is playing, then how, then which game (#51).
   if (screen === 'library-local' || screen === 'library-room') {
@@ -174,7 +177,7 @@ export default function App() {
       <GameLibrary
         mode={mode}
         onBack={home}
-        onRules={() => open('rules')}
+        onRules={(id) => open(`rules:${id}`)}
         onJoin={() => open('online')}
         onPick={(id) => open(gameById(id).screen[mode])}
       />
@@ -187,7 +190,7 @@ export default function App() {
       onLocal={() => open('library-local')}
       onOnline={() => open('library-room')}
       onPacks={() => open('packs')}
-      onRules={() => open('rules')}
+      onRules={() => open('howto')}
       onNews={openNews}
       news={news}
       version={VERSION}

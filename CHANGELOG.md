@@ -18,6 +18,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 
+- How it works and How to play are two different screens now. The home screen's link explains The Long Table itself: seat everyone, choose how to play, pick a game, make the words yours, and what a room needs. A game's How to play explains that game, with a card per step, its optional roles, and how to play it well.
 - The display and language buttons open a sheet from the bottom. Light, dark or following your phone are three cards with a little preview of each, and every wood shows its own table plank and colour. Languages are listed with their flag and their name in your language. The Thai heading "โหมดสี" lost a stray vowel mark.
 - "How do you want to play?" is four cards now: Standard, Quick, Careful and Chaos, each with an icon and a line saying what that evening is like. Change anything afterwards and a "Your own rules" card says which one you started from and how much you changed.
 - The word pack screens work like the settings. Every pack is one row; tap it to see its words in a sheet that slides up, with Copy and Edit. Searching shows what matched right in each row. In the editor, the word box stays on the page and the rest (name and icon, writing it with AI, sharing, loading a code, deleting) is a row you tap. The search box's clear button is no longer blue.

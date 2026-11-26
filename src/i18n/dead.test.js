@@ -58,6 +58,9 @@ function builtAtRuntime() {
   for (const n of [1, 2, 3, 4]) {
     keys.add(`rules.${n}.title`);
     keys.add(`rules.${n}.body`);
+    // And the four steps of the hub's How it works.
+    keys.add(`howto.${n}.title`);
+    keys.add(`howto.${n}.body`);
   }
   for (const mode of MODES) keys.add(`display.mode.${mode}`);
   for (const theme of THEMES) keys.add(`theme.${theme.id}`);
