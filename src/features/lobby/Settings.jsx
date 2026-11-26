@@ -91,7 +91,9 @@ export function Settings({
   };
 
   // What each row says it is set to: the same lines the sections show, so
-  // the row and the sheet never disagree.
+  // the row and the sheet never disagree. A switch row's line explains the
+  // setting and stays put whichever way it is switched; the switch says On
+  // or Off (#124), so toggling never reflows the row.
   const chosen = typeof config.imposterCount === 'number' ? Math.min(config.imposterCount, cap) : config.imposterCount;
   const lang = WORD_LANGUAGES.find((l) => l.id === wordLang);
   const rows = {
@@ -173,7 +175,7 @@ export function Settings({
         <h3 className="settings-group-title">{t('settings.groupExtras')}</h3>
         <div className="setting-list">
           {row('roles')}
-          {toggle(t('settings.scoring'), t('tip.scoringLead'), config.scoring ? t('settings.scoringOn') : t('settings.scoringOff'), config.scoring, 'scoring')}
+          {toggle(t('settings.scoring'), t('tip.scoringLead'), t('settings.scoringOn'), config.scoring, 'scoring')}
         </div>
       </section>
       {Section && (

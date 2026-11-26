@@ -106,15 +106,6 @@ export function Lobby({ state, run, emblems = {}, onSeat, onEditPack, onBrowsePa
       </button>
       {state.players.length < MIN_PLAYERS && <LobbyHint count={state.players.length} />}
 
-      {state.config.scoring && (
-        <Scoreboard
-          players={state.players}
-          scores={state.scores}
-          onClear={() => run({ type: 'CLEAR_SCORES' })}
-        />
-      )}
-
-      {state.config.scoring && <WinValues />}
 
       <h2 className="section-title">{t('lobby.settings')}</h2>
       <Settings
@@ -133,6 +124,17 @@ export function Lobby({ state, run, emblems = {}, onSeat, onEditPack, onBrowsePa
           },
         }}
       />
+
+      {/* The night's points come after the settings, so switching scoring
+          on never pushes the settings away under the finger (#124). */}
+      {state.config.scoring && (
+        <Scoreboard
+          players={state.players}
+          scores={state.scores}
+          onClear={() => run({ type: 'CLEAR_SCORES' })}
+        />
+      )}
+      {state.config.scoring && <WinValues />}
     </div>
   );
 }

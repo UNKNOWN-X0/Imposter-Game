@@ -269,6 +269,12 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
 
 .setting-row-end { grid-column: 2; grid-row: 1 / span 2; }
 
+/* A switch row keeps its title and switch where they are when the line
+   under the title wraps or changes (#124): both sit at the top, the switch
+   centred on the title's line. */
+div.setting-row { align-items: start; }
+div.setting-row .setting-row-end { align-self: start; margin-top: -10px; }
+
 .setting-row-chevron {
   width: 9px;
   height: 9px;
@@ -369,7 +375,10 @@ button.setting-row:focus-visible { outline: 3px solid var(--accent-text); outlin
 .preset-line { color: var(--text-dim); font-size: 13px; line-height: 1.4; }
 .preset-card > .choice-check { position: absolute; top: 12px; right: 12px; }
 .preset-card[aria-pressed='true'],
-.preset-card.yours { border-color: var(--accent-text); box-shadow: inset 0 0 0 1px var(--accent-text); }
+.preset-card.yours.active { border-color: var(--accent-text); box-shadow: inset 0 0 0 1px var(--accent-text); }
+.preset-card.yours:not(.active) { background: transparent; border-style: dashed; }
+.preset-card.yours:not(.active) > svg,
+.preset-card.yours:not(.active) .preset-name { color: var(--text-dim); }
 .preset-card:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
 .preset-card:disabled { opacity: 0.5; cursor: not-allowed; }
 

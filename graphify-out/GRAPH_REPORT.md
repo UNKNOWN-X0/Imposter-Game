@@ -1,7 +1,7 @@
 # Graph Report - Imposter-Game  (2026-11-26)
 
 ## Corpus Check
-- 220 files · ~209,695 words
+- 220 files · ~210,319 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 22 file(s) not represented in the graph (top: .css 15, (none) 3, .bat 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a69bf46a`
+- Built from commit: `3101fb64`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -109,14 +109,14 @@
 ## Surprising Connections (you probably didn't know these)
 - `Lessons` --references--> `publicState()`  [INFERRED]
   STANDARDS.md → src/core/select.js
-- `Invariants` --references--> `validatePack()`  [INFERRED]
-  STANDARDS.md → src/content/words/custom.js
-- `The plan (owner, 2026-11-26, issue #103)` --references--> `motionMs()`  [INFERRED]
-  DESIGN.md → src/ui/motionMs.js
-- `The plan (owner, 2026-11-26, issue #103)` --references--> `onWinningSide()`  [INFERRED]
-  DESIGN.md → src/core/select.js
 - `Table and Seats` --references--> `chairsFor()`  [INFERRED]
   DESIGN.md → src/ui/table/TableScene.jsx
+- `Icons` --references--> `ImposterMark()`  [INFERRED]
+  DESIGN.md → src/ui/icons/brand.jsx
+- `The plan (owner, 2026-11-26, issue #103)` --references--> `onWinningSide()`  [INFERRED]
+  DESIGN.md → src/core/select.js
+- `The plan (owner, 2026-11-26, issue #103)` --references--> `motionMs()`  [INFERRED]
+  DESIGN.md → src/ui/motionMs.js
 
 ## Import Cycles
 - 2-file cycle: `src/App.jsx -> src/features/packs/Library.jsx -> src/App.jsx`
@@ -381,16 +381,16 @@ Nodes (5): Checks, Code, Definition of done, Lessons, Project standards
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Project standards` connect `Project standards` to `engine.test.js`, `Project Guide`?**
-  _High betweenness centrality (0.088) - this node is a cross-community bridge._
+  _High betweenness centrality (0.089) - this node is a cross-community bridge._
 - **What connects `Central scoring table`, `Data-described optional roles`, `Separate interface and word languages` to the rest of the system?**
   _22 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ref_node_test` be split into smaller, more focused modules?**
   _Cohesion score 0.12435897435897436 - nodes in this community are weakly interconnected._
 - **Why does `Invariants` connect `engine.test.js` to `ref_node_test`, `Project standards`?**
-  _High betweenness centrality (0.077) - this node is a cross-community bridge._
+  _High betweenness centrality (0.075) - this node is a cross-community bridge._
 - **Should `Room Server and Tests` be split into smaller, more focused modules?**
   _Cohesion score 0.06862745098039216 - nodes in this community are weakly interconnected._
 - **Why does `react` connect `react` to `ref_node_test`, `App.jsx`, `Talking.jsx`, `useT`, `Build Dependencies`, `PartyProvider.jsx`, `Verdict.jsx`, `checks.test.js`, `react`, `words/index.js`, `primitives/index.js`, `PackLibrary.jsx`, `Resume.jsx`, `room.test.js`, `dead.test.js`, `LocalGame.jsx`, `Icon`, `i18n/index.jsx`, `OnlineGame.jsx`?**
-  _High betweenness centrality (0.070) - this node is a cross-community bridge._
+  _High betweenness centrality (0.066) - this node is a cross-community bridge._
 - **Should `ref_node_assert` be split into smaller, more focused modules?**
   _Cohesion score 0.07051282051282051 - nodes in this community are weakly interconnected._
