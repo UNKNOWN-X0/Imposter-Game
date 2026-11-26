@@ -8,10 +8,10 @@
  * different weight, sometimes a different meaning — which is fine in a message
  * and wrong in a product.
  *
- * Most drawings are Lucide's (lucide-static 0.460.0, ISC, see NOTICE.md),
+ * Every drawing is Lucide's (lucide-static 0.460.0, ISC, see NOTICE.md),
  * kept on this grid at the 1.8 stroke and with each icon's own animated
- * groups; the brand mark, the jester, the blind card and the card back are
- * this project's own.
+ * groups, apart from the two marks in brand.jsx: The Long Table's and
+ * Imposter's, which are this project's own (#87).
  *
  * Icons are decorative here. Every one is `aria-hidden`, and the text beside
  * it carries the meaning.

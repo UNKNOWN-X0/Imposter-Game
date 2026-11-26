@@ -62,22 +62,19 @@ export const DetectiveIcon = (p) => (
 );
 
 /**
- * The jester: a cap with two bells.
- *
- * On `anim` the whole cap tips side to side and the bells swing after it,
- * which is the role in one movement — they are playing the fool on purpose.
+ * The jester: Lucide's drama, the two masks (#87). The role on nobody's
+ * side, playing a part on purpose. Still.
  */
 export const JesterIcon = (p) => (
   <Icon {...p}>
-    <g className="cap">
-      <path d="M6.4 14.6c-.8-3 .4-6.2 2.6-7.6" />
-      <path d="M17.6 14.6c.8-3-.4-6.2-2.6-7.6" />
-      <path d="M12 5.2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
-      <path d="M6.4 14.6h11.2a1.6 1.6 0 0 1 0 3.2H6.4a1.6 1.6 0 0 1 0-3.2Z" />
-    </g>
-    <g className="bells">
-      <path d="M5.4 12.4h.01M18.6 12.4h.01" strokeWidth="2.6" />
-    </g>
+    <path d="M10 11h.01" />
+    <path d="M14 6h.01" />
+    <path d="M18 6h.01" />
+    <path d="M6.5 13.1h.01" />
+    <path d="M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3" />
+    <path d="M17.4 9.9c-.8.8-2 .8-2.8 0" />
+    <path d="M10.1 7.1C9 7.2 7.7 7.7 6 8.6c-3.5 2-4.7 3.9-3.7 5.6 4.5 7.8 9.5 8.4 11.2 7.4.9-.5 1.9-2.1 1.9-4.7" />
+    <path d="M9.1 16.5c.3-1.1 1.4-1.7 2.4-1.4" />
   </Icon>
 );
 
@@ -109,13 +106,16 @@ export const ScoreIcon = (p) => (
   </Icon>
 );
 
-/** Blind mode: a card with a question on it. Gives nothing away. */
+/**
+ * Blind mode: a card with a question on it, Lucide's file-question (#87).
+ * Gives nothing away. On `anim` the question mark cannot make its mind up.
+ */
 export const UnknownIcon = (p) => (
   <Icon {...p}>
-    <rect x="4.6" y="2.8" width="14.8" height="18.4" rx="3" />
+    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
     <g className="question">
-      <path d="M9.8 9.4c.2-1.3 1.1-2.1 2.4-2.1 1.3 0 2.3.9 2.3 2.1 0 1.8-2.2 1.9-2.2 3.5" />
-      <path d="M12.2 16.3h.01" strokeWidth="2.4" />
+      <path d="M9.1 9a3 3 0 0 1 5.82 1c0 2-3 3-3 3" />
+      <path d="M12 17h.01" />
     </g>
   </Icon>
 );
@@ -139,14 +139,17 @@ export const HintIcon = (p) => (
   </Icon>
 );
 
-/** Face-down card, used on the shield before a reveal. */
+/**
+ * A face-down card on top of the deck, used on the shield before a reveal:
+ * Lucide's gallery-horizontal-end (#87), upright like the cards. On `anim` the edges of the cards
+ * behind it shimmer.
+ */
 export const CardBackIcon = (p) => (
   <Icon {...p}>
-    <rect x="4.6" y="2.8" width="14.8" height="18.4" rx="3" />
-    <g className="lines" opacity="0.55">
-      <path d="M8.4 7.6h7.2" />
-      <path d="M8.4 12h7.2" />
-      <path d="M8.4 16.4h3.6" />
+    <g className="lines">
+      <path d="M2 7v10" />
+      <path d="M6 5v14" />
     </g>
+    <rect width="12" height="18" x="10" y="3" rx="2" />
   </Icon>
 );
