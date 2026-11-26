@@ -363,6 +363,9 @@ for (const lang of ['en', 'th', 'de']) {
   const { imposters } = await dealAndReveal(page, 4);
   await page.getByRole('button', { name: /Everyone has spoken|พูดครบ|abgestimmt|abstimmen|โหวต/i }).first().click();
   await wait(300);
+  // A new phase opens at its top, with focus on its heading (#104).
+  const start = await page.evaluate(() => ({ y: Math.round(scrollY), focus: document.activeElement?.tagName }));
+  if (start.y !== 0 || !/^H[12]$/.test(start.focus)) fail(`${lang}: the vote opened at ${start.y}px with focus on ${start.focus}`);
   // One tap only picks: the table is still voting until the confirm is pressed.
   await page.locator('.ts-seat button.ts-seat-body', { hasText: imposters[0] }).first().click();
   await wait(300);
