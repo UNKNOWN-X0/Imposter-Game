@@ -31,6 +31,8 @@ export default {
   'language.en': 'ภาษาอังกฤษ',
   'language.th': 'ภาษาไทย',
   'language.de': 'ภาษาเยอรมัน',
+  'sound.title': 'เสียงประกอบ',
+  'sound.hint': 'เสียงสั้น ๆ ในช่วงสำคัญของเกม เฉพาะโทรศัพท์เครื่องนี้',
   'display.title': 'การแสดงผล',
   'display.appearance': 'โหมดสี',
   'display.mode.system': 'ตามเครื่อง',

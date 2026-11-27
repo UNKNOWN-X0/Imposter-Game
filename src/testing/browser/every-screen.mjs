@@ -421,6 +421,32 @@ for (const [engineName, engine] of [['chromium', chromium], ['webkit', webkit]])
   await other.close();
 }
 
+/* --- sound: off until switched on, then the round's moments play (#118) -- */
+{
+  const { ctx, page, errors } = await openPage('en');
+  await page.evaluate(() => {
+    window.__sounds = [];
+    window.addEventListener('sound', (e) => window.__sounds.push(e.detail));
+  });
+  await page.locator('.iconpicker').click();
+  await wait(300);
+  const sw = page.locator('.bottom-sheet .display-sound .switch');
+  const offAtFirst = (await sw.getAttribute('aria-checked')) === 'false';
+  await sw.click();
+  await wait(150);
+  const stored = await page.evaluate(() => localStorage.getItem('imposter.sound'));
+  await page.keyboard.press('Escape');
+  await wait(300);
+  await dealAndReveal(page, 3);
+  const heard = await page.evaluate(() => window.__sounds.filter((s) => s.played).map((s) => s.name));
+  if (!offAtFirst) fail('sound was on before anybody switched it on');
+  else if (stored !== 'on') fail('switching sound on was not remembered');
+  else if (!heard.includes('deal') || !heard.includes('flip')) fail(`the round played ${heard.join(', ') || 'nothing'}, not the deal and the card turning`);
+  else if (errors.length) fail(`sound: ${errors[0]}`);
+  else seen.push(`sound is off until switched on, then plays: ${[...new Set(heard)].join(', ')}`);
+  await ctx.close();
+}
+
 /* --- 1. an imposter calls the word: the road to the game-over screen ---- */
 {
   const { ctx, page, errors } = await openPage('th');
