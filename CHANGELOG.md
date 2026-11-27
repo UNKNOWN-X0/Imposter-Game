@@ -912,4 +912,9 @@ The first working game.
 - **Settings**: one or two imposters, a decoy word or nothing at all, the last-word steal on or off, and per-pack word selection.
 - **Tests**: the rules engine including a thousand randomised games that must all terminate with a winner, and the server end-to-end with four simulated phones playing a full game.
 
-[Unreleased]: https://example.com/compare/v1.8.0...HEAD [1.8.0]: https://example.com/releases/v1.8.0 [1.7.0]: https://example.com/releases/v1.7.0 [1.6.0]: https://example.com/releases/v1.6.0 [1.5.1]: https://example.com/releases/v1.5.1 [1.5.0]: https://example.com/releases/v1.5.0 [1.4.0]: https://example.com/releases/v1.4.0 [1.3.0]: https://example.com/releases/v1.3.0 [1.2.0]: https://example.com/releases/v1.2.0 [1.1.0]: https://example.com/releases/v1.1.0 [1.0.0]: https://example.com/releases/v1.0.0
+[Unreleased]: https://github.com/UNKNOWN-X0/The-Long-Table/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/UNKNOWN-X0/The-Long-Table/releases/tag/v2.0.1
+[2.0.0]: https://github.com/UNKNOWN-X0/The-Long-Table/releases/tag/v2.0.0
+[1.31.0]: https://github.com/UNKNOWN-X0/The-Long-Table/releases/tag/v1.31.0
+[1.30.0]: https://github.com/UNKNOWN-X0/The-Long-Table/releases/tag/v1.30.0
+[1.29.0]: https://github.com/UNKNOWN-X0/The-Long-Table/releases/tag/v1.29.0
