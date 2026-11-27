@@ -12,6 +12,7 @@ import { ActionBar } from '../../../ui/primitives/ActionBar.jsx';
 import { loadClueTimer } from '../storage.js';
 import { PackChip } from '../../../features/packs/index.js';
 import { usePrivacyGate } from '../usePrivacyGate.js';
+import { play } from '../../../ui/sound/index.js';
 
 /* ------------------------------------------------------------------ *
  * Talking — clues are spoken out loud, not typed
@@ -106,7 +107,10 @@ export function Talking({ state, run }) {
           />
         )}
         {!last && nextUp && (
-          <button className="btn primary block lg" onClick={() => setTurn((n) => n + 1)}>
+          <button className="btn primary block lg" onClick={() => {
+              play('turn');
+              setTurn((n) => n + 1);
+            }}>
             {t('clues.next', { name: nextUp.name })}
           </button>
         )}

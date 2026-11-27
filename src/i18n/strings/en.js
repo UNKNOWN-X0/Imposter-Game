@@ -31,6 +31,8 @@ export default {
   'language.en': 'English',
   'language.th': 'Thai',
   'language.de': 'German',
+  'sound.title': 'Sound effects',
+  'sound.hint': 'Short sounds at the big moments of a round, on this phone only.',
   'display.title': 'Display',
   'display.appearance': 'Appearance',
   'display.mode.system': 'System',

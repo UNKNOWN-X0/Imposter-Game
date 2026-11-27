@@ -3,6 +3,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { play } from '../sound/index.js';
 
 /**
  * A card you have to hold down to open.
@@ -52,6 +53,8 @@ export function HoldCard({ onOpen, onRelease, children, duration = 550, classNam
     } catch {
       /* no haptics here */
     }
+    // The same sound for every card, so it can never tell a role (#118).
+    play('flip');
     onOpen();
   }, [onOpen]);
 

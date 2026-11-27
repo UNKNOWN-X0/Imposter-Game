@@ -3,7 +3,8 @@
  * screen: the grid fills in as they arrive.
  */
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { play } from '../../../ui/sound/index.js';
 import { useT } from '../../../i18n/index.jsx';
 import { CallButton, CallPanel, ClueGrid, ClueInput, ClueList, TurnOrder, roundLabel } from '../../../features/round/index.js';
 import { PackChip } from '../../../features/packs/index.js';
@@ -34,6 +35,14 @@ export function OnlineClues({ payload, act }) {
   const turn = order.find((id) => !spoken.includes(id)) ?? null;
   const myTurn = turn === you;
   const turnName = state.players.find((p) => p.id === turn)?.name;
+
+  // A soft tick when the turn passes to the next speaker (#118), not on the
+  // first draw of the screen.
+  const lastTurn = useRef(turn);
+  useEffect(() => {
+    if (lastTurn.current !== turn && turn) play('turn');
+    lastTurn.current = turn;
+  }, [turn]);
 
   if (calling) {
     return (

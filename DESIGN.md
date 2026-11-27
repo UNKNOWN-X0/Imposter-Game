@@ -268,6 +268,11 @@ Agreed after a measured walk-through of a whole evening on one phone and in a ro
 - **Status (2026-11-26):** all eight follow-ups are done.
 - **Follow-ups, in order:** #104 phases open at the top, #105 the main action in reach, #106 a room's top bar on one row, #107 the clue timer into settings, #108 one motion family, #109 the verdict's beat, #110 the deal and the turn, #111 the win.
 
+### Sound
+- **Owner, 2026-11-26, issue #118:** off until somebody turns it on, per phone, with the "Sound effects" switch in the Display sheet (a third top-bar button pushed the bar onto two rows). Sounds are made with the Web Audio API (`src/ui/sound/`), so there are no sound files to license or download.
+- **Moments:** the deal (a few swishes), the card turning (a flick and a tap, the same for every role so a sound never tells one), the vote's knock as the verdict begins, the verdict's stamp when the answer lands, the win (a rising chord), the clue turn passing (a soft tick), and the timer's last five seconds and its end. No taps on buttons; nothing loops; each phone in a room plays its own.
+- Every sound also fires a `sound` event on `window`, which the screen sweep uses to check the moments without hearing them.
+
 ## Do's and Don'ts
 
 - **Do** use the feast table scene (owner's choice, 2026-11-25) for the table, long-side seats and emblem avatars, with the covered private card and actions beside or below it.

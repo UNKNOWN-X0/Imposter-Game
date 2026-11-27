@@ -6,7 +6,10 @@ import { useState } from 'react';
 import { CheckIcon, ContrastIcon } from '../icons/index.jsx';
 import { MODES, THEMES, useTheme } from './index.jsx';
 import { useT } from '../../i18n/index.jsx';
-import { Sheet } from '../primitives/Sheet.jsx';
+import { Sheet, SettingRow } from '../primitives/Sheet.jsx';
+import { OnOff } from '../primitives/Choices.jsx';
+import { play, setSoundEnabled } from '../sound/index.js';
+import { loadSound, saveSound } from '../sound/store.js';
 
 /**
  * Light, dark or whatever the phone says, and which wood (#84).
@@ -24,6 +27,17 @@ export function ThemePicker() {
   const { t } = useT();
   const { mode, resolved, theme, setMode, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
+  // Sound lives here with the other choices for this phone (#118), as a
+  // switch: a third button in the top bar pushed it onto two rows.
+  const [sound, setSound] = useState(loadSound);
+  const switchSound = (on) => {
+    setSound(on);
+    saveSound(on);
+    setSoundEnabled(on);
+    // Turning it on plays a soft tick: the tap a browser needs before a
+    // page may make any sound, and proof that it works.
+    if (on) play('turn');
+  };
 
   return (
     <div className="pickerwrap">
@@ -59,6 +73,14 @@ export function ThemePicker() {
             ))}
           </div>
           <p className="hint">{mode === 'system' ? t('display.followsPhone') : t('display.fixedHere')}</p>
+
+          <div className="setting-list display-sound">
+            <SettingRow
+              title={t('sound.title')}
+              value={t('sound.hint')}
+              control={<OnOff value={sound} label={t('sound.title')} onChange={switchSound} />}
+            />
+          </div>
 
           <h3 className="display-heading">{t('display.theme')}</h3>
           <div className="wood-grid">

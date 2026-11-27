@@ -12,6 +12,12 @@
  */
 
 import { useEffect, useRef } from 'react';
+import { PHASE } from '../core/engine.js';
+import { play } from '../ui/sound/index.js';
+
+// The sound a phase opens with (#118): the deal, the vote's knock before the
+// verdict's beat, and the win.
+const OPENS_WITH = { [PHASE.REVEAL]: 'deal', [PHASE.VERDICT]: 'vote', [PHASE.GAME_OVER]: 'win' };
 
 export function usePhaseStart(phase) {
   const first = useRef(true);
@@ -20,6 +26,7 @@ export function usePhaseStart(phase) {
       first.current = false;
       return;
     }
+    if (OPENS_WITH[phase]) play(OPENS_WITH[phase]);
     window.scrollTo(0, 0);
     const column = document.querySelector('.game-column') ?? document.body;
     const active = document.activeElement;

@@ -5,6 +5,7 @@
 import { useEffect, useState } from 'react';
 import { Avatar } from '../../ui/primitives/Avatar.jsx';
 import { motionMs } from '../../ui/motionMs.js';
+import { play } from '../../ui/sound/index.js';
 import { SPECIAL_ROLES, onWinningSide } from '../../core/engine.js';
 import { BellIcon, BrokenIcon, Confetti, DiceIcon, HourglassIcon, ImposterIcon, JesterIcon, TargetIcon, TieIcon, TrophyIcon } from '../../ui/icons/index.jsx';
 import { useT } from '../../i18n/index.jsx';
@@ -34,6 +35,10 @@ export function VerdictCard({ state, onContinue, canContinue = true }) {
     if (!beat) return undefined;
     const id = setTimeout(() => setBeat(false), motionMs('--motion-beat'));
     return () => clearTimeout(id);
+  }, [beat]);
+  // The stamp as the answer lands, after the beat or at once (#118).
+  useEffect(() => {
+    if (!beat) play('stamp');
   }, [beat]);
 
   if (beat) {

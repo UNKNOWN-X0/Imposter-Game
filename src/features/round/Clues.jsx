@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ROUNDS_UNLIMITED } from '../../core/engine.js';
 import { useT } from '../../i18n/index.jsx';
 import { Avatar } from '../../ui/primitives/Avatar.jsx';
+import { play } from '../../ui/sound/index.js';
 
 export function TurnOrder({ order, players, current, done = [] }) {
   const nameOf = (id) => players.find((p) => p.id === id)?.name ?? '?';
@@ -145,6 +146,13 @@ export function Timer({ seconds = 90, autoStart = false, label }) {
   const { t } = useT();
   const [left, setLeft] = useState(seconds);
   const [running, setRunning] = useState(autoStart);
+
+  // The last five seconds tick, and the end sounds once (#118).
+  useEffect(() => {
+    if (!running) return;
+    if (left === 0) play('timeUp');
+    else if (left <= 5) play('tick');
+  }, [left, running]);
 
   useEffect(() => {
     if (!running || left <= 0) return undefined;

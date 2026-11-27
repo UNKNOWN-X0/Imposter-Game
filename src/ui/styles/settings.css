@@ -598,3 +598,5 @@ div.setting-row .setting-row-end { align-self: start; margin-top: -10px; }
 @media (prefers-reduced-motion: reduce) {
   .number-tile { transition: none; }
 }
+
+.display-sound { margin-top: 8px; }
