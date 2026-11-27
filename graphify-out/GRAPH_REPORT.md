@@ -1,9 +1,7 @@
 # Graph Report - The-Long-Table  (2026-11-27)
 
 ## Corpus Check
-- 224 files · ~195,138 words
-- Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 22 file(s) not represented in the graph (top: .css 15, (none) 3, .bat 1)
+- cluster-only mode — file stats not available
 
 ## Summary
 - 1385 nodes · 4051 edges · 58 communities (57 shown, 1 thin omitted)
@@ -17,63 +15,63 @@
 
 ## Community Hubs (Navigation)
 - Release History
-- custom.js
+- Custom Pack Codes
 - Room Server
-- OnlineGame.jsx
-- strings.js
-- fingerprint.js
-- ref_node_test
-- PackLibrary.jsx
-- PackEditor.jsx
+- App Shell and Room Client
+- String Board
+- Translation and Fingerprint
+- Community Pack Files
+- Pack Library and Word Languages
+- Pack Editor and Sharing
 - Build Dependencies
 - Continuous Integration
-- changelog.test.js
+- What's New
 - Contributing and Licences
 - Every-Screen Browser Sweep
 - Pages Deployment
 - Icon and Stylesheet Checks
 - Share-a-Pack Issue Form
-- ready.js
-- ref_node_assert
+- String Checks
+- Pack Search
 - Coverage Reporting
 - Randomised Game Fuzzing
-- engine.js
-- Settings.jsx
-- settings.test.js
+- Vote and Round Outcomes
+- Lobby Settings and Themes
+- Imposter Count and Presets
 - Word Loading
-- engine.test.js
+- Engine Tests
 - Room Hosting Configuration
 - Bug Report Form
 - Room and Ending Browser Sweeps
 - Word Pack Request Form
 - Style Checks
 - Project Standards
-- lint.test.js
+- Pack Lint
 - Design System Overview
-- PRODUCT.md
+- Product Context
 - Special Roles
 - Tavern Redesign
 - App Icons
 - README Screenshot
 - Product Principles
 - Room Recovery File
-- screens.test.js
+- Phase Routing
 - Security Policy
-- Motion
+- Motion Plan
 - Code of Conduct
 - Roadmap
 - Agent Instructions
 - Design Components
 - Sound Engine Tests
 - Feature Request Form
-- useT
+- Round Screens and Local Storage
 - Verify, Layout and Icon Tools
 - Dealing Roles and Words
 - Issue Template Links
-- IconBoard.jsx
+- Icons and Lobby Parts
 - Pull Request Template
 - Error Reporting
-- reduce
+- Game Reducer and Strict Mode
 
 ## God Nodes (most connected - your core abstractions)
 1. `useT()` - 109 edges
@@ -85,19 +83,19 @@
 7. `CHANGELOG` - 31 edges
 8. `Shell()` - 29 edges
 9. `Avatar()` - 28 edges
-10. `createGame()` - 27 edges
+10. `CheckIcon()` - 27 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Table and Seats` --references--> `chairsFor()`  [INFERRED]
   DESIGN.md → src/ui/table/TableScene.jsx
 - `Invariants` --references--> `validatePack()`  [INFERRED]
   STANDARDS.md → src/content/words/custom.js
-- `Invariants` --references--> `normaliseConfig()`  [INFERRED]
-  STANDARDS.md → src/core/rules.js
-- `The plan (owner, 2026-11-26, issue #103)` --references--> `onWinningSide()`  [INFERRED]
-  DESIGN.md → src/core/select.js
 - `Invariants` --references--> `publicState()`  [INFERRED]
   STANDARDS.md → src/core/select.js
+- `Lessons` --references--> `publicState()`  [INFERRED]
+  STANDARDS.md → src/core/select.js
+- `The plan (owner, 2026-11-26, issue #103)` --references--> `onWinningSide()`  [INFERRED]
+  DESIGN.md → src/core/select.js
 
 ## Import Cycles
 - 2-file cycle: `src/App.jsx -> src/features/packs/Library.jsx -> src/App.jsx`
@@ -115,7 +113,7 @@
 Cohesion: 0.15
 Nodes (17): CHANGELOG, Legal lobby could deal a lost game, Broadcast seed leak bug, 1.0.0 first working game, 1.13.0 light/dark and themes, 1.15.0 optional roles and scoring, 1.16.0 win payouts and clean sweep, 1.1.0 three languages and hold-to-reveal (+9 more)
 
-### Community 0 - "custom.js"
+### Community 0 - "Custom Pack Codes"
 Cohesion: 0.22
 Nodes (16): buildPack(), clean(), CODE_VERSION, decodePack(), encodePack(), fromBase64(), hasAWord(), isCustomPackId() (+8 more)
 
@@ -123,27 +121,27 @@ Nodes (16): buildPack(), clean(), CODE_VERSION, decodePack(), encodePack(), from
 Cohesion: 0.06
 Nodes (57): aRoom(), same(), callerOf(), Limit, LIMITS, _resetLimits(), sweepLimits(), withServer() (+49 more)
 
-### Community 2 - "OnlineGame.jsx"
+### Community 2 - "App Shell and Room Client"
 Cohesion: 0.05
 Nodes (76): App(), IconBoard, LIB_LANG_KEY, read(), readHash(), StringBoard, write(), MAX_PLAYERS (+68 more)
 
-### Community 3 - "strings.js"
+### Community 3 - "String Board"
 Cohesion: 0.18
 Nodes (17): FILTERS, StringBoard(), StringRow(), compareAll(), compareKey(), hasTrouble(), placeholdersIn(), placeholderTrouble() (+9 more)
 
-### Community 4 - "fingerprint.js"
+### Community 4 - "Translation and Fingerprint"
 Cohesion: 0.13
 Nodes (17): hintLine(), translator(), localeNumber(), numbers, resolveKey(), translate(), behaviour(), bySeat() (+9 more)
 
-### Community 5 - "ref_node_test"
+### Community 5 - "Community Pack Files"
 Cohesion: 0.16
 Nodes (13): clean(), CREDIT_MAX, readCommunityPack(), slugFor(), KEYS, root, parsePairs(), byAt (+5 more)
 
-### Community 6 - "PackLibrary.jsx"
+### Community 6 - "Pack Library and Word Languages"
 Cohesion: 0.35
 Nodes (11): loadCommunity(), WORD_LANGUAGES, Packs(), WordLanguage(), WordLanguageList(), Marked(), PackLibrary(), PackSheet() (+3 more)
 
-### Community 7 - "PackEditor.jsx"
+### Community 7 - "Pack Editor and Sharing"
 Cohesion: 0.29
 Nodes (9): cache, files, SHARE_URL, shareLink(), AiPrompt, COUNTS, EMOJI, PackEditor() (+1 more)
 
@@ -155,7 +153,7 @@ Nodes (34): author, dependencies, react@^19.2.0, react-dom@^19.2.0, description,
 Cohesion: 0.09
 Nodes (25): name, runs-on, steps, jobs, browser, tests, node, name (+17 more)
 
-### Community 10 - "changelog.test.js"
+### Community 10 - "What's New"
 Cohesion: 0.38
 Nodes (7): hasNews(), noteKey(), RELEASES, since(), pkg, VERSION, Changelog()
 
@@ -179,11 +177,11 @@ Nodes (23): inPublic(), linkedFiles(), manifestIcons(), missing(), PNG_MAGIC, pn
 Cohesion: 0.11
 Nodes (17): description, label, options, render, value, body, attributes, id (+9 more)
 
-### Community 16 - "ready.js"
+### Community 16 - "String Checks"
 Cohesion: 0.15
 Nodes (10): builtAtRuntime(), errorCodesInSource(), root, FALLBACK_LANG, inFlight, LANGUAGES, LOADERS, STRINGS (+2 more)
 
-### Community 17 - "ref_node_assert"
+### Community 17 - "Pack Search"
 Cohesion: 0.36
 Nodes (6): filterPack(), matchAt(), shelfFor(), en, food, th
 
@@ -195,15 +193,15 @@ Nodes (14): all, floorsFile, isHarness(), isTest(), measured, MODULES, order, ou
 Cohesion: 0.14
 Nodes (22): clueRound(), chaosAction(), FIRST, NAMES, PHASES, ROLE_IDS, RUNS, sensibleAction() (+14 more)
 
-### Community 20 - "engine.js"
+### Community 20 - "Vote and Round Outcomes"
 Cohesion: 0.29
 Nodes (15): advanceAfterVerdict(), finish(), resolveOutcome(), resolveVote(), tally(), MAX_WIN_POINTS, paysTheEliminated(), pointsFor() (+7 more)
 
-### Community 21 - "Settings.jsx"
+### Community 21 - "Lobby Settings and Themes"
 Cohesion: 0.06
 Nodes (46): ROUNDS_UNLIMITED, HowMany(), WhatTheySee(), WhetherTheyKnow(), ClueTimer(), Rounds(), SECTIONS, SEES (+38 more)
 
-### Community 22 - "settings.test.js"
+### Community 22 - "Imposter Count and Presets"
 Cohesion: 0.22
 Nodes (15): autoImposterCount(), DECOY, DEFAULT_CONFIG, IMPOSTERS_AUTO, IMPOSTERS_RANDOM, maxImpostersFor(), resolveImposterCount(), closestPreset() (+7 more)
 
@@ -211,7 +209,7 @@ Nodes (15): autoImposterCount(), DECOY, DEFAULT_CONFIG, IMPOSTERS_AUTO, IMPOSTER
 Cohesion: 0.13
 Nodes (21): BUILTIN_LANGUAGES, _forgetWords(), inFlight, loadAllWords(), loaded, LOADERS, loadWords(), wordsReady() (+13 more)
 
-### Community 24 - "engine.test.js"
+### Community 24 - "Engine Tests"
 Cohesion: 0.23
 Nodes (12): applyAll(), deals(), FIVE, one(), OURS, revealAll(), roleIds(), SEVEN (+4 more)
 
@@ -239,7 +237,7 @@ Nodes (15): sourceFiles(), classesRendered(), classesStyled(), classPrefixes(), 
 Cohesion: 0.15
 Nodes (16): Pull request template, PR checklist, Keep a Changelog / semver, 1.20.0 six-folder refactor, 1.21.0 error screen and safe reports, Checks, Code, Rules live in src/core, pure (+8 more)
 
-### Community 31 - "lint.test.js"
+### Community 31 - "Pack Lint"
 Cohesion: 0.38
 Nodes (6): foldLatinAccents(), INFLECTIONS, lintPack(), lintPacks(), normalise(), sameWordDifferentEnding()
 
@@ -247,7 +245,7 @@ Nodes (6): foldLatinAccents(), INFLECTIONS, lintPack(), lintPacks(), normalise()
 Cohesion: 0.13
 Nodes (15): Colors, Design System: The Long Table, Do's and Don'ts, Elevation & Depth, Hierarchy, Layout, Named Rules, Named Rules (+7 more)
 
-### Community 33 - "PRODUCT.md"
+### Community 33 - "Product Context"
 Cohesion: 0.10
 Nodes (20): 1.18.0 custom word packs and share codes, Accessibility & Inclusion, Brand Commitments, Capabilities and Constraints, Evidence on Hand, Free and highly customisable, Imposter game, The Long Table (product) (+12 more)
 
@@ -275,7 +273,7 @@ Nodes (16): 1.24.0 rooms survive restart, rate limits, Code of Conduct, Contribu
 Cohesion: 0.25
 Nodes (8): flush(), fromRecord(), here, load(), save(), saveNow(), STORE_PATH, toRecord()
 
-### Community 40 - "screens.test.js"
+### Community 40 - "Phase Routing"
 Cohesion: 0.39
 Nodes (7): isPlaying(), renderPhase(), SCREEN_FOR_PHASE, SCREEN_NAMES, screenFor(), here, MODES
 
@@ -283,7 +281,7 @@ Nodes (7): isPlaying(), renderPhase(), SCREEN_FOR_PHASE, SCREEN_NAMES, screenFor
 Cohesion: 0.25
 Nodes (7): Secrets never leave the server, Private vulnerability reporting, Reporting a vulnerability, Secrecy at the table is the vulnerability, Security policy, Supported versions, publicState strips secrets
 
-### Community 42 - "Motion"
+### Community 42 - "Motion Plan"
 Cohesion: 0.50
 Nodes (4): Motion, The plan (owner, 2026-11-26, issue #103), Vocabulary (tokens in `tokens.css`), Where it is used
 
@@ -311,7 +309,7 @@ Nodes (5): events, FakeAudio, made, node(), param()
 Cohesion: 0.15
 Nodes (12): description, label, body, attributes, id, type, validations, description (+4 more)
 
-### Community 63 - "useT"
+### Community 63 - "Round Screens and Local Storage"
 Cohesion: 0.07
 Nodes (80): react, MIN_PLAYERS, EndGameButton(), PlayerList(), Scoreboard(), WinValues(), Settings(), CallButton() (+72 more)
 
@@ -327,7 +325,7 @@ Nodes (18): dealRoles(), decoyFor(), EMPTY_HISTORY, hintFor(), makePlayerId(), n
 Cohesion: 0.33
 Nodes (5): blank_issues_enabled, contact_links, about, name, url
 
-### Community 67 - "IconBoard.jsx"
+### Community 67 - "Icons and Lobby Parts"
 Cohesion: 0.07
 Nodes (70): Icons, packById(), IconBoard(), ICONS, Roles(), ICONS, Presets(), PackChip() (+62 more)
 
@@ -335,7 +333,7 @@ Nodes (70): Icons, packById(), IconBoard(), ICONS, Roles(), ICONS, Presets(), Pa
 Cohesion: 0.11
 Nodes (31): ErrorBoundary, ErrorScreen(), FailureNotice(), breadcrumbs, currentSecrets(), describe(), described(), facts (+23 more)
 
-### Community 88 - "reduce"
+### Community 88 - "Game Reducer and Strict Mode"
 Cohesion: 0.15
 Nodes (16): createGame(), reduce(), voteOut(), normaliseConfig(), deepFreeze(), guard(), isStrict(), setStrict() (+8 more)
 
@@ -347,17 +345,17 @@ Nodes (16): createGame(), reduce(), voteOut(), normaliseConfig(), deepFreeze(), 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Invariants` connect `Project Standards` to `custom.js`, `Room Server`, `PRODUCT.md`, `Security Policy`, `Agent Instructions`, `reduce`?**
-  _High betweenness centrality (0.166) - this node is a cross-community bridge._
+- **Why does `Invariants` connect `Project Standards` to `Custom Pack Codes`, `Room Server`, `Product Context`, `Security Policy`, `Agent Instructions`, `Game Reducer and Strict Mode`?**
+  _High betweenness centrality (0.158) - this node is a cross-community bridge._
 - **What connects `1.0.0 first working game`, `1.13.0 light/dark and themes`, `1.1.0 three languages and hold-to-reveal` to the rest of the system?**
   _27 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Room Server` be split into smaller, more focused modules?**
   _Cohesion score 0.06342342342342343 - nodes in this community are weakly interconnected._
-- **Why does `validatePack()` connect `custom.js` to `Dealing Roles and Words`, `OnlineGame.jsx`, `engine.js`, `Word Loading`, `Project Standards`?**
-  _High betweenness centrality (0.068) - this node is a cross-community bridge._
-- **Should `OnlineGame.jsx` be split into smaller, more focused modules?**
+- **Why does `validatePack()` connect `Custom Pack Codes` to `Dealing Roles and Words`, `App Shell and Room Client`, `Vote and Round Outcomes`, `Word Loading`, `Project Standards`?**
+  _High betweenness centrality (0.070) - this node is a cross-community bridge._
+- **Should `App Shell and Room Client` be split into smaller, more focused modules?**
   _Cohesion score 0.051574212893553226 - nodes in this community are weakly interconnected._
-- **Why does `normaliseConfig()` connect `reduce` to `custom.js`, `Dealing Roles and Words`, `Special Roles`, `engine.js`, `settings.test.js`, `Word Loading`, `Project Standards`?**
-  _High betweenness centrality (0.066) - this node is a cross-community bridge._
-- **Should `fingerprint.js` be split into smaller, more focused modules?**
+- **Why does `normaliseConfig()` connect `Game Reducer and Strict Mode` to `Custom Pack Codes`, `Dealing Roles and Words`, `Special Roles`, `Vote and Round Outcomes`, `Imposter Count and Presets`, `Word Loading`, `Project Standards`?**
+  _High betweenness centrality (0.065) - this node is a cross-community bridge._
+- **Should `Translation and Fingerprint` be split into smaller, more focused modules?**
   _Cohesion score 0.12666666666666668 - nodes in this community are weakly interconnected._
