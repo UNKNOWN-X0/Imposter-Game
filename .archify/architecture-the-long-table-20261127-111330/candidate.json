@@ -1,0 +1,725 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "The Long Table · application architecture",
+    "locale": "en",
+    "output": ".archify/architecture-the-long-table-20261127-111330/the-long-table.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/UNKNOWN-X0/The-Long-Table.git",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "b59bc3478aa4451ea67d8e05c75a619ea77780af"
+    }
+  },
+  "components": [
+    {
+      "id": "pages",
+      "type": "cloud",
+      "label": "GitHub Pages",
+      "sublabel": "static pass-and-play site",
+      "pos": [
+        360,
+        40
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": ".github/workflows/pages.yml",
+          "line": 25,
+          "end_line": 49
+        },
+        {
+          "path": "README.md",
+          "line": 106,
+          "end_line": 106
+        }
+      ]
+    },
+    {
+      "id": "github",
+      "type": "external",
+      "label": "GitHub repository",
+      "sublabel": "CI, Pages deploy, issue forms",
+      "pos": [
+        680,
+        40
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "line": 13,
+          "end_line": 55
+        },
+        {
+          "path": ".github/workflows/pages.yml",
+          "line": 1,
+          "end_line": 24
+        },
+        {
+          "path": ".github/ISSUE_TEMPLATE/share-a-pack.yml",
+          "line": 1,
+          "end_line": 32
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "type": "database",
+      "label": "Community packs",
+      "sublabel": "reviewed JSON shipped with the site",
+      "pos": [
+        1000,
+        40
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/content/words/community.js",
+          "line": 1,
+          "end_line": 36
+        },
+        {
+          "path": "src/content/words/community-pack.js",
+          "line": 1,
+          "end_line": 52
+        },
+        {
+          "path": "tools/community.mjs",
+          "line": 1,
+          "end_line": 50
+        }
+      ]
+    },
+    {
+      "id": "players",
+      "type": "external",
+      "label": "Players",
+      "sublabel": "one shared phone or one each",
+      "pos": [
+        40,
+        220
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 51,
+          "end_line": 57
+        }
+      ]
+    },
+    {
+      "id": "app_shell",
+      "type": "frontend",
+      "label": "React app shell",
+      "sublabel": "resume, screen routing, first rules",
+      "pos": [
+        360,
+        220
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/App.jsx",
+          "line": 64,
+          "end_line": 81
+        },
+        {
+          "path": "src/App.jsx",
+          "line": 160,
+          "end_line": 199
+        }
+      ]
+    },
+    {
+      "id": "hub",
+      "type": "frontend",
+      "label": "Party hub and game library",
+      "sublabel": "seat the party, pick mode and game",
+      "pos": [
+        680,
+        220
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/features/hub/PartyHub.jsx",
+          "line": 13,
+          "end_line": 116
+        },
+        {
+          "path": "src/features/library/GameLibrary.jsx",
+          "line": 17,
+          "end_line": 69
+        },
+        {
+          "path": "src/games/index.js",
+          "line": 20,
+          "end_line": 38
+        }
+      ]
+    },
+    {
+      "id": "pack_library",
+      "type": "frontend",
+      "label": "Pack library",
+      "sublabel": "browse, write and add word packs",
+      "pos": [
+        1000,
+        220
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/features/packs/Library.jsx",
+          "line": 28,
+          "end_line": 85
+        },
+        {
+          "path": "src/features/packs/PackLibrary.jsx",
+          "line": 37,
+          "end_line": 60
+        },
+        {
+          "path": "src/features/packs/PackLibrary.jsx",
+          "line": 215,
+          "end_line": 243
+        }
+      ]
+    },
+    {
+      "id": "browser_store",
+      "type": "database",
+      "label": "Browser storage",
+      "sublabel": "round, roster, packs, theme, sound",
+      "pos": [
+        40,
+        420
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/modes/local/storage.js",
+          "line": 22,
+          "end_line": 80
+        },
+        {
+          "path": "src/features/packs/store.js",
+          "line": 35,
+          "end_line": 56
+        },
+        {
+          "path": "src/ui/sound/store.js",
+          "line": 1,
+          "end_line": 23
+        }
+      ]
+    },
+    {
+      "id": "local_mode",
+      "type": "frontend",
+      "label": "Pass-and-play mode",
+      "sublabel": "runs the reducer on this phone",
+      "pos": [
+        360,
+        420
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/modes/local/LocalGame.jsx",
+          "line": 34,
+          "end_line": 50
+        },
+        {
+          "path": "src/modes/local/LocalGame.jsx",
+          "line": 84,
+          "end_line": 127
+        },
+        {
+          "path": "src/modes/local/LocalGame.jsx",
+          "line": 208,
+          "end_line": 230
+        }
+      ]
+    },
+    {
+      "id": "phase_ui",
+      "type": "frontend",
+      "label": "Lobby and round screens",
+      "sublabel": "settings, reveal, clues, vote, results",
+      "pos": [
+        680,
+        420
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/modes/screens.js",
+          "line": 19,
+          "end_line": 54
+        }
+      ]
+    },
+    {
+      "id": "room_client",
+      "type": "frontend",
+      "label": "Room client",
+      "sublabel": "create, join, act, live updates",
+      "pos": [
+        1000,
+        420
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/modes/online/OnlineGame.jsx",
+          "line": 34,
+          "end_line": 70
+        },
+        {
+          "path": "src/modes/online/room.js",
+          "line": 109,
+          "end_line": 190
+        },
+        {
+          "path": "src/modes/online/useRoom.js",
+          "line": 28,
+          "end_line": 75
+        }
+      ]
+    },
+    {
+      "id": "word_packs",
+      "type": "backend",
+      "label": "Word pack catalogue",
+      "sublabel": "built-in languages plus custom packs",
+      "pos": [
+        40,
+        640
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/content/words/builtin/index.js",
+          "line": 28,
+          "end_line": 80
+        },
+        {
+          "path": "src/content/words/index.js",
+          "line": 39,
+          "end_line": 54
+        },
+        {
+          "path": "src/content/words/custom.js",
+          "line": 16,
+          "end_line": 46
+        }
+      ]
+    },
+    {
+      "id": "rule_engine",
+      "type": "backend",
+      "label": "Shared game engine",
+      "sublabel": "reducer, roles, phases, scoring",
+      "pos": [
+        360,
+        640
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/core/engine.js",
+          "line": 46,
+          "end_line": 336
+        },
+        {
+          "path": "src/core/engine.js",
+          "line": 424,
+          "end_line": 556
+        }
+      ]
+    },
+    {
+      "id": "node_service",
+      "type": "backend",
+      "label": "Node room service",
+      "sublabel": "static files, room API, SSE, limits",
+      "pos": [
+        1000,
+        640
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "server/server.js",
+          "line": 173,
+          "end_line": 263
+        },
+        {
+          "path": "server/server.js",
+          "line": 284,
+          "end_line": 335
+        },
+        {
+          "path": "server/limits.js",
+          "line": 78,
+          "end_line": 92
+        }
+      ]
+    },
+    {
+      "id": "player_views",
+      "type": "security",
+      "label": "Public and private views",
+      "sublabel": "shared table plus each secret",
+      "pos": [
+        360,
+        860
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/core/select.js",
+          "line": 98,
+          "end_line": 219
+        },
+        {
+          "path": "server/rooms.js",
+          "line": 346,
+          "end_line": 391
+        }
+      ]
+    },
+    {
+      "id": "room_manager",
+      "type": "backend",
+      "label": "Room manager",
+      "sublabel": "members, host rules, dispatch",
+      "pos": [
+        680,
+        860
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "server/rooms.js",
+          "line": 78,
+          "end_line": 91
+        },
+        {
+          "path": "server/rooms.js",
+          "line": 151,
+          "end_line": 169
+        },
+        {
+          "path": "server/rooms.js",
+          "line": 273,
+          "end_line": 312
+        }
+      ]
+    },
+    {
+      "id": "render",
+      "type": "cloud",
+      "label": "Render web service",
+      "sublabel": "or any host that runs Node",
+      "pos": [
+        1000,
+        860
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "render.yaml",
+          "line": 13,
+          "end_line": 28
+        },
+        {
+          "path": "README.md",
+          "line": 108,
+          "end_line": 117
+        }
+      ]
+    },
+    {
+      "id": "room_store",
+      "type": "database",
+      "label": "Room recovery file",
+      "sublabel": ".rooms.json, holds the live word",
+      "pos": [
+        680,
+        1060
+      ],
+      "size": [
+        200,
+        90
+      ],
+      "sources": [
+        {
+          "path": "server/store.js",
+          "line": 42,
+          "end_line": 48
+        },
+        {
+          "path": "server/store.js",
+          "line": 100,
+          "end_line": 108
+        },
+        {
+          "path": "server/store.js",
+          "line": 144,
+          "end_line": 175
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "github-deploys-pages",
+      "from": "github",
+      "to": "pages",
+      "label": "deploy main"
+    },
+    {
+      "id": "github-merges-pack",
+      "from": "github",
+      "to": "community",
+      "label": "merge a pack"
+    },
+    {
+      "id": "pages-serves-app",
+      "from": "pages",
+      "to": "app_shell",
+      "label": "serve static build"
+    },
+    {
+      "id": "players-open-app",
+      "from": "players",
+      "to": "app_shell",
+      "label": "open the site",
+      "variant": "emphasis"
+    },
+    {
+      "id": "app-shows-hub",
+      "from": "app_shell",
+      "to": "hub",
+      "label": "show the hub",
+      "variant": "emphasis"
+    },
+    {
+      "id": "hub-opens-packs",
+      "from": "hub",
+      "to": "pack_library",
+      "label": "word packs"
+    },
+    {
+      "id": "packs-load-community",
+      "from": "pack_library",
+      "to": "community",
+      "label": "load shared packs"
+    },
+    {
+      "id": "hub-starts-local",
+      "from": "hub",
+      "to": "local_mode",
+      "label": "play on one phone",
+      "variant": "emphasis"
+    },
+    {
+      "id": "hub-starts-room",
+      "from": "hub",
+      "to": "room_client",
+      "label": "play in a room"
+    },
+    {
+      "id": "local-drives-screens",
+      "from": "local_mode",
+      "to": "phase_ui",
+      "label": "phase, players"
+    },
+    {
+      "id": "screens-act-local",
+      "from": "phase_ui",
+      "to": "local_mode",
+      "label": "actions"
+    },
+    {
+      "id": "room-drives-screens",
+      "from": "room_client",
+      "to": "phase_ui",
+      "label": "room view"
+    },
+    {
+      "id": "screens-act-room",
+      "from": "phase_ui",
+      "to": "room_client",
+      "label": "actions"
+    },
+    {
+      "id": "local-saves",
+      "from": "local_mode",
+      "to": "browser_store",
+      "label": "save round"
+    },
+    {
+      "id": "local-loads-words",
+      "from": "local_mode",
+      "to": "word_packs",
+      "label": "load language"
+    },
+    {
+      "id": "local-reduces",
+      "from": "local_mode",
+      "to": "rule_engine",
+      "label": "reduce action"
+    },
+    {
+      "id": "words-feed-engine",
+      "from": "word_packs",
+      "to": "rule_engine",
+      "label": "word pool"
+    },
+    {
+      "id": "room-posts",
+      "from": "room_client",
+      "to": "node_service",
+      "label": "POST actions"
+    },
+    {
+      "id": "service-streams",
+      "from": "node_service",
+      "to": "room_client",
+      "label": "SSE updates"
+    },
+    {
+      "id": "service-routes-rooms",
+      "from": "node_service",
+      "to": "room_manager",
+      "label": "room API"
+    },
+    {
+      "id": "rooms-reduce",
+      "from": "room_manager",
+      "to": "rule_engine",
+      "label": "reduce checked action"
+    },
+    {
+      "id": "rooms-build-views",
+      "from": "room_manager",
+      "to": "player_views",
+      "label": "per-player view"
+    },
+    {
+      "id": "rooms-persist",
+      "from": "room_manager",
+      "to": "room_store",
+      "label": "save, restore"
+    },
+    {
+      "id": "render-runs-service",
+      "from": "render",
+      "to": "node_service",
+      "label": "build and start"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "One app, two ways to play",
+      "items": [
+        "The shell opens a room first when the link carries a code or a room session is saved, then a saved local round, otherwise the hub. (src/App.jsx:64–81)",
+        "The hub seats the party and offers one phone or a room; the game library lists the games that mode supports and opens the chosen game's screen. Games are one registry entry each. (src/App.jsx:173–198; src/games/index.js:20–38)",
+        "Both modes render the same screen per phase, so a phase looks the same on one phone and in a room. (src/modes/screens.js:19–54)"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "What stays on the phone",
+      "items": [
+        "Pass-and-play keeps everything in localStorage: the active round, settings, recent words, scores and custom packs, each saved as it changes. A private window just forgets. (src/modes/local/LocalGame.jsx:84–127; src/modes/local/storage.js:22–80)",
+        "The pack library saves added and written packs to the same shelf. (src/features/packs/Library.jsx:28–37; src/features/packs/store.js:35–56)",
+        "Display and sound are per device, never a game setting; sound is off until turned on. The room client also keeps its session here so a reload rejoins. (src/ui/sound/store.js:1–23; src/modes/online/room.js:23–45)"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Word packs and the community shelf",
+      "items": [
+        "Built-in packs load one language at a time as separate chunks; the room service waits for them before it deals. (src/content/words/builtin/index.js:28–80; server/server.js:290–303)",
+        "Anyone can share a pack through the Share-a-pack issue form. A maintainer reads every word, adds it with npm run community, and merges it, so the site only fetches its own files. (.github/ISSUE_TEMPLATE/share-a-pack.yml:1–32; tools/community.mjs:1–50; src/content/words/community.js:1–36)"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Rooms are checked on the server",
+      "items": [
+        "Actions arrive as POSTs, pass a per-caller rate limit, and are dispatched by the room manager, which enforces host rules before running the shared reducer. (server/server.js:173–263; server/limits.js:78–92; server/rooms.js:273–312)",
+        "Each phone receives the public table plus only its own private view over SSE, so the word never reaches the imposter's phone. (src/core/select.js:98–219; server/rooms.js:346–391)"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Deployments and recovery",
+      "items": [
+        "Every push to main builds with BASE_PATH=/The-Long-Table/ and deploys to GitHub Pages; CI runs tests, coverage and the browser sweeps on every push and pull request. Pages cannot host rooms. (.github/workflows/pages.yml:1–49; .github/workflows/ci.yml:13–55)",
+        "Rooms need a Node host; render.yaml describes Render with six-character codes. (render.yaml:13–28)",
+        "Rooms are saved to .rooms.json through a temporary file and a rename and restored after a restart. The file holds the word in play, so it is ignored by git and written 0600. (server/store.js:42–48, 100–108, 144–175; README.md:108–117)"
+      ]
+    }
+  ]
+}
