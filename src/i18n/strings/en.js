@@ -359,6 +359,7 @@ export default {
   'log.1.29.0.setup': 'The lobby keeps the quick choices in view and tucks detailed rules away until you want them.',
   'log.1.29.0.roles': 'Role choices now explain what each role does right on its card.',
   'log.1.29.0.retry': 'A room that loses its connection still retries automatically, and now also lets you reconnect with one tap.',
+  'log.2.0.1.launcher': 'Playing from your own computer: double-click The Long Table (the app with the table icon) on a Mac, or Play The Long Table on Windows. It now starts even when Node.js came from nvm.',
   'log.2.0.0.address': 'The game has a new home: unknown-x0.github.io/The-Long-Table. If you saved the old address to your home screen, save this one instead.',
   'log.2.0.0.library': 'Choose one phone or a room, then pick the game from the game library, with its player range and rules.',
   'log.2.0.0.settings': 'Settings are short lists now: tap a row and its choices slide up. Display, sound and language share one Settings button.',

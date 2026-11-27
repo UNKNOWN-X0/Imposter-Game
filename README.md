@@ -44,7 +44,7 @@ npm run dev        # http://localhost:5174, one-phone mode, hot reload
 
 For phone-to-phone play, `npm run party` builds the site and serves it on your wifi, printing the address everyone else types into their phone. When you are working on the interface *and* want rooms, run `npm run serve` (the party server on 5173) in one terminal and `npm run dev` in another; Vite proxies `/api` to the server, so it behaves as in production.
 
-**Without a terminal:** double-click `Play Imposter.command` (Mac; right-click and choose Open the first time) or `Play Imposter.bat` (Windows). It installs what is missing, builds, starts the server, and opens the browser.
+**Without a terminal:** on a Mac, double-click **The Long Table.app** (it has the table icon; the first time, right-click it and choose Open), which runs `Play The Long Table.command` in Terminal. On Windows, double-click `Play The Long Table.bat`. It installs what is missing (again after an update), builds, starts the server, and opens the browser.
 
 ## Usage
 

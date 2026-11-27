@@ -359,6 +359,7 @@ export default {
   'log.1.29.0.setup': 'Die schnellen Einstellungen bleiben in der Lobby sichtbar. Die ausführlichen Regeln kannst du bei Bedarf aufklappen.',
   'log.1.29.0.roles': 'Auf den Rollenkarten steht jetzt direkt, was die jeweilige Rolle macht.',
   'log.1.29.0.retry': 'Ein Raum versucht weiterhin automatisch, die Verbindung wiederherzustellen. Jetzt kannst du es auch mit einem Tipp versuchen.',
+  'log.2.0.1.launcher': 'Auf dem eigenen Computer spielen: Doppelklickt auf dem Mac auf The Long Table (die App mit dem Tisch-Symbol) oder unter Windows auf Play The Long Table. Es startet jetzt auch, wenn Node.js über nvm installiert ist.',
   'log.2.0.0.address': 'Das Spiel hat ein neues Zuhause: unknown-x0.github.io/The-Long-Table. Wer die alte Adresse auf dem Startbildschirm gespeichert hat, speichert jetzt diese.',
   'log.2.0.0.library': 'Wählt ein Handy oder einen Raum und dann das Spiel aus der Spielebibliothek, mit Spielerzahl und Regeln.',
   'log.2.0.0.settings': 'Einstellungen sind jetzt kurze Listen: Tippt auf eine Zeile, und ihre Optionen gleiten hoch. Anzeige, Ton und Sprache teilen sich einen Einstellungen-Knopf.',
