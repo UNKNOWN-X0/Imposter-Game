@@ -12,9 +12,9 @@
     "semantic_hash": "99362c983537b2fa51ae187496646771"
   },
   "package.json": {
-    "mtime": 1795788831.850415,
-    "seen": 1795789341.095123,
-    "ast_hash": "e366bf6fc7c00861a1d8acddf20cf412",
+    "mtime": 1795790578.4713933,
+    "seen": 1795790847.699806,
+    "ast_hash": "299fb635bb204f4ec41576271d16d68e",
     "semantic_hash": ""
   },
   "render.yaml": {
@@ -78,9 +78,9 @@
     "semantic_hash": "68786fbf1263d8ab144a36ad37bd8c44"
   },
   "src/content/history/changelog.js": {
-    "mtime": 1795788831.8506572,
-    "seen": 1795789341.095135,
-    "ast_hash": "054014fad62589a17fe452d2f29a9a79",
+    "mtime": 1795790578.4716008,
+    "seen": 1795790847.699818,
+    "ast_hash": "e2d7e17a22911322f6638934b2dabdc5",
     "semantic_hash": ""
   },
   "src/content/history/changelog.test.js": {
@@ -576,15 +576,15 @@
     "semantic_hash": "b30997083c1e0282003e501ec0b6e9a0"
   },
   "src/i18n/strings/de.js": {
-    "mtime": 1795788831.8512475,
-    "seen": 1795789341.0952268,
-    "ast_hash": "ef22c6b1461c815d17545f8304489cfe",
+    "mtime": 1795790578.4719481,
+    "seen": 1795790847.699915,
+    "ast_hash": "27925d420c32b35c6897bb4896c7a61e",
     "semantic_hash": ""
   },
   "src/i18n/strings/en.js": {
-    "mtime": 1795788831.852,
-    "seen": 1795789341.095228,
-    "ast_hash": "6dccf76a7aaaffd628784894e1c731df",
+    "mtime": 1795790578.4722805,
+    "seen": 1795790847.699915,
+    "ast_hash": "2cd0a0ad33d2cc7b3a2d640ad69bd9e2",
     "semantic_hash": ""
   },
   "src/i18n/strings/index.js": {
@@ -594,9 +594,9 @@
     "semantic_hash": "52c5357bda9630b19ae1ec9857ed9ada"
   },
   "src/i18n/strings/th.js": {
-    "mtime": 1795788831.8524354,
-    "seen": 1795789341.0952299,
-    "ast_hash": "b3169fbb302e1f0de0f7fa0eb67db80e",
+    "mtime": 1795790578.4727142,
+    "seen": 1795790847.699917,
+    "ast_hash": "63b14492af7b48c0ab8dba77c7b9c0fc",
     "semantic_hash": ""
   },
   "src/i18n/translate.js": {
@@ -960,9 +960,9 @@
     "semantic_hash": "0e7784f3bd72bb2ad408d376f68a758d"
   },
   "CHANGELOG.md": {
-    "mtime": 1795788831.8496265,
-    "seen": 1795789341.095306,
-    "ast_hash": "39c30b4e320b5458712c1d4fba823865",
+    "mtime": 1795790578.470072,
+    "seen": 1795790847.699998,
+    "ast_hash": "5a4ee4418612dcfa0eb1afb8c4deb751",
     "semantic_hash": ""
   },
   "PLAYTEST.md": {
@@ -972,10 +972,10 @@
     "semantic_hash": "f4c9112937cdeb2ec578eed698c5ccfb"
   },
   "README.md": {
-    "mtime": 1795773142.746063,
-    "seen": 1795774108.31411,
-    "ast_hash": "ac5b0cd82a3dd0dbd0639534d8d10c7e",
-    "semantic_hash": "ac5b0cd82a3dd0dbd0639534d8d10c7e"
+    "mtime": 1795790578.4707227,
+    "seen": 1795790847.700005,
+    "ast_hash": "a9f57a1945c8b165e7a6451d5549c8c2",
+    "semantic_hash": ""
   },
   "index.html": {
     "mtime": 1795622274.5119383,
@@ -1397,10 +1397,16 @@
     "ast_hash": "05999d2ee1842d4ad767f5875a1320fc",
     "semantic_hash": ""
   },
+  "The Long Table.app/Contents/MacOS/the-long-table": {
+    "mtime": 1795790418.2488613,
+    "seen": 1795790847.699805,
+    "ast_hash": "579b3ed33456fc196f996c641a14063d",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
-    "mtime": 1795788831.8501625,
-    "seen": 1795789341.095325,
-    "ast_hash": "eda0d25f160c7193f104a4edc829dbe6",
+    "mtime": 1795790578.471178,
+    "seen": 1795790847.700018,
+    "ast_hash": "97421064539c44b0ce0dbc07dd8e2854",
     "semantic_hash": ""
   }
 }

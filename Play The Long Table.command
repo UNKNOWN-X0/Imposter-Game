@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Double-click this file to play.
+# Double-click this file (or The Long Table.app beside it) to play.
 #
 # It does everything the terminal instructions do — installs what is missing
 # the first time, builds the app, starts the server and opens the browser —

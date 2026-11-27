@@ -6,9 +6,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-11-27
+
+### Changed
+
+- The double-click launchers are named for the game: **Play The Long Table.command** (Mac) and **Play The Long Table.bat** (Windows). On a Mac there is also **The Long Table.app**, with the table icon, which opens the launcher in Terminal.
+
 ### Fixed
 
-- **Play Imposter.command** (Mac) starts again when Node.js came from nvm, Homebrew, Volta or fnm. A double-click used to say Node was not installed. It also reinstalls after an update changes what the game needs, and says so when the port is taken or the server stops, instead of closing.
+- The Mac launcher starts again when Node.js came from nvm, Homebrew, Volta or fnm. A double-click used to say Node was not installed. It also reinstalls after an update changes what the game needs, and says so when the port is taken or the server stops, instead of closing.
 
 ## [2.0.0] - 2026-11-27
 

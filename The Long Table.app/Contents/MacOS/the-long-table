@@ -1,0 +1,5 @@
+#!/bin/bash
+# Opens "Play The Long Table.command" in Terminal, so the game's output and
+# its Ctrl-C stay visible. The app only exists to carry the icon.
+here="$(cd "$(dirname "$0")/../../.." && pwd)"
+exec open -a Terminal "$here/Play The Long Table.command"
