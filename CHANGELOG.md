@@ -6,20 +6,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-11-27
+
+A major version because something players saved needs attention: the game moved to **https://unknown-x0.github.io/The-Long-Table/**, so a phone that saved the old Netlify address to its home screen should save the new one. The hub's separate "First game" section is gone too; choosing how to play now opens the game library.
+
 ### Added
 
 - Sound effects, off until you turn them on in the Display menu: the deal, your card turning, the vote, the verdict landing, a win, the clue turn passing and the timer's last seconds. Your card sounds the same whatever is on it.
 - A community pack library. Share a pack you wrote with everyone: **Share it with everyone** in the share sheet opens a short form on GitHub with your code filled in. Once somebody has read it, it shows up under **From the community** in every table's pack library, where **Add to my packs** saves your own copy to play and change.
 - Six English packs on the community shelf, 60 words each with a near miss: Anime, Snacks, Coding languages & terms, Dinosaurs, Astronomy, and Alcohol (18+) for adult tables.
-
-### Fixed
-
-- Switching a setting on or off no longer makes the text around it jump. The scoreboard now comes after the settings, and the "Your own rules" card is always shown instead of popping in.
-- Holding to see your card with a mouse turns the card every time. Before, holding near the card's edge or moving the mouse slightly made it cover itself again the moment it opened.
-- Every step of a round now opens at its top. The vote used to open halfway down the page, with its title and instructions out of sight. Screen readers start at the new step's title.
-- The ⓘ explanations in Imposter's settings open in place under the setting's name, so nothing cuts them off or covers them, and the ⓘ itself is a clean ring icon like the rest.
-- The display and language menus open again on a phone. On the home screen they had been opening below the bottom of the screen.
-- "Got it" on a game's rules, opened from the game list, goes back to that list instead of the home screen. The phone's back button does the same.
 
 ### Changed
 
@@ -49,6 +44,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Fixed
 
+- Switching a setting on or off no longer makes the text around it jump. The scoreboard now comes after the settings, and the "Your own rules" card is always shown instead of popping in.
+- Holding to see your card with a mouse turns the card every time. Before, holding near the card's edge or moving the mouse slightly made it cover itself again the moment it opened.
+- Every step of a round now opens at its top. The vote used to open halfway down the page, with its title and instructions out of sight. Screen readers start at the new step's title.
+- The ⓘ explanations in Imposter's settings open in place under the setting's name, so nothing cuts them off or covers them, and the ⓘ itself is a clean ring icon like the rest.
+- The display and language menus open again on a phone. On the home screen they had been opening below the bottom of the screen.
+- "Got it" on a game's rules, opened from the game list, goes back to that list instead of the home screen. The phone's back button does the same.
 - On one phone the clue screen no longer says earlier clues are "still on the table" (they were spoken, not written); it shows the speaking order once; and it has an optional timer per speaker (Off, 30 s, 60 s), remembered on the phone, which "Next" restarts.
 - Joining or starting a room from a phone that already has people seated: tap **This is me** to fill in your name and emblem instead of typing. The join screen now sits in the same frame as the other screens.
 - A game's lobby leads with the game and **Deal**. The people seated at the hub show as a strip of emblems with **Edit**; the table and the add form open from there, or by themselves while too few are seated.

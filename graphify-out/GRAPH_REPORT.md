@@ -1,7 +1,9 @@
 # Graph Report - The-Long-Table  (2026-11-27)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- 224 files · ~195,434 words
+- Verdict: corpus is large enough that graph structure adds value.
+- Unclassified: 22 file(s) not represented in the graph (top: .css 15, (none) 3, .bat 1)
 
 ## Summary
 - 1385 nodes · 4051 edges · 58 communities (57 shown, 1 thin omitted)
@@ -9,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `951719ab`
+- Built from commit: `91033a3f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -83,19 +85,19 @@
 7. `CHANGELOG` - 31 edges
 8. `Shell()` - 29 edges
 9. `Avatar()` - 28 edges
-10. `CheckIcon()` - 27 edges
+10. `createGame()` - 27 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Table and Seats` --references--> `chairsFor()`  [INFERRED]
   DESIGN.md → src/ui/table/TableScene.jsx
 - `Invariants` --references--> `validatePack()`  [INFERRED]
   STANDARDS.md → src/content/words/custom.js
-- `Invariants` --references--> `publicState()`  [INFERRED]
-  STANDARDS.md → src/core/select.js
-- `Lessons` --references--> `publicState()`  [INFERRED]
-  STANDARDS.md → src/core/select.js
+- `Invariants` --references--> `normaliseConfig()`  [INFERRED]
+  STANDARDS.md → src/core/rules.js
 - `The plan (owner, 2026-11-26, issue #103)` --references--> `onWinningSide()`  [INFERRED]
   DESIGN.md → src/core/select.js
+- `Invariants` --references--> `publicState()`  [INFERRED]
+  STANDARDS.md → src/core/select.js
 
 ## Import Cycles
 - 2-file cycle: `src/App.jsx -> src/features/packs/Library.jsx -> src/App.jsx`
@@ -346,16 +348,16 @@ Nodes (16): createGame(), reduce(), voteOut(), normaliseConfig(), deepFreeze(), 
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Invariants` connect `Project Standards` to `Custom Pack Codes`, `Room Server`, `Product Context`, `Security Policy`, `Agent Instructions`, `Game Reducer and Strict Mode`?**
-  _High betweenness centrality (0.158) - this node is a cross-community bridge._
+  _High betweenness centrality (0.170) - this node is a cross-community bridge._
 - **What connects `1.0.0 first working game`, `1.13.0 light/dark and themes`, `1.1.0 three languages and hold-to-reveal` to the rest of the system?**
   _27 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Room Server` be split into smaller, more focused modules?**
   _Cohesion score 0.06342342342342343 - nodes in this community are weakly interconnected._
 - **Why does `validatePack()` connect `Custom Pack Codes` to `Dealing Roles and Words`, `App Shell and Room Client`, `Vote and Round Outcomes`, `Word Loading`, `Project Standards`?**
-  _High betweenness centrality (0.070) - this node is a cross-community bridge._
+  _High betweenness centrality (0.069) - this node is a cross-community bridge._
 - **Should `App Shell and Room Client` be split into smaller, more focused modules?**
   _Cohesion score 0.051574212893553226 - nodes in this community are weakly interconnected._
 - **Why does `normaliseConfig()` connect `Game Reducer and Strict Mode` to `Custom Pack Codes`, `Dealing Roles and Words`, `Special Roles`, `Vote and Round Outcomes`, `Imposter Count and Presets`, `Word Loading`, `Project Standards`?**
-  _High betweenness centrality (0.065) - this node is a cross-community bridge._
+  _High betweenness centrality (0.068) - this node is a cross-community bridge._
 - **Should `Translation and Fingerprint` be split into smaller, more focused modules?**
   _Cohesion score 0.12666666666666668 - nodes in this community are weakly interconnected._
