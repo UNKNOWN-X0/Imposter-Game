@@ -1,6 +1,5 @@
 import { BrandMark, PhoneIcon, WifiIcon } from '../../ui/icons/index.jsx';
-import { ThemePicker } from '../../ui/theme/ThemePicker.jsx';
-import { LanguagePicker } from '../../i18n/LanguagePicker.jsx';
+import { AppSettings } from '../../ui/settings/AppSettings.jsx';
 import { Credit } from '../rules/Credit.jsx';
 import { useState } from 'react';
 import { useErrorText, useT } from '../../i18n/index.jsx';
@@ -32,8 +31,7 @@ export function PartyHub({ children, onLocal, onOnline, onPacks, onRules, onNews
             <span>{t('app.name')}<small>{t('hub.brand')}</small></span>
           </a>
           <div className="hub-tools">
-            <ThemePicker />
-            <LanguagePicker />
+            <AppSettings />
           </div>
         </header>
 

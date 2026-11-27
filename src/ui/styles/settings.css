@@ -599,4 +599,30 @@ div.setting-row .setting-row-end { align-self: start; margin-top: -10px; }
   .number-tile { transition: none; }
 }
 
-.display-sound { margin-top: 8px; }
+
+/* This phone's settings (#129): three sections in one sheet, each with a
+   heading a step above the display's own Appearance and Wood. */
+.app-settings-section {
+  display: grid;
+  gap: 10px;
+}
+
+.app-settings-section + .app-settings-section {
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.app-settings-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+/* Appearance and Wood are parts of Display, so they read a step quieter. */
+.app-settings-section .display-heading {
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dim);
+}

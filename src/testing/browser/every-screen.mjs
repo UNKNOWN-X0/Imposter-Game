@@ -227,7 +227,7 @@ const seen = [];
       const r = menu.getBoundingClientRect();
       return r.top >= 0 && r.bottom <= innerHeight && r.left >= 0 && r.right <= innerWidth ? 'ok' : `off screen at ${Math.round(r.top)},${Math.round(r.left)}`;
     });
-  for (const [name, button] of [['display', '.iconpicker'], ['language', '.langpicker']]) {
+  for (const [name, button] of [['settings', '.settings-button']]) {
     await page.locator(button).click();
     await wait(300);
     const where = await inView();
@@ -236,18 +236,25 @@ const seen = [];
     await wait(200);
   }
   // Choosing a wood in the display sheet repaints the page at once (#84).
-  await page.locator('.iconpicker').click();
+  await page.locator('.settings-button').click();
   await wait(300);
   const before = await page.evaluate(() => document.documentElement.dataset.theme);
   await page.locator('.wood-card[aria-pressed="false"]').first().click();
   await wait(200);
   if ((await page.evaluate(() => document.documentElement.dataset.theme)) === before) fail('choosing a wood did not change the theme');
+  // Choosing a language in the same sheet switches at once and keeps it open (#129).
+  await page.locator('.bottom-sheet button.setting-row', { hasText: 'Deutsch' }).click();
+  await wait(400);
+  if ((await page.evaluate(() => document.documentElement.lang)) !== 'de') fail('choosing Deutsch did not switch the language');
+  else if (!(await page.locator('.bottom-sheet').count())) fail('choosing a language closed the settings sheet');
+  await page.locator('.bottom-sheet button.setting-row', { hasText: 'English' }).click();
+  await wait(300);
   await page.keyboard.press('Escape');
   await wait(200);
   // And the same menus from a game's own top bar.
   await page.locator('.hub-mode').first().click();
   await wait(400);
-  for (const [name, button] of [['display', '.iconpicker'], ['language', '.langpicker']]) {
+  for (const [name, button] of [['settings', '.settings-button']]) {
     await page.locator(button).click();
     await wait(300);
     const where = await inView();
@@ -428,9 +435,9 @@ for (const [engineName, engine] of [['chromium', chromium], ['webkit', webkit]])
     window.__sounds = [];
     window.addEventListener('sound', (e) => window.__sounds.push(e.detail));
   });
-  await page.locator('.iconpicker').click();
+  await page.locator('.settings-button').click();
   await wait(300);
-  const sw = page.locator('.bottom-sheet .display-sound .switch');
+  const sw = page.locator('.bottom-sheet .switch');
   const offAtFirst = (await sw.getAttribute('aria-checked')) === 'false';
   await sw.click();
   await wait(150);

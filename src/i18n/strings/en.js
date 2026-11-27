@@ -33,6 +33,8 @@ export default {
   'language.de': 'German',
   'sound.title': 'Sound effects',
   'sound.hint': 'Short sounds at the big moments of a round, on this phone only.',
+  'app.settings': 'Settings',
+  'sound.section': 'Sound',
   'display.title': 'Display',
   'display.appearance': 'Appearance',
   'display.mode.system': 'System',

@@ -46,7 +46,6 @@
   gap: 8px;
 }
 
-.hub-tools .iconpicker,
 .hub-tools .langpicker {
   min-width: var(--tap);
   min-height: var(--tap);

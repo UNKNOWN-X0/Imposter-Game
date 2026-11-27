@@ -6,8 +6,7 @@ import { useState } from 'react';
 import { BrandMark, CheckIcon, ChevronLeftIcon, CopyIcon } from '../icons/index.jsx';
 import { useT } from '../../i18n/index.jsx';
 import { PhaseStepper, inRound } from '../../features/round/PhaseStepper.jsx';
-import { LanguagePicker } from '../../i18n/LanguagePicker.jsx';
-import { ThemePicker } from '../theme/ThemePicker.jsx';
+import { AppSettings } from '../settings/AppSettings.jsx';
 
 /**
  * `frame` asks for the game frame (brand beside Back, a rule under the top
@@ -40,8 +39,7 @@ export function Shell({ children, onBack, code, right, phase, frame }) {
         {code && !codeOnStepper ? <RoomCode code={code} /> : null}
         {right ?? (
           <>
-            <ThemePicker />
-            <LanguagePicker />
+            <AppSettings />
           </>
         )}
       </div>

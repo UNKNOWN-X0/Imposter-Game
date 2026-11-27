@@ -64,7 +64,7 @@ Everything here is a setting or a pack, with no code:
 - **Word packs:** open the pack library from the hub. Write a pack by typing or pasting one entry per line (`word, near miss`), or use **Write it with AI** to copy a ready prompt into any AI chat and paste its answer back. The editor reports every line it could not use, quoting it. **Send this to anybody** turns a pack into a code a friend can load, and **Share it with everyone** sends it to the community library: a reviewed pack appears under **From the community** in every table's pack library, with **Add to my packs**.
 - **Rules:** pick **Standard**, **Quick**, **Careful** or **Chaos**, then change anything in the list below them: each setting is one row saying what it is set to, and tapping it opens its choices. How many imposters, what they see, whether they know, rounds, the time per speaker, calling the word, the last guess, roles and scoring. Change any of them and **Your own rules** says which preset you started from.
 - **The table:** each player picks one of twelve emblems; the host can tap a seat to remove someone.
-- **Looks, sound and language:** the **Display** button holds light or dark, sound effects, and five woods (Birch, Oak, Teak, Mahogany, Walnut); the language button holds English, Thai or German. Each is chosen per phone, never for the whole table.
+- **Looks, sound and language:** the **Settings** button (⚙) holds Display (light or dark, and five woods: Birch, Oak, Teak, Mahogany, Walnut), Sound, and Language (English, Thai or German). Each is chosen per phone, never for the whole table.
 
 ### The games
 
