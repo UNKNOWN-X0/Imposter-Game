@@ -495,3 +495,12 @@ svg.icon.anim @ 100,5130 20×20
 svg.icon.anim @ 130,5134 16×16
 span.hint @ 28,5196 152×36
 span.hint.motion @ 92,5236 22×18
+div.board-cell @ 200,5034 174×238
+div.board-art @ 256,5048 64×64
+svg.icon.anim @ 256,5048 64×64
+div.board-sizes @ 212,5120 152×40
+svg.icon.anim @ 244,5120 30×30
+svg.icon.anim @ 284,5130 20×20
+svg.icon.anim @ 314,5134 16×16
+span.hint @ 212,5196 152×36
+span.hint.motion @ 276,5236 22×18

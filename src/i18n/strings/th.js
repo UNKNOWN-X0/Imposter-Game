@@ -33,6 +33,8 @@ export default {
   'language.de': 'ภาษาเยอรมัน',
   'sound.title': 'เสียงประกอบ',
   'sound.hint': 'เสียงสั้น ๆ ในช่วงสำคัญของเกม เฉพาะโทรศัพท์เครื่องนี้',
+  'app.settings': 'การตั้งค่า',
+  'sound.section': 'เสียง',
   'display.title': 'การแสดงผล',
   'display.appearance': 'โหมดสี',
   'display.mode.system': 'ตามเครื่อง',

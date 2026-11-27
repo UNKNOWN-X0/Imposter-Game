@@ -103,24 +103,6 @@
   display: inline-flex;
 }
 
-.iconpicker {
-  display: inline-grid;
-  place-items: center;
-  width: var(--tap);
-  min-height: var(--tap);
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--text-dim);
-  cursor: pointer;
-}
-
-.iconpicker:hover,
-.iconpicker[aria-expanded='true'] {
-  color: var(--accent-text);
-  border-color: var(--accent-text);
-}
-
 /* The disc in the appearance button fills as the menu opens. */
 .icon.anim .shade {
   transform-box: fill-box;

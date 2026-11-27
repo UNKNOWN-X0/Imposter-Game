@@ -13,7 +13,7 @@ import {
   BrandMark, ImposterMark, CrewIcon, ImposterIcon, UnknownIcon, HintIcon, CardBackIcon,
   PassIcon, EyeIcon, BellIcon, DiceIcon, TargetIcon, BrokenIcon, TieIcon,
   HourglassIcon, ShrugIcon, TrophyIcon, CheckIcon, ChevronLeftIcon, GlobeIcon,
-  CopyIcon, PhoneIcon, WifiIcon, ContrastIcon, SlidersIcon, SparklesIcon, InfoIcon, ArmchairIcon, ZapIcon, BrainIcon, TornadoIcon, UserPlusIcon, MessageIcon, VoteIcon, GamesIcon, BookIcon, ServerIcon,
+  CopyIcon, PhoneIcon, WifiIcon, ContrastIcon, SlidersIcon, SparklesIcon, InfoIcon, ArmchairIcon, ZapIcon, BrainIcon, TornadoIcon, UserPlusIcon, MessageIcon, VoteIcon, GamesIcon, BookIcon, ServerIcon, SettingsIcon,
   DetectiveIcon, JesterIcon, SidekickIcon, ScoreIcon,
 } from '../../ui/icons/index.jsx';
 
@@ -57,6 +57,7 @@ const ICONS = [
   [GamesIcon, 'Games', 'How it works: pick a game', 'Still'],
   [BookIcon, 'Book', 'How it works: word packs', 'Still'],
   [ServerIcon, 'Server', 'How it works: what a room needs', 'Still'],
+  [SettingsIcon, 'Settings', 'This phone: display, sound, language', 'Still'],
 ];
 
 export default function IconBoard() {

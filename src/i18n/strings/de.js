@@ -33,6 +33,8 @@ export default {
   'language.de': 'Deutsch',
   'sound.title': 'Soundeffekte',
   'sound.hint': 'Kurze Töne an den großen Momenten einer Runde, nur auf diesem Handy.',
+  'app.settings': 'Einstellungen',
+  'sound.section': 'Ton',
   'display.title': 'Darstellung',
   'display.appearance': 'Modus',
   'display.mode.system': 'System',
