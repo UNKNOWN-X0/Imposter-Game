@@ -1,4 +1,4 @@
-# Graph Report - Imposter-Game  (2026-11-27)
+# Graph Report - The-Long-Table  (2026-11-27)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
