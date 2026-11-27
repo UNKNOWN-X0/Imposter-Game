@@ -31,6 +31,27 @@ test('CHANGELOG.md and the in-app history agree about the latest release', () =>
   assert.equal(headings[0][2], RELEASES[0].date, 'the two disagree about the date');
 });
 
+test('CHANGELOG.md links the latest release and compares Unreleased from it', () => {
+  // The links are reference definitions at the bottom, one per line. Versions
+  // from before tagging began have no tag to point at, so they keep their
+  // heading without a link; every release from here on gets one.
+  const md = readFileSync(new URL('../../../CHANGELOG.md', import.meta.url), 'utf8');
+  const repo = 'https://github.com/UNKNOWN-X0/The-Long-Table';
+  const headings = new Set([...md.matchAll(/^## \[([^\]]+)\]/gm)].map((m) => m[1]));
+  const links = new Map();
+  for (const line of md.split('\n').filter((l) => /^\[[^\]]+\]:/.test(l))) {
+    const [, label, url] = line.match(/^\[([^\]]+)\]: (\S+)$/) ?? [];
+    assert.ok(label, `not one link on its own line: ${line}`);
+    assert.ok(!links.has(label), `${label} is linked twice`);
+    assert.ok(headings.has(label), `${label} is linked but has no heading`);
+    const want = label === 'Unreleased' ? `${repo}/compare/v${VERSION}...HEAD` : `${repo}/releases/tag/v${label}`;
+    assert.equal(url, want, `${label} points somewhere else`);
+    links.set(label, url);
+  }
+  assert.ok(links.has('Unreleased'), 'Unreleased has no compare link');
+  assert.ok(links.has(VERSION), `${VERSION} was released without its link`);
+});
+
 test('versions run newest first, once each', () => {
   const seen = new Set();
   let previous = null;
