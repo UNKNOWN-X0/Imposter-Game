@@ -10,6 +10,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 - Sound effects, off until you turn them on in the Display menu: the deal, your card turning, the vote, the verdict landing, a win, the clue turn passing and the timer's last seconds. Your card sounds the same whatever is on it.
 - A community pack library. Share a pack you wrote with everyone: **Share it with everyone** in the share sheet opens a short form on GitHub with your code filled in. Once somebody has read it, it shows up under **From the community** in every table's pack library, where **Add to my packs** saves your own copy to play and change.
+- Six English packs on the community shelf, 60 words each with a near miss: Anime, Snacks, Coding languages & terms, Dinosaurs, Astronomy, and Alcohol (18+) for adult tables.
 
 ### Fixed
 

@@ -960,10 +960,10 @@
     "semantic_hash": "0e7784f3bd72bb2ad408d376f68a758d"
   },
   "CHANGELOG.md": {
-    "mtime": 1795773142.7443383,
-    "seen": 1795774108.314102,
-    "ast_hash": "430485d492304747eabd1dd72ddedc9b",
-    "semantic_hash": "430485d492304747eabd1dd72ddedc9b"
+    "mtime": 1795788265.2081883,
+    "seen": 1795788270.1023622,
+    "ast_hash": "a038a4d2e4e216ba46ee6169bddf5b4c",
+    "semantic_hash": ""
   },
   "PLAYTEST.md": {
     "mtime": 1792609394.0,
@@ -1026,10 +1026,10 @@
     "semantic_hash": "e773157db9e28f650bdc199d72345a5d"
   },
   "AGENTS.md": {
-    "mtime": 1795710012.6056995,
-    "seen": 1795774108.314101,
-    "ast_hash": "916d7e2d50f032e0958950f35541afa8",
-    "semantic_hash": "916d7e2d50f032e0958950f35541afa8"
+    "mtime": 1795775292.54177,
+    "seen": 1795788270.1023612,
+    "ast_hash": "7ebf17a58c8e24a3409b63dff6b6c161",
+    "semantic_hash": ""
   },
   "src/modes/local/usePrivacyGate.js": {
     "mtime": 1795040544.1443682,
@@ -1056,10 +1056,10 @@
     "semantic_hash": "7fa0c8b7552fa99971a08406386ec7a9"
   },
   "STANDARDS.md": {
-    "mtime": 1795710012.608358,
-    "seen": 1795774108.3141131,
-    "ast_hash": "1ffda7ec1eda6112b9b6d9b7f2d85714",
-    "semantic_hash": "1ffda7ec1eda6112b9b6d9b7f2d85714"
+    "mtime": 1795775292.5421095,
+    "seen": 1795788270.1023722,
+    "ast_hash": "bb1f162745251f1e764ffaa1c9b9a6fe",
+    "semantic_hash": ""
   },
   "src/features/hub/PartyHub.jsx": {
     "mtime": 1795773142.783925,
@@ -1360,5 +1360,47 @@
     "seen": 1795774108.314074,
     "ast_hash": "627a43a979a890620d1b6ea7c6c9c06f",
     "semantic_hash": "627a43a979a890620d1b6ea7c6c9c06f"
+  },
+  "src/content/words/community/en/alcohol-18.json": {
+    "mtime": 1795788212.756459,
+    "seen": 1795788270.102189,
+    "ast_hash": "e3ba3be1b8c20f6e0bdffbda533ddf55",
+    "semantic_hash": ""
+  },
+  "src/content/words/community/en/anime.json": {
+    "mtime": 1795788212.7563026,
+    "seen": 1795788270.10219,
+    "ast_hash": "fc51577c642fcb2f6bf7325becfabfaf",
+    "semantic_hash": ""
+  },
+  "src/content/words/community/en/astronomy.json": {
+    "mtime": 1795788212.756962,
+    "seen": 1795788270.1021912,
+    "ast_hash": "154d1d028b2242a0c09baec7f10fb299",
+    "semantic_hash": ""
+  },
+  "src/content/words/community/en/coding-languages.json": {
+    "mtime": 1795788241.5049396,
+    "seen": 1795788270.1021922,
+    "ast_hash": "83877ec2751f0cb78c1bfd2969076bc7",
+    "semantic_hash": ""
+  },
+  "src/content/words/community/en/dinosaurs.json": {
+    "mtime": 1795788212.7568345,
+    "seen": 1795788270.1021929,
+    "ast_hash": "1c6908b787e8a95870619129369fe9d3",
+    "semantic_hash": ""
+  },
+  "src/content/words/community/en/snacks.json": {
+    "mtime": 1795788212.7565877,
+    "seen": 1795788270.1021938,
+    "ast_hash": "05999d2ee1842d4ad767f5875a1320fc",
+    "semantic_hash": ""
+  },
+  "package-lock.json": {
+    "mtime": 1795622274.512315,
+    "seen": 1795788270.1023831,
+    "ast_hash": "f96b5e96016d1b20767de61d3c73ae8d",
+    "semantic_hash": ""
   }
 }
