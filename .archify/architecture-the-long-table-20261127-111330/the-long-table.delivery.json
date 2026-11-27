@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "receiptId": "8ec7a05e-1ee0-49b2-af4e-afb647df6d34",
+  "receiptId": "fe363b69-80ce-4bd3-81ba-c8385c8acc06",
   "status": "current",
   "command": "deliver",
   "type": "architecture",
-  "input": "/Users/thanate/Developer/Games/Imposter-Game/.archify/architecture-the-long-table-20261127-111330/candidate.json",
-  "output": "/Users/thanate/Developer/Games/Imposter-Game/.archify/architecture-the-long-table-20261127-111330/the-long-table.html",
+  "input": "/Users/thanate/Developer/Games/The-Long-Table/.archify/architecture-the-long-table-20261127-111330/candidate.json",
+  "output": "/Users/thanate/Developer/Games/The-Long-Table/.archify/architecture-the-long-table-20261127-111330/the-long-table.html",
   "specification": {
     "sha256": "19ff3865fc6816f5248497e1992cf124202ccaa12927e1fb07652bde045d2e2d",
     "bytes": 17071

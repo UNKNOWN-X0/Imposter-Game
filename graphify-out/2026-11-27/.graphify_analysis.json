@@ -1718,13 +1718,13 @@
       "degree": 31
     },
     {
-      "id": "src_modes_local_localgame_localgame",
-      "label": "LocalGame()",
+      "id": "src_ui_primitives_avatar_avatar",
+      "label": "Avatar()",
       "degree": 28
     },
     {
-      "id": "src_ui_primitives_avatar_avatar",
-      "label": "Avatar()",
+      "id": "src_modes_local_localgame_localgame",
+      "label": "LocalGame()",
       "degree": 28
     },
     {
@@ -1751,28 +1751,6 @@
       "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ doc); connects across different repos/directories; bridges separate communities"
     },
     {
-      "source": "Invariants",
-      "target": "publicState()",
-      "source_files": [
-        "STANDARDS.md",
-        "src/core/select.js"
-      ],
-      "confidence": "INFERRED",
-      "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ doc); connects across different repos/directories; bridges separate communities"
-    },
-    {
-      "source": "Lessons",
-      "target": "publicState()",
-      "source_files": [
-        "STANDARDS.md",
-        "src/core/select.js"
-      ],
-      "confidence": "INFERRED",
-      "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ doc); connects across different repos/directories; bridges separate communities"
-    },
-    {
       "source": "The plan (owner, 2026-11-26, issue #103)",
       "target": "motionMs()",
       "source_files": [
@@ -1793,12 +1771,34 @@
       "confidence": "INFERRED",
       "relation": "references",
       "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ doc); connects across different repos/directories; peripheral node `Table and Seats` unexpectedly reaches hub `chairsFor()`"
+    },
+    {
+      "source": "The plan (owner, 2026-11-26, issue #103)",
+      "target": "onWinningSide()",
+      "source_files": [
+        "DESIGN.md",
+        "src/core/select.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ doc); connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Invariants",
+      "target": "normaliseConfig()",
+      "source_files": [
+        "STANDARDS.md",
+        "src/core/rules.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ doc); connects across different repos/directories; bridges separate communities"
     }
   ],
   "questions": [
     {
       "type": "bridge_node",
-      "question": "Why does `Invariants` connect `STANDARDS.md` to `PackEditor.jsx`, `SECURITY.md`, `AGENTS.md`, `createGame`, `CHANGELOG`?",
+      "question": "Why does `Invariants` connect `Project Standards` to `Custom and Community Packs`, `Security Policy`, `Agent Instructions`, `Public State and Strict Mode`, `Release History`?",
       "why": "High betweenness centrality (0.145) - this node is a cross-community bridge."
     },
     {
@@ -1808,27 +1808,27 @@
     },
     {
       "type": "low_cohesion",
-      "question": "Should `CHANGELOG` be split into smaller, more focused modules?",
+      "question": "Should `Release History` be split into smaller, more focused modules?",
       "why": "Cohesion score 0.12631578947368421 - nodes in this community are weakly interconnected."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `react` connect `Talking.jsx` to `PackEditor.jsx`, `App.jsx`, `Avatar`, `strings/index.js`, `local/screens/Lobby.jsx`, `Icon`, `useT`, `Build Dependencies`, `i18n/index.jsx`, `Verdict.jsx`, `react`, `words/index.js`, `room.test.js`, `theme.test.js`, `local/storage.js`?",
-      "why": "High betweenness centrality (0.081) - this node is a cross-community bridge."
+      "question": "Why does `react` connect `Pass-and-Play Round Screens` to `Custom and Community Packs`, `App Shell and Navigation`, `Players and Emblems`, `Translations and String Board`, `Lobby and Table Scene`, `Action Icons`, `Clue, Call and Vote Panels`, `Build Dependencies`, `Error Reporting`, `Players and Scoreboard`, `Lobby Settings, Sheets and Sound`, `Word Loading`, `Room Client`, `Themes and Contrast`, `Local Game Storage and Phase Routing`?",
+      "why": "High betweenness centrality (0.075) - this node is a cross-community bridge."
     },
     {
       "type": "low_cohesion",
-      "question": "Should `PackEditor.jsx` be split into smaller, more focused modules?",
+      "question": "Should `Custom and Community Packs` be split into smaller, more focused modules?",
       "why": "Cohesion score 0.06037000973709834 - nodes in this community are weakly interconnected."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `validatePack()` connect `PackEditor.jsx` to `App.jsx`, `engine.js`, `words/index.js`, `engine.test.js`, `STANDARDS.md`?",
-      "why": "High betweenness centrality (0.064) - this node is a cross-community bridge."
+      "question": "Why does `validatePack()` connect `Custom and Community Packs` to `App Shell and Navigation`, `Word Picking and Scoring`, `Word Loading`, `Vote and Round Outcomes`, `Project Standards`?",
+      "why": "High betweenness centrality (0.065) - this node is a cross-community bridge."
     },
     {
       "type": "low_cohesion",
-      "question": "Should `Room Server and Tests` be split into smaller, more focused modules?",
+      "question": "Should `Room Server` be split into smaller, more focused modules?",
       "why": "Cohesion score 0.06862745098039216 - nodes in this community are weakly interconnected."
     }
   ]
