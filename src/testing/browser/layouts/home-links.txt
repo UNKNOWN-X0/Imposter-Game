@@ -101,8 +101,8 @@ div.hub-sections @ 16,890 358×190
 section.hub-library-panel @ 16,890 358×190
 button.hub-primary-action @ 16,1012 250×52
 footer.hub-footer @ 16,1102 358×106
-nav.hub-footer-nav @ 16,1114 352×52
+nav.hub-footer-nav @ 16,1114 344×52
 button.hub-footer-link @ 16,1114 74×52
 button.hub-footer-link @ 106,1114 104×52
-button.hub-footer-link @ 226,1114 142×52
+button.hub-footer-link @ 226,1114 134×52
 p.credit @ 16,1170 286×38
