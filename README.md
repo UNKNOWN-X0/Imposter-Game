@@ -10,17 +10,19 @@ Free, highly customisable party games for friends around one table, on one phone
 
 **[Play The Long Table →](https://unknown-x0.github.io/The-Long-Table/)** · [Changelog](CHANGELOG.md) · [Playtest guide](PLAYTEST.md) · [Report a bug](https://github.com/UNKNOWN-X0/The-Long-Table/issues)
 
-![The Long Table](assets/preview.png)
+![The hub with five people seated, a round of clues in dark mode, and the word pack library](assets/preview.png)
 
 ## Features
 
 - **Free:** no account, no ads, no tracking and nothing to buy. Open source: the code is MIT and the built-in word packs are CC BY-NC-SA 4.0.
-- **Highly customisable:** your own word packs (typed, pasted, written with any AI chat, or loaded from a friend's share code), presets or every rule by hand, optional roles, scoring, an emblem for every player, five wood themes in light or dark.
+- **Highly customisable:** your own word packs (typed, pasted, written with any AI chat, or loaded from a friend's share code), four presets or every rule by hand, optional roles, scoring, a clue timer, an emblem for every player, five wood themes in light or dark.
+- **A community library:** share a pack with everyone through a short GitHub form; once it has been read it appears under **From the community** in every table's pack library, one tap from **Add to my packs**.
 - **One table for every game:** the group sits down once at the hub, each with a name and an emblem, and every game starts with the people already seated.
 - **Two ways to play:** pass one phone around the table, or everyone on their own phone in a room joined by a code or a link.
 - **Imposter, the first game:** everyone but the imposters gets the same secret word; one-word clues, a vote, and a last guess for the imposter. Ten built-in packs per language.
 - **Three languages:** English, Thai and German, with the interface language and the word language chosen separately.
 - **Fair by design:** your card shows only while you hold it, and a room's server never sends a phone a word or role it should not hold.
+- **Made for a table:** the button you need next stays under your thumb, every step opens at its top, the verdict gets a moment of suspense, and sound effects (off until you turn them on) mark the deal, the card, the vote and the win.
 - **Picks up where you left off:** saved one-phone rounds, room reconnection, players shown as away, and the host role handed on when the host leaves.
 
 ## Getting started
@@ -53,14 +55,16 @@ For phone-to-phone play, `npm run party` builds the site and serves it on your w
 | One phone | Seat everyone at the hub, choose **Play on one phone**, pick a game, then pass the phone; each player holds their card to see it, and it covers again when they let go. | A browser. Use the link above. |
 | Room | The host chooses **Play in a room** and picks a game; everyone else joins on their own phone with the code (**Have a code?**) or the link the host shares. | The Node server, on the same wifi or publicly hosted ([Deploying](#deploying)). |
 
+New to it? **How it works**, at the foot of the hub, explains the table; each game's card has its own **How to play**.
+
 ### Making it yours
 
 Everything here is a setting or a pack, with no code:
 
 - **Word packs:** open the pack library from the hub. Write a pack by typing or pasting one entry per line (`word, near miss`), or use **Write it with AI** to copy a ready prompt into any AI chat and paste its answer back. The editor reports every line it could not use, quoting it. **Send this to anybody** turns a pack into a code a friend can load, and **Share it with everyone** sends it to the community library: a reviewed pack appears under **From the community** in every table's pack library, with **Add to my packs**.
-- **Rules:** start from Quick, Careful or Chaos, then change anything under **Customize rules and roles**: how many imposters, what they see, whether they know, rounds, calling the word, the last guess, roles and scoring.
+- **Rules:** pick **Standard**, **Quick**, **Careful** or **Chaos**, then change anything in the list below them: each setting is one row saying what it is set to, and tapping it opens its choices. How many imposters, what they see, whether they know, rounds, the time per speaker, calling the word, the last guess, roles and scoring. Change any of them and **Your own rules** says which preset you started from.
 - **The table:** each player picks one of twelve emblems; the host can tap a seat to remove someone.
-- **Looks and language:** five woods (Birch, Oak, Teak, Mahogany, Walnut) in light or dark, and English, Thai or German, each chosen per phone.
+- **Looks, sound and language:** the **Display** button holds light or dark, sound effects, and five woods (Birch, Oak, Teak, Mahogany, Walnut); the language button holds English, Thai or German. Each is chosen per phone, never for the whole table.
 
 ### The games
 
@@ -72,7 +76,7 @@ More games are planned ([roadmap](ROADMAP.md)); each joins the same table and pa
 
 ## Privacy
 
-Everything a group sets up stays in the browser's local storage on that phone: the party and emblems, settings, custom packs, scores and a saved one-phone round. Nothing is collected: no account, no analytics, no tracking. In a room, the server keeps each room in memory and sends every phone a scrubbed copy plus its own card, so the word never reaches an imposter's device; besides the game it shares only each player's emblem and whether their phone is connected. To survive a restart it writes rooms, including the word in play, to `.rooms.json` (mode `0600`, ignored by Git, `ROOM_STORE=off` to disable). Error reports name the version, mode, phase, player count and recent actions by name, never the word, the near miss, or who was dealt what.
+Everything a group sets up stays in the browser's local storage on that phone: the party and emblems, settings, custom packs, scores, the display, sound and language choices, and a saved one-phone round. Community packs ship with the site, so nothing is fetched from GitHub while you play. Nothing is collected: no account, no analytics, no tracking. In a room, the server keeps each room in memory and sends every phone a scrubbed copy plus its own card, so the word never reaches an imposter's device; besides the game it shares only each player's emblem and whether their phone is connected. To survive a restart it writes rooms, including the word in play, to `.rooms.json` (mode `0600`, ignored by Git, `ROOM_STORE=off` to disable). Error reports name the version, mode, phase, player count and recent actions by name, never the word, the near miss, or who was dealt what.
 
 ## Development
 
@@ -91,7 +95,9 @@ Each recipe ends in the test that catches the step people forget.
 - **A game that plays with words.** Set `words: true` on its entry in `src/games/index.js`; the pack library, the hub's packs section and its game card then name it as a game the packs are for. A game without words leaves it out and never shows the packs.
 - **Add a source of words.** A file in `src/content/words/sources.js` that answers `packsFor(lang, context)`.
 - **Add a theme.** An entry in `THEMES` (`src/ui/theme/themes.js`), `theme.<id>` in the three string tables, and two palette blocks in `src/ui/styles/tokens.css`. `src/ui/theme/theme.test.js` reads the stylesheet and reports a missing token, a contrast failure, or a chip unlike its theme.
-- **Change the look.** Two dials on `tokens.css`: `data-mode` and `data-theme`; the themes are Birch, Oak (default), Teak, Mahogany, and Walnut. `--accent` is the action fill with `--on-accent` on it; `--accent-text` is the contrast-checked action colour for words and icons. Icons live in `src/ui/icons/` (24px grid, one 1.8 stroke, one motion each behind `anim`); open `#icons` for the sheet. A new icon starts from the matching Lucide drawing (lucide-static 0.460.0, ISC; add it to `NOTICE.md`) with its animated parts wrapped in named groups. Non-essential motion follows the shared timing tokens and `prefers-reduced-motion`.
+- **Change the look.** Two dials on `tokens.css`: `data-mode` and `data-theme`; the themes are Birch, Oak (default), Teak, Mahogany, and Walnut. `--accent` is the action fill with `--on-accent` on it; `--accent-text` is the contrast-checked action colour for words and icons. Icons live in `src/ui/icons/` (24px grid, one 1.8 stroke, one motion each behind `anim`); open `#icons` for the sheet. Every interface icon is a Lucide drawing (lucide-static 0.460.0, ISC, listed in `NOTICE.md`); only the two marks in `brand.jsx` are the project's own.
+- **Motion.** Durations are tokens (`--motion-press`, `-state`, `-enter`, `-exit`, `-reveal`, `-beat`, `-celebration`); every animation sits behind `prefers-reduced-motion: no-preference`, and `styles.test.js` fails one that does not. Everything you tap presses and changes selection the same way, from one rule in `styles/interaction.css`. Code that waits for an animation reads the token with `motionMs()` (`src/ui/motionMs.js`), which understands the minifier's seconds.
+- **Add a sound.** An entry in `SOUNDS` (`src/ui/sound/index.js`), made with the Web Audio API, and a `play(name)` where the moment happens. A sound never tells a role: the card turning is one sound for everybody. `index.test.js` builds every sound against a stand-in audio context.
 - **The home-screen icon** is `public/icon.svg` plus `icon-maskable.svg`; `npm run icons` renders the PNGs and `npm test` checks their sizes.
 - **When something goes wrong.** Rule violations are codes and show as a banner. Anything unplanned gets the error screen or one quiet line, and a report that names the version, mode, phase, player count, error, and the last dozen actions **by name**: never the word, the decoy, or who was dealt what. Open `#crash` to see the error screen without waiting for a bug.
 
@@ -139,13 +145,15 @@ src/core/           the rules: a pure reducer. No DOM, no network, no clock, no 
                     modes, the name rule) · select.js (whose turn, who may see what) ·
                     deal.js · roles/ (one file per role) · scoring/ (every way to win)
 src/content/        the words and the history, as data: words/builtin/ (ten packs of a
-                    hundred per language), words/custom.js, words/sources.js, history/
+                    hundred per language), words/community/ (packs players shared),
+                    words/custom.js, words/sources.js, history/
 src/i18n/           one file per language, and the reader that picks a string
 src/party/          the people at the table, shared by the hub and every game: roster,
                     emblems, the add-player form and seat actions
-src/ui/             pieces that know nothing about a game: primitives/, icons/ (Lucide
-                    drawings and the twelve emblems), table/ (the feast table),
-                    theme/ (light, dark and the five woods), styles/
+src/ui/             pieces that know nothing about a game: primitives/ (shell, sheets
+                    and rows, choices, the hold card), icons/ (Lucide drawings and the
+                    twelve emblems), table/ (the feast table), theme/ (light, dark and
+                    the five woods), sound/ (Web Audio effects), styles/
 src/games/          the game catalog: one entry per game, read by the hub and the library
 src/features/       pieces that do know: hub, library, lobby, round, packs, rules, changelog,
                     errors
@@ -154,7 +162,7 @@ src/testing/        the checks that are about the project, not about a game, and
                     three browser sweeps (every screen, every ending, every room)
 server/             static files plus the room API, zero dependencies
 tools/              verify, coverage, fingerprint, icons
-assets/preview.png  Screenshot for this README
+assets/preview.png  Screenshots for this README
 ```
 
 Nothing in `core` imports React; nothing in `ui` imports the engine; both modes render the same `features` and differ only in who is holding the phone. The server keeps the authoritative state and sends each phone a scrubbed copy plus its own card; live updates are Server-Sent Events. Interface language is a per-device choice; word language belongs to the table, which is why rule violations travel as codes (`core/errors.js`) and are rendered in each phone's own language.
